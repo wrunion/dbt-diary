@@ -1,52 +1,56 @@
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || 5000
+require('dotenv').config()
 const passport = require('passport')
 const path = require('path')
 const flash = require('express-flash')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
-// logs requests 
+const helmet = require('helmet')
+const compression = require("compression")
 const ejs = require('ejs')
+//const sslRedirect = require('heroku-ssl-redirect');
+const { Pool } = require('pg')
+const { testDatabaseQuery } = require('./utils')
 
-/* CONNECT TO DB HERE */
-// then:
-// require('./config/passport')(passport);
+const PORT = process.env.PORT || 5000
 
+
+/* Heroku free postgres allows up to 20 concurrent connections */
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  max: 20,
+  ssl: { rejectUnauthorized: false }
+});
+
+pool.on('error', async (error, client) => {
+  if (process.env.NODE_ENV === undefined || process.env.NODE_ENV !== "production") {
+    console.error(`Database pool error: ${error}; Connection string: ${process.env.DATABASE_URL}`);
+  }
+});
+
+/* Configure view templates, which form the HTML part of the admin and login pages */
+app.set("view engine", "ejs");
+app.set('view options', {delimiter: '*'});
+
+// Middleware for security and efficiency
 app.use(cookieParser()); 
+//app.use(sslRedirect()); // <-- this is crashing the app
 app.use(express.json()) // necessary? allows us to access the req.body
-
-app.set('view engine', 'ejs');
+app.use(helmet());
+app.use(compression());
+app.use(express.urlencoded({ extended: false }));
 
 if (process.env.NODE_ENV === "production") {
-  // Heroku serves our static content
   app.use(express.static(path.join(__dirname, "client/build")));
 };
 
-
-/*--- PASSPORT SETUP -----*/
-// TODO: set all this up in a route instead? 
-app.use(session(
-  { resave: false, 
-    saveUninitialized: true, 
-    secret: 'piper' 
-  })
-);
-app.use(passport.initialize());
-app.use(passport.session()); 
-app.use(flash());
-
-// require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+/* Check for database connectivity and provide a human-friendly message on failure */
+testDatabaseQuery(pool);
 
 
-// TODO: see if i need the lines below
-// app.use(express.cookieParser('keyboard cat'));
-// app.use(express.session({ cookie: { maxAge: 60000 }}));
-app.use(flash());
-
-app.get('/login', (req, res) => {
-  res.render('login.ejs')
-})
+/* Routes */
+require("./routes/admin")(app, pool);
 
 app.listen(PORT, () => {
   console.log(`Server is ready at port ${PORT}`)
