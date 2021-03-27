@@ -26,12 +26,12 @@ module.exports = (app, pool) => {
   });
   /* Catch all */
   app.get("/", userIsNotAuthenticated, (req, res) => {
-    res.render("login.ejs", { message: null });
+    res.render("login", { message: null });
   });
 
 /* Login */
   app.get("/admin/login", userIsNotAuthenticated, (req, res) => {
-    res.render("login.ejs", { message: null });
+    res.render("login", { message: null });
   });
 
   /* Default handler for the admin page */
@@ -43,14 +43,30 @@ module.exports = (app, pool) => {
     }
   });
 
+  /* BEFORE PROD: add middleware to protect this route */
+  app.get('/admin/map', (req,res) => {
+    try {
+      res.render('mapDataDashboard.ejs');
+  } catch (e) {
+      return next(e); // ask Kent about this
+    }
+  });
+
+    /* BEFORE PROD: add middleware to protect this route */
+    app.get('/admin/static', (req,res) => {
+      try {
+        res.render('staticDataDashboard.ejs');
+    } catch (e) {
+        return next(e); // ask Kent about this
+      }
+    });
+
   /* Create new user (super user only) */
-  // RE-ADD "userIsAdmin" middleware when finished w/db
-  app.get('/admin/register', (req, res) => {
+  app.get('/admin/register', userIsAdmin, (req, res) => {
     res.render('registerUser.ejs');
   });
 
-  // RE-ADD "userIsAdmin" middleware when finished w/db
-  app.post('/admin/register', (req, res) => {
+  app.post('/admin/register', userIsAdmin, (req, res) => {
     const registerUser = async () => {
       try {
         const { name, role, email, password } = req.body;
