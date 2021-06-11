@@ -35,16 +35,16 @@ module.exports = (app, pool) => {
   });
 
   /* Default handler for the admin page */
-  app.get("/admin/dashboard", userIsAuthenticated, async (req, res, next) => {
+  app.get("/dashboard", userIsAuthenticated, async (req, res, next) => {
     try {
-        res.render('dashboard.ejs', { userData: req.user });
+      res.render('dashboard.ejs', { userData: req.user });
     } catch (e) {
       return next(e); // ask Kent about this
     }
   });
 
   /* BEFORE PROD: add middleware to protect this route */
-  app.get('/admin/map', (req,res) => {
+  app.get('/map', (req,res) => {
     try {
       res.render('mapDataDashboard.ejs');
   } catch (e) {
@@ -53,7 +53,7 @@ module.exports = (app, pool) => {
   });
 
     /* BEFORE PROD: add middleware to protect this route */
-    app.get('/admin/static', (req,res) => {
+    app.get('/static', (req,res) => {
       try {
         res.render('staticDataDashboard.ejs');
     } catch (e) {
@@ -62,11 +62,11 @@ module.exports = (app, pool) => {
     });
 
   /* Create new user (super user only) */
-  app.get('/admin/register', userIsAdmin, (req, res) => {
+  app.get('/register', userIsAdmin, (req, res) => {
     res.render('registerUser.ejs');
   });
 
-  app.post('/admin/register', userIsAdmin, (req, res) => {
+  app.post('/register', userIsAdmin, (req, res) => {
     const registerUser = async () => {
       try {
         const { name, role, email, password } = req.body;
@@ -83,16 +83,16 @@ module.exports = (app, pool) => {
   });
 
   /* Logout */
-  app.get("/admin/logout", (req, res) => {
+  app.get("/logout", (req, res) => {
     req.logout();
     res.render("login.ejs", { message: "You have logged out successfully" });
   });
 
   /* Handle input from the login form */
-  app.post("/admin/login",
+  app.post("/login",
     passport.authenticate("local", {
-      successRedirect: "/admin/dashboard",
-      failureRedirect: "/admin/login",
+      successRedirect: "/dashboard",
+      failureRedirect: "/login",
       failureFlash: true
     })
   );
@@ -102,7 +102,7 @@ module.exports = (app, pool) => {
   /* Passport middleware function to protect routes */
   function userIsNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-      return res.redirect("/admin/dashboard");
+      return res.redirect("/dashboard");
     }
     next();
   }
@@ -112,7 +112,7 @@ module.exports = (app, pool) => {
     if (req.isAuthenticated()) {
       return next();
     }
-    res.redirect("/admin/login");
+    res.redirect("/login");
   }
 
   //this is for the "Create User" route, which should be accesible by logged-in Admin users only
@@ -120,6 +120,6 @@ module.exports = (app, pool) => {
     if (req.isAuthenticated() && req.user.role === "admin") {
       return next();
     }
-    res.redirect("/admin/dashboard");
+    res.redirect("/dashboard");
   }
 }
