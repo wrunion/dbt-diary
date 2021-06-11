@@ -30,7 +30,7 @@ module.exports = (app, pool) => {
   });
 
 /* Login */
-  app.get("/admin/login", userIsNotAuthenticated, (req, res) => {
+  app.get("/login", userIsNotAuthenticated, (req, res) => {
     res.render("login", { message: null });
   });
 

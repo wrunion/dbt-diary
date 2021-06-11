@@ -1,5 +1,38 @@
 <*- include('./partials/head'); *>
 
+<style>
+  #login-page {
+    display:flex; 
+    flex-direction: column; 
+    flex-wrap: nowrap; 
+    justify-content:center; 
+    align-items:center;
+  }
+
+  #login-segment {
+    width: 55vw; 
+    max-width: 500px;
+  }
+
+  #login-page form {
+    color:#231935; 
+    padding:.5em;
+  }
+
+  #login-page button {
+    color:#f5f4f2;
+  }
+
+  #login-page .bottom-message {
+    color:#d9d9d9; 
+    line-height:2em;
+  }
+
+  #login-page .bottom-message a {
+    color:#098ca8;
+  }
+</style>
+<!-- If Express sends an error or message, display it here  -->
 <* if(error && error.length > 0) { *>
   <div>
     <*= error *>
@@ -10,14 +43,17 @@
     <*= message *>
   </div>
 <* } *>
-<body style="display:flex; flex-direction: column; flex-wrap: nowrap; justify-content:center; align-items:center">
-  <div class="ui segment" id="login-form-segment" style="width:55vw; max-width:500px">
 
-    <h2 class="ui right header">Healthy Transitions Login</h2>
+<body id="login-page">
+  <div class="ui segment" id="login-segment">
+
+    <h2 class="ui right header">
+      Healthy Transitions Login
+    </h2>
     
     <div class="ui divider"></div>
 
-    <form class="ui form" action="/admin/login" method="POST" style="color:#231935; padding:.5em">
+    <form class="ui form" action="/admin/login" method="POST">
       <!-- email  -->
       <div class="field">
         <div class="ui left icon input">
@@ -32,25 +68,16 @@
           <i class="lock icon"></i>    
         </div>
       </div>
-      <!-- <div class="field">
-        <div class="ui checkbox">
-          <input type="checkbox" tabindex="0" class="hidden">
-          <label>Remember me</label>
-        </div>
-      </div> -->
       <br />
-      <!-- FOR DEV AND PROD PURPOSES  -->
-      <!-- <button class="ui button fluid teal" style="color:#f5f4f2" type="submit">Log in</button> -->
-      <!-- FOR DEMO PURPOSES ONLY  -->
-     <button class="ui button fluid teal" style="color:#f5f4f2" type="button">Log in</button>
-  <!-- <div class="field">
-    Password hint<br /> 
-    <a href="#">Password hint</a>
-  </div> -->
+     <button class="ui button fluid teal" type="button">
+        Log in
+      </button>
     </form>
   </div>
-  <div style="color:#d9d9d9; line-height:2em;">
+  <div class='bottom-message'>
     This is an administrative page. <br /> 
-    <a href="#" style="color:#098ca8;">Click here for the main site</a>
+    <a href="#">
+      Click here for the main site
+    </a>
   </div>
 </body>

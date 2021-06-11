@@ -1,45 +1,17 @@
 <head>
   <meta charset="UTF-8" />
-
-  <!-- Semantic UI links -->
-  <!-- Q for Elle: is linking to a CDN okay? Or should we install the semantic-ui node package? -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />  <script
-    src="https://code.jquery.com/jquery-3.1.1.min.js"
-    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-    crossorigin="anonymous"></script>
-  <script src="semantic/dist/semantic.min.js"></script>
-
-  <!-- Custom styles  -->
-  <style>
-    body {
-      background-color: #231935;
-      display: 'flex';
-      color: '#f5f4f2';
-    }
-
-    #login-form-segment {
-      width: '45%';
-    }
-
-    /* TEMP FOR UPLOAD BUTTON  */
-
-    .grid.container {
-      margin-top: 5em;
-    }
-    .inputfile {
-      width: 0.1px;
-      height: 0.1px;
-      opacity: 0;
-      overflow: hidden;
-      position: absolute;
-      z-index: -1;
-    }
-
-    h1, h2, h3, h4, h5, h6 { text-align: center; }
-    p, div { text-align: center; }
-  </style>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Queer Coding by Winter A. Runion</title>
+
+  <!-- semantic styles  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+  <!-- custom styles  -->
+  <*- include('./styles'); *>
+
+  <!-- jQuery  -->
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+  <!-- semantic jQuery  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+  <title>Healthy Transitions Oregon Admin Site</title>
 </head>

@@ -13,7 +13,7 @@ const ejs = require('ejs')
 const { Pool } = require('pg')
 const { testDatabaseQuery } = require('./utils')
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5050
 
 
 /* Heroku free postgres allows up to 20 concurrent connections */
@@ -29,7 +29,7 @@ pool.on('error', async (error, client) => {
   }
 });
 
-/* Configure view templates, which form the HTML part of the admin and login pages */
+/* Configure view templates, which contain HTML, CSS & JS for the admin and login pages */
 app.set("view engine", "ejs");
 app.set('view options', {delimiter: '*'});
 
