@@ -1,47 +1,46 @@
-<*- include('./partials/head'); *>
+<%- include('./partials/head'); %>
 
 <!-- If Express sends an error or message, display it here  -->
-<* if(error && error.length > 0) { *>
-  <div>
-    <*= error *>
-  </div>
-<* } *>
-<* if(message && message.length > 0) { *>
-  <div>
-    <*= message *>
-  </div>
-<* } *>
+<span class="top-message">
+  <% if(error && error.length > 0) { %>
+    <div>
+      <%= error %>
+    </div>
+  <% } %>
+  <% if(message && message.length > 0) { %>
+    <div>
+      <%= message %>
+    </div>
+  <% } %>
+</span>
 
 <body id="login-page">
   <div class="ui segment" id="login-segment">
 
     <h2 class="ui right header">
       Healthy Transitions Login
+      <div class="sub header">
+        Enter your email, and we'll send you a secure sign in link
+      </div>
     </h2>
     
-    <div class="ui divider"></div>
-
     <form class="ui form" action="/admin/login" method="POST">
       <!-- email  -->
-      <div class="field">
+      <div class="field" style="margin-top: .5em">
         <div class="ui left icon input">
           <input type="email" name="email" id="email" aria-label="email" placeholder="Email">
           <i class="user icon"></i>    
         </div>
       </div>
-      <!-- password  -->
-      <div class="field">
-        <div class="ui left icon input">
-          <input type="password" name="password" id="password" aria-label="password" placeholder="Password">
-          <i class="lock icon"></i>    
-        </div>
-      </div>
+
       <br />
-     <button class="ui button fluid teal" type="button">
+     <button class="ui button fluid teal" type="submit">
         Log in
       </button>
     </form>
   </div>
+
+  <!-- text below form  -->
   <div class='bottom-message'>
     This is an administrative page. <br /> 
     <a href="#">

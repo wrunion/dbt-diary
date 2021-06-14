@@ -11,10 +11,8 @@ const compression = require("compression")
 const ejs = require('ejs')
 //const sslRedirect = require('heroku-ssl-redirect');
 const { Pool } = require('pg')
-const { testDatabaseQuery } = require('./utils')
 
 const PORT = process.env.PORT || 5050
-
 
 /* Heroku free postgres allows up to 20 concurrent connections */
 const pool = new Pool({
@@ -30,13 +28,13 @@ pool.on('error', async (error, client) => {
 });
 
 /* Configure view templates, which contain HTML, CSS & JS for the admin and login pages */
-app.set("view engine", "ejs");
-app.set('view options', {delimiter: '*'});
+app.set('view engine', 'ejs');
+// app.set('view options', {delimiter: '*'});
 
 // Middleware for security and efficiency
 app.use(cookieParser()); 
 //app.use(sslRedirect()); // <-- this is crashing the app
-app.use(express.json()) // necessary? allows us to access the req.body
+app.use(express.json()) 
 app.use(helmet());
 app.use(compression());
 app.use(express.urlencoded({ extended: false }));
@@ -45,12 +43,8 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
 };
 
-/* Check for database connectivity and provide a human-friendly message on failure */
-testDatabaseQuery(pool);
-
-
 /* Routes */
-require("./routes/admin")(app, pool);
+require("./routes")(app, pool);
 
 app.listen(PORT, () => {
   console.log(`Server is ready at port ${PORT}`)
