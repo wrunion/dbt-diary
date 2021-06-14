@@ -8,23 +8,23 @@ const bcrypt = require('bcrypt')
 module.exports = (app, pool) => {
 
   /* Configure Passport, the login mechanism for the admin page */
-  const initializePassport = require('./config/initializePassport');
-  initializePassport(passport, pool);
-  app.use(
-    session({
-      secret: 'secret',
-      resave: false,
-      saveUninitialized: false
-    })
-  );
-  app.use(passport.initialize());
-  app.use(passport.session());
-  app.use(flash());
-  app.use(function (req, res, next) {
-    res.locals.error = req.flash("error");
-    res.locals.success = req.flash("success")
-    next();
-  });
+  // const initializePassport = require('./config/initializePassport');
+  // initializePassport(passport, pool);
+  // app.use(
+  //   session({
+  //     secret: 'secret',
+  //     resave: false,
+  //     saveUninitialized: false
+  //   })
+  // );
+  // app.use(passport.initialize());
+  // app.use(passport.session());
+  // app.use(flash());
+  // app.use(function (req, res, next) {
+  //   res.locals.error = req.flash("error");
+  //   res.locals.success = req.flash("success")
+  //   next();
+  // });
 
   /* Catch all */
   // app.get("/", userIsNotAuthenticated, (req, res) => {
@@ -45,14 +45,35 @@ module.exports = (app, pool) => {
     res.render("login", { message: 'You must log in to access that feature' });
   });
 
-  /* Catch all */
-  app.get("*", (req, res) => {
+
+
+  /* Login */
+
+  app.get("/login", (req, res) => {
     res.render("login", { message: null });
   });
 
-  /* Login */
-  app.get("/login", (req, res) => {
+  app.get("/staff/login", (req, res) => {
     res.render("login", { message: null });
+  });
+
+
+
+  /* temporary dummy sign in logic, until Elle's email validator is in place */
+  // for demo purposes only, there's a single hard coded user email, and we'll just check if it matches what the user entered
+  // evntually we'll have secret tokens sent to email addresses, that users will click to authenticate 
+   app.post("/login", (req, res) => {
+
+    let authorizedUserEmail = process.env.AUTHORIZED_USER_EMAIL;
+    let userEmail = req.body.email
+
+    if (authorizedUserEmail === userEmail) {
+      // success
+      return res.redirect('/dashboard')
+    } else {
+      res.render('login.ejs', { message: 'That email is not registered. \n Please try again.' 
+    });
+    }
   });
 
   /* --------- the routes below are for DEV only ---------- */
@@ -62,6 +83,13 @@ module.exports = (app, pool) => {
   app.get('/home', (req, res) => {
     res.render('home', {
       activeTab: 'home'
+    })
+  })
+
+  // dev/demo only
+  app.get('/dashboard', (req, res) => {
+    res.render('dashboard', {
+      activeTab: 'dashboard'
     })
   })
 
@@ -88,36 +116,41 @@ module.exports = (app, pool) => {
 
   /* Logout */
   app.get("/logout", (req, res) => {
-    req.logout();
+    // req.logout();
     res.render("login.ejs", { message: "You have logged out successfully" });
   });
 
+  /* Catch anything else */
+  app.get("*", (req, res) => {
+    res.render("login", { message: null });
+  });
+
   /* Handle input from the login form */
-  app.post("/login",
-    passport.authenticate("local", {
-      successRedirect: "/home",
-      failureRedirect: "/login",
-      failureFlash: true
-    })
-  );
+  // app.post("/login",
+  //   passport.authenticate("local", {
+  //     successRedirect: "/home",
+  //     failureRedirect: "/login",
+  //     failureFlash: true
+  //   })
+  // );
 
 
 // Middleware -------
   /* Passport middleware function to protect routes */
-  function userIsNotAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-      return res.redirect("/dashboard");
-    }
-    next();
-  }
+  // function userIsNotAuthenticated(req, res, next) {
+  //   if (req.isAuthenticated()) {
+  //     return res.redirect("/dashboard");
+  //   }
+  //   next();
+  // }
 
-  /* Passport middleware function to protect routes */
-  function userIsAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    }
-    res.redirect("/login");
-  }
+  // /* Passport middleware function to protect routes */
+  // function userIsAuthenticated(req, res, next) {
+  //   if (req.isAuthenticated()) {
+  //     return next();
+  //   }
+  //   res.redirect("/login");
+  // }
 
 }
 

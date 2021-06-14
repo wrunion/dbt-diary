@@ -2,11 +2,6 @@
 
 <!-- If Express sends an error or message, display it here  -->
 <span class="top-message">
-  <% if(error && error.length > 0) { %>
-    <div>
-      <%= error %>
-    </div>
-  <% } %>
   <% if(message && message.length > 0) { %>
     <div>
       <%= message %>
@@ -15,7 +10,7 @@
 </span>
 
 <body id="login-page">
-  <div class="ui segment" id="login-segment">
+  <div class="ui segment" action="/login" id="login-segment">
 
     <h2 class="ui right header">
       Healthy Transitions Login
@@ -24,7 +19,7 @@
       </div>
     </h2>
     
-    <form class="ui form" action="/admin/login" method="POST">
+    <form class="ui form" method="POST">
       <!-- email  -->
       <div class="field" style="margin-top: .5em">
         <div class="ui left icon input">

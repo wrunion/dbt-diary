@@ -29,7 +29,6 @@ pool.on('error', async (error, client) => {
 
 /* Configure view templates, which contain HTML, CSS & JS for the admin and login pages */
 app.set('view engine', 'ejs');
-// app.set('view options', {delimiter: '*'});
 
 // Middleware for security and efficiency
 app.use(cookieParser()); 
