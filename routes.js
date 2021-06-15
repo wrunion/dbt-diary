@@ -106,6 +106,21 @@ module.exports = (app, pool) => {
       activeTab: 'preview'
     })
   })
+
+  // dev/demo only
+  app.get('/users', (req, res) => {
+    res.render('users', {
+      activeTab: 'users'
+    })
+  })
+
+
+  // dev/demo only
+  app.get('/settings', (req, res) => {
+    res.render('settings', {
+      activeTab: 'settings'
+    })
+  })
   
   // dev/demo only
   app.get('/update', (req, res) => {
@@ -119,6 +134,26 @@ module.exports = (app, pool) => {
     // req.logout();
     res.render("login.ejs", { message: "You have logged out successfully" });
   });
+  
+  // TODO: add "userIsAdmin" middleware to this function
+  app.post('/add-user', async (req, res) => {
+    const registerUser = async () => {
+      try {
+        const { name, role, email, password } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = await pool.query('INSERT INTO production_user (name, role, email, password) VALUES ($1, $2, $3, $4)', [name, role, email, hashedPassword]
+        );
+        console.log('success! user created!')
+        res.render('users', { activeTab: 'users' });
+      } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+      }
+    }
+    registerUser();
+      // const { name, email, password, role } = req.body;
+      // console.log(name, email, password, role)
+  })
 
   /* Catch anything else */
   app.get("*", (req, res) => {
