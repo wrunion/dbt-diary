@@ -22,15 +22,25 @@
 <p></p>
 <h1>Register New User</h1>
 <div class="centered-page">
-  <ul>
-    <% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
-    <li><%= error.message %></li>
-    <% }) %> <% } %>
-  </ul>
+  <!-- If Express sends an error or message, display it here  -->
+  <span class="top-message">
+    <ul>
+      <% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
+      <li><%= error.message %></li>
+      <% }) %> <% } %>
+    </ul>
+    <% if(message && message.length > 0) { %>
+      <div>
+        <%= message %>
+      </div>
+    <% } %>
+  </span>
   <form class="ui form" action="/add-user" method="POST">
     <div class="field">
       <label for="name">First and Last Name:</label>
       <input
+        value="rose hathaway"
+
         type="text"
         id="name"
         name="name"
@@ -41,6 +51,8 @@
     <div class="field">
       <label for="email">Email: </label>
       <input
+        value="rosethebadass@vampacademy.com"
+
         type="email"
         id="email"
         name="email"
@@ -51,6 +63,7 @@
     <div class="field">
       <label for="password">Temporary Password:</label>
       <input
+        value="password"
         type="password"
         id="password"
         name="password"

@@ -8,23 +8,23 @@ const bcrypt = require('bcrypt')
 module.exports = (app, pool) => {
 
   /* Configure Passport, the login mechanism for the admin page */
-  // const initializePassport = require('./config/initializePassport');
-  // initializePassport(passport, pool);
-  // app.use(
-  //   session({
-  //     secret: 'secret',
-  //     resave: false,
-  //     saveUninitialized: false
-  //   })
-  // );
-  // app.use(passport.initialize());
-  // app.use(passport.session());
-  // app.use(flash());
-  // app.use(function (req, res, next) {
-  //   res.locals.error = req.flash("error");
-  //   res.locals.success = req.flash("success")
-  //   next();
-  // });
+  const initializePassport = require('./config/initializePassport');
+  initializePassport(passport, pool);
+  app.use(
+    session({
+      secret: 'secret',
+      resave: false,
+      saveUninitialized: false
+    })
+  );
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(flash());
+  app.use(function (req, res, next) {
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success")
+    next();
+  });
 
   /* Catch all */
   // app.get("/", userIsNotAuthenticated, (req, res) => {
@@ -62,19 +62,19 @@ module.exports = (app, pool) => {
   /* temporary dummy sign in logic, until Elle's email validator is in place */
   // for demo purposes only, there's a single hard coded user email, and we'll just check if it matches what the user entered
   // evntually we'll have secret tokens sent to email addresses, that users will click to authenticate 
-   app.post("/login", (req, res) => {
+  //  app.post("/login", async (req, res) => {
 
-    let authorizedUserEmail = process.env.AUTHORIZED_USER_EMAIL;
-    let userEmail = req.body.email
+  //   let authorizedUserEmail = process.env.AUTHORIZED_USER_EMAIL;
+  //   let userEmail = req.body.email
 
-    if (authorizedUserEmail === userEmail) {
-      // success
-      return res.redirect('/dashboard')
-    } else {
-      res.render('login.ejs', { message: 'That email is not registered. \n Please try again.' 
-    });
-    }
-  });
+  //   if (authorizedUserEmail === userEmail) {
+  //     // success
+  //     return res.redirect('/dashboard')
+  //   } else {
+  //     res.render('login.ejs', { message: 'That email is not registered. \n Please try again.' 
+  //   });
+  //   }
+  // });
 
   /* --------- the routes below are for DEV only ---------- */
   /* --------- in prod, they need to be protected by passport middleware (or other auth checking) functions ---------- */
@@ -110,7 +110,8 @@ module.exports = (app, pool) => {
   // dev/demo only
   app.get('/users', (req, res) => {
     res.render('users', {
-      activeTab: 'users'
+      activeTab: 'users',
+      message: null
     })
   })
 
@@ -140,19 +141,31 @@ module.exports = (app, pool) => {
     const registerUser = async () => {
       try {
         const { name, role, email, password } = req.body;
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = await pool.query('INSERT INTO production_user (name, role, email, password) VALUES ($1, $2, $3, $4)', [name, role, email, hashedPassword]
-        );
-        console.log('success! user created!')
-        res.render('users', { activeTab: 'users' });
+
+        // First, check if user is already registered
+        const isUser = await pool.query(`SELECT * FROM production_user WHERE email = $1`, [email], async (err, results) => {
+          if (err) { console.log(err); }
+          if (results && results.rows.length > 0) {
+          // the user already exists
+          res.render('users', { activeTab: 'users', message: 'Email address already registered' });
+          return;
+          
+          } else { 
+            const hashedPassword = await bcrypt.hash(password, 10);
+            await pool.query('INSERT INTO production_user (name, role, email, password) VALUES ($1, $2, $3, $4)', [name, role, email, hashedPassword]
+            );
+            res.render('users', { 
+              activeTab: 'users', 
+              message: `User "${email}" created!` 
+            });    
+          }
+        })
       } catch (err) {
-        console.error(err);
-        res.sendStatus(500);
+        // TODO: figure out how to best send this error message to the FE
+        res.send(err.message);
       }
     }
     registerUser();
-      // const { name, email, password, role } = req.body;
-      // console.log(name, email, password, role)
   })
 
   /* Catch anything else */
@@ -161,13 +174,13 @@ module.exports = (app, pool) => {
   });
 
   /* Handle input from the login form */
-  // app.post("/login",
-  //   passport.authenticate("local", {
-  //     successRedirect: "/home",
-  //     failureRedirect: "/login",
-  //     failureFlash: true
-  //   })
-  // );
+  app.post("/login",
+    passport.authenticate("local", {
+      successRedirect: "/home",
+      failureRedirect: "/login",
+      failureFlash: true
+    })
+  );
 
 
 // Middleware -------
