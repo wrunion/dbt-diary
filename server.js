@@ -13,12 +13,9 @@ const cors = require('cors')
 const app = express()
 app.disable('x-powered-by');
 
-
-//const sslRedirect = require('heroku-ssl-redirect');
 const { Pool } = require('pg')
 
-// const PORT = process.env.PORT || 5050
-const PORT = 5050
+const PORT = process.env.PORT || 5050
 
 let isProdEnvironment = false;
 

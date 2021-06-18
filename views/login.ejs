@@ -1,80 +1,52 @@
 <%- include('./partials/head'); %>
 
-<style type="text/css">
-  body {
-    background-color: #231935;
-  }
-  section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  form {
-    padding: 25px;
-  }
-  #error-div {
-    color: white;
-  }
-</style>
+<!-- If Express sends an error or message, display it here  -->
+<span class="top-message">
+  <% if(message && message.length > 0) { %>
+    <div>
+      <%= message %>
+    </div>
+  <% } %>
+</span>
 
-<section>
-  <div id="error-div">
+<body id="login-page">
+  <div class="ui segment" id="login-segment">
 
-    <% if(error && error.length > 0) { %>
-      <div>
-        <%= error %>
+    <h2 class="ui right header">
+      Healthy Transitions Login
+      <!-- <div class="sub header">
+        Enter your email, and we'll send you a secure sign in link
+      </div> -->
+    </h2>
+    
+    <form class="ui form" action="login" method="POST">
+      <!-- email  -->
+      <div class="field" style="margin-top: .5em">
+        <div class="ui left icon input">
+          <input value="123@gmail.com" type="email" name="email" id="email" aria-label="email" placeholder="Email">
+          <i class="user icon"></i>    
+        </div>
       </div>
-    <% } %>
-    <% if(message && message.length > 0) { %>
-      <div>
-        <%= message %>
-      </div>
-    <% } %>
-  </div>
-
-  <div class="ui segment">
-
-  <h1 class="ui header secondary" style="margin-bottom: 0">
-    <div class="content">
-      Street Roots Login
+      <div class="field" style="margin-top: .5em">
+        <div class="ui left icon input">
+          <input value="pass" type="password" name="password" id="password" aria-label="password" placeholder="Password">
+          <i class="lock
+          icon"></i>    
+        </div>
     </div>
-    <div class="sub header">
-      Admin Portal for the <a href="https://rosecityresource.streetroots.org/">Rose City Resource Guide</a>
-    </div>
-  </h1>
 
-  <form class="ui form segment" action="login" method="POST">
-
-    <div class="field">
-      <label>Email</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Email"
-        required
-      />
-    </div>
-    <div class="field">
-      <label>Password</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        placeholder="Password"
-        required
-      />      
-    </div>
-    <button class="ui teal fluid button" type="submit">Login</button>
+      <br />
+     <button class="ui button fluid teal" type="submit">
+        Log in
+      </button>
     </form>
-    <div style="text-align: center; line-height: 1.5em">
-      <strong>This is an administrative page. </strong><br /> 
-      <a href="https://rosecityresource.streetroots.org/">
-        Click here to see the Rose City Resource Guide
-      </a>
-    </div>
   </div>
 
-</section>
+  <!-- text below form  -->
+  <div class='bottom-message'>
+    This is an administrative page. <br /> 
+    <a href="#">
+      Click here for the main site
+    </a>
+  </div>
+</body>
