@@ -1,0 +1,43 @@
+<%- include('./partials/head'); %>
+<%- include ('./partials/navbar'); %>
+
+<div class='container' style="margin: 1em;" id="upload">
+
+  <header>
+    <h1
+      class="ui header violet" style="margin: .5em; margin-bottom: 1em">
+      <div class="content">
+        <i class="cloud upload icon violet"></i>
+        Upload Data
+        <div class="sub header">
+          Additional instructions can go here!
+        </div>
+      </div>
+    </h1>
+  </header>
+
+  <!-- TODOs for this page  -->
+  <div class="dev-instructions" style="width: 500px">
+    <ul class="ui list"  style="padding: 1.25em">
+      <strong>Developer TODO:</strong> 
+      <li> 
+        Accept a CSV upload from user
+      <li> 
+        Turn the CSV into JSON, using Node 
+      </li>
+
+      <li>
+        Validate the JSON data against a specific JSON schema, provided by Elle.
+      <li>
+        Pass data validation errors to the server, so they can be displayed to user on next page (Preview)
+      </li>
+
+      <li>
+        If JSON had been validated and is ready to be stored in Postgres, put the JSON into Postgres
+      <li>
+        Send the validated JSON to the FE via a single API endpoint
+      </li>
+    </ul>
+  </div>
+
+</div>

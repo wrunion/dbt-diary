@@ -1,8 +1,9 @@
 <style>
+
+  /* --------- global styles ----------- */
   body {
-    background-color: #231935;
     display: 'flex';
-    color: '#f5f4f2';
+    /* color: '#f5f4f2'; */
   }
 
   #login-form-segment {
@@ -23,5 +24,66 @@
 
   h1, h2, h3, h4, h5, h6 { text-align: center; }
   p, div { text-align: center; }
+
+
+  /* --------- login styles ----------- */
+  #login-page {
+    display:flex; 
+    flex-direction: column; 
+    flex-wrap: nowrap; 
+    justify-content:center; 
+    align-items:center;
+    background-color: #231935;
+  }
+
+  #login-segment {
+    width: 55vw; 
+    max-width: 500px;
+  }
+
+  #login-page form {
+    color:#231935; 
+    padding:.5em;
+  }
+
+  #login-page button {
+    color:#f5f4f2;
+  }
+
+  #login-page .top-message {
+    color:#d9d9d9; 
+  }
+
+  #login-page .bottom-message {
+    color:#d9d9d9; 
+    line-height:2em;
+  }
+
+  #login-page .bottom-message a {
+    color:#098ca8;
+  }
+
+  /* --------- dashboard styles ----------- */
+
+
+  /* --------- global styles ----------- */
+
+
+  /* ------ dev instruction divs (temp) ------ */
+  .dev-instructions {
+    text-align: left;
+    border: 2px dashed lightgrey;
+  }
+
+  .dev-instructions li {
+    margin: .5em;
+  }
+
+  #upload {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
 
 </style>
