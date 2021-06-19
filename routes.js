@@ -1,8 +1,10 @@
-const flash = require('express-flash')
-const session = require('express-session')
-const bcrypt = require('bcrypt')
+// const flash = require('express-flash')
+// const session = require('express-session')
+// const bcrypt = require('bcrypt')
 
 /* Express will automatically render all view files from the "views" folder */
+
+/* Passport (user auth) code is currently commented out unti we have an auth method in place and can make use of it */
 
 module.exports = (app, pool) => {
 
@@ -44,88 +46,62 @@ module.exports = (app, pool) => {
     res.render("login", { message: 'You must log in to access that feature' });
   });
 
-
-
   /* Login */
 
   app.get("/login", (req, res) => {
     res.render("login", { message: null });
   });
 
-  app.get("/staff/login", (req, res) => {
-    res.render("login", { message: null });
-  });
-
-
-
-  /* temporary dummy sign in logic, until Elle's email validator is in place */
-  // for demo purposes only, there's a single hard coded user email, and we'll just check if it matches what the user entered
-  // evntually we'll have secret tokens sent to email addresses, that users will click to authenticate 
-   app.post("/login", async (req, res) => {
+  /* TEMP sign in logic, until Elle's email validator is in place */
+  /* for demo purposes only, this function checks the user input against a hard coded arbitrary email in .env */
+  /* later we'll have secret tokens sent to email addresses, that users will click to authenticate */
+  
+  app.post("/login", async (req, res) => {
 
     let authorizedUserEmail = process.env.AUTHORIZED_USER_EMAIL;
     let userEmail = req.body.email
 
     if (authorizedUserEmail === userEmail) {
       // success
-      return res.redirect('/dashboard')
+      return res.redirect('/home')
     } else {
       res.render('login.ejs', { message: 'That email is not registered. \n Please try again.' 
     });
     }
   });
 
-  /* --------- the routes below are for DEV only ---------- */
-  /* --------- in prod, they need to be protected by passport middleware (or other auth checking) functions ---------- */
+  /* --------- TEMP routes for DEV only ---------- */
+  /* in prod, these routes need "userIsAuthenticated" and/or "userIsAdmin" middleware functions to secure routes. express-session is one way to do that. passport also has this functionality and a passport-local strategy would meet our sign in/auth needs */
 
-  // dev/demo only
   app.get('/home', (req, res) => {
     res.render('home', {
       activeTab: 'home'
     })
   })
 
-  // dev/demo only
-  app.get('/dashboard', (req, res) => {
-    res.render('dashboard', {
-      activeTab: 'dashboard'
-    })
-  })
-
-  // dev/demo only
+  // TODO: nest upload, preview, and update in a "listings" route
   app.get('/upload', (req, res) => {
     res.render('upload', {
       activeTab: 'upload'
     })
   })
 
-  // dev/demo only
   app.get('/preview', (req, res) => {
     res.render('preview', {
       activeTab: 'preview'
     })
   })
 
-  // dev/demo only
-  app.get('/users', (req, res) => {
-    res.render('users', {
-      activeTab: 'users',
-      message: null
-    })
-  })
-
-
-  // dev/demo only
-  app.get('/settings', (req, res) => {
-    res.render('settings', {
-      activeTab: 'settings'
-    })
-  })
-  
-  // dev/demo only
   app.get('/update', (req, res) => {
     res.render('update', {
       activeTab: 'update'
+    })
+  })
+
+
+  app.get('/guide', (req, res) => {
+    res.render('guide', {
+      activeTab: 'guide'
     })
   })
 
@@ -135,46 +111,11 @@ module.exports = (app, pool) => {
     res.render("login.ejs", { message: "You have logged out successfully" });
   });
   
-  // TODO: add "userIsAdmin" middleware to this function
-  app.post('/add-user', async (req, res) => {
-    const registerUser = async () => {
-      try {
-        const { name, role, email, password } = req.body;
-
-        // First, check if user is already registered
-        const isUser = await pool.query(`SELECT * FROM production_user WHERE email = $1`, [email], async (err, results) => {
-          if (err) { console.log(err); }
-          if (results && results.rows.length > 0) {
-          // the user already exists
-          res.render('users', { activeTab: 'users', message: 'Email address already registered' });
-          return;
-          
-          } else { 
-            const hashedPassword = await bcrypt.hash(password, 10);
-            await pool.query('INSERT INTO production_user (name, role, email, password) VALUES ($1, $2, $3, $4)', [name, role, email, hashedPassword]
-            );
-            res.render('users', { 
-              activeTab: 'users', 
-              message: `User "${email}" created!` 
-            });    
-          }
-        })
-      } catch (err) {
-        // TODO: figure out how to best send this error message to the FE
-        res.send(err.message);
-      }
-    }
-    registerUser();
-  })
-
   /* Catch anything else */
   app.get("*", (req, res) => {
     res.render("login", { message: null });
   });
-
-  // temporary manual auth to get this working 
   
-
 // Middleware -------
   /* Passport middleware function to protect routes */
   // function userIsNotAuthenticated(req, res, next) {
@@ -191,7 +132,6 @@ module.exports = (app, pool) => {
   //   }
   //   res.redirect("/login");
   // }
-
 }
 
  /* Default handler for the admin page */
@@ -200,6 +140,6 @@ module.exports = (app, pool) => {
   //   try {
   //     res.render('dashboard.ejs', { userData: req.user });
   //   } catch (e) {
-  //     return next(e); // ask Kent about this
+  //     return next(e); 
   //   }
   // });
