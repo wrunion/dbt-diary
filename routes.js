@@ -1,30 +1,29 @@
-const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const bcrypt = require('bcrypt')
 
-/* Express will automatically render files from the "views" folder, which is why the routes simply have file names, instead of relative paths */
+/* Express will automatically render all view files from the "views" folder */
 
 module.exports = (app, pool) => {
 
-  /* Configure Passport, the login mechanism for the admin page */
-  const initializePassport = require('./config/initializePassport');
-  initializePassport(passport, pool);
-  app.use(
-    session({
-      secret: 'secret',
-      resave: false,
-      saveUninitialized: false
-    })
-  );
-  app.use(passport.initialize());
-  app.use(passport.session());
-  app.use(flash());
-  app.use(function (req, res, next) {
-    res.locals.error = req.flash("error");
-    res.locals.success = req.flash("success")
-    next();
-  });
+  // /* Configure Passport, the login mechanism for the admin page */
+  // const initializePassport = require('./config/initializePassport');
+  // initializePassport(passport, pool);
+  // app.use(
+  //   session({
+  //     secret: 'secret',
+  //     resave: false,
+  //     saveUninitialized: false
+  //   })
+  // );
+  // app.use(passport.initialize());
+  // app.use(passport.session());
+  // app.use(flash());
+  // app.use(function (req, res, next) {
+  //   res.locals.error = req.flash("error");
+  //   res.locals.success = req.flash("success")
+  //   next();
+  // });
 
   /* Catch all */
   // app.get("/", userIsNotAuthenticated, (req, res) => {
@@ -62,19 +61,19 @@ module.exports = (app, pool) => {
   /* temporary dummy sign in logic, until Elle's email validator is in place */
   // for demo purposes only, there's a single hard coded user email, and we'll just check if it matches what the user entered
   // evntually we'll have secret tokens sent to email addresses, that users will click to authenticate 
-  //  app.post("/login", async (req, res) => {
+   app.post("/login", async (req, res) => {
 
-  //   let authorizedUserEmail = process.env.AUTHORIZED_USER_EMAIL;
-  //   let userEmail = req.body.email
+    let authorizedUserEmail = process.env.AUTHORIZED_USER_EMAIL;
+    let userEmail = req.body.email
 
-  //   if (authorizedUserEmail === userEmail) {
-  //     // success
-  //     return res.redirect('/dashboard')
-  //   } else {
-  //     res.render('login.ejs', { message: 'That email is not registered. \n Please try again.' 
-  //   });
-  //   }
-  // });
+    if (authorizedUserEmail === userEmail) {
+      // success
+      return res.redirect('/dashboard')
+    } else {
+      res.render('login.ejs', { message: 'That email is not registered. \n Please try again.' 
+    });
+    }
+  });
 
   /* --------- the routes below are for DEV only ---------- */
   /* --------- in prod, they need to be protected by passport middleware (or other auth checking) functions ---------- */
@@ -173,99 +172,8 @@ module.exports = (app, pool) => {
     res.render("login", { message: null });
   });
 
-  /* Handle input from the login form */
-  app.post("/login",
-    passport.authenticate("local", {
-      successRedirect: "/home",
-      failureRedirect: "/login",
-      failureFlash: true
-    })
-  );
-
   // temporary manual auth to get this working 
-
-  /* Helper functions for login */
-  const isCorrectPassword = async (password, storedPassword) => {
-    console.log(password, storedPassword)
-    try {
-      return await bcrypt.compare(password, storedPassword);
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  };
-
-  // check if email is in database
-  const errorOrUser = async (email, pool) => {
-    console.log(email)
-    try {
-      await pool.query(`SELECT * FROM production_user WHERE email = $1`, [email], 
-        (results) => {
-          // email is registered 
-          if (results && results.rows.length > 0) {
-          return results.rows[0];
-        } else {
-          return false
-        }
-      })    
-      } catch (error) {
-        console.log(error.message)
-        return false;
-      }
-    }
-
-  const authenticateUser = async (email, password, done) => {
-    console.log('main function', email, password)
-    try {
-      // check for user, and if they're registered, grab their info
-      // returns the user info from DB, or returns false
-      const user = await errorOrUser(email, pool);
-      if (!user) {
-        return await done(null, false, {
-          message: "No user with that email address"
-        }); 
-      } 
-      const passwordMatch = await isCorrectPassword(password, pool);
-      // if password is incorrect
-      if (!passwordMatch) {
-        return await done(null, false, {
-          message: 'Password is incorrect'
-        });
-      }
-      if (user && passwordMatch) {
-        return await done(null, user);
-      } else {
-        return await done(null, false, {
-          message: 'Incorrect credentials. Please try again'
-        });
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-
-  app.post('/login', async (req,res) => {
-    try {
-      const { email, password } = req.body;
-      console.log(email, password)
-      // see if user is in the DB
-      const isUser = await pool.query(`SELECT * FROM production_user WHERE email = $1`, [email], 
-      (err, results) => {
-        if (err) { console.error(err) }
-        if (results && results.rows.length > 0) {
-          console.log(results.rows[0])
-          return results.rows[0];
-        } else {
-          return false
-        }
-      })
-
-      console.log(isUser)
-    } catch (err) {
-      console.log(err.message)
-    }
-  })
+  
 
 // Middleware -------
   /* Passport middleware function to protect routes */
