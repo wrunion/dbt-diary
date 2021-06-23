@@ -8,10 +8,19 @@ CREATE TABLE IF NOT EXISTS production_meta (
 );
 
 /* Contains login credentials for the admin page */
--- CREATE TABLE IF NOT EXISTS production_user (
---     id SERIAL PRIMARY KEY,
---     name character varying(256) NOT NULL,
---     role character varying(128) NOT NULL,
---     email character varying(128) NOT NULL,
---     password character varying(256) NOT NULL
--- );
+CREATE TABLE IF NOT EXISTS production_user (
+    id SERIAL PRIMARY KEY,
+    name character varying(256) NOT NULL,
+    role character varying(128) NOT NULL,
+    email character varying(128) NOT NULL,
+    password character varying(256) NOT NULL
+);
+
+/* Contains login credentials for development use and testing */
+CREATE TABLE IF NOT EXISTS development_user (
+    id SERIAL PRIMARY KEY,
+    name character varying(256) NOT NULL,
+    role character varying(128) NOT NULL,
+    email character varying(128) NOT NULL,
+    password character varying(256) NOT NULL
+);
