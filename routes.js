@@ -6,18 +6,6 @@
 
 module.exports = (app, pool) => {
 
-  // /* Configure Passport, the login mechanism for the admin page */
-  // const initializePassport = require('./config/initializePassport');
-  // initializePassport(passport, pool);
-  // app.use(
-  //   session({
-  //     secret: 'secret',
-  //     resave: false,
-  //     saveUninitialized: false
-  //   })
-  // );
-  // app.use(passport.initialize());
-  // app.use(passport.session());
   // app.use(flash());
   // app.use(function (req, res, next) {
   //   res.locals.error = req.flash("error");
@@ -41,13 +29,13 @@ module.exports = (app, pool) => {
   // });
 
   app.get("/", (req, res) => {
-    res.render("login", { message: 'You must log in to access that feature' });
+    res.render("login.ejs", { message: 'You must log in to access that feature' });
   });
 
   /* Login */
 
   app.get("/login", (req, res) => {
-    res.render("login", { message: null });
+    res.render("login.ejs", { message: null });
   });
 
   /* TEMP sign in logic, until Elle's email validator is in place */
@@ -72,33 +60,33 @@ module.exports = (app, pool) => {
   /* in prod, these routes need "userIsAuthenticated" and/or "userIsAdmin" middleware functions to secure routes. express-session is one way to do that. passport also has this functionality and a passport-local strategy would meet our sign in/auth needs */
 
   app.get('/home', (req, res) => {
-    res.render('home', {
+    res.render('home.ejs', {
       activeTab: 'home'
     })
   })
 
   // TODO: nest upload, preview, and update in a "listings" route
   app.get('/upload', (req, res) => {
-    res.render('upload', {
+    res.render('upload.ejs', {
       activeTab: 'upload'
     })
   })
 
   app.get('/preview', (req, res) => {
-    res.render('preview', {
+    res.render('preview.ejs', {
       activeTab: 'preview'
     })
   })
 
   app.get('/update', (req, res) => {
-    res.render('update', {
+    res.render('update.ejs', {
       activeTab: 'update'
     })
   })
 
 
   app.get('/guide', (req, res) => {
-    res.render('guide', {
+    res.render('guide.ejs', {
       activeTab: 'guide'
     })
   })
@@ -111,7 +99,7 @@ module.exports = (app, pool) => {
   
   /* Catch anything else */
   app.get("*", (req, res) => {
-    res.render("login", { message: null });
+    res.render("login.ejs", { message: null });
   });
   
 // Middleware -------
