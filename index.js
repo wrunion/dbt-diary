@@ -55,15 +55,6 @@ app.use(cors());
 app.use(helmet.hidePoweredBy({ setTo: 'Blood, Sweat and Tears' }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(function(req, res, next) {
-  /* Add Cache-Control headers to all requests */
-  const expireAfterMinutes = 60;
-  const cacheControlHeaderValue = isProdEnvironment
-    ? `public, max-age=${expireAfterMinutes/2 * 60}, stale-while-revalidate=${expireAfterMinutes/2 * 60}`
-    : `no-cache`
-  res.header('Cache-Control', cacheControlHeaderValue);
-  next();
-});
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
