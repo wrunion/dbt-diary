@@ -6,3 +6,19 @@
 CREATE TABLE IF NOT EXISTS production_meta (
   test_field character varying(256)
 );
+
+CREATE TABLE IF NOT EXISTS pokemon (
+  id integer PRIMARY KEY NOT NULL,
+  name character varying(256) NOT NULL,
+  favorite_pokemon character varying(256) NOT NULL
+);
+
+CREATE TABLE production_email (
+  id SERIAL PRIMARY KEY NOT NULL,
+  email character varying(256) NOT NULL
+);
+
+CREATE TABLE dev_email (
+  id SERIAL PRIMARY KEY NOT NULL,
+  email character varying(256) NOT NULL
+);

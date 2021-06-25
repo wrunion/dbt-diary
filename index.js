@@ -62,6 +62,7 @@ if (process.env.NODE_ENV === "production") {
 
 /* Routes */
 require("./routes")(app, pool);
+require('./routes/pokemon')(app);
 
 /* Check for database connectivity and provide a human-friendly message on failure */
 testDatabaseQuery(pool);

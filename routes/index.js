@@ -1,32 +1,6 @@
-// const flash = require('express-flash')
-// const session = require('express-session')
-// const bcrypt = require('bcrypt')
+/* Express is configured to retrieve view files from "views" directory */
 
-/* Express will automatically retrieve view files from the "views" folder */
-
-module.exports = (app, pool) => {
-
-  // app.use(flash());
-  // app.use(function (req, res, next) {
-  //   res.locals.error = req.flash("error");
-  //   res.locals.success = req.flash("success")
-  //   next();
-  // });
-
-  /* Catch all */
-  // app.get("/", userIsNotAuthenticated, (req, res) => {
-  //   res.render("login", { message: 'You must log in to access that feature' });
-  // });
-
-  // /* Catch all */
-  // app.get("*", userIsNotAuthenticated, (req, res) => {
-  //   res.render("login", { message: null });
-  // });
-
-  // /* Login */
-  // app.get("/login", userIsNotAuthenticated, (req, res) => {
-  //   res.render("login", { message: null });
-  // });
+module.exports = (app, db) => {
 
   app.get("/", (req, res) => {
     res.render("login.ejs", { message: 'You must log in to access that feature' });
@@ -57,7 +31,7 @@ module.exports = (app, pool) => {
   });
 
   /* --------- TEMP routes for DEV only ---------- */
-  /* in prod, these routes need middleware functions to secure routes */
+  /* in prod, these routes need "userIsAuthenticated" and/or "userIsAdmin" middleware functions to secure routes. express-session is one way to do that. passport also has this functionality and a passport-local strategy would meet our sign in/auth needs */
 
   app.get('/home', (req, res) => {
     res.render('home.ejs', {
@@ -84,7 +58,6 @@ module.exports = (app, pool) => {
     })
   })
 
-
   app.get('/guide', (req, res) => {
     res.render('guide.ejs', {
       activeTab: 'guide'
@@ -98,34 +71,8 @@ module.exports = (app, pool) => {
   });
 
   /* Catch anything else */
-  app.get("*", (req, res) => {
-    res.render("login.ejs", { message: null });
-  });
-  
-// Middleware -------
-  /* Passport middleware function to protect routes */
-  // function userIsNotAuthenticated(req, res, next) {
-  //   if (req.isAuthenticated()) {
-  //     return res.redirect("/dashboard");
-  //   }
-  //   next();
-  // }
-
-  // /* Passport middleware function to protect routes */
-  // function userIsAuthenticated(req, res, next) {
-  //   if (req.isAuthenticated()) {
-  //     return next();
-  //   }
-  //   res.redirect("/login");
-  // }
-}
-
- /* Default handler for the admin page */
-  // FOR PROD
-  // app.get("/dashboard", userIsAuthenticated, async (req, res, next) => {
-  //   try {
-  //     res.render('dashboard.ejs', { userData: req.user });
-  //   } catch (e) {
-  //     return next(e); 
-  //   }
+  // app.get("*", (req, res) => {
+  //   res.render("login.ejs", { message: null });
   // });
+
+}
