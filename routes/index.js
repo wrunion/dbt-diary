@@ -1,14 +1,14 @@
 /* Express is configured to retrieve view files from "views" directory */
 
-module.exports = (app, db) => {
+module.exports = (router) => {
 
-  app.get("/", (req, res) => {
+  router.get("/", (req, res) => {
     res.render("login.ejs", { message: 'You must log in to access that feature' });
   });
 
   /* Login */
 
-  app.get("/login", (req, res) => {
+  router.get("/login", (req, res) => {
     res.render("login.ejs", { message: null });
   });
 
@@ -16,7 +16,7 @@ module.exports = (app, db) => {
   /* for demo purposes only, this function checks the user input against a hard coded arbitrary email in .env */
   /* later we'll have secret tokens sent to email addresses, that users will click to authenticate */
   
-  app.post("/login", async (req, res) => {
+  router.post("/login", async (req, res) => {
 
     let authorizedUserEmail = process.env.AUTHORIZED_USER_EMAIL;
     let userEmail = req.body.email
@@ -33,45 +33,45 @@ module.exports = (app, db) => {
   /* --------- TEMP routes for DEV only ---------- */
   /* in prod, these routes need "userIsAuthenticated" and/or "userIsAdmin" middleware functions to secure routes. express-session is one way to do that. passport also has this functionality and a passport-local strategy would meet our sign in/auth needs */
 
-  app.get('/home', (req, res) => {
+  router.get('/home', (req, res) => {
     res.render('home.ejs', {
       activeTab: 'home'
     })
   })
 
   // TODO: nest upload, preview, and update in a "listings" route
-  app.get('/upload', (req, res) => {
+  router.get('/upload', (req, res) => {
     res.render('upload.ejs', {
       activeTab: 'upload'
     })
   })
 
-  app.get('/preview', (req, res) => {
+  router.get('/preview', (req, res) => {
     res.render('preview.ejs', {
       activeTab: 'preview'
     })
   })
 
-  app.get('/update', (req, res) => {
+  router.get('/update', (req, res) => {
     res.render('update.ejs', {
       activeTab: 'update'
     })
   })
 
-  app.get('/guide', (req, res) => {
+  router.get('/guide', (req, res) => {
     res.render('guide.ejs', {
       activeTab: 'guide'
     })
   })
 
   /* Logout */
-  app.get("/logout", (req, res) => {
+  router.get("/logout", (req, res) => {
     // req.logout();
     res.render("login.ejs", { message: "You have logged out successfully" });
   });
 
   /* Catch anything else */
-  // app.get("*", (req, res) => {
+  // router.get("*", (req, res) => {
   //   res.render("login.ejs", { message: null });
   // });
 

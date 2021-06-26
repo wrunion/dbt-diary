@@ -1,13 +1,40 @@
-/* This is the only place in the app we interact directly with the db */
-/* All other files should use these functions for db calls */
-/* No other file should directly call 'pg', Pool, etc. Import that functionality from here instead */
+/* 
+  This is the only database connection.
+  All other files should import and use these functions
+  for any database calls.
+*/
 
 const { Pool } = require('pg')
-const pool = new Pool()
+require('dotenv').config()
+
+// Heroku free postgres allows up to 20 concurrent connections 
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  max: 20,
+  ssl: { rejectUnauthorized: false }
+});
+
+// Error handling
+pool.on('error', async (error, client) => {
+  if (process.env.NODE_ENV === undefined || process.env.NODE_ENV !== "production") {
+    console.error(`Database pool error: ${error}; Connection string: ${process.env.DATABASE_URL}`);
+  }
+});
+
+// Sanity check for devs that will alert you if you're missing the database connection string
+(() => {
+  pool.query(`SELECT test_field FROM production_meta`, (err, res) => {
+    if (err) {
+      console.error('Error connnecting to the database!');
+      if (process.env.DATABASE_URL === undefined || process.env.DATABASE_URL === null || process.env.DATABASE_URL === '') {
+        console.error('Please check that the DATABASE_URL environment variable is correct. See comments in nodeKeys.js for further information.');
+      }
+    }
+})})
 
 module.exports = {
 
-  asyncQuery: (text, params) => pool.query(text, params),
+  query: (text, params) => pool.query(text, params),
 
   callbackQuery: (text, params, callback) => pool.query(text, params, callback),
 
