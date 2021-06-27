@@ -9,7 +9,7 @@
       <strong>Healthy Transitions Home</strong>
     </a>
     <!-- right menu  -->
-    <div class="right menu">
+    <!-- <div class="right menu">
       <a href="/upload"
         class="item right custom-right <%= activeTab==="upload" ? 'active' : '' %> ">
         <i class="ui icon cloud upload"></i>Upload Data
@@ -17,18 +17,23 @@
       <a href="/preview"
         class="item right custom-right <%= activeTab==="preview" ? 'active' : '' %> ">
         <i class="ui icon eye"></i>Preview Site
+      </a> -->
+    <div class="right menu">
+      <a href="/listings/upload"
+        class="item right custom-right <%= activeTab.includes("listings") ? 'active' : '' %>">
+        <i class="ui icon sync grey"></i>Listings
+      </a> 
+      <a href="/settings"
+      class="item right custom-right <%= activeTab==="settings" ? 'active' : '' %>">
+        <i class="ui icon cog grey"></i>Settings
       </a>
-      <a href="/update"
-        class="item right custom-right <%= activeTab==="update" ? 'active' : '' %> ">
-        <i class="ui icon sync"></i>Update Site
-      </a>
-      <a href="/logout"
+      <!-- <a href="/logout"
         class="item right custom-right">
-        <i class="ui icon power off"></i>Logout
-      </a>
+        <i class="ui icon power off grey"></i>Logout
+      </a> -->
       
       <!-- dropdown  -->
-      <!-- <div class="ui pointing dropdown link item custom-right-menu">
+      <div class="ui pointing dropdown link item custom-right-menu">
         More <i class="dropdown icon"></i>
         <div class="menu">
 
@@ -37,13 +42,13 @@
             User guide
           </a>
 
-          <a class="item"  href="/settings">
+          <!-- <a class="item"  href="/settings">
             <i class="ui icon cog"></i> Settings
-          </a>
+          </a> -->
           <a class="item" href="/logout">
             <i class="ui icon power off"></i> Logout
           </a>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>

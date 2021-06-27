@@ -6,39 +6,39 @@ const trainers = [
   { id: '3', name: 'Isnardo', favoritePokemon: 'bulbasaur',pokemon: ['squirtle', 'charizard', 'bulbasaur'] }
 ]
 
-module.exports = (router) => {
+module.exports = (app) => {
 
-  router.get('/pokemon', async (req, res) => {
+  app.get('/pokemon', async (req, res) => {
     res.send('<h1>Pokemon</h1>')
   })
 
-  router.get('/pokemon/upload', async (req, res) => {
+  app.get('/pokemon/upload', async (req, res) => {
     res.send('<form action="/pokemon/upload" method="POST"><input type="file"><button type="submit">Upload</button></form>')
   })
 
-  router.post('/pokemon/upload', async (req, res) => {
+  app.post('/pokemon/upload', async (req, res) => {
     // if (req) { console.log(req) }
   })
 
-  router.get('/pokemon/trainers/elle', async (req, res) => {
+  app.get('/pokemon/trainers/elle', async (req, res) => {
     res.send('You are on the add  pokemon page')
   })
 
-  router.get('/pokemon/trainers/winter', async (req, res) => {
+  app.get('/pokemon/trainers/winter', async (req, res) => {
     res.send('You are on the add  pokemon page')
   })
 
-  router.get('/pokemon/trainers/isnardo', async (req, res) => {
+  app.get('/pokemon/trainers/isnardo', async (req, res) => {
     res.send('You are on the add  pokemon page')
   })
 
-  router.post('/pokemon/add', async (req, res) => {
+  app.post('/pokemon/add', async (req, res) => {
 
   })
 
 }
 
-// router.get('/:id', (req, res, next) => {
+// app.get('/:id', (req, res, next) => {
 //   db.query('SELECT * FROM users WHERE id = $1', [req.params.id], (err, res) => {
 //     if (err) {
 //       return next(err)
