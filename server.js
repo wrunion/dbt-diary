@@ -40,13 +40,19 @@ app.use(helmet.hidePoweredBy({ setTo: 'Blood, Sweat and Tears' }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 // Allows us to access uploaded files in the req object 
-// app.use(fileUpload());
+app.use(fileUpload());
 // app.use(router)
 
+/* Serve public assets */
+app.use(express.static(path.join(__dirname, "js")));
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
-};
+/* Custom middleware to set headers */
+const setHeaders = (req, res, next) => {
+  /* This allows us to use inline js without console errors */
+  res.set("Content-Security-Policy", "script-src 'self' http://* 'unsafe-inline'")
+  next();
+}
+app.use(setHeaders)
 
 /* Routes */
 require('./routes/auth')(app);
