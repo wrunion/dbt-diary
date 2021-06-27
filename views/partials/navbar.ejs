@@ -2,29 +2,31 @@
 
 <nav>
   <div class="ui menu">
-    <!-- home  -->
     <a href="/home" 
-      class="header item <%= activeTab==="home" ? 'active' : '' %> ">
+      id="home"
+      class="header item">
       <i class="ui icon home large teal"></i>
       <strong>Healthy Transitions Home</strong>
     </a>
     <!-- right menu  -->
     <!-- <div class="right menu">
       <a href="/upload"
-        class="item right custom-right <%= activeTab==="upload" ? 'active' : '' %> ">
+        class="item right custom-right ">
         <i class="ui icon cloud upload"></i>Upload Data
       </a>
       <a href="/preview"
-        class="item right custom-right <%= activeTab==="preview" ? 'active' : '' %> ">
+        class="item right custom-right">
         <i class="ui icon eye"></i>Preview Site
       </a> -->
     <div class="right menu">
       <a href="/listings/upload"
-        class="item right custom-right <%= activeTab.includes("listings") ? 'active' : '' %>">
+        id="listings"
+        class="item right custom-right">
         <i class="ui icon sync grey"></i>Listings
       </a> 
       <a href="/settings"
-      class="item right custom-right <%= activeTab==="settings" ? 'active' : '' %>">
+        id="settings"
+        class="item right custom-right">
         <i class="ui icon cog grey"></i>Settings
       </a>
       <!-- <a href="/logout"
@@ -37,7 +39,7 @@
         More <i class="dropdown icon"></i>
         <div class="menu">
 
-          <a class="item" href="/guide">
+          <a class="item" id="guide" href="/guide">
             <i class="ui icon book"></i>
             User guide
           </a>
@@ -45,7 +47,7 @@
           <!-- <a class="item"  href="/settings">
             <i class="ui icon cog"></i> Settings
           </a> -->
-          <a class="item" href="/logout">
+          <a class="item" id="logout" href="/logout">
             <i class="ui icon power off"></i> Logout
           </a>
         </div>
@@ -53,12 +55,3 @@
     </div>
   </div>
 </nav>
-<script>
-  $('.ui.dropdown').dropdown('hide');
-
-  function isActive(str) {
-    if (str === activeTab) { return 'active' } 
-    else { return '' }
-  }
-
-</script>
