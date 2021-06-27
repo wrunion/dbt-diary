@@ -29,9 +29,6 @@ module.exports = (app) => {
     }
   });
 
-  /* --------- TEMP routes for DEV only ---------- */
-  /* in prod, these routes need "userIsAuthenticated" and/or "userIsAdmin" middleware functions to secure routes. express-session is one way to do that. passport also has this functionality and a passport-local strategy would meet our sign in/auth needs */
-
   app.get('/home', (req, res) => {
     res.render('home.ejs', {
       activeTab: 'home'
@@ -39,19 +36,19 @@ module.exports = (app) => {
   })
 
   app.get('/listings/upload', (req, res) => {
-    res.render('upload.ejs', {
+    res.render('./listings/upload.ejs', {
       activeTab: 'listingsUpload'
     })
   })
 
   app.get('/listings/preview', (req, res) => {
-    res.render('preview.ejs', {
+    res.render('./listings/preview.ejs', {
       activeTab: 'listingsPreview'
     })
   })
 
   app.get('/listings/update', (req, res) => {
-    res.render('update.ejs', {
+    res.render('./listings/update.ejs', {
       activeTab: 'listingsUpdate'
     })
   })
