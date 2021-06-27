@@ -15,16 +15,22 @@
     <h2 class="ui right header">
       Healthy Transitions Login
       <div class="sub header">
-        Enter your email, and we'll send you a secure sign in link
+        Enter your name and password to access the Admin Panel
       </div>
     </h2>
     
-    <form class="ui form" action="login" method="POST">
+    <form class="ui form" action="/login" method="POST">
       <!-- email  -->
       <div class="field" style="margin-top: .5em">
         <div class="ui left icon input">
           <input value="winterrunion@gmail.com" type="email" name="email" id="email" aria-label="email" placeholder="Email">
           <i class="user icon"></i>    
+        </div>
+      </div>
+      <div class="field" style="margin-top: .5em">
+        <div class="ui left icon input">
+          <input value="pass" type="password" name="password" id="password" aria-label="password" placeholder="Password">
+          <i class="lock icon"></i>    
         </div>
       </div>
 
