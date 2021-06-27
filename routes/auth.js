@@ -88,5 +88,47 @@ module.exports = (app) => {
     }
   )
 
+  // const isValid = async (password, user) => {
+  //   const isMatch = await bcrypt.compare(password, user.password);
+  //   return (isMatch);
+  // }
+
+  const checkPassword = async (pass) => {
+    const res = await db.query('SELECT password FROM development_user WHERE email = $1', [req.user.email]);
+    if (res && res.rows.length > 0) {
+      const hashedPass = res.rows[0];
+      const isMatch = await bcrypt.compare(pass, hashedPass);
+      return (isMatch);
+    }
+    return false;
+  }
+
+  /* Change password */
+  app.post('/user/password', async (req, res) => {
+    try {
+      const { oldPassword, newPassword, confirmNewPassword } = req.body;
+
+      if (newPassword !== confirmNewPassword) {
+        res.render('settings.ejs', { 
+          message: 'New passwords must match', activeTab: 'settings' 
+        })
+      }
+
+      // Validate old password against db w/helper function
+      if (checkPassword(oldPassword)) {
+        // upsert the new pass into db 
+
+        // On success
+        res.render('settings.ejs', { 
+          message: 'Password updated!', activeTab: 'settings'
+        })
+      }
+
+
+    } catch (err) {
+      next(err)
+    }
+  });
+
 }
 
