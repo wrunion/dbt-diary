@@ -4,7 +4,7 @@ const db = require('./../db')
 module.exports = (app) => {
 
   app.get("/", (req, res) => {
-    res.render("login.ejs", { message: 'You must log in to access that feature' });
+    res.render("login.ejs", { message: 'Please log in to access that feature' });
   });
 
   /* Login */
@@ -61,7 +61,7 @@ module.exports = (app) => {
 
   app.get('/settings', (req, res) => {
     res.render('settings.ejs', {
-      activeTab: 'settings'
+      activeTab: 'settings', message: null
     })
   })
 
