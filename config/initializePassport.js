@@ -1,6 +1,8 @@
 const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require ('bcrypt')
 const db = require('./../db')
+const { getUser } = require('./../utils/authUtils')
+
 /*
   * A custom callback function that Passport calls
   * on initialization
@@ -12,48 +14,65 @@ const db = require('./../db')
 
   /* Helper functions */
 
-  const getUser = async email => {
-    const res = await db.query('SELECT * FROM development_user WHERE email = $1', [email]);
-    // This is unnecessarily long, I know, but my version of node won't let me use the "res?.rows" syntax, so it's necessary until I can upgrade
-    /* If no user, return false */
-    if (!res || !res.rows || res.rows.length < 1) { return false; }
-    // the pg response object returns the data in the "rows" array object
-    // in this case, there should only be one row
-    /* If user, return user */
-    return(res.rows[0]);
-  }
-
   const isValid = async (password, hashedPassword) => {
     const isMatch = await bcrypt.compare(password, hashedPassword);
     return (isMatch);
   }
 
-module.exports = () => {
+// module.exports = () => {
 
 async function initialize(passport) {
 
-  const authenticateUser = async (email, password, done) => {
-    try {
-      // Returns user object, or 'false'
-      const user = await getUser(email);
-      // First arg (null) tells passport there is no error
-      // Second arg (false) tells passport there is no user
-      if (!user) { 
-        return done(null, false, { 
-          message: 'Incorrect email address' 
-        })}
-      // If the email's in our database, check the the password
-      const correctPassword = isValid(password, user.password);
+  // const authenticateUser = async (email, password, done) => {
+  //   try {
+  //     // Returns user object, or 'false'
+  //     const user = await getUser(email);
+  //     // First arg (null) tells passport there is no error
+  //     // Second arg (false) tells passport there is no user
+  //     if (!user) { 
+  //       return done(null, false, { 
+  //         message: 'Incorrect email address' 
+  //       })}
+  //     // If the email's in our database, check the the password
+  //     const correctPassword = isValid(password, user.password);
 
-      // User is valid. Pass the user object to Passport 
-      if (correctPassword) { return(done, user) }
+  //     // User is valid. Pass the user object to Passport 
+  //     if (correctPassword) { return(done, user) }
       
-      return(done, false, { 
-        message: 'Password is incorrect'
+  //     return(done, false, { 
+  //       message: 'Password is incorrect'
+  //     });
+  //   } catch (err) {
+  //     // Passport handles the error
+  //     console.log(err)
+  //     return done(err);
+  //   }
+  // }
+  
+  const authenticateUser = async (email, password, done) => {
+  
+    // app.post("/login", async (req, res) => {
+    try {
+
+      const user = await getUser(email);
+      
+      if (user) { 
+        const isValid = await isMatch(password, user.password);
+        if (isValid) {
+          // enter user into the express or passport session
+          res.redirect('/home'); 
+        } else {
+          res.render('login.ejs', {
+            message: 'Incorrect password'
+          }); 
+        }
+      } else {
+        res.render('login.ejs', { message: 'That email is not registered. \n Please try again.' 
       });
+      }
     } catch (err) {
-      // Passport handles the error
-      return done(err);
+      console.log(err)
+      done(err)
     }
   }
 
@@ -87,7 +106,7 @@ async function initialize(passport) {
       }
       return done(null, sessionUser);
     });
-  })}
+  })
 }
 
 module.exports = initialize;
