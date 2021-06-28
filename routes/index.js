@@ -13,22 +13,6 @@ module.exports = (app) => {
     res.render("login.ejs", { message: null });
   });
 
-  /* TEMP sign in logic, until Elle's email validator is in place */
-  /* for demo purposes only, this function checks the user input against a hard coded arbitrary email in .env */
-  /* later we'll have secret tokens sent to email addresses, that users will click to authenticate */
-  
-  app.post("/login", async (req, res) => {
-
-    const isUser = db.query('SELECT name FROM production_user WHERE email = $1', [req.body.email]);
-
-    if (isUser) { 
-      res.redirect('/home') 
-    } else {
-      res.render('login.ejs', { message: 'That email is not registered. \n Please try again.' 
-    });
-    }
-  });
-
   app.get('/home', (req, res) => {
     res.render('home.ejs', {
       activeTab: 'home'

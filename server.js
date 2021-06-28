@@ -55,7 +55,7 @@ const setHeaders = (req, res, next) => {
 app.use(setHeaders)
 
 /* Routes */
-require('./routes/auth')(app);
+require('./routes/user')(app);
 require("./routes")(app);
 require('./routes/pokemon')(app);
 
