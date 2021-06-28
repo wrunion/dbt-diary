@@ -1,31 +1,6 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
-const db = require('./../db')
-const bcrypt = require('bcrypt')
-
-// TODO: move helper functions to utilities
-const isMatch = async (password, hashedPassword) => {
-  const match = await bcrypt.compare(password, hashedPassword);
-  return (match);
-}
-
-const getUserByEmail = async email => {
-  const res = await db.query('SELECT * FROM development_user WHERE email = $1', [email]);
-  // I can't use es6 in my version of Node
-  /* If no user, return false */
-  if (!res || !res.rows || res.rows.length < 1) { return false; }
-  /* If user, return user */
-  return(res.rows[0]);
-}
-
-const getUserById = async id => {
-  const res = await db.query('SELECT * FROM development_user WHERE id = $1', [id]);
-  // I can't use es6 in my version of Node
-  /* If no user, return false */
-  if (!res || !res.rows || res.rows.length < 1) { return false; }
-  /* If user, return user */
-  return(res.rows[0]);
-}
+const auth = require('./../utils/authUtils')
 
 /*
   * Custom callback function that Passport calls
@@ -39,10 +14,10 @@ const getUserById = async id => {
   const VerifyCallback = async (req, email, password, next) => {
     try {     
 
-      const user = await getUserByEmail(email);
+      const user = await auth.getUserByEmail(email);
 
       if (user) { 
-        const isValid = await isMatch(password, user.password);
+        const isValid = await auth.isMatch(password, user.password);
         if (isValid) {
           return next(null, user);
         } else {
@@ -74,8 +49,8 @@ const strategy = new LocalStrategy({
 passport.serializeUser((user, done) => done(null, user.id));
 
 passport.deserializeUser(async (userId, done) => {
-  const sessionUser = await getUserById(userId);
-  
+  const sessionUser = await auth.getUserById(userId);
+
   if (err) { 
     return done(err) 
   }
