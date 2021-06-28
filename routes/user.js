@@ -3,9 +3,11 @@ const bcrypt = require('bcrypt')
 const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
+const cookieParser = require('cookie-parser')
+// const initialize = require('passport').initialize();
 require('dotenv').config()
-// const { getUser } = require('./../utils/authUtils')
 
+// TODO: move helper functions to utils
 /* Helper functions for auth */
 const checkUser = async email => {
   const res = await db.query('SELECT * FROM development_user WHERE email = $1', [email]);
@@ -31,6 +33,8 @@ const isValid = async (password, user) => {
 
 module.exports = (app) => {
 
+  /* Passport config */
+  require('./../config/passport')
   /* Express Sessions */
   app.use(
     session({
@@ -39,10 +43,9 @@ module.exports = (app) => {
       saveUninitialized: false
     })
   );
-  /* Passport config */
-  require('./../config/passport')
   app.use(passport.initialize());
   app.use(passport.session());
+  app.use(cookieParser());
   // Allows us to show error msg to user 
   app.use(flash());
   app.use(function (req, res, next) {
@@ -56,9 +59,9 @@ module.exports = (app) => {
   passport.authenticate('local', {
     successRedirect: '/home',
     failureRedirect: '/login',
-    failureFlash: true
-  })
-);
+    failureFlash: true,
+    })
+  );
 
   // const isUser = db.query('SELECT name FROM production_user WHERE email = $1', [req.body.email]);
 
@@ -66,40 +69,6 @@ module.exports = (app) => {
     const match = await bcrypt.compare(password, hashedPassword);
     return (match);
   }
-
-  /* Handle input from the login form */
-  // app.post('/login',
-  //   passport.authenticate('local', {
-  //     successRedirect: '/home',
-  //     failureRedirect: '/login',
-  //     failureFlash: true
-  //   })
-  // );
-
-  app.post("/login", async (req, res) => {
-    try {
-      const { email, password } = req.body;
-      
-      const user = await getUser(email);
-      
-      if (user) { 
-        const isValid = await isMatch(password, user.password);
-        if (isValid) {
-          // enter user into the express or passport session
-          res.redirect('/home'); 
-        } else {
-          res.render('login.ejs', {
-            message: 'Incorrect password'
-          }); 
-        }
-      } else {
-        res.render('login.ejs', { message: 'That email is not registered. \n Please try again.' 
-      });
-      }
-    } catch (err) {
-      console.log(err)
-    }
-  });
 
   app.get('/user', (req, res) => {
     res.render('user.ejs', { activeTab: 'home', message: null })

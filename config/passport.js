@@ -2,8 +2,8 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const db = require('./../db')
 const bcrypt = require('bcrypt')
-// const { getUser } = require('./../utils/authUtils')
 
+// TODO: move helper functions to utilities
 const isMatch = async (password, hashedPassword) => {
   const match = await bcrypt.compare(password, hashedPassword);
   return (match);
@@ -36,7 +36,7 @@ const getUserById = async id => {
   * By convention, Passport's "next" function is called "done"
 */
 
-  const VerifyCallback = async (email, password, next) => {
+  const VerifyCallback = async (req, email, password, next) => {
     try {     
 
       const user = await getUserByEmail(email);
@@ -46,9 +46,11 @@ const getUserById = async id => {
         if (isValid) {
           return next(null, user);
         } else {
-          return next(null, false, {  message: 'Incorrect password' })
+          console.log('incorrect password')
+          return next(null, false, { message: 'Incorrect password' })
         }
       } else {
+        console.log('incorrect email')
         return next(null, false, { message: 'Incorrect email' })
       }
     } catch (err) {
@@ -63,7 +65,8 @@ const getUserById = async id => {
 * We also pass our custom auth function here
 */
 const strategy = new LocalStrategy({
-    usernameField: 'email'
+    usernameField: 'email',
+    passReqToCallback: true
   }, 
   VerifyCallback
 );
@@ -73,7 +76,9 @@ passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser(async (userId, done) => {
   const sessionUser = await getUserById(userId);
   
-  if (err) { return done(err) }
+  if (err) { 
+    return done(err) 
+  }
   
   return done(null, sessionUser);
   }
