@@ -3,9 +3,9 @@ const bcrypt = require('bcrypt')
 const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
-const cookieParser = require('cookie-parser')
-// const initialize = require('passport').initialize();
 require('dotenv').config()
+
+/* Code related to user authentication */
 
 // TODO: move helper functions to utils
 /* Helper functions for auth */
@@ -14,14 +14,17 @@ const checkUser = async email => {
   return(res.rows.length > 0);
 }
 
+/* 
+  function to get the user
+  the pg response object returns the data in the "rows" array object
+  in this case, there should only be one row
+*/
 const getUser = async email => {
   const res = await db.query('SELECT * FROM development_user WHERE email = $1', [email]);
 
-  // This is unnecessarily long, I know, but my version of node won't let me use the "res?.rows" syntax, so it's necessary until I can upgrade
   /* If no user, return false */
   if (!res || !res.rows || res.rows.length < 1) { return false; }
-  // the pg response object returns the data in the "rows" array object
-  // in this case, there should only be one row
+
   /* If user, return user */
   return(res.rows[0]);
 }
@@ -45,12 +48,11 @@ module.exports = (app) => {
   );
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(cookieParser());
   // Allows us to show error msg to user 
   app.use(flash());
   app.use(function (req, res, next) {
-    res.locals.error = req.flash("error");
-    res.locals.success = req.flash("success")
+    res.locals.error = req.error || '';
+    res.locals.success = req.message || '';
     next();
   });
 
@@ -70,11 +72,6 @@ module.exports = (app) => {
     return (match);
   }
 
-  app.get('/user', (req, res) => {
-    res.render('user.ejs', { activeTab: 'home', message: null })
-    }
-  )
-
   app.post('/user/add', async (req, res) => {
     try {
     const { name, role, email, password } = req.body;
@@ -87,7 +84,6 @@ module.exports = (app) => {
     })
       return;
     }
-
     // 10 is the number of salt rounds
     const hashedPassword = await bcrypt.hash(password, 10);
     const userRes = await db.query('INSERT INTO development_user (name, role, email, password) VALUES ($1, $2, $3, $4)', [name, role, email, hashedPassword]);
@@ -99,11 +95,6 @@ module.exports = (app) => {
     }
     }
   )
-
-  // const isValid = async (password, user) => {
-  //   const isMatch = await bcrypt.compare(password, user.password);
-  //   return (isMatch);
-  // }
 
   // this can be rewritten once sessions are in place
   const checkPassword = async (pass) => {
@@ -151,16 +142,6 @@ module.exports = (app) => {
       message: 'You have logged out successfully' 
     });
   });
-
-  /* Handle input from the login form */
-  // app.post('/login',
-  //   passport.authenticate('local', {
-  //     successRedirect: '/home',
-  //     failureRedirect: '/login',
-  //     failureFlash: true
-  //   })
-  // )
-  
 
   /* Passport middleware function to protect routes */
   // function isNotAuth(req, res, next) {
