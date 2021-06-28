@@ -1,15 +1,13 @@
 const express = require('express')
-require('dotenv').config()
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const helmet = require('helmet')
 const compression = require("compression")
 const ejs = require('ejs')
-const fileUpload = require('express-fileupload')
 const cors = require('cors')
+require('dotenv').config()
 
 const app = express()
-// const router = require("express-promise-router")()
 app.disable('x-powered-by');
 
 const PORT = process.env.PORT || 5050
@@ -34,8 +32,6 @@ app.use(cors());
 app.use(helmet.hidePoweredBy({ setTo: 'Blood, Sweat and Tears' }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-// Allows us to access uploaded files in the req object 
-app.use(fileUpload());
 
 /* Serve public assets */
 app.use(express.static(path.join(__dirname, "js")));
@@ -49,11 +45,12 @@ const setHeaders = (req, res, next) => {
 app.use(setHeaders)
 
 /* Routes */
+require('./routes/listings')(app);
 require('./routes/user')(app);
 require("./routes")(app);
 
-/* Catch all error handler */
-app.use((err, req, res, next) => {
+/* Global error handler */
+app.use((err, req, res) => {
   console.log(err);
   res.status(403).send(err.message);
 });
