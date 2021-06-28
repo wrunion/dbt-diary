@@ -8,42 +8,35 @@
       <i class="ui icon home large teal"></i>
       <strong>Healthy Transitions Home</strong>
     </a>
-    <!-- right menu  -->
-    <!-- <div class="right menu">
-      <a href="/upload"
-        class="item right custom-right ">
-        <i class="ui icon cloud upload"></i>Upload Data
-      </a>
-      <a href="/preview"
-        class="item right custom-right">
-        <i class="ui icon eye"></i>Preview Site
-      </a> -->
     <div class="right menu">
       <a href="/listings/upload"
         id="listings"
         class="item right custom-right">
-        <i class="ui icon sync grey"></i>Listings
+        <i class="ui icon list ul grey"></i>Listings
       </a> 
       <a href="/settings"
         id="settings"
         class="item right custom-right">
         <i class="ui icon cog grey"></i>Settings
       </a>
-      <a href="/logout"
+      <!-- <a href="/logout"
         class="item right custom-right">
         <i class="ui icon power off grey"></i>Logout
-      </a>
+      </a> -->
       
       <!-- dropdown  -->
       <div class="ui pointing dropdown link item custom-right-menu">
         More <i class="dropdown icon"></i>
         <div class="menu">
 
+          <a class="item" id="guide" href="/user">
+            <i class="ui icon users"></i>
+            Add User
+          </a>
           <a class="item" id="guide" href="/guide">
             <i class="ui icon book"></i>
-            User guide
+            User Guide
           </a>
-
           <!-- <a class="item"  href="/settings">
             <i class="ui icon cog"></i> Settings
           </a> -->
@@ -55,3 +48,6 @@
     </div>
   </div>
 </nav>
+<script>
+  $('.ui.dropdown').dropdown('hide');
+</script>
