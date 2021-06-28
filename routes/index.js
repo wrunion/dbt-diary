@@ -1,5 +1,6 @@
-/* Express is configured to retrieve view files from "views" directory */
 const db = require('./../db')
+
+/* Get routes only. POST and PUT routes for user auth or listing uploads are handled by user.js & listings.js */
 
 module.exports = (app) => {
 
@@ -7,11 +8,20 @@ module.exports = (app) => {
     res.render("login.ejs", { message: 'Please log in to access that feature' });
   });
 
-  /* Login */
-
   app.get("/login", (req, res) => {
     res.render("login.ejs", { message: null });
   });
+
+  app.get("/logout", (req, res) => {
+    req.logout();
+    res.render("login.ejs", { message: "You have logged out successfully" });
+  });
+
+  /* Admin route to add a new user */
+  app.get('/user', (req, res) => {
+    res.render('user.ejs', { activeTab: 'home', message: null })
+    }
+  )
 
   app.get('/home', (req, res) => {
     res.render('home.ejs', {
@@ -19,30 +29,11 @@ module.exports = (app) => {
     })
   })
 
+  /* Listings */
   app.get('/listings/upload', (req, res) => {
     res.render('./listings/upload.ejs', {
       activeTab: 'listingsUpload'
     })
-  })
-
-  // app.post('/listings/upload', (req, res) => {
-  //   console.log(req.body)
-  //   // Logs: "[Object: null prototype] { listings_csv: 'data.csv' }"
-  //   if (req.files) {
-  //     console.log(req.files.listings_csv)
-  //   } else {
-  //     console.log('not available')
-  //   }
-  // })
-
-  app.post('/listings/upload', function(req, res) {
-    console.log(req.body)
-    // Logs: "[Object: null prototype] { listings_csv: 'data.csv' }"
-    if (req.files) {
-      console.log(req.files.listings_csv)
-    } else {
-      console.log('not available')
-    }
   })
 
   app.get('/listings/preview', (req, res) => {
@@ -69,15 +60,8 @@ module.exports = (app) => {
     })
   })
 
-  /* Logout */
-  app.get("/logout", (req, res) => {
-    // req.logout();
-    res.render("login.ejs", { message: "You have logged out successfully" });
+  /* Catch anything else and redirect */
+  app.get("*", (req, res) => {
+    res.render("login.ejs", { message: null });
   });
-
-  /* Catch anything else */
-  // app.get("*", (req, res) => {
-  //   res.render("login.ejs", { message: null });
-  // });
-
 }

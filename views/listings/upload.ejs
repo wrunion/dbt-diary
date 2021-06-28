@@ -15,8 +15,8 @@
   </header>
 
   <div id="csv-upload">
-    <form action="/listings/upload" method="POST"
-      class="ui form">
+    <form role="form" action="/listings/upload" method="POST"
+      class="ui form" enctype="multipart/form-data">
       <div class="field">
         <input type="file" name="listings_csv" aria-label="Upload listings CSV file">
       </div>

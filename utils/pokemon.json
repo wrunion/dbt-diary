@@ -1,5 +1,0 @@
-{
-  "winter": { "id": "1", "name": "Winter", "favoritePokemon": "pikachu", "pokemon": ["squirtle", "charizard", "pikachu"] },
-  "elle": { "id": "2", "name": "Elle", "favoritePokemon": "scyther", "pokemon": ["bulbasaur", "scorbunny", "pikachu", "umbreon", "scyther"] },
-  "isnardo": { "id": "3", "name": "Isnardo", "favoritePokemon": "bulbasaur","pokemon": ["squirtle", "charizard", "bulbasaur"] }
-}
