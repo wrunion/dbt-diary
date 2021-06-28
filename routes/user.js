@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt')
 const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
-require('./../config/passport') // passport config
 require('dotenv').config()
 // const { getUser } = require('./../utils/authUtils')
 
@@ -32,7 +31,7 @@ const isValid = async (password, user) => {
 
 module.exports = (app) => {
 
-  /* Configure Passport */
+  /* Express Sessions */
   app.use(
     session({
       secret: process.env.SESSION_SECRET,
@@ -40,8 +39,11 @@ module.exports = (app) => {
       saveUninitialized: false
     })
   );
+  /* Passport config */
+  require('./../config/passport')
   app.use(passport.initialize());
   app.use(passport.session());
+  // Allows us to show error msg to user 
   app.use(flash());
   app.use(function (req, res, next) {
     res.locals.error = req.flash("error");
@@ -52,8 +54,8 @@ module.exports = (app) => {
   /* login */
   app.post('/login',
   passport.authenticate('local', {
-    // successRedirect: '/home',
-    // failureRedirect: '/login',
+    successRedirect: '/home',
+    failureRedirect: '/login',
     failureFlash: true
   })
 );

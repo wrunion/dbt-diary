@@ -25,6 +25,26 @@ module.exports = (app) => {
     })
   })
 
+  // app.post('/listings/upload', (req, res) => {
+  //   console.log(req.body)
+  //   // Logs: "[Object: null prototype] { listings_csv: 'data.csv' }"
+  //   if (req.files) {
+  //     console.log(req.files.listings_csv)
+  //   } else {
+  //     console.log('not available')
+  //   }
+  // })
+
+  app.post('/listings/upload', function(req, res) {
+    console.log(req.body)
+    // Logs: "[Object: null prototype] { listings_csv: 'data.csv' }"
+    if (req.files) {
+      console.log(req.files.listings_csv)
+    } else {
+      console.log('not available')
+    }
+  })
+
   app.get('/listings/preview', (req, res) => {
     res.render('./listings/preview.ejs', {
       activeTab: 'listingsPreview'
