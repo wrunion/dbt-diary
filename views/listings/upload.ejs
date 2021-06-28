@@ -2,19 +2,31 @@
 <%- include ('./../partials/navbar'); %>
 <%- include ('./../partials/listingsNavbar'); %>
 
-<div class='container ui segment' style="margin: 1em;" id="upload">
+<div class="container ui segment" style="margin: 1em;" id="upload">
 
   <header>
     <h1
       class="ui header violet" style="margin: .5em; margin-bottom: 1em; font-size: 1.75em">
       <div class="content">
         <i class="cloud upload icon violet"></i>
-        Upload Data
-        <div class="sub header">
-          Additional instructions can go here!
-        </div>
+        Step 1: Upload CSV File
       </div>
     </h1>
   </header>
+
+  <div id="csv-upload">
+    <form action="/listings/upload" method="POST"
+      class="ui form">
+      <div class="field">
+        <input type="file" name="listings_csv" aria-label="Upload listings CSV file">
+      </div>
+      <div class="field">
+        <input type="submit" value="Upload CSV" class="ui button fluid violet basic">
+      </div>
+    </form>
+
+
+
+  </div>
 
 </div>
