@@ -45,8 +45,7 @@ const setHeaders = (req, res, next) => {
 app.use(setHeaders)
 
 /* Routes */
-require('./routes/userCustomAuth')(app);
-// require('./routes/user')(app);
+require('./routes/user')(app);
 require('./routes/listings')(app);
 require("./routes")(app);
 
