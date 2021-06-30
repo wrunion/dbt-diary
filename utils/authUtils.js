@@ -2,6 +2,11 @@
 const db = require('./../db')
 const bcrypt = require('bcrypt')
 
+/* Helper function for protecting user routes */
+const hasCookie = (obj, cookieName, cookieVal) =>  {
+  return obj.cookies[`${cookieName}`] === `${cookieVal}`;
+}
+
 module.exports = {
 
   isMatch: async (password, hashedPassword) => {
@@ -36,6 +41,9 @@ module.exports = {
       return (isMatch);
     }
     return false;
-  }
+  },
+  isAuth: (req) => hasCookie(req, 'authToken', '{TOKEN}'),
+  isAdmin: (req) => hasCookie(req, 'role', 'admin')
+  
 }
 

@@ -4,7 +4,9 @@ const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 require('dotenv').config()
-const auth = require('./../utils/authUtils')
+const utils = require('./../utils/authUtils')
+const auth = require('../config/authMiddleware')
+var cookieSession = require('cookie-session')
 
 /* 
  * Routes & middleware 
@@ -13,17 +15,28 @@ const auth = require('./../utils/authUtils')
 
 module.exports = (app) => {
 
-  /* Passport config */
-  app.use(
-    session({
-      secret: process.env.SESSION_SECRET,
-      resave: false,
-      saveUninitialized: false
-    })
-  );
-  app.use(passport.initialize());
-  app.use(passport.session());
-  require('./../config/passport')
+  app.use(cookieSession({
+    name: 'session',
+    keys: ['key1', 'key2']
+  }));
+
+  const customCookieLogger = (req, res, next) => {
+    req.cookies ? 
+    console.log('cookie logger', req.cookies, req.path)
+    : console.log('cookie logger: no cookies found')
+    next()
+  }
+
+  app.use(customCookieLogger);
+  // app.use(auth.isLoggedIn)
+
+  // app.use(
+  //   session({
+  //     secret: process.env.SESSION_SECRET,
+  //     resave: false,
+  //     saveUninitialized: false
+  //   })
+  // );
   app.use(flash()); // Allows us to show error msg to user 
   app.use(function (req, res, next) {
     res.locals.error = req.error || '';
@@ -32,20 +45,39 @@ module.exports = (app) => {
   });
 
   /* login */
-  app.post('/login',
-  passport.authenticate('local', {
-    successRedirect: '/home',
-    failureRedirect: '/login',
-    failureFlash: true
-    })
-  );
+  app.post('/login', auth.authenticate, (req, res) => {
+    res.redirect('home')
+  });
+
+  // const isLoggedIn = (req, res, next) => {
+  //   // TODO: replace with secure JWT token 
+  //   if (req.cookies && req.cookies['authToken'] === '{TOKEN}') {
+  //     if (req.path === '/login') {
+  //       // this is somewhat arbitrary
+  //       // we don't want logged in users to be able to access
+  //       // the login page
+  //       res.redirect('/home'); 
+  //     } 
+  //     next();
+  //   } else if (req.path === '/logout') {
+  //     next();
+  //   } else {
+  //     res.render('login.ejs', { message: 'Please log in in to access that feature' })
+  //   }
+  // }
+
+  // app.get('/guide', isAdmin, (req, res) => {
+  //   res.render('guide.ejs', {
+  //     activeTab: 'guide'
+  //   })
+  // })
 
   app.post('/user/add', async (req, res) => {
     try {
     const { name, role, email, password } = req.body;
     // First, check if email is already registered 
     // Emails must be unique in our system
-    const user = await auth.isUser(email);
+    const user = await utils.isUser(email);
     if (user) { 
       res.render('user.ejs', { activeTab: 'home', 
       message: 'Email is already registered' 
@@ -89,9 +121,14 @@ module.exports = (app) => {
     }
   });
 
+  // const logoutMiddleware = (req, res, next) => {
+  //   res.clearCookie('role')
+  //   res.clearCookie('authToken')
+  //   next();
+  // }
+
   /* Logout */
-  app.get('/logout', (req, res) => {
-    req.logout();
+  app.get('/logout', auth.logout, (req, res) => {
     res.render('login.ejs', { 
       message: 'You have logged out successfully' 
     });
