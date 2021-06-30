@@ -8,7 +8,7 @@ const hasCookie = (obj, cookieName, cookieVal) =>  {
 }
 
 module.exports = {
-
+  /* Compare two passwords */
   isMatch: async (password, hashedPassword) => {
     const match = await bcrypt.compare(password, hashedPassword);
     return (match);
@@ -42,6 +42,7 @@ module.exports = {
     }
     return false;
   },
+  // TODO: replace this with the real JWT token
   isAuth: (req) => hasCookie(req, 'authToken', '{TOKEN}'),
   isAdmin: (req) => hasCookie(req, 'role', 'admin')
   
