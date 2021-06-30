@@ -49,14 +49,13 @@ const strategy = new LocalStrategy({
 passport.serializeUser((user, done) => done(null, user.id));
 
 passport.deserializeUser(async (userId, done) => {
-  const sessionUser = await auth.getUserById(userId);
+  try {
+    const sessionUser = await auth.getUserById(userId);
 
-  if (err) { 
+    return done(null, sessionUser);
+    
+  } catch (err) {
     return done(err) 
-  }
-  
-  return done(null, sessionUser);
-  }
-)
+  }})
 
 passport.use(strategy)

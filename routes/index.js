@@ -1,24 +1,51 @@
 const db = require('./../db')
+const auth = require('../config/authMiddleware')
 
 /* Get routes only. POST and PUT routes for user auth or listing uploads are handled by user.js & listings.js */
+// TODO: separate login & logout routes to a separate file
+// refactor the protected routes to one file
+// something like this may be userful 
+// for protecting multiple routes at once
+// app.use('/user/*', auth.isLoggedIn)
 
 module.exports = (app) => {
 
   app.get("/", (req, res) => {
     res.render("login.ejs", { message: 'Please log in to access that feature' });
   });
-
-  app.get("/login", (req, res) => {
-    res.render("login.ejs", { message: null });
-  });
-
+  
   app.get("/logout", (req, res) => {
     req.logout();
     res.render("login.ejs", { message: "You have logged out successfully" });
   });
 
+  /* All routes below this are protected */
+  app.use(auth.isLoggedIn);
+
+  app.get("/login", (req, res) => {
+    res.render("login.ejs", { message: null });
+  });
+
+  // const hasCookie = (obj, cookieName, cookieVal) => {
+  //   return obj.cookies[`${cookieName}`] === `${cookieVal}`;
+  // }
+
+  // const isAuth = (req) => hasCookie(req, 'authToken', '{TOKEN}')
+  // const isAdmin = (req) => hasCookie(req, 'role', 'admin')
+
+  // const isAdminAuth = (req, res, next) => {
+  //   // TODO: replace with secure JWT token 
+  //   if (auth.isAuth(req) && auth.isAdmin(req)) {
+  //     next();
+  //   } else {
+  //     // this is somewhat arbitrary
+  //     // we just want to keep non-admins out of the "users" route
+  //     res.redirect('/home');
+  //   }
+  // }
+
   /* Admin route to add a new user */
-  app.get('/user', (req, res) => {
+  app.get('/user', auth.isAdminAuth, (req, res) => {
     res.render('user.ejs', { activeTab: 'home', message: null })
     }
   )
