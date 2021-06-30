@@ -15,11 +15,11 @@ module.exports = (app) => {
   // Add't handlers for procesing the CSV data, JSON verification,
   // and Postgres insertion can go here
 
-  app.post('/listings/preview', upload.single('csv'), (req, res) => {
+  app.post('/listings/preview', (req, res) => {
     // TODO
   })
 
-  app.post('/listings/update', upload.single('csv'), (req, res) => {
+  app.post('/listings/update', (req, res) => {
     // TODO
   })
 
