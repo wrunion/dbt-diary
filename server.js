@@ -6,6 +6,7 @@ const compression = require("compression")
 const ejs = require('ejs')
 const cors = require('cors')
 require('dotenv').config()
+const { createListingsTable, listingsToPostgres } = require('./config/listingsMiddleware')
 
 const app = express()
 app.disable('x-powered-by');
@@ -48,6 +49,27 @@ app.use(setHeaders)
 require('./routes/user')(app);
 require('./routes/listings')(app);
 require("./routes")(app);
+
+/* insert json into postgres */
+(async () => {
+  console.log(await createListingsTable());
+  listingsToPostgres();
+})();
+
+/* FOR CSV PROCESSING LISTING ROUTE */
+// (async () => {
+//   try {
+//     const listings = await listingsToPostgres();
+//     if (listings === true) {
+//       console.log('success! listings stored in postgres'); return;
+//     } else {
+//       console.log('error with storing listings. listings could not be sotred in postgres') 
+//     }
+//   } catch (err) {
+//     console.error(err.message);
+//     return err.message;
+//   }
+// })();
 
 /* Global error handler */
 app.use((err, req, res) => {

@@ -22,7 +22,12 @@ module.exports = (app) => {
   });
 
   /* Admin route to add a new user */
-  app.get('/user', auth.isAdminAuth, (req, res) => {
+  // app.get('/user', auth.isAdminAuth, (req, res) => {
+  //   res.render('user.ejs', { activeTab: 'home', message: null })
+  //   }
+  // )
+
+  app.get('/user', (req, res) => {
     res.render('user.ejs', { activeTab: 'home', message: null })
     }
   )
@@ -30,25 +35,6 @@ module.exports = (app) => {
   app.get('/home', (req, res) => {
     res.render('home.ejs', {
       activeTab: 'home'
-    })
-  })
-
-  /* Listings */
-  app.get('/listings/upload', (req, res) => {
-    res.render('./listings/upload.ejs', {
-      activeTab: 'listingsUpload'
-    })
-  })
-
-  app.get('/listings/preview', (req, res) => {
-    res.render('./listings/preview.ejs', {
-      activeTab: 'listingsPreview'
-    })
-  })
-
-  app.get('/listings/update', (req, res) => {
-    res.render('./listings/update.ejs', {
-      activeTab: 'listingsUpdate'
     })
   })
 
