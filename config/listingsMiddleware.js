@@ -99,39 +99,6 @@ const jsonToPostgres = async () => {
 }
 
 module.exports = {
-
-  validatedJsonData: {
-    "listings": {
-      "1": {
-        "listingId": "1",
-        "name": "Name 1",
-        "category": "Category 1",
-        "website": "www.website1.com",
-        "streetAddress": "123 Sesame Street"
-      },
-      "2": {
-        "listingId": "2",
-        "name": "Name 2",
-        "category": "Category 2",
-        "website": "www.website2.com",
-        "streetAddress": "123 Sesame Street"
-      },
-      "3": {
-        "listingId": "3",
-        "name": "Name 3",
-        "category": "Category 3",
-        "website": "www.website3.com",
-        "streetAddress": "123 Sesame Street"
-      },
-      "4": {
-        "listingId": "4",
-        "name": "Name 4",
-        "category": "Category 4",
-        "website": "www.website4.com",
-        "streetAddress": "123 Sesame Street"
-      }
-    }
-  },
   listings: validatedJsonData.listings,
   listingsToPostgres: (listings) => jsonToPostgres(listings),
   createListingsTable: () => createListingsTable()
