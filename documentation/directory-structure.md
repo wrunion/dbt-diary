@@ -13,10 +13,10 @@ Below you'll find an explanation of each file and folder. Feel free to ask me (W
 ### Views folder
 
 **Terms**
-- EJS: Embedded JavaScript 
-- Views: Express's term for the code that is rendered to the user. In other applications, it's more often called the UI, the client, or the front end. 
-    - But views are, specifically, .ejs files that render html.
-- View engine: the technology that enables Express to render views via Express's various routes
+- "EJS": Embedded JavaScript 
+- "Views": Express's term for the code that is rendered to the user. In other applications, it's more often called the UI, the client, or the front end. 
+    - But "views" are, specifically in the Express context, .ejs files that render html.
+- "View engine": the technology that enables Express to render views via Express's various routes
 
 **The "views" folder holds all EJS (Embedded Javascript) templates.**
 
