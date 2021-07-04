@@ -83,7 +83,7 @@ const jsonToPostgres = async () => {
       // we don't have to specify column names 
       // as long as we provide the arguments in the same order as the columns
       // and in a 1-to-1 ratio
-      db.query('INSERT INTO listings VALUES ($1, $2, $3, $4, $5)',
+      db.queryWithLogging('INSERT INTO listings VALUES ($1, $2, $3, $4, $5)',
       [listingId, name, category, website, streetAddress], (err, res) => {
         if (err) { console.log(listingId, err.message); return; }
         // if there's no error, our call was successful
