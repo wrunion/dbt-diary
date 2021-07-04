@@ -29,7 +29,19 @@ const convertToJson = async (csv, params) => {
   try {
     // convert the CSV to JSON here
 
-    // return data or false
+
+    /* TODO */
+
+
+
+    
+
+
+
+
+
+
+
   } catch (error) {
     next(error)
   }
@@ -37,7 +49,19 @@ const convertToJson = async (csv, params) => {
 
   const validateJsonSchema = async (csv, params) => {
     // do the validation
-    // return true or false
+    // return true if valid 
+    // Used in the /listings/upload POST route (see routes/listings.js)
+  
+  
+    /* TODO */
+  
+  
+  
+  
+  
+  
+  
+  
   }
 
   /* Per the API spec: 
