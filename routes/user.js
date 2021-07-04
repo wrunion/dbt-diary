@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const flash = require('express-flash')
 require('dotenv').config()
 const utils = require('../utils/authUtils')
-const auth = require('../config/authMiddleware')
+const auth = require('../middleware/authMiddleware')
 var cookieSession = require('cookie-session')
 
 /* 

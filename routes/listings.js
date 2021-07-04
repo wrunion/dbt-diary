@@ -1,5 +1,5 @@
 const db = require('./../db')
-const auth = require('../config/authMiddleware')
+const auth = require('../middleware/authMiddleware')
 const multer = require('multer')
 var upload = multer({ dest: 'uploads/' })
 

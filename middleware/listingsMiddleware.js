@@ -1,4 +1,5 @@
 const db = require('../db')
+const pool = db.pool;
 
 /* postgresql table for reference only:
 
@@ -43,8 +44,261 @@ const validatedJsonData = {
       "website": "www.website4.com",
       "streetAddress": "123 Sesame Street"
     }
-  }
+  },
+  "1": {
+    "listingId": "1",
+    "name": "Name 1",
+    "category": "Category 1",
+    "website": "www.website1.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "2": {
+    "listingId": "2",
+    "name": "Name 2",
+    "category": "Category 2",
+    "website": "www.website2.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "3": {
+    "listingId": "3",
+    "name": "Name 3",
+    "category": "Category 3",
+    "website": "www.website3.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "4": {
+    "listingId": "4",
+    "name": "Name 4",
+    "category": "Category 4",
+    "website": "www.website4.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "1": {
+    "listingId": "1",
+    "name": "Name 1",
+    "category": "Category 1",
+    "website": "www.website1.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "2": {
+    "listingId": "2",
+    "name": "Name 2",
+    "category": "Category 2",
+    "website": "www.website2.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "3": {
+    "listingId": "3",
+    "name": "Name 3",
+    "category": "Category 3",
+    "website": "www.website3.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "4": {
+    "listingId": "4",
+    "name": "Name 4",
+    "category": "Category 4",
+    "website": "www.website4.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "1": {
+    "listingId": "1",
+    "name": "Name 1",
+    "category": "Category 1",
+    "website": "www.website1.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "2": {
+    "listingId": "2",
+    "name": "Name 2",
+    "category": "Category 2",
+    "website": "www.website2.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "3": {
+    "listingId": "3",
+    "name": "Name 3",
+    "category": "Category 3",
+    "website": "www.website3.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "4": {
+    "listingId": "4",
+    "name": "Name 4",
+    "category": "Category 4",
+    "website": "www.website4.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "1": {
+    "listingId": "1",
+    "name": "Name 1",
+    "category": "Category 1",
+    "website": "www.website1.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "2": {
+    "listingId": "2",
+    "name": "Name 2",
+    "category": "Category 2",
+    "website": "www.website2.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "3": {
+    "listingId": "3",
+    "name": "Name 3",
+    "category": "Category 3",
+    "website": "www.website3.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "4": {
+    "listingId": "4",
+    "name": "Name 4",
+    "category": "Category 4",
+    "website": "www.website4.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "1": {
+    "listingId": "1",
+    "name": "Name 1",
+    "category": "Category 1",
+    "website": "www.website1.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "2": {
+    "listingId": "2",
+    "name": "Name 2",
+    "category": "Category 2",
+    "website": "www.website2.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "3": {
+    "listingId": "3",
+    "name": "Name 3",
+    "category": "Category 3",
+    "website": "www.website3.com",
+    "streetAddress": "123 Sesame Street"
+  },
+  "4": {
+    "listingId": "4",
+    "name": "Name 4",
+    "category": "Category 4",
+    "website": "www.website4.com",
+    "streetAddress": "123 Sesame Street"
+  },
+"1": {
+  "listingId": "1",
+  "name": "Name 1",
+  "category": "Category 1",
+  "website": "www.website1.com",
+  "streetAddress": "123 Sesame Street"
+},
+"2": {
+  "listingId": "2",
+  "name": "Name 2",
+  "category": "Category 2",
+  "website": "www.website2.com",
+  "streetAddress": "123 Sesame Street"
+},
+"3": {
+  "listingId": "3",
+  "name": "Name 3",
+  "category": "Category 3",
+  "website": "www.website3.com",
+  "streetAddress": "123 Sesame Street"
+},
+"4": {
+  "listingId": "4",
+  "name": "Name 4",
+  "category": "Category 4",
+  "website": "www.website4.com",
+  "streetAddress": "123 Sesame Street"
+},
+"1": {
+  "listingId": "1",
+  "name": "Name 1",
+  "category": "Category 1",
+  "website": "www.website1.com",
+  "streetAddress": "123 Sesame Street"
+},
+"2": {
+  "listingId": "2",
+  "name": "Name 2",
+  "category": "Category 2",
+  "website": "www.website2.com",
+  "streetAddress": "123 Sesame Street"
+},
+"3": {
+  "listingId": "3",
+  "name": "Name 3",
+  "category": "Category 3",
+  "website": "www.website3.com",
+  "streetAddress": "123 Sesame Street"
+},
+"4": {
+  "listingId": "4",
+  "name": "Name 4",
+  "category": "Category 4",
+  "website": "www.website4.com",
+  "streetAddress": "123 Sesame Street"
+},
+"1": {
+  "listingId": "1",
+  "name": "Name 1",
+  "category": "Category 1",
+  "website": "www.website1.com",
+  "streetAddress": "123 Sesame Street"
+},
+"2": {
+  "listingId": "2",
+  "name": "Name 2",
+  "category": "Category 2",
+  "website": "www.website2.com",
+  "streetAddress": "123 Sesame Street"
+},
+"3": {
+  "listingId": "3",
+  "name": "Name 3",
+  "category": "Category 3",
+  "website": "www.website3.com",
+  "streetAddress": "123 Sesame Street"
+},
+"4": {
+  "listingId": "4",
+  "name": "Name 4",
+  "category": "Category 4",
+  "website": "www.website4.com",
+  "streetAddress": "123 Sesame Street"
+},
+"1": {
+  "listingId": "1",
+  "name": "Name 1",
+  "category": "Category 1",
+  "website": "www.website1.com",
+  "streetAddress": "123 Sesame Street"
+},
+"2": {
+  "listingId": "2",
+  "name": "Name 2",
+  "category": "Category 2",
+  "website": "www.website2.com",
+  "streetAddress": "123 Sesame Street"
+},
+"3": {
+  "listingId": "3",
+  "name": "Name 3",
+  "category": "Category 3",
+  "website": "www.website3.com",
+  "streetAddress": "123 Sesame Street"
+},
+"4": {
+  "listingId": "4",
+  "name": "Name 4",
+  "category": "Category 4",
+  "website": "www.website4.com",
+  "streetAddress": "123 Sesame Street"
 }
+}
+
 
 /* 
  * IF TABLE SCHEMA CHANGES
@@ -77,22 +331,27 @@ const createListingsTable = async () => {
 
 const jsonToPostgres = async () => {
   try {
+
+    const client = await pool.connect()
+    
     Object.entries(listings).forEach((listing) => {
       const [key, vals] = listing;
       const { listingId, name, category, website, streetAddress } = vals;
       // we don't have to specify column names 
       // as long as we provide the arguments in the same order as the columns
       // and in a 1-to-1 ratio
-      db.queryWithLogging('INSERT INTO listings VALUES ($1, $2, $3, $4, $5)',
+      client.query('INSERT INTO listings VALUES ($1, $2, $3, $4, $5)',
       [listingId, name, category, website, streetAddress], (err, res) => {
         if (err) { console.log(listingId, err.message); return; }
         // if there's no error, our call was successful
         // continue on to the next listing
-        next();
       })
     });
+    
+    client.release();
+    
     return true;
-  } catch (error) {
+  } catch (err) {
     console.log('json to postgres error: ' + err)
     return err.message;
   }
