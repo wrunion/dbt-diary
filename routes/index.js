@@ -1,5 +1,5 @@
 const db = require('./../db')
-const auth = require('../config/authMiddleware')
+const auth = require('../middleware/authMiddleware')
 const utils = require('../utils/authUtils')
 
 /* Get routes only. POST and PUT routes for user auth & listing uploads are handled by user.js & listings.js */
