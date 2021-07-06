@@ -26,7 +26,6 @@ const errorData = {
 /* Code for Error 1 */
 // from Elle's API spec: https://bit.ly/3AiZzHm
 const convertToJson = async (csv, params) => {
-  try {
     // convert the CSV to JSON here
 
 
@@ -37,14 +36,6 @@ const convertToJson = async (csv, params) => {
     
 
 
-
-
-
-
-
-  } catch (error) {
-    next(error)
-  }
 }
 
   const validateJsonSchema = async (csv, params) => {
