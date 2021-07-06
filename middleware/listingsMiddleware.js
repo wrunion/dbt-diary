@@ -329,6 +329,8 @@ const createListingsTable = async () => {
   }
 }
 
+// if the order of listings matters, 
+// change this
 const jsonToPostgres = async () => {
   try {
 
