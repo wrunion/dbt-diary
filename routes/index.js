@@ -6,7 +6,7 @@ const utils = require('../utils/authUtils')
 module.exports = (app) => {
 
   app.get("/", (req, res) => {
-    res.render("login.ejs", { message: 'Please log in to access that feature' });
+    res.render("login.ejs", { message: null });
   });
   
   app.get("/logout", (req, res) => {
@@ -22,12 +22,7 @@ module.exports = (app) => {
   });
 
   /* Admin route to add a new user */
-  // app.get('/user', auth.isAdminAuth, (req, res) => {
-  //   res.render('user.ejs', { activeTab: 'home', message: null })
-  //   }
-  // )
-
-  app.get('/user', (req, res) => {
+  app.get('/user', auth.isAdminAuth, (req, res) => {
     res.render('user.ejs', { activeTab: 'home', message: null })
     }
   )
