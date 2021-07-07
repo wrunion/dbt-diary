@@ -1,16 +1,9 @@
 import React from 'react'
 import './App.css'
-import { BrowserRouter as Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './reusable/Header'
 import NavBar from './components/NavBar'
-
-const Day = () => {
-  return(
-    <>
-      Day 
-    </>
-  )
-}
+import Day from './Day'
 
 const Week = () => {
   return(
@@ -30,6 +23,8 @@ const Home = () => {
 
 const App = () => {
   return (
+    <Router>
+
     <div className="App">
       <Header
         title="Winter's DBT Journal"
@@ -43,14 +38,19 @@ const App = () => {
       <Route exact path='/'
         component={Home}
       />
-      <Route path='/day'
+      {/* <Route path='/day'
         component={Day}
-      />
-      <Route path='/week'
-        component={Week}
-      />
+      /> */}
+      <Route exact path='/day'>
+        <Day />
+      </Route>
+      <Route exact path='/week'>
+        <Week />
+      </Route>
 
     </div>
+    </Router>
+
   );
 }
 

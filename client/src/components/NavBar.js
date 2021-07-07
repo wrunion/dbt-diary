@@ -28,5 +28,3 @@ const NavBar = () => {
 }
 
 export default NavBar;
-
-// today, this week, more
