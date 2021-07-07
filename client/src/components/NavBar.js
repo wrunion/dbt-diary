@@ -4,11 +4,16 @@ import { NavLink } from 'react-router-dom'
 
 const { Item } = Menu
 
+const menuStyles = {
+  padding: 0,
+  margin: 0
+}
+
 const NavBar = () => {
 
   return ( 
     <>
-    <Menu pointing secondary>
+    <Menu pointing secondary vertical>
       <Item 
         as={NavLink} exact to='/'
         name='home'
