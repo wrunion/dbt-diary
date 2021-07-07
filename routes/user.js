@@ -18,15 +18,16 @@ module.exports = (app) => {
     keys: ['key1', 'key2']
   }));
 
+  /* ----- comment in for debugging logs ------ */
   // temp logging for dev debugging
-  const customCookieLogger = (req, res, next) => {
-    req.cookies ? 
-    console.log('cookie logger', req.cookies, req.path)
-    : console.log('cookie logger: no cookies found')
-    next()
-  }
+  // const customCookieLogger = (req, res, next) => {
+  //   req.cookies ? 
+  //   console.log('cookie logger', req.cookies, req.path)
+  //   : console.log('cookie logger: no cookies found')
+  //   next()
+  // }
 
-  app.use(customCookieLogger);
+  // app.use(customCookieLogger);
 
   app.use(flash()); // Allows us to show error msg to user 
   app.use(function (req, res, next) { // these are for error messages for dev

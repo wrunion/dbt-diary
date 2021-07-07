@@ -1,8 +1,11 @@
 const db = require('./../db')
 const auth = require('../middleware/authMiddleware')
 const multer = require('multer')
-const upload = multer({ dest: 'uploads/' })
+// const upload = multer({ dest: 'uploads/' })
+const upload = require('./../config/multerConfig')
 const fs = require('fs')
+const csv = require('fast-csv')
+const path = require('path')
 
 module.exports = (app) => {
 
@@ -33,14 +36,51 @@ module.exports = (app) => {
   /* uses multer middleware's "upload" function to receive csv input */
   // "listings" here refers to the name of the file input field
   // in the form itself. Multer requires it to match
-  app.post('/listings/upload', upload.single('listings'), (req, res) => {
-    if (req.file) {
-      console.log(req.file)
+  // app.post('/listings/upload', upload.single('listings'), (req, res) => {
+  //   if (req.file) {
+  //     console.log(req.file)
 
-      let data = fs.createReadStream(req.file.path,'utf8');
-      console.log(data)
-    } 
-  })
+  //   } 
+  // })
+
+
+  // TEMP
+  app.post('/listings/upload', upload.single('listings'), (req, res) => {
+    try{
+      // console.log(req.file.filename)
+      const listings = [];
+
+      console.log(__dirname)
+      // fs.readFile('./../uploads/' + '9a8092c301b32f65219fbf795c8356fa', 'utf8' , (err, data) => {
+      //   if (err) {
+      //     console.error(err)
+      //     return
+      //   }
+      //   console.log(data)
+      // })
+
+      // fs.createReadStream('./../uploads/csv/' + req.file.filename)
+      //   .pipe(csv.parse({ headers: true }))
+      //   .on('error', error => {
+      //     console.error(error);
+      //     throw error.message;
+      //   })
+      //   .on('data', row => {
+      //     listings.push(row);
+      //     console.log(row);
+      //   })
+      //   .on('end', () => {
+      //     /* Parse to JSON here??? */
+      //     // Do the "upload was successful" thing
+
+      //     console.log('upload successful!')
+
+      // });
+    } catch(error) {
+      console.error('csv upload error', error)
+    }
+  });
+
 
   app.post('/listings/preview', (req, res) => {
 
