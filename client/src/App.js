@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Segment } from 'semantic-ui-react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from './reusable/Header'
 import NavBar from './components/NavBar'
 import Day from './Day'
@@ -24,33 +25,38 @@ const Home = () => {
 const App = () => {
   return (
     <Router>
+    <div className="parent-container">
 
-    <div className="App">
-      <Header
-        title="Winter's DBT Journal"
-        subtitle="Summer 2021, Providence DBT"
-        style={{ margin: '1em' }}
-      />
-      
-      <NavBar />
-      <p></p>
+      <div className="header">
+        <Header
+          title="Winter's DBT Journal"
+          subtitle="Summer 2021, Providence DBT"
+          style={{ marginTop: '1em', textAlign: 'center' }}
+        />
+      </div>
 
-      <Route exact path='/'
-        component={Home}
-      />
-      {/* <Route path='/day'
-        component={Day}
-      /> */}
-      <Route exact path='/day'>
-        <Day />
-      </Route>
-      <Route exact path='/week'>
-        <Week />
-      </Route>
+      <div className="left-col">
+        <NavBar />
+      </div>
+      <div className="right-col"></div> 
 
+      <div className="main">
+        <Segment id="primary-content">
+          <div id="content">
+            <Route exact path='/'>
+              <Home />
+            </Route>
+            <Route exact path='/day'>
+              <Day />
+            </Route>
+            <Route exact path='/week'>
+              <Week />
+            </Route>
+          </div>
+        </Segment>
+      </div>
     </div>
     </Router>
-
   );
 }
 
