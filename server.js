@@ -21,6 +21,7 @@ app.use(cookieParser());
 app.use(helmet());
 app.use(compression());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(__dirname));
 
 app.use(compression({ filter: shouldCompress }))
 function shouldCompress (req, res) {
@@ -59,7 +60,6 @@ require("./routes")(app);
 /* Global error handler */
 app.use((err, req, res) => {
   console.log(err);
-  res.status(403).send(err.message);
 });
 
 app.listen(PORT, () => {

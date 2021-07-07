@@ -1,9 +1,10 @@
 let express = require('express');
 let router = express.Router();
-let upload = require('./../config/multer');
+let upload = require('./../config/multerConfig');
+const csvWorker = require('./../utils/listingUtils.js');
  
 
-const uploadFile = (req, res) => {
+exports.uploadFile = (req, res) => {
     try{
         const customers = [];
         fs.createReadStream(__basedir + "/uploads/" + req.file.filename)
@@ -24,7 +25,6 @@ const uploadFile = (req, res) => {
     }
   }
 
-const csvWorker = require('./../utils/listingUtils.js');
 
 // let path = __basedir + '/views/';
 
@@ -33,7 +33,7 @@ const csvWorker = require('./../utils/listingUtils.js');
 //     res.sendFile(path + "index.html");
 // });
 
-router.post('/api/file/upload', upload.single("file"), uploadFile);
+// router.post('/api/file/upload', upload.single("file"), uploadFile);
 
 // router.get('/api/file', csvWorker.downloadFile);
 
