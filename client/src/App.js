@@ -7,6 +7,7 @@ import NavBar from './components/NavBar'
 import Day from './components/Day'
 import Week from './components/Week'
 import Home from './components/Home'
+import RightColumn from './components/RightColumn'
 
 const App = () => {
 
@@ -25,7 +26,9 @@ const App = () => {
       <div className="left-col">
         <NavBar />
       </div>
-      <div className="right-col"></div> 
+      <div className="right-col">
+        <RightColumn />  
+      </div> 
 
       <div className="main">
         <Segment>
