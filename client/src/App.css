@@ -58,3 +58,9 @@
 .main { 
   grid-area: main; 
 }
+
+@media only screen and (max-width: 600px) {
+  .header-icon {
+    display: none;
+  }
+}

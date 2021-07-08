@@ -6,19 +6,13 @@ const compression = require("compression")
 const ejs = require('ejs')
 const cors = require('cors')
 const movieRouter = require('./routes/movie-router.js')
-
 const db = require('./mongo_db')
-
 require('dotenv').config()
-// const { createListingsTable, listingsToPostgres } = require('./middleware/listingsMiddleware')
 
 const app = express()
 app.disable('x-powered-by');
 
 const PORT = process.env.PORT || 8000
-
-/* Configure view templates, which contain HTML, CSS & JS for the admin and login pages */
-app.set('view engine', 'ejs');
 
 /* Middleware */
 app.use(cookieParser()); 
@@ -53,19 +47,12 @@ app.use(setHeaders)
 /* Routes */
 app.use('/api', movieRouter)
 
-
-/* insert json into postgres */
-// (async () => {
-//   await createListingsTable();
-//   listingsToPostgres();
-// })();
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 /* Global error handler */
 app.use((err, req, res) => {
   console.log(err);
 });
-
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 app.listen(PORT, () => {
   console.log(`Server is ready at port ${PORT}`)
