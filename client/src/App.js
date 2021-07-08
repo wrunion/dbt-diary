@@ -5,23 +5,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from './reusable/Header'
 import NavBar from './components/NavBar'
 import Day from './Day'
-import Page from './reusable/Page'
-
-const Week = () => {
-  return(
-    <>
-      Week 
-    </>
-  )
-}
-
-const Home = () => {
-  return(
-    <>
-      Home
-    </>
-  )
-}
+import Week from './Week'
+import Home from './Home'
 
 const App = () => {
   return (
@@ -45,7 +30,7 @@ const App = () => {
         <Segment>
           <div id="content">
             <Route exact path='/'>
-              <Page title='Home' />
+              <Home />
             </Route>
             <Route exact path='/day'>
               <Day />

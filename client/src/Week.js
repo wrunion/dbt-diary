@@ -1,9 +1,9 @@
 import React from 'react'
 import Page from './reusable/Page'
 
-const Home = () => {
+const Week = () => {
   return(
-    <Page title='Home'>
+    <Page title='Week'>
       content content content 
       content content content
 
@@ -11,4 +11,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default Week;
