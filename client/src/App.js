@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import { Segment } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
@@ -9,6 +9,7 @@ import Week from './components/Week'
 import Home from './components/Home'
 
 const App = () => {
+
   return (
     <Router>
     <div className="parent-container">
