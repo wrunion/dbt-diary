@@ -5,13 +5,17 @@ const helmet = require('helmet')
 const compression = require("compression")
 const ejs = require('ejs')
 const cors = require('cors')
+const movieRouter = require('./routes/movie-router.js')
+
+const db = require('./mongo_db')
+
 require('dotenv').config()
 // const { createListingsTable, listingsToPostgres } = require('./middleware/listingsMiddleware')
 
 const app = express()
 app.disable('x-powered-by');
 
-const PORT = process.env.PORT || 5050
+const PORT = process.env.PORT || 8000
 
 /* Configure view templates, which contain HTML, CSS & JS for the admin and login pages */
 app.set('view engine', 'ejs');
@@ -47,9 +51,8 @@ const setHeaders = (req, res, next) => {
 app.use(setHeaders)
 
 /* Routes */
-require('./routes/user')(app);
-require('./routes/listings')(app);
-require("./routes")(app);
+app.use('/api', movieRouter)
+
 
 /* insert json into postgres */
 // (async () => {
@@ -61,6 +64,8 @@ require("./routes")(app);
 app.use((err, req, res) => {
   console.log(err);
 });
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 app.listen(PORT, () => {
   console.log(`Server is ready at port ${PORT}`)
