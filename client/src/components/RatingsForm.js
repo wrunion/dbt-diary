@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react'
 import { Dropdown, Form, Button } from 'semantic-ui-react'
-import { Dimmer, Header, Icon, Segment } from 'semantic-ui-react'
+import { Dimmer, Header, Icon } from 'semantic-ui-react'
 const { Subheader } = Header
 const { Dimmable } = Dimmer
 const { Field } = Form
@@ -42,25 +42,59 @@ const DropdownDisplay = ({label, name, handleChange}) => {
   }
 }
 
-/* Each of these is a field. Add here */
+/* 
+ * Helper function to get rid of local state vals
+ * before sending form data
+*/
+const filterFormVals = (obj) => {
+  let returnObj = {}
+  for (const el in obj) {
+    if (el !== 'active') {
+    returnObj[el] = obj[el]
+    }
+  }
+  return(returnObj)
+}
+
+/* Each of these is a dropdown form field. Add here */
 const metrics = ['suicideUrge', 'selfHarmUrge', 'drugUrge', 'emotionalMisery', 'physicalMisery', 'joy', 'gratitude', 'calm', 'intentionality']
-const formVals = {} 
-metrics.forEach((metric) => formVals[metric] = 0)
+
+/* Generate initial state from metrics array */
+const generateInitialState = (arr) => {
+  const initialState = {} 
+  arr.forEach((element) => initialState[element] = 0)
+  return initialState;
+}
 
 class DailyForm extends Component {
 
   state = { 
-    ...formVals,
     active: false 
   }
 
+  componentDidMount() {
+    const initState = generateInitialState(metrics)
+    this.setState({ ...this.state, ...initState })
+  }
+
+  resetState() {
+    const initState = generateInitialState(metrics)
+    this.setState({ ...initState })
+  }
+
   handleSubmit = () => {
-    const timeStamp = Date.now();
-    const formVals = { ...this.state, timeStamp: timeStamp}
-    console.log('formVals', formVals)
+    // remove local state vars like "active" from form response
+    const vals = filterFormVals(this.state)
+
+    const timeStamp = new Date();
+    const submitVals = { ...vals, timeStamp: timeStamp}
+
+    /* submit submitVals to server here */
+    console.log(submitVals)
+
+    // Shows dimmer message
     this.handleShow()
-    // reset to initial form state on submit
-    // this.state = formVals
+    this.resetState();
   }
 
   handleChange = (event, data) => {
@@ -73,9 +107,10 @@ class DailyForm extends Component {
 
   render() {
     const { handleSubmit, handleChange } = this;
+    const { active } = this.state;
 
   return (
-    <Dimmable dimmed={this.state.active} style={{borderRadius: '5px'}}>
+    <Dimmable dimmed={active} style={{borderRadius: '5px'}}>
 
     <Form id="form" onSubmit={handleSubmit}>
       <Form.Group widths='equal'>
@@ -106,7 +141,7 @@ class DailyForm extends Component {
       <Button type="submit" color='grey' basic fluid>Submit</Button>
 
       </Form>
-      <Dimmer active={this.state.active} onClickOutside={this.handleHide}>
+      <Dimmer active={active} onClickOutside={this.handleHide}>
       <Header as='h2' icon inverted>
         <Icon name='heart' />
         Nice Work! 
