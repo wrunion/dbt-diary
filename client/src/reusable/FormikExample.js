@@ -1,6 +1,14 @@
 import React from 'react'
 import { useFormik } from 'formik';
  
+// medsAsPrescribed: true,
+// selfHarm: false,
+// usedSkills: true, 
+// medChanges: '',
+// skillsUsed: [],
+// homework: '',
+// other: ''
+
 const FormikExample = () => {
 
   const formik = useFormik({
