@@ -4,9 +4,9 @@ import { Segment } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from './reusable/Header'
 import NavBar from './components/NavBar'
-import Day from './Day'
-import Week from './Week'
-import Home from './Home'
+import Day from './components/Day'
+import Week from './components/Week'
+import Home from './components/Home'
 
 const App = () => {
   return (

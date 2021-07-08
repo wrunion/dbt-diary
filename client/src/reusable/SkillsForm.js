@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { Dropdown, Form, Input, Button } from 'semantic-ui-react'
+import { useFormik } from 'formik'
 
 const { Field } = Form;
 
@@ -34,10 +35,10 @@ const CustomNumberDropdown = ({ name, setFormVals }) => (
 
 
 
-class DailyForm extends Component {
-  state = {
-    formVals: {
-      joy: 0, 
+const DailyForm = () => {
+
+  const formik = useFormik({
+    initialValues: {
       selfHarm: 0,
       controlEating: 0,
       lashOutAtPartner: 0, 
@@ -45,6 +46,7 @@ class DailyForm extends Component {
       sleepAverageHours: 0,
       emotionMisery: 0, 
       physicalMisery: 0,
+      joy: 0, 
       medsAsPrescribed: true,
       selfHarm: false,
       usedSkills: true, 
@@ -52,23 +54,11 @@ class DailyForm extends Component {
       skillsUsed: [],
       homework: '',
       other: ''
-    }
-  }
-
-  handleSubmit = () => {
-    console.log(this.state.formVals)
-  }
-
-  handleDropdownChange = (event, data) => {
-    const { name, value } = data
-    
-    console.log(name, value)
-    this.setState({ [name]: value })
-  }
-
-  render() {
-    const { handleSubmit, handleDropdownChange } = this
-    console.log(this.state)
+    },
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
   return (
     <Form id="form" onSubmit={handleSubmit}>
@@ -78,17 +68,13 @@ class DailyForm extends Component {
       <Dropdown options={numberOptions}
         clearable 
         selection
-        name='joy' // this is how we'll read the value on submit
+        name={'joy'} // this is how we'll read the value on submit
         defaultValue={numberOptions[0].value}
-        onChange={handleDropdownChange}
-        // value={this.state.formVals.joy}
+        onChange={handleChange}
         />
-
-
       <Button type="submit">Submit</Button>
-      </Form>
-    )
-  }
+    </Form>
+  )
 }
 
 export default DailyForm;
