@@ -12,14 +12,14 @@ const numberOptions = [
   { key: 5, text: '5', value: 5 },
 ]
 
-const CustomNumberDropdown = ({ name, setFormVals }) => (
-    <Dropdown options={numberOptions}
-      clearable 
-      selection
-      name={name} // this is how we'll read the value on submit
-      defaultValue={numberOptions[0].value}
-      onChange={(e) => setFormVals({ name: e.target.value })}
-      />
+const CustomNumberDropdown = ({ name, onChange }) => (
+  <Dropdown options={numberOptions}
+    clearable 
+    selection
+    name={name} // this is how we'll read the value on submit
+    defaultValue={numberOptions[0].value}
+    onChange={onChange}
+    />
 )
 
 // const RatingsDropdown = ({ label, name }) => {
@@ -32,57 +32,42 @@ const CustomNumberDropdown = ({ name, setFormVals }) => (
 //   )
 // }}
 
-
+const metrics = ['suicideUrge', 'selfHarmUrge', 'drugUrge', 'emotionalMisery', 'physicalMisery', 'joy']
+const formVals = {} 
+metrics.forEach((metric) => formVals[metric] = 0)
 
 class DailyForm extends Component {
-  state = {
-    formVals: {
-      joy: 0, 
-      selfHarm: 0,
-      controlEating: 0,
-      lashOutAtPartner: 0, 
-      racingThoughts: 0,
-      sleepAverageHours: 0,
-      emotionMisery: 0, 
-      physicalMisery: 0,
-      medsAsPrescribed: true,
-      selfHarm: false,
-      usedSkills: true, 
-      medChanges: '',
-      skillsUsed: [],
-      homework: '',
-      other: ''
-    }
+
+  state = { 
+    formVals 
   }
 
   handleSubmit = () => {
-    console.log(this.state.formVals)
+    console.log('submit', this.state)
   }
 
-  handleDropdownChange = (event, data) => {
+  handleChange = (event, data) => {
     const { name, value } = data
-    
-    console.log(name, value)
     this.setState({ [name]: value })
   }
 
   render() {
-    const { handleSubmit, handleDropdownChange } = this
-    console.log(this.state)
+    const { handleSubmit, handleChange } = this
+    console.log('state at runtime', this.state)
 
   return (
     <Form id="form" onSubmit={handleSubmit}>
       {/* <RatingsDropdown name="self_harm" label="Self harm" /> */}
       {/* <CustomNumberDropdown name="selfHarm" setFormVals={setFormVals} /> */}
 
-      <Dropdown options={numberOptions}
+      <CustomNumberDropdown name='joy' onChange={handleChange} />
+      {/* <Dropdown options={numberOptions}
         clearable 
         selection
         name='joy' // this is how we'll read the value on submit
         defaultValue={numberOptions[0].value}
         onChange={handleDropdownChange}
-        // value={this.state.formVals.joy}
-        />
+        /> */}
 
 
       <Button type="submit">Submit</Button>
