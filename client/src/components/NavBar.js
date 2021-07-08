@@ -8,18 +8,18 @@ const NavBar = () => {
 
   return ( 
     <>
-    <Menu pointing secondary vertical>
+    <Menu pointing secondary widths={3}>
       <Item 
         as={NavLink} exact to='/'
-        name='home'
+        name='Journal'
       />
       <Item 
         as={NavLink} to='/day'
-        name='Day'
+        name='Today'
       />
       <Item 
         as={NavLink} to='/week'
-        name='Week'
+        name='This Week'
       />
 
     </Menu>
