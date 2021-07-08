@@ -21,6 +21,17 @@ const CustomNumberDropdown = ({ name, onChange }) => (
     onChange={onChange}
     />
 )
+const DropdownDisplay = ({label, name, handleChange}) => {
+  if (label && name && handleChange) {
+  return(
+    <Field>
+      <label>{label}</label>
+      <CustomNumberDropdown name={name} onChange={handleChange} />
+    </Field>
+  ) } else {
+    return null;
+  }
+}
 
 // const RatingsDropdown = ({ label, name }) => {
 //   {(label && name) && (
@@ -39,11 +50,13 @@ metrics.forEach((metric) => formVals[metric] = 0)
 class DailyForm extends Component {
 
   state = { 
-    formVals 
+    ...formVals 
   }
 
   handleSubmit = () => {
     console.log('submit', this.state)
+    // reset to initial form state on submit
+    // this.state = formVals
   }
 
   handleChange = (event, data) => {
@@ -55,19 +68,27 @@ class DailyForm extends Component {
     const { handleSubmit, handleChange } = this
     console.log('state at runtime', this.state)
 
+
+    // ['suicideUrge', 'selfHarmUrge', 'drugUrge', 'emotionalMisery', 'physicalMisery', 'joy']
   return (
     <Form id="form" onSubmit={handleSubmit}>
-      {/* <RatingsDropdown name="self_harm" label="Self harm" /> */}
-      {/* <CustomNumberDropdown name="selfHarm" setFormVals={setFormVals} /> */}
+      <Form.Group widths='equal' inline>
+        <DropdownDisplay label='Joy' name='joy'
+          handleChange={handleChange} />
+        <DropdownDisplay label='Emotional Misery'  name='emotionalMisery'
+          handleChange={handleChange} />  
+        <DropdownDisplay label='Physical Misery' name='physicalMisery'
+          handleChange={handleChange} />  
+      </Form.Group>
+      <Form.Group widths='equal' inline>
+        <DropdownDisplay label='Suicide Urge' name='suicideUrge'
+          handleChange={handleChange} />
+        <DropdownDisplay label='Self Harm Urge' name='selfHarmUrge'
+          handleChange={handleChange} />  
+        <DropdownDisplay label='Drug Urge' name='drugUrge'
+          handleChange={handleChange} />  
+      </Form.Group>
 
-      <CustomNumberDropdown name='joy' onChange={handleChange} />
-      {/* <Dropdown options={numberOptions}
-        clearable 
-        selection
-        name='joy' // this is how we'll read the value on submit
-        defaultValue={numberOptions[0].value}
-        onChange={handleDropdownChange}
-        /> */}
 
 
       <Button type="submit">Submit</Button>
