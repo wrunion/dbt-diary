@@ -5,22 +5,21 @@ const Day = require('./../models/day.js')
 const router = express.Router()
 
 // timestamp formatted like: Jul 08 2021
-const formattedDate = () => Date().split(' ').slice(1, 4).join(' ').toString()
+const getFormattedDate = () => Date().split(' ').slice(1, 4).join(' ').toString()
 
 const insertData = async (req, res) => {
   try {
-    const date = formattedDate();
+    const date = getFormattedDate();
     const body = req.body;
 
     if (!body) {
       return res.status(400).json({
         success: false,
-        error: 'You must provide data',
+        error: 'No data received. Please verify input and try again',
       })
     }
 
     const entry = { ...body, date: date }
-    console.log(entry)
     const day = new Day(entry)
     if (!day) {
       return res.status(400).json({ success: false, error: err })
