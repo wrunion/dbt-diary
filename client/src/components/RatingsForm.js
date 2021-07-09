@@ -148,7 +148,7 @@ class DailyForm extends Component {
       <Dimmer active={active} onClickOutside={this.handleHide}>
       <Header as='h2' icon inverted>
         <Icon name='heart' />
-        Success!
+        Success! Nice work! 
         <Subheader>Be gentle with yourself today</Subheader>
       </Header>
       </Dimmer>
