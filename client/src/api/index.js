@@ -3,7 +3,7 @@ export const getRequest = (url) => fetch(url, {
   headers: {
     'Content-Type': 'application/json'
   }
-}).then(response => response.json())
+}).then(response => response.json()).then(json => console.log(json))
 
 export const postRequest = async (url, data) => await fetch(url, {
   method: 'POST', // *GET, POST, PUT, DELETE, etc.

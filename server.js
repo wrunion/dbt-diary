@@ -6,8 +6,8 @@ const compression = require("compression")
 const ejs = require('ejs')
 const cors = require('cors')
 const movieRouter = require('./routes/movie-router.js')
-const db = require('./mongo_db')
 require('dotenv').config()
+const db = require('./mongo_db')
 
 const app = express()
 app.disable('x-powered-by');
