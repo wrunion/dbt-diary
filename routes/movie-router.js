@@ -6,10 +6,12 @@ const router = express.Router()
 
 // timestamp formatted like: Jul 08 2021
 const getFormattedDate = () => Date().split(' ').slice(1, 4).join(' ').toString()
+const getWeekday = () => Date().split(' ')[0];
 
 const insertData = async (req, res) => {
   try {
     const date = getFormattedDate();
+    const weekday = getWeekday();
     const body = req.body;
 
     if (!body) {
@@ -19,7 +21,7 @@ const insertData = async (req, res) => {
       })
     }
 
-    const entry = { ...body, date: date }
+    const entry = { ...body, date: date, day: weekday }
     const day = new Day(entry)
     if (!day) {
       return res.status(400).json({ success: false, error: err })
