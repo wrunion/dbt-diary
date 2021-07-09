@@ -9,7 +9,8 @@ export default class MovieList extends React.Component {
   fetchAll = async () => {
     const movies = await fetch('api/movies');
     const data = await movies.json()
-    console.log(data)
+    // console.log(movies)
+    console.log(data.data)
   }
 
   render() {
