@@ -1,15 +1,12 @@
-import React from 'react'
-// import * as api from './../api'
-
+import React, { useState, useEffect } from 'react'
 
 const postDay = () => {
-
   const data = {
     "suicideUrge": '0', "selfHarmUrge": '0', "drugUrge": '0', "emotionalMisery": '0', "physicalMisery": '0', "joy": '0', "gratitude": '0', "calm": '0', "intentionality" : '0'
   }
 
   fetch('api/day', {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    method: 'POST', 
     headers: {
       'Content-Type': 'application/json'
     },
@@ -18,18 +15,42 @@ const postDay = () => {
 }
 
 
-const CreateDay = () => {
+
+const DayApiTest = () => {
+
+  const [days, setDays] = useState([])
+
+  const getAllDays = () => {
+    fetch('api/day', {
+      method: 'GET', 
+    }).then(res => res.json()).then(json => setDays(json.data)).catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+    getAllDays()
+  }, [])
+
+  console.log(days)
 
   return(
     <div>
 
       <button onClick={() => postDay()}>Click here to test Post route</button>
 
+      <button onClick={() => getAllDays()}>Click to test GET route</button>
+
+      {days && 
+      <div id='days-div'>
+        {days.map(e => <div key={e._id}>
+          Joy: {e.joy} 
+        </div>)}
+      </div>}
+
     </div>
   )
 }
 
-export default CreateDay
+export default DayApiTest;
 
 // class MovieList extends React.Component {
 //   state ={
