@@ -7,6 +7,7 @@ import NavBar from './components/NavBar'
 import Day from './components/Day'
 import Week from './components/Week'
 import Home from './components/Home'
+import ApiTest from './components/ApiTest'
 // import { ReactComponent as MoonImage } from './assets/moon-phase.svg'
 
 const App = () => {
@@ -29,8 +30,15 @@ const App = () => {
       <div className="right-col">
         {/* <RightColumn />   */}
       </div> 
-
+      
       <div className="main">
+
+      {/* test  */}
+      <ApiTest />
+
+
+
+
       <NavBar />
 
         <Segment>
