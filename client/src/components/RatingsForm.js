@@ -66,20 +66,6 @@ const generateInitialState = (arr) => {
   return initialState;
 }
 
-const postDay = () => {
-  const data = {
-    "suicideUrge": '0', "selfHarmUrge": '0', "drugUrge": '0', "emotionalMisery": '0', "physicalMisery": '0', "joy": '0', "gratitude": '0', "calm": '0', "intentionality" : '0'
-  }
-
-  fetch('api/day', {
-    method: 'POST', 
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  }).then(res => res.json()).then(json => console.log(json)).catch(err => console.log(err))
-}
-
 class DailyForm extends Component {
 
   state = { 
@@ -97,25 +83,22 @@ class DailyForm extends Component {
   }
 
   handleSubmit = () => {
-    // remove local state vars like "active" from form response
     const vals = filterFormVals(this.state)
 
-    const timeStamp = new Date();
-    const submitVals = { ...vals, timeStamp: timeStamp}
-
-    console.log(submitVals)
-    /* submit submitVals to server here */
     fetch('api/day', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(submitVals)
-    }).then(res => res.json()).then(json => console.log(json)).catch(err => console.log(err))
+      body: JSON.stringify(vals)
+    }).then(res => res.json()).then(json => {
+      if (json.success === true) { 
+        // Shows dimmer message
+        this.handleShow() 
+        this.resetState();
+      }
+    }).catch(err => console.log(err))
 
-    // Shows dimmer message
-    this.handleShow()
-    this.resetState();
   }
 
   handleChange = (event, data) => {
@@ -165,7 +148,7 @@ class DailyForm extends Component {
       <Dimmer active={active} onClickOutside={this.handleHide}>
       <Header as='h2' icon inverted>
         <Icon name='heart' />
-        Nice Work! 
+        Success!
         <Subheader>Be gentle with yourself today</Subheader>
       </Header>
       </Dimmer>
