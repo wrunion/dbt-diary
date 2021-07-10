@@ -46,7 +46,7 @@
 }
 .header { 
   grid-area: header; 
-  padding-bottom: 1em; 
+  /* padding-bottom: 1em;  */
 }
 .left-col { 
   grid-area: left-col;  

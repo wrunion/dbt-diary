@@ -4,10 +4,10 @@ import { Segment } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from './components/Header'
 import NavBar from './components/NavBar'
-import Day from './components/Day'
-import Week from './components/Week'
-import Journal from './components/Journal'
-import JournalForm from './components/forms/JournalForm'
+import Day from './pages/Day'
+import Week from './pages/Week'
+import Journal from './pages/Journal'
+import Resources from './pages/Resources'
 // import ApiTest from './components/ApiTest'
 // import { ReactComponent as MoonImage } from './assets/moon-phase.svg'
 
@@ -49,6 +49,9 @@ const App = () => {
             </Route>
             <Route exact path='/week'>
               <Week />
+            </Route>
+            <Route exact path='/resources'>
+              <Resources />
             </Route>
           </div>
         </Segment>
