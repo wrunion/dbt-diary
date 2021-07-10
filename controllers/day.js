@@ -30,7 +30,7 @@ const pool = db.pool;
 // }
 
 /* for the ratings data route */
-const insertRatingData = async (req, res) => {
+const createEntry = async (req, res, queryString) => {
   try {
     if (!req.body) {
       res.json({
@@ -50,18 +50,19 @@ const insertRatingData = async (req, res) => {
     if (!json || typeof json !== 'object') {
       throw `Incorrect input type. "Data" should be an object` } 
 
-    const success = await pool.query('INSERT INTO dbt_data (date, rating_data) VALUES ($1, $2) RETURNING *', [date, json]);
+    // const success = await pool.query('INSERT INTO dbt_data (date, rating_data) VALUES ($1, $2) RETURNING *', [date, json]);
+    const success = await pool.query(queryString, [date, json]);
     
     const createdEntry = success.rows[0]
 
     res.json({
       success: true,
-      message: 'Daily data created!',
+      message: 'Entry created!',
       entry: createdEntry
     })
 
   } catch (err) {
-    console.error('insertRatingData error: ' + err) 
+    console.error('createEntry error: ' + err) 
     res.json({
       success: false,
       message: 'Something went wrong',
@@ -70,4 +71,68 @@ const insertRatingData = async (req, res) => {
   }
 }
 
-module.exports = insertRatingData
+// const insertJournalData = async (req, res) => {
+//   try {
+//     if (!req.body) {
+//       res.json({
+//         success: false,
+//         error: 'No data received'
+//       })
+//     }
+
+//     console.log(req.body)
+
+//     const date = req.body.date;
+//     if (!date || typeof date !== 'string') {
+//       throw `Incorrect input type. "Date" should be a string`
+//     }
+
+//     const json = req.body.json;
+//     if (!json || typeof json !== 'object') {
+//       throw `Incorrect input type. "Data" should be an object` } 
+
+//     const success = await pool.query('INSERT INTO dbt_data (date, rating_data) VALUES ($1, $2) RETURNING *', [date, json]);
+    
+//     const createdEntry = success.rows[0]
+
+//     res.json({
+//       success: true,
+//       message: 'Daily data created!',
+//       entry: createdEntry
+//     })
+
+//   } catch (err) {
+//     console.error('insertRatingData error: ' + err) 
+//     res.json({
+//       success: false,
+//       message: 'Something went wrong',
+//       error: err
+//     })
+//   }
+// }
+
+// "type" represents which category of data sent from the client: 
+// either data from the Ratings tab ({ type: "ratings" })
+// or data from the Journal tab ({ type: "journal" }) 
+
+const ratingsQuery = `INSERT INTO dbt_data (date, rating_data) VALUES ($1, $2) RETURNING *`
+const journalQuery = `INSERT INTO dbt_data (date, journal_data) VALUES ($1, $2) RETURNING *`
+
+const insertData = (req, res) => {
+  const type = req.body?.type;
+  if (!type) {
+    res.json({
+      success: false,
+      error: 'Entry type property must be either "ratings" or "journal"'
+    })
+  }
+
+  if (type === 'ratings') {
+    return createEntry(req, res, ratingsQuery)
+  } else if (type === 'journal') {
+    return createEntry(req, res, journalQuery);
+  } 
+  // Do I need to call next() here? 
+}
+
+module.exports = insertData
