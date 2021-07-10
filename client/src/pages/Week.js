@@ -16,7 +16,7 @@ const Week = () => {
       }
     }).then(res => res.json()).then(json => {
       console.log(json)
-      setCards(json)
+      setCards(json.data)
       }).catch(err => {
       console.log(err);
       setError('There was an error fetching data. See console for details.')
@@ -37,18 +37,27 @@ const Week = () => {
         "gratitude": "I'm grateful that I get to code, and to play piano. I'm grateful that I have time to rest and relax and pursue hobbies for awhile. "
       }
     }
-    
+
   return(
     <Page title='Week' subtitle="In progress">
       {error && <div>
          {error} 
         </div>}
-        {/* {cards && cards.map((e, i) => {
+        {/* this will be the "journal card" format, basically  */}
+        {cards && cards.map((e, i) => {
+          if (e.journal_data) {
           return (
-
+            <DailyCard 
+              key={e.timestamp}
+              title={e.date} 
+              skills={e.journal_data.used_skills}
+              homework={e.journal_data.homework}
+              // other={e.journal_data.other}
+              gratitude={e.journal_data.gratitude} 
+              />
           )
-        })} */}
-      {/* <DailyCard /> */}
+          }
+        })}
 
     </Page>
   )
