@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { createJournalEntry } from './../api/days'
+import { createNewEntry } from './../api'
 
 const DayApiTest = () => {
 
@@ -33,12 +33,12 @@ const DayApiTest = () => {
 
 
   // const req = { date: date, json: data, type: type }
-  // export const createJournalEntry = ({ input, type, successCb }) => {
+  // export const createNewEntry = ({ input, type, successCb }) => {
 
   // "type" represents which category of data we want to enter: 
   // either data from the Ratings form ({ type: "ratings" })
   // or data from the Journal tab ({ type: "journal" }) 
-  const testJournalEntry = () => createJournalEntry({ 
+  const testJournalEntry = () => createNewEntry({ 
     date: 'asdfasdf', data: { "a": "b" }, type: 'ratings'
   })
 
