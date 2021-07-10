@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import { createJournalEntry } from './../api/days'
 
 const DayApiTest = () => {
 
@@ -11,24 +11,38 @@ const DayApiTest = () => {
   //   }).then(res => res.json()).then(json => setDays(json.data)).catch(err => console.log(err))
   // }
 
-  const testPost = () => {
+  // const testPost = () => {
 
-    const vals = { date: 'date date', json: { "Some": "Json", "Data": "Here"}}
+  //   const vals = { date: 'date date', json: { "Some": "Json", "Data": "Here"}}
 
-    fetch('api/day', {
-      method: 'POST', 
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(vals)
-    }).then(res => res.json()).then(json => {
-      console.log(json)
-      // if (json.success === true) { 
-      //   // Shows dimmer message
-      //   console.log('success!')
-      // }
-    }).catch(err => console.log(err))
-  }
+  //   fetch('api/day', {
+  //     method: 'POST', 
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(vals)
+  //   }).then(res => res.json()).then(json => {
+  //     console.log(json)
+  //     // if (json.success === true) { 
+  //     //   // Shows dimmer message
+  //     //   console.log('success!')
+  //     // }
+  //   }).catch(err => console.log(err))
+  // }
+
+
+
+  // const req = { date: date, json: data, type: type }
+  // export const createJournalEntry = ({ input, type, successCb }) => {
+
+  // "type" represents which category of data we want to enter: 
+  // either data from the Ratings form ({ type: "ratings" })
+  // or data from the Journal tab ({ type: "journal" }) 
+  const testJournalEntry = () => createJournalEntry({ 
+    date: 'asdfasdf', data: { "a": "b" }, type: 'journal'
+  })
+
+
 
   // useEffect(() => {
   //   getAllDays()
@@ -39,7 +53,7 @@ const DayApiTest = () => {
 
 
       
-      <button onClick={() => testPost()}>Click to test post route FOR POSTGRES!!!</button>
+      <button onClick={() => testJournalEntry()}>Click to test post route FOR POSTGRES!!!</button>
 
 
 

@@ -31,6 +31,8 @@ const pool = db.pool;
 
 /* for the ratings data route */
 const insertRatingData = async (req, res) => {
+  console.log(req.body)
+
   try {
     if (!req.body) {
       res.json({
@@ -38,6 +40,11 @@ const insertRatingData = async (req, res) => {
         error: 'No data received'
       })
     }
+
+    console.log(req.body)
+
+    const type = req.body.type;
+    console.log(type)
 
     const date = req.body.date;
     if (!date || typeof date !== 'string') {
