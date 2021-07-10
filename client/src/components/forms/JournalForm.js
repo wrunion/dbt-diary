@@ -11,21 +11,6 @@ const JournalForm = () => {
   const [other, setOther] = useState('')
   const [gratitude, setGratitude] = useState('')
 
-
-  const handleChange = (event) => {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    console.log(value, name)
-
-
-    // setFormVals({ [name]: value})
-
-    // this.setState({
-    //   [name]: value
-    // });
-  }
-
   const myObj = {
     meds: 'meds_as_prescribed',
     harm: 'self_harm', 
