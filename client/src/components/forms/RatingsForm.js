@@ -101,7 +101,8 @@ class DailyForm extends Component {
     // format the data as the server expects
     const req = { json: vals, type: 'ratings' }
 
-    fetch('api/day', {
+    /* ------- CHANGE THIS TO "api/day" TO ENTER REAL DATA ------------ */
+    fetch('api/day/test', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'
@@ -136,23 +137,18 @@ class DailyForm extends Component {
     <Dimmable dimmed={active} style={{borderRadius: '5px'}}>
 
     <Form id="form" onSubmit={handleSubmit}>
+      {/* dropdown inputs rendered here  */}
       <div style={{display: 'flex', flexWrap: 'wrap', 
-      justifyContent: 'center' }}>
-
-      {metrics.map((e, i) =>  
-        <div key={i}>
+        justifyContent: 'center' }}>
+        {metrics.map((e, i) =>  
           <DropdownDisplay key={i} label={inputLabels[e]} name={e}
-            handleChange={handleChange} /> 
-        </div>
-        )}
-      
+            handleChange={handleChange} />
+          )}
       </div>
-
-
-
+  
       <Button type="submit" color='grey' basic fluid>Submit</Button>
-
       </Form>
+  
       <Dimmer active={active} onClickOutside={this.handleHide}>
       <Header as='h2' icon inverted>
         <Icon name='heart' />
@@ -166,27 +162,4 @@ class DailyForm extends Component {
 }
 
 export default DailyForm;
-      {/* <Form.Group widths='equal'>
-        <DropdownDisplay label='Joy' name='joy'
-          handleChange={handleChange} />
-        <DropdownDisplay label='Emotional Misery'  name='emotionalMisery'
-          handleChange={handleChange} />  
-        <DropdownDisplay label='Physical Misery' name='physicalMisery'
-          handleChange={handleChange} />  
-      </Form.Group>
-      <Form.Group widths='equal'>
-        <DropdownDisplay label='SI' name='SI'
-          handleChange={handleChange} />
-        <DropdownDisplay label='Self Harm Urge' name='selfHarmUrge'
-          handleChange={handleChange} />  
-        <DropdownDisplay label='Drug Urge' name='drugUrge'
-          handleChange={handleChange} />  
-      </Form.Group>
-      <Form.Group widths='equal'>
-        <DropdownDisplay label='Gratitude' name='gratitude'
-          handleChange={handleChange} />
-        <DropdownDisplay label='Calm' name='calm'
-          handleChange={handleChange} />  
-        <DropdownDisplay label='Intentionality' name='intentionality'
-          handleChange={handleChange} />  
-      </Form.Group> */}
+   

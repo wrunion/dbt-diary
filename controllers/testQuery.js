@@ -15,8 +15,8 @@ const utils = require('./../utils/momentUtils')
 
 /* ----------------------------------------- */
 
-const ratingsQuery = `INSERT INTO dbt_data (date, timestamp, rating_data) VALUES ($1, $2, $3) RETURNING *`
-const journalQuery = `INSERT INTO dbt_data (date, timestamp, journal_data) VALUES ($1, $2, $3) RETURNING *`
+const ratingsQuery = `INSERT INTO dbt_data_test (date, timestamp, rating_data) VALUES ($1, $2, $3) RETURNING *`
+const journalQuery = `INSERT INTO dbt_data_test (date, timestamp, journal_data) VALUES ($1, $2, $3) RETURNING *`
 
 /* for the ratings data route */
 const createEntry = async (req, res, queryString) => {
