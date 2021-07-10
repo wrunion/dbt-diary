@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { createNewEntry } from './../api'
+import { createNewEntry } from '../api'
 
 const DayApiTest = () => {
 

@@ -48,7 +48,7 @@ app.use('/api', dayRouter)
 
 /* Global error handler */
 app.use((err, req, res) => {
-  console.log(err);
+  console.log('Global error handler: ', err.message);
 });
 
 app.listen(PORT, () => {

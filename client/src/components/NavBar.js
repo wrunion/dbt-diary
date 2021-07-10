@@ -8,7 +8,7 @@ const NavBar = () => {
 
   return ( 
     <>
-    <Menu pointing secondary widths={3}>
+    <Menu pointing secondary widths={4}>
       <Item 
         as={NavLink} exact to='/'
         name='Journal'
@@ -20,6 +20,10 @@ const NavBar = () => {
       <Item 
         as={NavLink} to='/week'
         name='This Week'
+      />
+      <Item 
+        as={NavLink} to='/resources'
+        name='Resources'
       />
 
     </Menu>
