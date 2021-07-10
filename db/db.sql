@@ -12,8 +12,7 @@ CREATE TABLE IF NOT EXISTS dbt_data (
   date character varying(128) NOT NULL,
   timestamp character varying(128),
   rating_data json,
-  journal_data json,
-  metadata json
+  journal_data json
 );
 
 CREATE TABLE IF NOT EXISTS dbt_data_test (
@@ -21,7 +20,6 @@ CREATE TABLE IF NOT EXISTS dbt_data_test (
   date character varying(128) NOT NULL,
   timestamp character varying(128),
   rating_data json,
-  journal_data json,
-  metadata json
+  journal_data json
 );
 
