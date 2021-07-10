@@ -1,21 +1,18 @@
-import axios from 'axios'
-
-const instance = axios.create({
-    baseURL: 'http://localhost:8000/instance',
-})
-
-export const insertMovie = payload => instance.post(`/movie`, payload)
-export const getAllMovies = () => instance.get(`/movies`)
-export const updateMovieById = (id, payload) => instance.put(`/movie/${id}`, payload)
-export const deleteMovieById = id => instance.delete(`/movie/${id}`)
-export const getMovieById = id => instance.get(`/movie/${id}`)
-
-const api = {
-    insertMovie,
-    getAllMovies,
-    updateMovieById,
-    deleteMovieById,
-    getMovieById,
+export const createNewEntry = ({ data, type }) => {
+  // structure the request 
+  // in the format the server expects
+  const req = { json: data, type: type }
+  fetch('api/day', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(req)
+  }).then(res => res.json()).then(json => {
+    console.log(json)
+    return true;
+  }).catch(err => {
+    console.log(err); 
+    return false
+  }) 
 }
-
-export default api
