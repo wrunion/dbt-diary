@@ -39,6 +39,8 @@ const insertRatingData = async (req, res) => {
       })
     }
 
+    console.log(req.body)
+
     const date = req.body.date;
     if (!date || typeof date !== 'string') {
       throw `Incorrect input type. "Date" should be a string`
