@@ -1,11 +1,7 @@
 const express = require('express')
 const db = require('./../db')
 const router = express.Router()
-const insertRatingData = require('./../controllers/day.js')
-
-// timestamp formatted like: Jul 08 2021
-const getFormattedDate = () => Date().split(' ').slice(1, 4).join(' ').toString()
-const getWeekday = () => Date().split(' ')[0];
+const insertData = require('./../controllers')
 
 // const insertData = async (req, res) => {
 //   try {
@@ -44,10 +40,12 @@ const getWeekday = () => Date().split(' ')[0];
 //   }
 // }
 
-console.log(insertRatingData)
+console.log(insertData)
 
 /* Days */
-router.post('/day', insertRatingData)
+router.post('/day', insertData)
+router.post('/data', insertData)
+
 // router.get('/day', showDays)
 router.get('/test', (req, res) => {
   res.send('<h1>Hello world</h1>')
