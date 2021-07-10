@@ -7,6 +7,7 @@
 import React, { Component } from 'react'
 import { Dropdown, Form, Button } from 'semantic-ui-react'
 import { Dimmer, Header, Icon } from 'semantic-ui-react'
+
 const { Subheader } = Header
 const { Dimmable } = Dimmer
 const { Field } = Form
@@ -22,18 +23,19 @@ const numberOptions = [
 
 const CustomNumberDropdown = ({ name, onChange }) => (
   <Dropdown options={numberOptions}
-    clearable 
     selection
+    scrolling
     name={name} // this is how we'll read the value on submit
     defaultValue={numberOptions[0].value}
     onChange={onChange}
+    style={{ width: '100px' }}
     />
 )
 
 const DropdownDisplay = ({label, name, handleChange}) => {
   if (label && name && handleChange) {
   return(
-    <Field>
+    <Field style={{ margin: '20px' }}>
       <label style={{ color: '#5a5a5a', paddingBottom: '.5em' }}>{label}</label>
       <CustomNumberDropdown name={name} onChange={handleChange} />
     </Field>
@@ -57,7 +59,19 @@ const filterFormVals = (obj) => {
 }
 
 /* Each of these is a dropdown form field. Add here */
-const metrics = ['suicideUrge', 'selfHarmUrge', 'drugUrge', 'emotionalMisery', 'physicalMisery', 'joy', 'gratitude', 'calm', 'intentionality']
+const metrics = ['SI', 'self_harm_urge', 'drug_urge', 'emotional_misery', 'physical_misery', 'joy', 'gratitude', 'calm', 'intentionality']
+
+const inputLabels = {
+  'joy': 'Joy',
+  'emotional_misery': 'Emotional Misery',
+  'physical_misery': 'Physical Misery',
+  'SI': 'SI',
+  'self_harm_urge': 'Self harm urge',
+  'drug_urge': 'Drug urge',
+  'gratitude': 'Gratitude',
+  'calm': 'Calm',
+  'intentionality': 'Intentionality'
+}  
 
 /* Generate initial state from metrics array */
 const generateInitialState = (arr) => {
@@ -84,21 +98,26 @@ class DailyForm extends Component {
 
   handleSubmit = () => {
     const vals = filterFormVals(this.state)
+    // format the data as the server expects
+    const req = { json: vals, type: 'ratings' }
 
     fetch('api/day', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(vals)
+      body: JSON.stringify(req)
     }).then(res => res.json()).then(json => {
+      console.log(json)
       if (json.success === true) { 
-        // Shows dimmer message
+        // Shows dimmer message and resets state
         this.handleShow() 
         this.resetState();
       }
-    }).catch(err => console.log(err))
-
+    }).catch(err => {
+      console.log(err);
+      return 'There was an error. See console for details'
+    }) 
   }
 
   handleChange = (event, data) => {
@@ -117,30 +136,19 @@ class DailyForm extends Component {
     <Dimmable dimmed={active} style={{borderRadius: '5px'}}>
 
     <Form id="form" onSubmit={handleSubmit}>
-      <Form.Group widths='equal'>
-        <DropdownDisplay label='Joy' name='joy'
-          handleChange={handleChange} />
-        <DropdownDisplay label='Emotional Misery'  name='emotionalMisery'
-          handleChange={handleChange} />  
-        <DropdownDisplay label='Physical Misery' name='physicalMisery'
-          handleChange={handleChange} />  
-      </Form.Group>
-      <Form.Group widths='equal'>
-        <DropdownDisplay label='Suicide Urge' name='suicideUrge'
-          handleChange={handleChange} />
-        <DropdownDisplay label='Self Harm Urge' name='selfHarmUrge'
-          handleChange={handleChange} />  
-        <DropdownDisplay label='Drug Urge' name='drugUrge'
-          handleChange={handleChange} />  
-      </Form.Group>
-      <Form.Group widths='equal'>
-        <DropdownDisplay label='Gratitude' name='gratitude'
-          handleChange={handleChange} />
-        <DropdownDisplay label='Calm' name='calm'
-          handleChange={handleChange} />  
-        <DropdownDisplay label='Intentionality' name='intentionality'
-          handleChange={handleChange} />  
-      </Form.Group>
+      <div style={{display: 'flex', flexWrap: 'wrap', 
+      justifyContent: 'center' }}>
+
+      {metrics.map((e, i) =>  
+        <div key={i}>
+          <DropdownDisplay key={i} label={inputLabels[e]} name={e}
+            handleChange={handleChange} /> 
+        </div>
+        )}
+      
+      </div>
+
+
 
       <Button type="submit" color='grey' basic fluid>Submit</Button>
 
@@ -158,3 +166,27 @@ class DailyForm extends Component {
 }
 
 export default DailyForm;
+      {/* <Form.Group widths='equal'>
+        <DropdownDisplay label='Joy' name='joy'
+          handleChange={handleChange} />
+        <DropdownDisplay label='Emotional Misery'  name='emotionalMisery'
+          handleChange={handleChange} />  
+        <DropdownDisplay label='Physical Misery' name='physicalMisery'
+          handleChange={handleChange} />  
+      </Form.Group>
+      <Form.Group widths='equal'>
+        <DropdownDisplay label='SI' name='SI'
+          handleChange={handleChange} />
+        <DropdownDisplay label='Self Harm Urge' name='selfHarmUrge'
+          handleChange={handleChange} />  
+        <DropdownDisplay label='Drug Urge' name='drugUrge'
+          handleChange={handleChange} />  
+      </Form.Group>
+      <Form.Group widths='equal'>
+        <DropdownDisplay label='Gratitude' name='gratitude'
+          handleChange={handleChange} />
+        <DropdownDisplay label='Calm' name='calm'
+          handleChange={handleChange} />  
+        <DropdownDisplay label='Intentionality' name='intentionality'
+          handleChange={handleChange} />  
+      </Form.Group> */}

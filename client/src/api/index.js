@@ -10,9 +10,10 @@ export const createNewEntry = ({ data, type }) => {
     body: JSON.stringify(req)
   }).then(res => res.json()).then(json => {
     console.log(json)
-    return true;
+
+    return 'Entry created!';
   }).catch(err => {
-    console.log(err); 
-    return false
+    console.log(err);
+    return 'There was an error. See console for details'
   }) 
 }
