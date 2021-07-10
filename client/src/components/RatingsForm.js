@@ -83,18 +83,22 @@ class DailyForm extends Component {
   }
 
   handleSubmit = () => {
-    // remove local state vars like "active" from form response
     const vals = filterFormVals(this.state)
 
-    const timeStamp = new Date();
-    const submitVals = { ...vals, timeStamp: timeStamp}
+    fetch('api/day', {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(vals)
+    }).then(res => res.json()).then(json => {
+      if (json.success === true) { 
+        // Shows dimmer message
+        this.handleShow() 
+        this.resetState();
+      }
+    }).catch(err => console.log(err))
 
-    /* submit submitVals to server here */
-    console.log(submitVals)
-
-    // Shows dimmer message
-    this.handleShow()
-    this.resetState();
   }
 
   handleChange = (event, data) => {
@@ -144,7 +148,7 @@ class DailyForm extends Component {
       <Dimmer active={active} onClickOutside={this.handleHide}>
       <Header as='h2' icon inverted>
         <Icon name='heart' />
-        Nice Work! 
+        Success! Nice work! 
         <Subheader>Be gentle with yourself today</Subheader>
       </Header>
       </Dimmer>
