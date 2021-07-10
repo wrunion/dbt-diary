@@ -64,14 +64,22 @@ const insertData = (req, res) => {
   if (!type) {
     res.json({
       success: false,
-      error: 'Entry type property must be either "ratings" or "journal"'
+      error: 'Missing "type" property. Type property must be "ratings" or "journal"'
     })
+    return;
   }
-  
-  type === 'ratings' && createEntry(req, res, ratingsQuery);
-  type === 'journal' && createEntry(req, res, journalQuery);
-  // We don't error handle here, since we have a 
-  // global error handler for sync functions
+
+  if (type === 'ratings') {
+    return createEntry(req, res, ratingsQuery);
+  }
+  if (type === 'journal') {
+    return createEntry(req, res, journalQuery);
+  }
+  // If we reach this far, they entered a type, but it was wrong
+  res.json({
+    success: false,
+    error: 'Entry "type" property must be "ratings" or "journal"'
+  })
 }
 
 module.exports = insertData
