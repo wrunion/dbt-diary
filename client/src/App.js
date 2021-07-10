@@ -6,8 +6,9 @@ import Header from './components/Header'
 import NavBar from './components/NavBar'
 import Day from './components/Day'
 import Week from './components/Week'
-import Home from './components/Home'
-import ApiTest from './components/ApiTest'
+import Journal from './components/Journal'
+import JournalForm from './components/forms/JournalForm'
+// import ApiTest from './components/ApiTest'
 // import { ReactComponent as MoonImage } from './assets/moon-phase.svg'
 
 const App = () => {
@@ -41,7 +42,7 @@ const App = () => {
         <Segment>
           <div id="content">
             <Route exact path='/'>
-              <Home />
+              <Journal />
             </Route>
             <Route exact path='/day'>
               <Day />
