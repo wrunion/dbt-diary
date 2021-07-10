@@ -34,7 +34,7 @@ const App = () => {
       <div className="main">
 
       {/* route testing  */}
-      <ApiTest />
+      {/* <ApiTest /> */}
 
       <NavBar />
 
@@ -44,7 +44,7 @@ const App = () => {
               <Home />
             </Route>
             <Route exact path='/day'>
-              {/* <Day /> */}
+              <Day />
             </Route>
             <Route exact path='/week'>
               <Week />
