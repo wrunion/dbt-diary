@@ -2,10 +2,12 @@ import React from 'react'
 import { Card, Icon } from 'semantic-ui-react'
 const { Content, Header, Meta, Description } = Card;
 
-const description = [
-  'Amy is a violinist with 2 years experience in the wedding industry.',
-  'She enjoys the outdoors and currently resides in upstate New York.',
-].join(' ')
+// const description = [
+//   'Amy is a violinist with 2 years experience in the wedding industry.',
+//   'She enjoys the outdoors and currently resides in upstate New York.',
+// ].join(' ')
+
+const title = 'title goes here'
 
 const skills = [
   'skill 1', 'skill 2', 'skill 3'
@@ -20,28 +22,66 @@ const extra = (
 
 const now = 'Saturday, June 10'
 
-const CustomCard = () => (
-  
-  <Card fluid color='red'>
-    <Content header={now} />
-    {/* top dividing line */}
+const divStyle = {
+  marginBottom: '.75em'
+}
+
+const paragraphStyle = {
+  color: 'grey'
+}
+// props: title, 
+// formatted props object: {title, description}
+const CustomCard = ({ key, title, skills, homework, gratitude, tags }) => {
+
+  const description = () => {
+    return (
+      <div id='card-description'>
+        {homework && 
+        <div style={divStyle}>
+          <span style={{fontWeight: 'bold'}}> Homework: </span>
+          <span style={paragraphStyle}>{homework}</span>
+        </div>}
+        {gratitude && 
+        <div style={divStyle}>
+          <span style={{fontWeight: 'bold'}}> Gratitude: </span>
+          <span style={paragraphStyle}>{gratitude}</span>
+        </div>}
+        {skills && 
+        <div>
+          <span style={{fontWeight: 'bold'}}> Skills: </span>
+          <span style={paragraphStyle}>{skills}</span>
+        </div>}
+      </div>
+    )
+  }
+
+  const extra = () => {
+    return(
+    <div>
+      {skills && 
+        <div>
+          <span style={{fontWeight: 'bold'}}> Skills used: </span>
+          {skills}
+        </div>}
+      </div>
+    )
+  }
+
+  return (
+  <Card fluid color='red' key={key}>
+    <Content header={title} />
 
     <Content description={description} />
 
     {/* bottom dividing line  */}
     <Content extra>
-      <Icon name='hashtag' />
-      {/* TODO: map over skills here and make them links
-      also, format as desired */}
-      {/* {skills?.map(e => 
-        <span style={{ textDecoration: 'underline' }}>
-          {e}
-        </span>)} */}
-        {skills?.join(', ')}
+      <Icon name='hashtag' />{tags ? tags : 'No tags yet'}
     </Content>
-  
+
   </Card>
-)
+  )
+}
+
 
 export default CustomCard
 
