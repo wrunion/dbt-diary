@@ -39,7 +39,7 @@ const DayApiTest = () => {
   // either data from the Ratings form ({ type: "ratings" })
   // or data from the Journal tab ({ type: "journal" }) 
   const testJournalEntry = () => createJournalEntry({ 
-    date: 'asdfasdf', data: { "a": "b" }, type: 'journal'
+    date: 'asdfasdf', data: { "a": "b" }, type: 'ratings'
   })
 
 
