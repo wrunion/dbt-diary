@@ -5,11 +5,9 @@ const helmet = require('helmet')
 const compression = require("compression")
 const ejs = require('ejs')
 const cors = require('cors')
-const dayRouter = require('./routes/day-router.js')
+const dayRouter = require('./routes')
 require('dotenv').config()
-// const db = require('./mongo_db')
 const db = require('./db')
-
 const app = express()
 app.disable('x-powered-by');
 

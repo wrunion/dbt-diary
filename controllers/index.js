@@ -1,30 +1,35 @@
 const db = require('../db')
-const pool = db.pool;
+const pool = db.pool
+const utils = require('./../utils/momentUtils')
 
-// timestamp formatted like: Jul 08 2021
-const getFormattedDate = () => Date().split(' ').slice(1, 4).join(' ').toString()
-const getWeekday = () => Date().split(' ')[0];
+/* --------- for reference only ----------- */
+
+// CREATE TABLE IF NOT EXISTS dbt_data (
+//   id SERIAL PRIMARY KEY NOT NULL,
+//   weekday character varying(128) NOT NULL,
+//   date character varying(128) NOT NULL,
+//   timestamp character varying(128),
+//   rating_data json,
+//   journal_data json
+// );
+
+/* ----------------------------------------- */
+
+const ratingsQuery = `INSERT INTO dbt_data_test (date, timestamp, rating_data) VALUES ($1, $2, $3) RETURNING *`
+const journalQuery = `INSERT INTO dbt_data_test (date, timestamp, journal_data) VALUES ($1, $2, $3) RETURNING *`
 
 /* for the ratings data route */
 const createEntry = async (req, res, queryString) => {
   try {
-    if (!req.body) {
-      res.json({
-        success: false,
-        error: 'No data received'
-      })
-    }
-
-    const date = req.body.date;
-    if (!date || typeof date !== 'string') {
-      throw `Incorrect input type. "Date" should be a string`
-    }
 
     const json = req.body.json;
     if (!json || typeof json !== 'object') {
       throw `Incorrect input type. "Data" should be an object` } 
 
-    const success = await pool.query(queryString, [date, json]);
+    const date = utils.date;
+    const timestamp = utils.id;
+
+    const success = await pool.query(queryString, [date, timestamp, json]);
     const createdEntry = success.rows[0]
 
     res.json({
@@ -43,14 +48,19 @@ const createEntry = async (req, res, queryString) => {
   }
 }
 
-// "type" represents which category of data sent from the client: 
-// either data from the Ratings tab ({ type: "ratings" })
-// or data from the Journal tab ({ type: "journal" }) 
-const ratingsQuery = `INSERT INTO dbt_data (date, rating_data) VALUES ($1, $2) RETURNING *`
-const journalQuery = `INSERT INTO dbt_data (date, journal_data) VALUES ($1, $2) RETURNING *`
 
 const insertData = (req, res) => {
+  if (!req.body) {
+    res.json({
+      success: false,
+      error: 'No data received'
+    })
+  }
+
   const type = req.body?.type;
+  // "type" represents which category of data sent from the client: 
+  // either data from the Ratings tab ({ type: "ratings" })
+  // or data from the Journal tab ({ type: "journal" }) 
   if (!type) {
     res.json({
       success: false,
@@ -58,11 +68,10 @@ const insertData = (req, res) => {
     })
   }
   
-  if (type === 'ratings') {
-    return createEntry(req, res, ratingsQuery)
-  } else if (type === 'journal') {
-    return createEntry(req, res, journalQuery);
-  } 
+  type === 'ratings' && createEntry(req, res, ratingsQuery);
+  type === 'journal' && createEntry(req, res, journalQuery);
+  // We don't error handle here, since we have a 
+  // global error handler for sync functions
 }
 
 module.exports = insertData

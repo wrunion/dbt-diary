@@ -10,23 +10,18 @@ CREATE TABLE IF NOT EXISTS dbt_meta (
 CREATE TABLE IF NOT EXISTS dbt_data (
   id SERIAL PRIMARY KEY NOT NULL,
   date character varying(128) NOT NULL,
-  weekday character varying(128),
-  -- current_date NOT NULL,
-  -- timestamp TIMEOFDAY() NOT NULL,
+  timestamp character varying(128),
   rating_data json,
-  journal_data json, 
-  other_data json,
-  gratitiude_list text
+  journal_data json,
+  metadata json
 );
 
-CREATE TABLE IF NOT EXISTS dbt_data_backup (
+CREATE TABLE IF NOT EXISTS dbt_data_test (
   id SERIAL PRIMARY KEY NOT NULL,
   date character varying(128) NOT NULL,
-  weekday character varying(128),
-  -- current_date NOT NULL,
-  -- timestamp TIMEOFDAY() NOT NULL,
+  timestamp character varying(128),
   rating_data json,
-  journal_data json, 
-  other_data json,
-  gratitiude_list text
+  journal_data json,
+  metadata json
 );
+
