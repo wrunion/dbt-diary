@@ -5,14 +5,15 @@ const helmet = require('helmet')
 const compression = require("compression")
 const ejs = require('ejs')
 const cors = require('cors')
-const movieRouter = require('./routes/movie-router.js')
+const dayRouter = require('./routes/day-router.js')
 require('dotenv').config()
-const db = require('./mongo_db')
+// const db = require('./mongo_db')
+const db = require('./db')
 
 const app = express()
 app.disable('x-powered-by');
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 7999
 
 /* Middleware */
 app.use(cookieParser()); 
@@ -45,9 +46,7 @@ const setHeaders = (req, res, next) => {
 app.use(setHeaders)
 
 /* Routes */
-app.use('/api', movieRouter)
-
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+app.use('/api', dayRouter)
 
 /* Global error handler */
 app.use((err, req, res) => {
