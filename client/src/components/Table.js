@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Page from '../reusable/Page'
-import DailyCard from '../components/DailyCard'
-import { Header, Table, Rating } from 'semantic-ui-react'
+import { Table, Segment } from 'semantic-ui-react'
 const { Row, HeaderCell, Cell, Body } = Table;
 const TableHeader = Table.Header;
 
@@ -73,7 +71,8 @@ const CustomTable = () => {
       {error && <div>{error}</div>}
 
       {/* Table start */}
-      <Table celled columns={6} size='small' >
+      {entries && Object.keys(entries).length > 0 ?
+      <Table celled columns={6} size='small' color='green'>
       <TableHeader>
         <Row>
         <HeaderCell>Date</HeaderCell>
@@ -87,9 +86,12 @@ const CustomTable = () => {
           if (e.rating_data) {
           const data = e.rating_data
           const { SI, self_harm_urge, drug_urge, emotional_misery, physical_misery, joy, gratitude, calm, intentionality } = data;
+          
+          const formattedDate = e.date.split(' ').filter(e => e !==
+            '2021').join(' ');
         return(
           <Row>
-            <Cell>{e.date}</Cell>
+            <Cell>{formattedDate}</Cell>
             <Cell>{SI}</Cell>
             <Cell>{self_harm_urge}</Cell>
             {/* <Cell>{drug_urge}</Cell> */}
@@ -104,7 +106,10 @@ const CustomTable = () => {
         }
       })} 
       </Body>
-      </Table>
+      </Table> :
+      <Segment>
+        No data found for those dates
+      </Segment>}
     </div>
   )
 }
