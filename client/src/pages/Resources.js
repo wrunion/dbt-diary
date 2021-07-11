@@ -5,11 +5,10 @@ import { Segment } from 'semantic-ui-react'
 const Week = () => {
   return(
     <Page title='Resources' subtitle='In progress'>
-
-      <Segment color='teal'>
+      
+      <Segment>
         Links to online DBT resources coming soon! 
       </Segment>
-
     </Page>
   )
 }
