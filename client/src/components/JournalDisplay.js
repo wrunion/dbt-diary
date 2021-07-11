@@ -1,5 +1,4 @@
 import React from 'react'
-import Page from '../reusable/Page'
 import DailyCard from './DailyCard'
 
 const Journal = ({ cards =[], error= ''}) => {

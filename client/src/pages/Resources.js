@@ -1,11 +1,15 @@
 import React from 'react'
 import Page from '../reusable/Page'
-import Table from './../components/Table'
+import { Segment } from 'semantic-ui-react'
 
 const Week = () => {
   return(
     <Page title='Resources' subtitle='In progress'>
-      <Table />
+
+      <Segment color='teal'>
+        Links to online DBT resources coming soon! 
+      </Segment>
+
     </Page>
   )
 }

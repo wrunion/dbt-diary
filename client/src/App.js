@@ -8,8 +8,6 @@ import Day from './pages/Day'
 import Week from './pages/Week'
 import Journal from './pages/Journal'
 import Resources from './pages/Resources'
-// import ApiTest from './components/ApiTest'
-// import { ReactComponent as MoonImage } from './assets/moon-phase.svg'
 
 const App = () => {
 
@@ -24,14 +22,8 @@ const App = () => {
           style={{ marginTop: '1em', textAlign: 'center' }}
         />
       </div>
-
-
-      
+ 
       <div style={{width: '90%', margin: '0 auto', maxWidth: '900px' }}>
-
-      {/* route testing  */}
-      {/* <ApiTest /> */}
-
       <NavBar />
 
         <Segment>
@@ -51,26 +43,10 @@ const App = () => {
           </div>
         </Segment>
       </div>
+    <p></p><br />
     </div>
-
-    {/* <MoonImage /> */}
     </Router>
   );
 }
 
 export default App;
-
-
-// FOR PROD:
-{/* <Route exact path='/'>
-<Journal />
-</Route>
-<Route exact path='/day'>
-<Day />
-</Route>
-<Route exact path='/week'>
-<Week />
-</Route>
-<Route exact path='/resources'>
-<Resources />
-</Route> */}

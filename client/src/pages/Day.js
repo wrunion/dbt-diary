@@ -7,7 +7,7 @@ import Form from '../components/forms/RatingsFormTest'
 const Day = () => {
 
   return(
-    <Page title='Daily DBT' subtitle='Rate your day from 0 to 5'>
+    <Page title='Daily DBT' subtitle='Rate your day from 0 to 5' icon='sun' color='teal'>
       <Segment>
         <Form />
       </Segment>
