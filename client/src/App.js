@@ -27,7 +27,7 @@ const App = () => {
 
 
       
-      <div style={{width: '90%', margin: '0 auto', maxWidth: '715px'}}>
+      <div style={{width: '90%', margin: '0 auto', maxWidth: '900px' }}>
 
       {/* route testing  */}
       {/* <ApiTest /> */}
@@ -59,3 +59,18 @@ const App = () => {
 }
 
 export default App;
+
+
+// FOR PROD:
+{/* <Route exact path='/'>
+<Journal />
+</Route>
+<Route exact path='/day'>
+<Day />
+</Route>
+<Route exact path='/week'>
+<Week />
+</Route>
+<Route exact path='/resources'>
+<Resources />
+</Route> */}

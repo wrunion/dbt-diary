@@ -32,7 +32,7 @@ const Week = () => {
           if (e.journal_data) {
           return (
             <DailyCard 
-              key={e.timestamp}
+              key={e.id}
               title={e.date} 
               skills={e.journal_data.used_skills}
               homework={e.journal_data.homework}
