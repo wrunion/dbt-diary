@@ -4,11 +4,12 @@ import { Segment } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from './components/Header'
 import NavBar from './components/NavBar'
-import Day from './pages/Day'
 import Week from './pages/Week'
-import Journal from './pages/Journal'
 import Resources from './pages/Resources'
 import moment from 'moment'
+import DailyForm from './pages/DailyForm'
+import Day from './pages/Day'
+import Journal from './pages/Journal'
 
 const App = () => {
 
@@ -31,16 +32,19 @@ const App = () => {
         <Segment>
           <div id="content">
             <Route exact path='/'>
-              <Journal />
-            </Route>
-            <Route exact path='/day'>
-              <Day />
+              <DailyForm />
             </Route>
             <Route exact path='/week'>
               <Week />
             </Route>
             <Route exact path='/resources'>
               <Resources />
+            </Route>
+            <Route exact path='/day'>
+              <Day />
+            </Route>
+            <Route exact path='/journal'>
+              <Journal />
             </Route>
           </div>
         </Segment>

@@ -8,13 +8,9 @@ const NavBar = () => {
 
   return ( 
     <>
-    <Menu pointing widths={4}>
+    <Menu pointing widths={3}>
       <Item 
-        as={NavLink} exact to='/'
-        name='Journal'
-      />
-      <Item 
-        as={NavLink} to='/day'
+        as={NavLink} to='/'
         name='Today'
       />
       <Item 
