@@ -10,12 +10,13 @@ const Journal = ({ cards =[], error= ''}) => {
         </div>}
         {cards && cards.map((e, i) => {
           if (e.journal_data) {
-
+          const formattedDate = e.date.split(' ').filter(e => e !==
+              '2021').join(' ');
           return (
             <div style={{ marginBottom: '1.5em', marginTop: '.5em' }}>
               <DailyCard 
                 key={e.id}
-                title={e.date} 
+                title={formattedDate} 
                 skills={e.journal_data.used_skills}
                 homework={e.journal_data.homework}
                 other={e.journal_data.other}

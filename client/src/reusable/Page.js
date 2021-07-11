@@ -7,9 +7,7 @@ const Page = ({ title, subtitle, children, color, icon }) => {
 
   return(
     <div className="Page">
-      <Header as='h2' color={color || 'blue'} 
-          style={{ fontFamily: `'Cormorant Garamond', serif`, fontWeight: 'bold'}}
-          className='display-title'>
+      <Header as='h2' color={color || 'blue'} className='display-title'>
         {icon && <Icon name={icon} />}
         <Content>
           {title}
