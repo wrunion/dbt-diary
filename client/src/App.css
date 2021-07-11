@@ -33,6 +33,21 @@
   padding: 1em;
 }
 
+/* 
+
+font-family: 'Cormorant Garamond', serif;
+font-family: 'Josefin Slab', serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Playfair Display', serif;
+font-family: 'Raleway', sans-serif;
+
+*/
+
+#content-all h1, h2, h3, h4  {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 'normal';
+}
+
 /* App grid */
 /* .parent-container{
   display: grid; 

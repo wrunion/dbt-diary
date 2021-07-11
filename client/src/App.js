@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <Router>
-    <div className="parent-container">
+    <div className="parent-container" id="content-all">
 
       <div className="site-header">
         <Header
