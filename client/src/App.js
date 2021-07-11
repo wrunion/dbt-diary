@@ -17,7 +17,7 @@ const App = () => {
     <Router>
     <div className="parent-container">
 
-      <div className="header">
+      <div className="site-header">
         <Header
           title="Winter's DBT Journal"
           subtitle="Summer 2021, Providence DBT"
@@ -25,14 +25,9 @@ const App = () => {
         />
       </div>
 
-      <div className="left-col">
-        {/* <NavBar /> */}
-      </div>
-      <div className="right-col">
-        {/* <RightColumn />   */}
-      </div> 
+
       
-      <div className="main">
+      <div style={{width: '90%', margin: '0 auto', maxWidth: '715px'}}>
 
       {/* route testing  */}
       {/* <ApiTest /> */}
@@ -57,6 +52,7 @@ const App = () => {
         </Segment>
       </div>
     </div>
+
     {/* <MoonImage /> */}
     </Router>
   );
