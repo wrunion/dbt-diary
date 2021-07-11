@@ -8,18 +8,20 @@ import Day from './pages/Day'
 import Week from './pages/Week'
 import Journal from './pages/Journal'
 import Resources from './pages/Resources'
+import moment from 'moment'
 
 const App = () => {
+
+  const formattedDate = moment().format('dddd, MMMM Do, YYYY');
 
   return (
     <Router>
     <div className="parent-container" id="content-all">
-
       <div className="site-header">
         <Header
           title="Winter's DBT Journal"
-          subtitle="Summer 2021, Providence DBT"
-          style={{ marginTop: '1em', textAlign: 'center' }}
+          subtitle={`Today is ${formattedDate}`}
+          style={{ textAlign: 'center', marginTop: '.5em' }}
         />
       </div>
  

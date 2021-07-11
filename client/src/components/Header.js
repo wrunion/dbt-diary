@@ -1,19 +1,12 @@
 import React from 'react'
 import { Header, Segment } from 'semantic-ui-react'
-import { ReactComponent as Plant1 } from './../assets/succulents.svg'
-import { ReactComponent as Plant2 } from './../assets/plant-1.svg'
+import { ReactComponent as MoonImg } from './../assets/moon-phase-1.svg'
 
 const { Subheader } = Header
 
-const svgStyle = {
-  height: '65px',
-  color: 'grey',
-  paddingRight: '2.5em',
-  paddingLeft: '2.5em'
-}
-
 const containerStyle = {
   display: 'flex',
+  flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
   paddingBottom: '1.25em',
@@ -21,10 +14,20 @@ const containerStyle = {
   // borderBottom: '2px rgba(224, 225, 226, .85) solid'
 }
 
+
+const moonStyle = {
+  width: '325px',
+  paddingRight: '2.5em',
+  paddingLeft: '2.5em',
+  paddingBottom: '0',
+  marginBottom: '0'
+}
+
 const HeaderComponent = ({ title, subtitle, color='violet', style }) => (
   <Segment style={containerStyle}>
+    <div style={{ padding: '1em' }}>
 
-    <Plant1 style={svgStyle} className='header-icon' />
+    <MoonImg style={moonStyle} />
     
     <Header as='h1' color={color} style={style || {}}>
       {title}
@@ -33,8 +36,7 @@ const HeaderComponent = ({ title, subtitle, color='violet', style }) => (
       </Subheader>
     </Header>
 
-    <Plant2 style={svgStyle} className='header-icon' />
-  
+    </div>
   </Segment>
 )
 

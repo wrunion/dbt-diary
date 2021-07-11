@@ -44,8 +44,8 @@ font-family: 'Raleway', sans-serif;
 */
 
 #content-all h1, h2, h3, h4  {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 'normal';
+  font-family: 'Raleway', sans-serif;
+  /* font-weight: 'bold'; */
 }
 
 /* App grid */
@@ -89,3 +89,8 @@ font-family: 'Raleway', sans-serif;
   color: green;
   border: 1px solid yellow;
 }
+
+/* .site-header {
+  padding: .5em;
+  padding-bottom: 0;
+} */
