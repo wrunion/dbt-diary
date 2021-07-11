@@ -1,16 +1,20 @@
 import React from 'react'
-import { Header } from 'semantic-ui-react'
+import { Header, Icon } from 'semantic-ui-react'
 import './Page.css'
+const { Subheader, Content } = Header
 
-const Page = ({ title, subtitle, children }) => {
+const Page = ({ title, subtitle, children, color, icon }) => {
 
   return(
     <div className="Page">
-      <Header as='h2' color='black'>
-        {title}
-        <Header.Subheader>
+      <Header as='h2' color={color || 'grey'}>
+        {icon && <Icon name={icon} />}
+        <Content>
+          {title}
+        <Subheader>
           {subtitle}
-        </Header.Subheader>
+        </Subheader>
+        </Content>
       </Header>
       {children}
     </div>

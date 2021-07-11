@@ -72,7 +72,7 @@ const CustomTable = () => {
 
       {/* Table start */}
       {entries && Object.keys(entries).length > 0 ?
-      <Table celled columns={6} size='small' color='green'>
+      <Table striped columns={6} compact size='small' color='green'>
       <TableHeader>
         <Row>
         <HeaderCell>Date</HeaderCell>

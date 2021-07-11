@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import Page from '../reusable/Page'
+import JournalDisplay from './../components/JournalDisplay'
+import RatingDisplay from './../components/RatingDisplay'
 import DailyCard from '../components/DailyCard'
+import { Menu } from 'semantic-ui-react'
+
+const { Item } = Menu
 
 const Week = () => {
 
   const [cards, setCards] = useState([])
   const [error, setError] = useState('')
+  // choices are "journal" or "data"
+  const [activeTab, setActiveTab] = useState('journal')
 
   useEffect(() => {
   // fetch data & set in state
@@ -24,11 +31,24 @@ const Week = () => {
   }, [])
 
   return(
-    <Page title='Week' subtitle="In progress">
+    <Page color='teal' title='This Week in DBT' icon='sun' subtitle="See what you learned and where you can improve">
       {error && <div>
          {error} 
         </div>}
-        {cards && cards.map((e, i) => {
+        <Menu pointing secondary widths={2}>
+          <Item 
+            name='Journal'
+            active={activeTab === 'journal'}
+            onClick={() => setActiveTab('journal')}
+          />
+          <Item 
+            name='Data'
+            active={activeTab === 'data'}
+            onClick={() => setActiveTab('data')}
+          />
+        </Menu>
+
+        {(cards && activeTab === 'journal') && cards.map((e, i) => {
           if (e.journal_data) {
           return (
             <DailyCard 
@@ -42,6 +62,10 @@ const Week = () => {
             )
           }
         })}
+
+      {(cards && activeTab === 'data') && 
+        <RatingDisplay entries={cards} error={error} />
+      }
     </Page>
   )
 }

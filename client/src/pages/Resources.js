@@ -4,7 +4,7 @@ import Table from './../components/Table'
 
 const Week = () => {
   return(
-    <Page title='Resources' subtitle="In progress">
+    <Page title='Resources' subtitle='In progress'>
       <Table />
     </Page>
   )
