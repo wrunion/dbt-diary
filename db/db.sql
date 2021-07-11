@@ -15,11 +15,5 @@ CREATE TABLE IF NOT EXISTS dbt_data (
   journal_data json
 );
 
-CREATE TABLE IF NOT EXISTS dbt_data_test (
-  id SERIAL PRIMARY KEY NOT NULL,
-  date character varying(128) NOT NULL,
-  timestamp character varying(128),
-  rating_data json,
-  journal_data json
-);
+
 
