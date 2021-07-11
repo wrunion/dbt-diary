@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Page from '../reusable/Page'
-import JournalDisplay from './../components/JournalDisplay'
+import Journal from './../components/JournalDisplay'
 import RatingDisplay from './../components/RatingDisplay'
 import DailyCard from '../components/DailyCard'
 import { Menu } from 'semantic-ui-react'
@@ -48,20 +48,26 @@ const Week = () => {
           />
         </Menu>
 
-        {(cards && activeTab === 'journal') && cards.map((e, i) => {
-          if (e.journal_data) {
-          return (
-            <DailyCard 
-              key={e.id}
-              title={e.date} 
-              skills={e.journal_data.used_skills}
-              homework={e.journal_data.homework}
-              other={e.journal_data.other}
-              gratitude={e.journal_data.gratitude} 
-              />
-            )
-          }
-        })}
+        {(cards && activeTab === 'journal') && 
+          <Journal cards={cards} error={error} />
+        
+        
+        // cards.map((e, i) => {
+        //   if (e.journal_data) {
+        //   const formattedDate = e.date.split(' ').filter(e => 
+        //     e !== '2021').join(' ');
+        //   return (
+        //     <DailyCard 
+        //       key={e.id}
+        //       title={formattedDate} 
+        //       skills={e.journal_data.used_skills}
+        //       homework={e.journal_data.homework}
+        //       other={e.journal_data.other}
+        //       gratitude={e.journal_data.gratitude} 
+        //       />
+        //     )
+        //   }
+        }
 
       {(cards && activeTab === 'data') && 
         <RatingDisplay entries={cards} error={error} />

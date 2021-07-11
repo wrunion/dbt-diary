@@ -40,7 +40,7 @@ const CustomCard = ({ key, title, skills, homework, gratitude, tags, other }) =>
   }
 
   return (
-  <Card fluid color='red' key={key}>
+  <Card fluid color='teal' key={key}>
     <Content header={title} />
 
     <Content description={description} />
