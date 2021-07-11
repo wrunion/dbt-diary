@@ -87,7 +87,7 @@ class DailyForm extends Component {
   }
 
   componentDidMount() {
-    console.log('real form')
+    console.log('test form')
     const initState = generateInitialState(metrics)
     this.setState({ ...this.state, ...initState })
   }
@@ -102,8 +102,8 @@ class DailyForm extends Component {
     // format the data as the server expects
     const req = { json: vals, type: 'ratings' }
 
-    /* ------- CHANGE THIS TO "api/day" TO ENTER REAL DATA ------------ */
-    fetch('api/day', {
+    /* ------- CHANGE THIS TO "api/day" or api/day/test TO ENTER REAL OR TEST DATA ------------ */
+    fetch('api/day/test', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'
