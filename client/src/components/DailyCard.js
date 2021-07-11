@@ -1,26 +1,6 @@
 import React from 'react'
 import { Card, Icon } from 'semantic-ui-react'
-const { Content, Header, Meta, Description } = Card;
-
-// const description = [
-//   'Amy is a violinist with 2 years experience in the wedding industry.',
-//   'She enjoys the outdoors and currently resides in upstate New York.',
-// ].join(' ')
-
-const title = 'title goes here'
-
-const skills = [
-  'skill 1', 'skill 2', 'skill 3'
-]
-
-const extra = (
-  <a>
-    <Icon name='user' />
-    16 Friends
-  </a>
-)
-
-const now = 'Saturday, June 10'
+const { Content } = Card;
 
 const divStyle = {
   marginBottom: '.75em'
@@ -29,9 +9,8 @@ const divStyle = {
 const paragraphStyle = {
   color: 'grey'
 }
-// props: title, 
-// formatted props object: {title, description}
-const CustomCard = ({ key, title, skills, homework, gratitude, tags }) => {
+
+const CustomCard = ({ key, title, skills, homework, gratitude, tags, other }) => {
 
   const description = () => {
     return (
@@ -51,17 +30,10 @@ const CustomCard = ({ key, title, skills, homework, gratitude, tags }) => {
           <span style={{fontWeight: 'bold'}}> Skills: </span>
           <span style={paragraphStyle}>{skills}</span>
         </div>}
-      </div>
-    )
-  }
-
-  const extra = () => {
-    return(
-    <div>
-      {skills && 
+        {other && 
         <div>
-          <span style={{fontWeight: 'bold'}}> Skills used: </span>
-          {skills}
+          <span style={{fontWeight: 'bold'}}> Other: </span>
+          <span style={paragraphStyle}>{other}</span>
         </div>}
       </div>
     )
@@ -73,7 +45,6 @@ const CustomCard = ({ key, title, skills, homework, gratitude, tags }) => {
 
     <Content description={description} />
 
-    {/* bottom dividing line  */}
     <Content extra>
       <Icon name='hashtag' />{tags ? tags : 'No tags yet'}
     </Content>
@@ -84,18 +55,3 @@ const CustomCard = ({ key, title, skills, homework, gratitude, tags }) => {
 
 
 export default CustomCard
-
-
-
-// const Card1 = () => (
-//   <Card
-//     image='/images/avatar/large/elliot.jpg'
-//     header='Elliot Baker'
-//     meta='Friend'
-//     // content='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'
-//     description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'
-//     extra={extra}
-//   />
-// )
-
-// export default Card1;
