@@ -4,7 +4,7 @@ import JournalForm from '../components/forms/JournalForm'
 
 const Journal = () => {
   return(
-    <Page title='Journal' subtitle='How was your day?'>
+    <Page title='Journal' subtitle='How was your day?' icon='moon' color='teal'>
       <JournalForm />
     </Page>
   )
