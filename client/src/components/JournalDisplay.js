@@ -15,6 +15,8 @@ const Journal = ({ cards =[], error= ''}) => {
           return (
             <div style={{ marginBottom: '1.5em', marginTop: '.5em' }}>
               <DailyCard 
+                card={e}
+                index={i}
                 key={e.id}
                 title={formattedDate} 
                 skills={e.journal_data.used_skills}

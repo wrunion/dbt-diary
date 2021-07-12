@@ -153,7 +153,7 @@ const DailyForm = () => {
       <div>
         <Form>
           {/* number inputs  */}
-          <Header as='h2' color='teal' icon='calendar outline'
+          <Header as='h2' color='grey' icon='calendar outline'
             content='Daily DBT' 
             subheader='Rate your day from 0 to 5' />
           <Input type='date' 
