@@ -1,8 +1,5 @@
-// declare form vals 
-// make them into a form 
 import React from 'react'
 import Page from './../reusable/Page'
-// import { Segment, Form } from 'semantic-ui-react'
 import { Form, Label, Divider, Segment, Input, Button, Header, TextArea, Icon } from 'semantic-ui-react'
 import './DailyForm.css'
 const { Field } = Form
@@ -29,6 +26,12 @@ const myObj = {
   skills: 'skills',
   other: 'other',
   gratitude: 'gratitude'
+}
+
+const testStyle = {
+  display: 'flex', 
+  flexWrap: 'wrap', 
+  justifyContent: 'flex-start',
 }
 
 const METRICS = [
@@ -146,20 +149,38 @@ const TextAreaJournalInput = ({ item }) => {
 const DailyForm = () => {
 
   return(
-    <div style={{ marginLeft: '1.5em', marginRight: '1.5em' }}>
-      <Page title='Daily DBT' subtitle='Rate your day from 0 to 5' icon='sun outline' color='teal'>
-        <Form noValidate>
-          <div className='test' style={{display: 'flex', flexWrap: 'wrap', 
-            justifyContent: 'flex-start' }}>
+    <div id='DailyForm'>
+      <div>
+        <Form>
+          {/* number inputs  */}
+          <Header as='h2' icon='sun outline' color='teal'
+            content='Daily DBT' 
+            subheader='Rate your day from 0 to 5' />
+          <div style={testStyle}>
             {METRICS.filter(e => e.type === 'number').map(e => 
               <NumberInput item={e} />
             )}
           </div>
+
+          <Divider />
+          {/* text inputs  */}
+          <Header as='h2' icon='edit' color='teal'
+            content='Skills Practice' 
+            subheader='What are you learning?' />
+          <div style={testStyle}>
+            {METRICS.filter(e => e.type === 'text' || e.type === 'textarea').map(e => 
+              e.type === 'text' ? 
+              <TextInput item={e} /> :
+              e.type === 'textarea' ? 
+              <TextAreaInput item={e} /> :
+              null
+            )}
+          </div>
         </Form>
-      </Page>
-      <Divider style={{ marginTop: '2.5em', marginBottom: '2.5em' }} />
+      </div>
+      {/* <Divider style={{ marginTop: '2.5em', marginBottom: '2.5em' }} />
       <Page title='Skills Practice' subtitle='What are you learning?' icon='edit' color='teal'>
-        <Form noValidate>
+        <Form>
           <div className='test' style={{display: 'flex', flexWrap: 'wrap', 
             justifyContent: 'flex-start' }}>
             {METRICS.filter(e => e.type === 'text' || e.type === 'textarea').map(e => 
@@ -170,22 +191,28 @@ const DailyForm = () => {
             )}
           </div>
         </Form>
-      </Page>
+      </Page> */}
 
-      <Divider style={{ marginTop: '2.5em', marginBottom: '2.5em' }} />
-      <Page title='Journal' subtitle='How was your day?' icon='moon' color='teal'>
-        <Form noValidate>
-          <div className='test' style={{display: 'flex', flexWrap: 'wrap', 
-            justifyContent: 'flex-start' }}>
-            {journalPrompts.filter(e => e.type === 'text' || e.type === 'textarea').map(e => 
-              e.type === 'text' ? <TextInput item={e} /> 
-              :
-              e.type === 'textarea' ? <TextAreaJournalInput item={e} />
-              : null
+      {/* optional add't journal prompts  */}
+      <Divider />
+      <Page 
+        title='Journal' 
+        subtitle='How was your day?' icon='moon' color='teal'>
+        <Form>
+          <div className='test' style={testStyle}>
+            {journalPrompts.filter(e => e.type === 'textarea').map(e => 
+             <TextAreaJournalInput item={e} />
             )}
           </div>
         </Form>
       </Page>
+
+      <div className='button-div'>
+        <Button size='large' color='teal' fluid>
+          Submit
+        </Button>
+      </div>
+
     </div>
   )
 }
