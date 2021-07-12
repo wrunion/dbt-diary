@@ -1,4 +1,18 @@
-.textarea-label {
-  margin-bottom: 50px;
+#DailyForm {
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+}
 
+#DailyForm h2 {
+  margin-left: 5px;
+}
+
+#DailyForm .divider {
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+}
+
+#DailyForm .button-div {
+  padding: 5px;
+  margin-top: 15px;
 }
