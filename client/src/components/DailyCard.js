@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Icon, Divider } from 'semantic-ui-react'
+import { Card, Icon, Divider, Label } from 'semantic-ui-react'
 const { Content } = Card;
 
 const divStyle = {
@@ -113,10 +113,20 @@ const displayNames = {
     }
   }
 
+  const Header = () => (
+    <>
+    <Icon name='heart' color={cardColor} /> 
+      <span style={{fontWeight: 'bold'}}>
+        {title}
+      </span>
+    </>
+  )
+
   return (
     <>
     <Card fluid color={cardColor} key={key}>
-      <Content header={<><Icon name='heart' color={cardColor} /> <span style={{fontWeight: 'bold'}}>{title}</span></>} />
+      {/* <Label corner='right' icon='bookmark outline' /> */}
+      <Content header={Header}/>
 
       <Content description={Description} />
 
