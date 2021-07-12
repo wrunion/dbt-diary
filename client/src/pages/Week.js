@@ -28,7 +28,7 @@ const Week = () => {
   }, [])
 
   return(
-    <Page color='blue' icon='heart outline' title='This Week in DBT' subtitle="See what you learned and where you can improve">
+    <Page color='grey' icon='sun' title='This Week in DBT' subtitle="See what you learned and where you can improve">
       {error && <div>
          {error} 
         </div>}

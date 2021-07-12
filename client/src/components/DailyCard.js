@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Icon, Label } from 'semantic-ui-react'
+import { Card, Icon } from 'semantic-ui-react'
 const { Content } = Card;
 
 const divStyle = {
@@ -10,7 +10,20 @@ const paragraphStyle = {
   color: 'grey'
 }
 
-const CustomCard = ({ key, title, skills, homework, gratitude, tags, other }) => {
+const colors = [
+  'orange',
+  'yellow',
+  'green',
+  'teal',
+  'blue',
+  'violet',
+  'purple',
+  'pink',
+  'grey',
+  'black'
+]
+
+const CustomCard = ({ card, index, key, title, skills, homework, gratitude, tags, other }) => {
 
   const description = () => {
     return (
@@ -39,12 +52,13 @@ const CustomCard = ({ key, title, skills, homework, gratitude, tags, other }) =>
     )
   }
 
+  const cardColor = colors[index%9]
+  console.log(card.journal_data)
+
   return (
     <>
-    <Card fluid color='teal' key={key}>
-    <Label corner='right' icon={<Icon name='heart outline' color='white' />} />
-      {/* <Icon name='heart outline' /> */}
-      <Content header={title} color='teal'  />
+    <Card fluid color={cardColor} key={key}>
+      <Content header={<><Icon name='heart' color={cardColor} /> <span style={{fontWeight: 'bold'}}>{title}</span></>} />
 
       <Content description={description} />
 
