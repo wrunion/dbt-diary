@@ -10,7 +10,7 @@ const NavBar = () => {
     <>
     <Menu pointing widths={3}>
       <Item 
-        as={NavLink} to='/'
+        as={NavLink} exact to='/'
         name='Today'
       />
       <Item 

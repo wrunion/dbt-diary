@@ -153,9 +153,12 @@ const DailyForm = () => {
       <div>
         <Form>
           {/* number inputs  */}
-          <Header as='h2' icon='sun outline' color='teal'
+          <Header as='h2' color='teal' icon='calendar outline'
             content='Daily DBT' 
             subheader='Rate your day from 0 to 5' />
+          <Input type='date' 
+            className='date-input'
+            name='date' fluid />
           <div style={testStyle}>
             {METRICS.filter(e => e.type === 'number').map(e => 
               <NumberInput item={e} />
@@ -178,20 +181,6 @@ const DailyForm = () => {
           </div>
         </Form>
       </div>
-      {/* <Divider style={{ marginTop: '2.5em', marginBottom: '2.5em' }} />
-      <Page title='Skills Practice' subtitle='What are you learning?' icon='edit' color='teal'>
-        <Form>
-          <div className='test' style={{display: 'flex', flexWrap: 'wrap', 
-            justifyContent: 'flex-start' }}>
-            {METRICS.filter(e => e.type === 'text' || e.type === 'textarea').map(e => 
-              e.type === 'text' ? <TextInput item={e} /> 
-              :
-              e.type === 'textarea' ? <TextAreaInput item={e} />
-              : null
-            )}
-          </div>
-        </Form>
-      </Page> */}
 
       {/* optional add't journal prompts  */}
       <Divider />

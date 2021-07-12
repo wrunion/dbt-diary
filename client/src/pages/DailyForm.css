@@ -16,3 +16,7 @@
   padding: 5px;
   margin-top: 15px;
 }
+
+#DailyForm .date-input {
+  margin-top: 1em;
+}
