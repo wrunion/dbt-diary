@@ -38,7 +38,7 @@ const METRICS = [
   { id: 4, name: 'emotion_misery', label: 'Emotion misery', type:'number' },
   { id: 5, name: 'physical_misery', label: 'Physical misery',  type:'number' },
   { id: 6, name: 'joy', label: 'Joy',  type:'number' },
-  { id: 7, name: 'calm', label: 'Joy',  type:'number' },
+  { id: 7, name: 'calm', label: 'Calm',  type:'number' },
   { id: 8, name: 'gratitude', label: 'Gratitude',  type:'number' },
   { id: 9, name: 'intentionality', label: 'Intentionality',  type:'number' },
   /* Text/textarea fields */
@@ -59,18 +59,76 @@ const journalPrompts = [
   { id: 29, name: 'rest', label: 'Today I rested, by...',  type: 'textarea' },
 ]
 
+const NumberInput = ({ item }) => {
+  const { id, name, label } = item;
+
+  return( 
+    <>
+    <div key={id} style={{ margin: '5px' }}>
+      <Label color='teal' basic
+        pointing='right'>
+          {label}
+        </Label>
+      <Input 
+        type='number'
+        min='0'
+        max='5'
+        name={name}
+        style={{ width: '75px', margin: '1em' }}
+        // value={formVals[name]}
+        // onChange={(e) => setFormVals({...formVals, [name]: e.target.value })}
+      />
+    </div>
+    </>
+  )
+}
+
+const FancyNumberInput = (item) => {
+  const { id, name, itemLabel } = item;
+
+  return( 
+    <Field key={id} 
+      style={{ margin: '12px', padding: '1.5em' }}>
+    {/* <label><Icon name='sort' /> {label}</label> */}
+      <Label color='teal' basic
+        pointing='right'>
+          {itemLabel}
+        </Label>
+      <Input 
+        // inline
+        // label={label}
+        // placeholder='0'
+        // type={type}
+        //
+        type='text'
+        // min='0'
+        // max='5'
+        name={name}
+        style={{ width: '75px', margin: '1em' }}
+        // value={formVals[name]}
+        // onChange={(e) => setFormVals({...formVals, [name]: e.target.value })}
+      />
+    </Field>
+  )
+}
+
 const DailyForm = () => {
 
   return(
     <div>
       <Page title='Daily DBT' subtitle='Rate your day from 0 to 5' icon='sun' color='teal'>
-        {/* <Segment> */}
-          <Form />
-        {/* </Segment> */}
 
+      <Form>
+        <div className='test' style={{display: 'flex', flexWrap: 'wrap', 
+          justifyContent: 'flex-start' }}>
+          {METRICS.filter(e => e.type === 'number').map(e => 
+            <NumberInput item={e} />
+          )}
+        </div>
+        {/* <div style={{display: 'flex', flexWrap: 'wrap', 
+          justifyContent: 'center' }}> */}
+      </Form>
       </Page>
-
-
     </div>
   )
 }
