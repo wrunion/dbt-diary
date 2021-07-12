@@ -4,6 +4,7 @@ import React from 'react'
 import Page from './../reusable/Page'
 // import { Segment, Form } from 'semantic-ui-react'
 import { Form, Label, Divider, Segment, Input, Button, Header, TextArea, Icon } from 'semantic-ui-react'
+import './DailyForm.css'
 const { Field } = Form
 
 // number input label mapping 
@@ -80,32 +81,65 @@ const NumberInput = ({ item }) => {
   )
 }
 
-const FancyNumberInput = (item) => {
-  const { id, name, itemLabel } = item;
+const TextInput = ({ item }) => {
+  const { id, name, label } = item;
 
   return( 
-    <Field key={id} 
-      style={{ margin: '12px', padding: '1.5em' }}>
-    {/* <label><Icon name='sort' /> {label}</label> */}
-      <Label color='teal' basic
-        pointing='right'>
-          {itemLabel}
-        </Label>
+    <>
+    <Field key={id} style={{ margin: '5px', width: '100%' }}>      
+    {/* <Label basic color='teal' pointing='down'>{label}</Label> */}
       <Input 
-        // inline
-        // label={label}
-        // placeholder='0'
-        // type={type}
-        //
         type='text'
-        // min='0'
-        // max='5'
         name={name}
-        style={{ width: '75px', margin: '1em' }}
+        size='small'
+        label={<Label basic pointing='right' color='grey'>{label}</Label>}
+        // style={{ width: '75px', margin: '1em' }}
         // value={formVals[name]}
         // onChange={(e) => setFormVals({...formVals, [name]: e.target.value })}
       />
     </Field>
+    </>
+  )
+}
+
+const TextAreaInput = ({ item }) => {
+  const { id, name, label } = item;
+
+  return( 
+    <>
+    <div key={id} className='daily-form-input' style={{ margin: '5px', fontWeight: 'bold', width: '100%' }}>
+
+      <label>{label} <Icon name='write' color='grey' /></label>
+      <TextArea 
+        rows='5'
+        name={name}
+        style={{ marginTop: '7px' }}
+        // value={formVals[name]}
+        // onChange={(e) => setFormVals({...formVals, [name]: e.target.value })}
+      />
+    </div>
+    </>
+  )
+}
+
+
+const TextAreaJournalInput = ({ item }) => {
+  const { id, name, label } = item;
+
+  return( 
+    <>
+    <div key={id} className='daily-form-input' style={{ margin: '5px', fontWeight: 'bold', width: '100%' }}>
+
+      <label> <Icon name='moon outline' color='teal' />{label}</label>
+      <TextArea 
+        rows='5'
+        name={name}
+        style={{ marginTop: '7px' }}
+        // value={formVals[name]}
+        // onChange={(e) => setFormVals({...formVals, [name]: e.target.value })}
+      />
+    </div>
+    </>
   )
 }
 
@@ -124,12 +158,30 @@ const DailyForm = () => {
         </Form>
       </Page>
       <Divider style={{ marginTop: '2.5em', marginBottom: '2.5em' }} />
+      <Page title='Skills Practice' subtitle='What are you learning?' icon='edit' color='teal'>
+        <Form noValidate>
+          <div className='test' style={{display: 'flex', flexWrap: 'wrap', 
+            justifyContent: 'flex-start' }}>
+            {METRICS.filter(e => e.type === 'text' || e.type === 'textarea').map(e => 
+              e.type === 'text' ? <TextInput item={e} /> 
+              :
+              e.type === 'textarea' ? <TextAreaInput item={e} />
+              : null
+            )}
+          </div>
+        </Form>
+      </Page>
+
+      <Divider style={{ marginTop: '2.5em', marginBottom: '2.5em' }} />
       <Page title='Journal' subtitle='How was your day?' icon='moon' color='teal'>
         <Form noValidate>
           <div className='test' style={{display: 'flex', flexWrap: 'wrap', 
             justifyContent: 'flex-start' }}>
-            {METRICS.filter(e => e.type === 'number').map(e => 
-              <NumberInput item={e} />
+            {journalPrompts.filter(e => e.type === 'text' || e.type === 'textarea').map(e => 
+              e.type === 'text' ? <TextInput item={e} /> 
+              :
+              e.type === 'textarea' ? <TextAreaJournalInput item={e} />
+              : null
             )}
           </div>
         </Form>
