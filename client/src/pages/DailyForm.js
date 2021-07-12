@@ -3,7 +3,7 @@
 import React from 'react'
 import Page from './../reusable/Page'
 // import { Segment, Form } from 'semantic-ui-react'
-import { Form, Label, Segment, Input, Button, Header, TextArea, Icon } from 'semantic-ui-react'
+import { Form, Label, Divider, Segment, Input, Button, Header, TextArea, Icon } from 'semantic-ui-react'
 const { Field } = Form
 
 // number input label mapping 
@@ -65,10 +65,7 @@ const NumberInput = ({ item }) => {
   return( 
     <>
     <div key={id} style={{ margin: '5px' }}>
-      <Label color='teal' basic
-        pointing='right'>
-          {label}
-        </Label>
+      <Label basic color='teal' pointing='right'>{label}</Label>
       <Input 
         type='number'
         min='0'
@@ -115,19 +112,27 @@ const FancyNumberInput = (item) => {
 const DailyForm = () => {
 
   return(
-    <div>
-      <Page title='Daily DBT' subtitle='Rate your day from 0 to 5' icon='sun' color='teal'>
-
-      <Form>
-        <div className='test' style={{display: 'flex', flexWrap: 'wrap', 
-          justifyContent: 'flex-start' }}>
-          {METRICS.filter(e => e.type === 'number').map(e => 
-            <NumberInput item={e} />
-          )}
-        </div>
-        {/* <div style={{display: 'flex', flexWrap: 'wrap', 
-          justifyContent: 'center' }}> */}
-      </Form>
+    <div style={{ marginLeft: '1.5em', marginRight: '1.5em' }}>
+      <Page title='Daily DBT' subtitle='Rate your day from 0 to 5' icon='sun outline' color='teal'>
+        <Form noValidate>
+          <div className='test' style={{display: 'flex', flexWrap: 'wrap', 
+            justifyContent: 'flex-start' }}>
+            {METRICS.filter(e => e.type === 'number').map(e => 
+              <NumberInput item={e} />
+            )}
+          </div>
+        </Form>
+      </Page>
+      <Divider style={{ marginTop: '2.5em', marginBottom: '2.5em' }} />
+      <Page title='Journal' subtitle='How was your day?' icon='moon' color='teal'>
+        <Form noValidate>
+          <div className='test' style={{display: 'flex', flexWrap: 'wrap', 
+            justifyContent: 'flex-start' }}>
+            {METRICS.filter(e => e.type === 'number').map(e => 
+              <NumberInput item={e} />
+            )}
+          </div>
+        </Form>
       </Page>
     </div>
   )
