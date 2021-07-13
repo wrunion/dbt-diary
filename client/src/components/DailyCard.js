@@ -15,48 +15,6 @@ const colors = [
   'black'
 ]
 
-const marginSmall = '5px'
-const margin = '10px'
-const padding = '5px'
-
-const CustomCard = ({ card, index, key, title, skills, homework, gratitude, tags, other }) => {
-
-  // const description = () => {
-  //   return (
-  //     <div id='card-description'>
-  //       {homework && 
-  //       <div style={divStyle}>
-  //         <span style={{fontWeight: 'bold'}}> Homework: </span>
-  //         <span style={paragraphStyle}>{homework}</span>
-  //       </div>}
-  //       {gratitude && 
-  //       <div style={divStyle}>
-  //         <span style={{fontWeight: 'bold'}}> Gratitude: </span>
-  //         <span style={paragraphStyle}>{gratitude}</span>
-  //       </div>}
-  //       {skills && 
-  //       <div>
-  //         <span style={{fontWeight: 'bold'}}> Skills: </span>
-  //         <span style={paragraphStyle}>{skills}</span>
-  //       </div>}
-  //       {other && 
-  //       <div>
-  //         <span style={{fontWeight: 'bold'}}> Other: </span>
-  //         <span style={paragraphStyle}>{other}</span>
-  //       </div>}
-  //     </div>
-  //   )
-  // }
-
-  const sampleObj = {
-    "meds_as_prescribed": true,
-    "self_harm": true,
-    "used_skills": "Briefly, I remembered to stay in the moment by realizing that I was thinking too far ahead into the future, and reminding myself to come back to the present moment. I took a breath, and I feel more grounded and centered in my body now. ",
-    "homework": "Yesterday I did observe and describe some wandering thoughts, and brought myself back to the situation at hand. I was with my partner and relaxing, and I kept thinking of things I had to do. But I reminded myself to stay in the moment, and that helped!'",
-    "other": "",
-    "gratitude": "I'm grateful that I get to code, and to play piano. I'm grateful that I have time to rest and relax and pursue hobbies for awhile. "
-}
-
 const displayNames = {
   "meds_as_prescribed": 'Took meds as prescribed',
   'used_skills': 'Skills used',
@@ -66,12 +24,18 @@ const displayNames = {
   'gratitude': 'Gratitude'
 }
 
+const marginSmall = '5px'
+const margin = '10px'
+const padding = '5px'
+
+const CustomCard = ({ card, index, key, title }) => {
+
   const cardColor = colors[index%9]
 
   const entry = card.journal_data
-  console.log(entry)
 
   const keys = Object.keys(entry)
+  const tags = entry.tags || ''
 
   const Description = () => {
     return (
@@ -82,7 +46,8 @@ const displayNames = {
         const val = entry[e] === false ? false : entry[e] || null
         if (val !== null) {
           if (typeof val === 'boolean') { 
-            return <DisplayBoolean val={val} displayName={displayNames[e]}/>}
+            return <DisplayBoolean val={val} 
+                      displayName={displayNames[e]}/>}
         return (
           <>
           {i !== 0 && <Divider style={{ marginTop: '.75em', marginBottom: '.75em' }}/>}

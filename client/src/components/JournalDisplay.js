@@ -19,10 +19,6 @@ const Journal = ({ cards =[], error= ''}) => {
                 index={i}
                 key={e.id}
                 title={formattedDate} 
-                skills={e.journal_data.used_skills}
-                homework={e.journal_data.homework}
-                other={e.journal_data.other}
-                gratitude={e.journal_data.gratitude} 
                 />
             </div>
             )

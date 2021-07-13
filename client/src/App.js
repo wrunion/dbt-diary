@@ -4,11 +4,11 @@ import { Segment } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from './components/Header'
 import NavBar from './components/NavBar'
-import Week from './pages/Week'
-import Resources from './pages/Resources'
+import Week from './Week'
+import Resources from './Resources'
 import moment from 'moment'
-import DailyForm from './pages/DailyForm'
-import Day from './pages/Day'
+import DailyForm from './Day/DailyForm'
+import Day from './Day'
 import Journal from './pages/Journal'
 import { METRICS } from './config/metrics.js'
 
@@ -22,7 +22,6 @@ const App = () => {
   useEffect(() => {
     METRICS && setFields(METRICS)
     console.log(METRICS)
-    console.log(fields)
   })
   
   const formattedDate = moment().format('dddd, MMMM Do, YYYY');
@@ -35,11 +34,10 @@ const App = () => {
         <Header
           title="Winter's DBT Journal"
           subtitle={`Today is ${formattedDate}`}
-          style={{ textAlign: 'center', marginTop: '.5em' }}
         />
       </div>
  
-      <div style={{width: '90%', margin: '0 auto', maxWidth: '900px' }}>
+      <div id='main-container'>
       <NavBar />
 
         <Segment>

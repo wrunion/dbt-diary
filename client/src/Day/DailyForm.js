@@ -1,8 +1,7 @@
 import React from 'react'
-import Page from './../reusable/Page'
-import { Form, Label, Divider, Segment, Input, Button, Header, TextArea, Icon } from 'semantic-ui-react'
+import Page from '../reusable/Page'
+import { Form, Label, Divider, Input, Button, Header, TextArea, Icon } from 'semantic-ui-react'
 import './DailyForm.css'
-// import { METRICS } from './../config/fields.js'
 const { Field } = Form
 
 // number input label mapping 
