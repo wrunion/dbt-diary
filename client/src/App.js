@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import { Segment } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
@@ -10,12 +10,25 @@ import moment from 'moment'
 import DailyForm from './pages/DailyForm'
 import Day from './pages/Day'
 import Journal from './pages/Journal'
+import { METRICS } from './config/metrics.js'
 
 const App = () => {
-
+  // Set as a state variable bc users can change it
+  // and also stored data can have a different schema
+  // to override ours
+  const [fields, setFields] = useState([])
+  // Will be used once metrics are stored in db
+  // or in local storage (if PWA)
+  useEffect(() => {
+    METRICS && setFields(METRICS)
+    console.log(METRICS)
+    console.log(fields)
+  })
+  
   const formattedDate = moment().format('dddd, MMMM Do, YYYY');
 
   return (
+    METRICS && 
     <Router>
     <div className="parent-container" id="content-all">
       <div className="site-header">
@@ -32,7 +45,7 @@ const App = () => {
         <Segment>
           <div id="content">
             <Route exact path='/'>
-              <DailyForm />
+              <DailyForm metrics={fields} />
             </Route>
             <Route exact path='/week'>
               <Week />

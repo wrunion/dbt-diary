@@ -1,14 +1,6 @@
 import React from 'react'
-import { Card, Icon, Divider, Label } from 'semantic-ui-react'
+import { Card, Icon, Divider } from 'semantic-ui-react'
 const { Content } = Card;
-
-const divStyle = {
-  marginBottom: '.75em'
-}
-
-const paragraphStyle = {
-  color: 'grey'
-}
 
 const colors = [
   'orange',
@@ -23,10 +15,9 @@ const colors = [
   'black'
 ]
 
-const padding = '5px'
 const marginSmall = '5px'
 const margin = '10px'
-const marginLarge = '15px'
+const padding = '5px'
 
 const CustomCard = ({ card, index, key, title, skills, homework, gratitude, tags, other }) => {
 

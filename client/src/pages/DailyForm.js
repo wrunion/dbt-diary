@@ -2,6 +2,7 @@ import React from 'react'
 import Page from './../reusable/Page'
 import { Form, Label, Divider, Segment, Input, Button, Header, TextArea, Icon } from 'semantic-ui-react'
 import './DailyForm.css'
+// import { METRICS } from './../config/fields.js'
 const { Field } = Form
 
 // number input label mapping 
@@ -33,35 +34,6 @@ const testStyle = {
   flexWrap: 'wrap', 
   justifyContent: 'flex-start',
 }
-
-const METRICS = [
-  /* Numeric fields */
-  { id: 1, name: 'SI', label: 'SI', type:'number' },
-  { id: 2, name: 'self_harm_urge', label: 'Self harm urge', type:'number' },
-  { id: 3, name: 'drug_urge', label: 'Drug urge', type:'number' },
-  { id: 4, name: 'emotion_misery', label: 'Emotion misery', type:'number' },
-  { id: 5, name: 'physical_misery', label: 'Physical misery',  type:'number' },
-  { id: 6, name: 'joy', label: 'Joy',  type:'number' },
-  { id: 7, name: 'calm', label: 'Calm',  type:'number' },
-  { id: 8, name: 'gratitude', label: 'Gratitude',  type:'number' },
-  { id: 9, name: 'intentionality', label: 'Intentionality',  type:'number' },
-  /* Text/textarea fields */
-  { id: 10, name: 'skills_focus_week', label: 'Skills focus this week', type: 'text' },
-  { id: 11, name: 'meds_changes', label: 'Meds changes this week', type: 'text' },
-  { id: 13, name: 'breathing_meds', label: 'Breathing meds today', type: 'text' },
-  { id: 12, name: 'focus_phrase', label: 'Focus phrase today', type: 'text' },
-  { id: 14, name: 'skills', label: 'Skills used today',  type: 'textarea' },
-  { id: 15, name: 'homework', label: 'Homework',  type: 'textarea' },
-  { id: 16, name: 'gratitude', label: 'Gratitude',  type: 'textarea' },
-]
-
-const journalPrompts = [
-  { id: 25, name: 'did', label: 'Today I did...',  type: 'textarea' },
-  { id: 26, name: 'saw', label: 'Today I saw...',  type: 'textarea' },
-  { id: 27, name: 'learned', label: 'Today I learned...',  type: 'textarea' },
-  { id: 28, name: 'thought', label: 'Today I thought...',  type: 'textarea' },
-  { id: 29, name: 'rest', label: 'Today I rested, by...',  type: 'textarea' },
-]
 
 const NumberInput = ({ item }) => {
   const { id, name, label } = item;
@@ -146,7 +118,10 @@ const TextAreaJournalInput = ({ item }) => {
   )
 }
 
-const DailyForm = () => {
+const DailyForm = (fields) => {
+
+  const metrics = fields.metrics.filter(e => !e.journal)
+  const journalPrompts = fields.metrics.filter(e => e.journal)
 
   return(
     <div id='DailyForm'>
@@ -160,7 +135,7 @@ const DailyForm = () => {
             className='date-input'
             name='date' fluid />
           <div style={testStyle}>
-            {METRICS.filter(e => e.type === 'number').map(e => 
+            {metrics.filter(e => e.type === 'number').map(e => 
               <NumberInput item={e} />
             )}
           </div>
@@ -171,7 +146,7 @@ const DailyForm = () => {
             content='Skills Practice' 
             subheader='What are you learning?' />
           <div style={testStyle}>
-            {METRICS.filter(e => e.type === 'text' || e.type === 'textarea').map(e => 
+            {metrics.filter(e => e.type === 'text' || e.type === 'textarea').map(e => 
               e.type === 'text' ? 
               <TextInput item={e} /> :
               e.type === 'textarea' ? 
@@ -189,7 +164,7 @@ const DailyForm = () => {
         subtitle='How was your day?' icon='moon' color='teal'>
         <Form>
           <div className='test' style={testStyle}>
-            {journalPrompts.filter(e => e.type === 'textarea').map(e => 
+            {journalPrompts && journalPrompts.filter(e => e.type === 'textarea').map(e => 
              <TextAreaJournalInput item={e} />
             )}
           </div>
