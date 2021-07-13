@@ -7,10 +7,8 @@ import NavBar from './components/NavBar'
 import Week from './Week'
 import Resources from './Resources'
 import moment from 'moment'
-import DailyForm from './Day/DailyForm'
-import Day from './Day'
-import Journal from './pages/Journal'
-import { METRICS } from './config/metrics.js'
+import DailyForm from './components/Day/DailyForm'
+import { METRICS } from './data/metrics.js'
 
 const App = () => {
   // Set as a state variable bc users can change it
@@ -50,12 +48,6 @@ const App = () => {
             </Route>
             <Route exact path='/resources'>
               <Resources />
-            </Route>
-            <Route exact path='/day'>
-              <Day />
-            </Route>
-            <Route exact path='/journal'>
-              <Journal />
             </Route>
           </div>
         </Segment>
