@@ -10,9 +10,15 @@ CREATE TABLE IF NOT EXISTS dbt_meta (
 CREATE TABLE IF NOT EXISTS dbt_data (
   id SERIAL PRIMARY KEY NOT NULL,
   date character varying(128) NOT NULL,
-  timestamp character varying(128),
   rating_data json,
-  journal_data json
+  journal_data json, 
+);
+
+CREATE TABLE IF NOT EXISTS dbt_meta (
+  id SERIAL PRIMARY KEY NOT NULL,
+  date character varying(128) NOT NULL,
+  config json NOT NULL,
+  username character varying(128)
 );
 
 
