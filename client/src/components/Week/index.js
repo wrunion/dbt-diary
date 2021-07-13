@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Page from '../reusable/Page'
-import Journal from '../components/JournalDisplay'
-import RatingDisplay from '../components/RatingDisplay'
+import JournalDisplay from './JournalDisplay'
+import RatingDisplay from './RatingDisplay'
 import { Menu } from 'semantic-ui-react'
 
 const { Item } = Menu
@@ -46,7 +46,7 @@ const Week = () => {
         </Menu>
 
         {(cards && activeTab === 'journal') && 
-          <Journal cards={cards} error={error} />}
+          <JournalDisplay cards={cards} error={error} />}
 
         {(cards && activeTab === 'data') && 
           <RatingDisplay entries={cards} error={error} />}
