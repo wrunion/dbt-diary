@@ -4,30 +4,6 @@ import { Form, Label, Divider, Input, Button, Header, TextArea, Icon } from 'sem
 import './DailyForm.css'
 const { Field } = Form
 
-// number input label mapping 
-const inputLabels = {
-  'SI': 'SI',
-  'self_harm_urge': 'Self harm urge',
-  'drug_urge': 'Drug urge',
-  'emotion_misery': 'Emotion misery',
-  'physical_misery': 'Physical misery',
-  'joy': 'Joy',
-  'calm': 'Calm',
-  'gratitude': 'Gratitude',
-  'intentionality': 'Intentionality',
-}  
-
-// text input mapping, OLD 
-const myObj = {
-  meds: 'meds_as_prescribed',
-  harm: 'self_harm', 
-  usedSkills: 'used_skills',
-  homework: 'homework',
-  skills: 'skills',
-  other: 'other',
-  gratitude: 'gratitude'
-}
-
 const testStyle = {
   display: 'flex', 
   flexWrap: 'wrap', 

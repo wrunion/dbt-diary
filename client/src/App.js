@@ -8,6 +8,7 @@ import Week from './Week'
 import Resources from './Resources'
 import moment from 'moment'
 import DailyForm from './components/Day/DailyForm'
+import Test from './components/ApiTest' // TEMP
 import { METRICS } from './data/metrics.js'
 
 const App = () => {
@@ -36,6 +37,7 @@ const App = () => {
       </div>
  
       <div id='main-container'>
+        
       <NavBar />
 
         <Segment>
@@ -48,6 +50,9 @@ const App = () => {
             </Route>
             <Route exact path='/resources'>
               <Resources />
+            </Route>
+            <Route exact path='/test'>
+              <Test />
             </Route>
           </div>
         </Segment>

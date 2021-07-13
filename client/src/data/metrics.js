@@ -25,4 +25,15 @@ export const METRICS = [
   { id: 29, name: 'rest', label: 'Today I rested, by...',  type: 'textarea', journal: 'true'  },
 ]
 
-export const JOURNAL_PROMPTS = []
+// number input label mapping 
+export const INPUT_LABELS = {
+  'SI': 'SI',
+  'self_harm_urge': 'Self harm urge',
+  'drug_urge': 'Drug urge',
+  'emotion_misery': 'Emotion misery',
+  'physical_misery': 'Physical misery',
+  'joy': 'Joy',
+  'calm': 'Calm',
+  'gratitude': 'Gratitude',
+  'intentionality': 'Intentionality',
+} 

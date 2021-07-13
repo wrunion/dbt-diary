@@ -1,10 +1,9 @@
 const express = require('express')
-const db = require('../db')
 const router = express.Router()
-const insertData = require('../controllers')
-const testInsertData = require('../controllers/testQuery')
-const { getDays, getTestDays } = require('./../controllers/getDays')
-
+const insertData = require('./handlers')
+const testInsertData = require('./handlers/testQuery')
+const { getDays, getTestDays } = require('./handlers/getDays')
+const { getConfig } = require('./handlers/configHandlers')
 
 /* Days */
 router.get('/day', getDays)
@@ -17,6 +16,11 @@ router.post('/data/test', testInsertData)
 
 router.post('/ratings', getDays)
 router.post('/ratings/test', getDays)
+
+// Config
+router.get('/config', getConfig)
+// router.post('/config', setConfig)
+
 
 
 module.exports = router
