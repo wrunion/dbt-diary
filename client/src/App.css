@@ -33,6 +33,17 @@
   padding: 1em;
 }
 
+.site-header .header {
+  text-align: center;
+  margin-top: .5em;
+}
+/* style={{width: '90%', margin: '0 auto', maxWidth: '900px' }} */
+#main-container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 900px
+}
+
 /* 
 
 font-family: 'Cormorant Garamond', serif;

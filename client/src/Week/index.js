@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Page from '../reusable/Page'
-import Journal from './../components/JournalDisplay'
-import RatingDisplay from './../components/RatingDisplay'
+import Journal from '../components/JournalDisplay'
+import RatingDisplay from '../components/RatingDisplay'
 import { Menu } from 'semantic-ui-react'
 
 const { Item } = Menu
