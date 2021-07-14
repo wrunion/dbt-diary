@@ -11,22 +11,29 @@ const containerStyles = {
 
 const formDivStyles = {
   paddingLeft: '25px',
-  paddingRight: '25px'
+  paddingRight: '25px',
+  paddingTop: '10px',
+  padding: '25px'
 }
 
 const ComboForm = () => {
 
   return(
     <div style={containerStyles}>
-      <div style={formDivStyles}>
-        <RatingsForm />
-      </div>
-      
-      <Divider style={{ marginTop: '3em', marginBottom: '3em' }} />
+        <Segment>
+        <div style={formDivStyles}>
+          <RatingsForm />
+        </div>
+      </Segment>
 
-      <div style={formDivStyles}>
-        <JournalForm />
-      </div>
+      
+      {/* <Divider style={{ marginTop: '3em', marginBottom: '3em' }} /> */}
+
+        <Segment>
+          <div style={formDivStyles}>
+            <JournalForm />
+          </div>
+        </Segment>
 
     </div>
   )
