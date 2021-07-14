@@ -116,26 +116,24 @@ class DailyForm extends Component {
     const vals = filterFormVals(this.state)
     // format the data as the server expects
     const req = { json: vals, type: 'ratings' }
-    console.log(vals)
-    console.log(req)
 
-    // fetch('api/day/test', {
-    //   method: 'POST', 
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(req)
-    // }).then(res => res.json()).then(json => {
-    //   console.log(json)
-    //   if (json.success === true) { 
-    //     // Shows dimmer message and resets state
-    //     this.handleShow() 
-    //     this.resetState();
-    //   }
-    // }).catch(err => {
-    //   console.log(err);
-    //   return 'There was an error. See console for details'
-    // }) 
+    fetch('api/day', {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(req)
+    }).then(res => res.json()).then(json => {
+      if (json.success === true) { 
+        console.log(json)
+        // Shows dimmer message and resets state
+        this.handleShow() 
+        this.resetState();
+      }
+    }).catch(err => {
+      console.log(err);
+      return 'There was an error. See console for details'
+    }) 
   }
 
   handleChange = (event, data) => {
@@ -149,8 +147,6 @@ class DailyForm extends Component {
   render() {
     const { handleSubmit, handleChange } = this;
     const { active } = this.state;
-
-    console.log(this.state)
 
   return (
     <Dimmable dimmed={active} style={{borderRadius: '5px'}}>

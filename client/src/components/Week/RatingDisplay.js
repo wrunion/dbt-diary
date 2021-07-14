@@ -28,7 +28,7 @@ const CustomTable = ({ entries, error }) => {
         </Row>
       </TableHeader>
       <Body>
-      {Object.values(entries).map(e => {
+      {Object.values(entries).map((e, i) => {
           if (e.rating_data) {
           const data = e.rating_data
           const { SI, self_harm_urge, drug_urge, emotional_misery, physical_misery, joy, gratitude, calm, intentionality } = data;
@@ -36,7 +36,7 @@ const CustomTable = ({ entries, error }) => {
           const formattedDate = e.date.split(' ').filter(e => 
             e !== '2021').join(' ');
           return(
-            <Row>
+            <Row key={formattedDate + i}>
               <Cell>{formattedDate}</Cell>
               <Cell>{SI}</Cell>
               <Cell>{self_harm_urge}</Cell>
