@@ -25,6 +25,31 @@ export const METRICS = [
   { id: 29, name: 'rest', label: 'Today I rested, by...',  type: 'textarea', journal: 'true'  },
 ]
 
+export const INITIAL_STATE = {
+  "SI": 0,
+  "self_harm_urge": 0,
+  "drug_urge": 0,
+  "emotion_misery": 0,
+  "physical_misery": 0,
+  "joy": 0,
+  "calm": 0,
+  "gratitude": 0,
+  "intentionality": 0,
+  "skills_focus_week": "",
+  "meds_changes": "",
+  "breathing_meds": "",
+  "focus_phrase": "",
+  "skills": "",
+  "homework": "",
+  "did": "",
+  "saw": "",
+  "learned": "",
+  "thought": "",
+  "rest": ""
+}
+
+// TO ADD: hours of sleep, racing thoughts
+
 // number input label mapping 
 export const INPUT_LABELS = {
   'SI': 'SI',
