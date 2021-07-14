@@ -13,6 +13,7 @@ import Test from './components/ApiTest' // TEMP
 
 import JournalForm from './archive/forms/JournalForm'
 import RatingsForm from './archive/forms/RatingsForm'
+import ComboForm from './archive/forms/ComboForm'
 
 
 const App = () => {
@@ -54,7 +55,7 @@ const App = () => {
         <Segment>
           <div id="content">
             <Route exact path='/'>
-              <DailyForm />
+              <ComboForm />
               {/* {(fields && initialState) && <DailyForm metrics={fields} initialState={initialState} />} */}
             </Route>
             <Route exact path='/week'>
@@ -71,6 +72,9 @@ const App = () => {
             </Route>
             <Route exact path='/ratings'>
               <RatingsForm />
+            </Route>
+            <Route exact path='/form'>
+              <ComboForm />
             </Route>
           </div>
         </Segment>
