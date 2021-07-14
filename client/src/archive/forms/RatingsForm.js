@@ -103,7 +103,7 @@ class DailyForm extends Component {
     const req = { json: vals, type: 'ratings' }
 
     /* ------- CHANGE THIS TO "api/day" TO ENTER REAL DATA ------------ */
-    fetch('api/day', {
+    fetch('api/day/test', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'

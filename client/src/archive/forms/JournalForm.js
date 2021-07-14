@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Checkbox, Form, TextArea, Button, Segment } from 'semantic-ui-react'
+import { Checkbox, Form, TextArea, Button, Segment, Header, Input } from 'semantic-ui-react'
+import Page from './../../components/reusable/Page'
 
 const JournalForm = () => {
 
@@ -57,7 +58,9 @@ const JournalForm = () => {
   }
 
   return (
-  <Segment>
+    <Page 
+      title='Journal' 
+      subtitle='How was your day?' icon='moon' color='teal'>
 
     <Form onSubmit={() => handleSubmit()}>
       <Form.Field
@@ -112,9 +115,12 @@ const JournalForm = () => {
         onChange={(e) => setGratitude(e.target.value)}
         value={gratitude}
         />
-      <Button color='violet' basic fluid type='submit'>Submit</Button>
+      <Input type='date' fluid
+        className='date-input'
+        name='date' />
+      <Button color='teal' basic fluid type='submit'>Submit</Button>
     </Form>
-  </Segment>
+  </Page>
   );
   }
 
