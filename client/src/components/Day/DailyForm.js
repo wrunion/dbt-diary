@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Page from '../reusable/Page'
 import { Form, Label, Divider, Input, Button, Header, TextArea, Icon } from 'semantic-ui-react'
 import './DailyForm.css'
@@ -93,10 +93,17 @@ const TextAreaJournalInput = ({ item }) => {
   )
 }
 
+
 const DailyForm = (fields) => {
+
+  const initialState = fields.initialState
+
+  const [vals, setVals] = useState(initialState)
 
   const metrics = fields.metrics.filter(e => !e.journal)
   const journalPrompts = fields.metrics.filter(e => e.journal)
+  console.log('fields', fields.metrics)
+  console.log('initial state form', initialState)
 
   return(
     <div id='DailyForm'>
