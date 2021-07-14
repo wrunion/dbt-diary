@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Checkbox, Form, TextArea, Button, Segment, Header, Input } from 'semantic-ui-react'
-import Page from './../../components/reusable/Page'
+import Page from '../reusable/Page'
 import moment from 'moment'
 
 const formattedDate = moment().format('YYYY-MM-DD');

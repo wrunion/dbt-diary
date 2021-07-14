@@ -5,9 +5,9 @@
 */
 
 import React, { Component } from 'react'
-import { Dropdown, Form, Button } from 'semantic-ui-react'
-import { Dimmer, Header, Icon } from 'semantic-ui-react'
-import Page from './../../components/reusable/Page'
+import { Dropdown, Form, Button, TextArea, Input,  Dimmer, Header, Icon  } from 'semantic-ui-react'
+import moment from 'moment'
+import Page from '../reusable/Page'
 
 const { Subheader } = Header
 const { Dimmable } = Dimmer
@@ -60,7 +60,7 @@ const filterFormVals = (obj) => {
 }
 
 /* Each of these is a dropdown form field. Add here */
-const metrics = ['SI', 'self_harm_urge', 'drug_urge', 'emotional_misery', 'physical_misery', 'joy', 'gratitude', 'calm', 'intentionality']
+const metrics = ['SI', 'self_harm_urge', 'drug_urge', 'emotional_misery', 'physical_misery', 'joy', 'gratitude', 'calm', 'intentionality', 'racing_thoughts', 'skills_score']
 
 const inputLabels = {
   'joy': 'Joy',
@@ -71,13 +71,16 @@ const inputLabels = {
   'drug_urge': 'Drug urge',
   'gratitude': 'Gratitude',
   'calm': 'Calm',
-  'intentionality': 'Intentionality'
+  'intentionality': 'Intentionality', 
+  'racing_thoughts': 'Racing Thoughts', 
+  'skills_score': 'Used Skills',
+  'Notes': 'Notes'
 }  
 
 /* Generate initial state from metrics array */
 const generateInitialState = (arr) => {
   const initialState = {} 
-  arr.forEach((element) => initialState[element] = 0)
+  arr.forEach((element) => initialState[element] = '0')
   return initialState;
 }
 
@@ -90,36 +93,48 @@ class DailyForm extends Component {
   componentDidMount() {
     console.log('real form')
     const initState = generateInitialState(metrics)
-    this.setState({ ...this.state, ...initState })
+    // today's date, in the format accepted by the browser
+    // to use for default date
+    const formattedDate = moment().format('YYYY-MM-DD');
+    this.setState({ ...this.state, ...initState, date: formattedDate })
   }
 
   resetState() {
     const initState = generateInitialState(metrics)
-    this.setState({ ...initState })
+    const formattedDate = moment().format('YYYY-MM-DD');
+    this.setState({ ...initState, date: formattedDate })
   }
 
   handleSubmit = () => {
+    /* set a default date if user hasn't picked one */
+    if (!this.state.date) {
+      const formattedDate = moment().format('YYYY-MM-DD');
+      this.setState()
+    } 
+
     const vals = filterFormVals(this.state)
     // format the data as the server expects
     const req = { json: vals, type: 'ratings' }
+    console.log(vals)
+    console.log(req)
 
-    fetch('api/day/test', {
-      method: 'POST', 
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(req)
-    }).then(res => res.json()).then(json => {
-      console.log(json)
-      if (json.success === true) { 
-        // Shows dimmer message and resets state
-        this.handleShow() 
-        this.resetState();
-      }
-    }).catch(err => {
-      console.log(err);
-      return 'There was an error. See console for details'
-    }) 
+    // fetch('api/day/test', {
+    //   method: 'POST', 
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(req)
+    // }).then(res => res.json()).then(json => {
+    //   console.log(json)
+    //   if (json.success === true) { 
+    //     // Shows dimmer message and resets state
+    //     this.handleShow() 
+    //     this.resetState();
+    //   }
+    // }).catch(err => {
+    //   console.log(err);
+    //   return 'There was an error. See console for details'
+    // }) 
   }
 
   handleChange = (event, data) => {
@@ -134,6 +149,8 @@ class DailyForm extends Component {
     const { handleSubmit, handleChange } = this;
     const { active } = this.state;
 
+    console.log(this.state)
+
   return (
     <Dimmable dimmed={active} style={{borderRadius: '5px'}}>
       <div style={{ textAlign: 'center' }}>
@@ -143,6 +160,7 @@ class DailyForm extends Component {
 
     <Form id="form" onSubmit={handleSubmit}>
       {/* dropdown inputs rendered here  */}
+
       <div style={{display: 'flex', flexWrap: 'wrap', 
         justifyContent: 'center' }}>
         {metrics.map((e, i) =>  
@@ -150,6 +168,23 @@ class DailyForm extends Component {
             handleChange={handleChange} />
           )}
       </div>
+
+      <Form.Field
+        control={TextArea}
+        name='notes'
+        rows={7}
+        style={{ width: '90%' }}
+        label={{ children: `Notes` }}
+        onChange={handleChange}
+        // value={homework}
+        />
+      <Input type='date' fluid
+        className='date-input'
+        name='date'
+        style={{ width: '90%', margin: '0 auto', marginBottom: '1.5em', marginTop: '1.5em' }}
+        defaultValue={this.state.date}
+        onChange={handleChange}
+        />
   
         <Button 
           style={{ width: '90%', margin: '0 auto' }}

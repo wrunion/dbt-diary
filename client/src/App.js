@@ -11,9 +11,9 @@ import DailyForm from './components/Day/ClassDailyForm'
 import Test from './components/ApiTest' // TEMP
 // import { METRICS, INITIAL_STATE } from './data/metrics.js'
 
-import JournalForm from './archive/forms/JournalForm'
-import RatingsForm from './archive/forms/RatingsForm'
-import ComboForm from './archive/forms/ComboForm'
+import JournalForm from './components/Form/JournalForm'
+import RatingsForm from './components/Form/RatingsForm'
+import ComboForm from './components/Form/ComboForm'
 
 
 const App = () => {
