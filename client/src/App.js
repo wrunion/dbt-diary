@@ -7,8 +7,7 @@ import NavBar from './components/NavBar'
 import Week from './components/Week/Week'
 import Resources from './components/Resources'
 import moment from 'moment'
-import DailyForm from './components/Day/ClassDailyForm'
-import Test from './components/ApiTest' // TEMP
+import Raw from './components/DataDisplay/Raw'
 // import { METRICS, INITIAL_STATE } from './data/metrics.js'
 
 import JournalForm from './components/Form/JournalForm'
@@ -56,7 +55,6 @@ const App = () => {
           <div id="content">
             <Route exact path='/'>
               <ComboForm />
-              {/* {(fields && initialState) && <DailyForm metrics={fields} initialState={initialState} />} */}
             </Route>
             <Route exact path='/week'>
               <Week />
@@ -64,18 +62,13 @@ const App = () => {
             <Route exact path='/resources'>
               <Resources />
             </Route>
-            <Route exact path='/test'>
-              <Test />
+            <Route exact path='/resources'>
+              <Resources />
             </Route>
-            <Route exact path='/journal'>
-              <JournalForm />
+            <Route exact path='/raw'>
+              <Raw />
             </Route>
-            <Route exact path='/ratings'>
-              <RatingsForm />
-            </Route>
-            <Route exact path='/form'>
-              <ComboForm />
-            </Route>
+
           </div>
         </Segment>
       </div>

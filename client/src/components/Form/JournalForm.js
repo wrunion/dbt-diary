@@ -42,7 +42,7 @@ const JournalForm = () => {
     // format the data as the server expects
     const req = { json: vals, type: 'journal' }
 
-    fetch('api/day/test', {
+    fetch('api/day', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'
@@ -51,9 +51,10 @@ const JournalForm = () => {
     }).then(res => res.json()).then(json => {
       console.log(json)
       if (json.success === true) { 
+        console.log(json)
         // TODO: Show dimmer message and reset state
-        // this.handleShow() 
-        // this.resetState();
+        this.handleShow() 
+        this.resetState();
       }
     }).catch(err => {
       console.log(err);

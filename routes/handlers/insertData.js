@@ -1,6 +1,6 @@
-const db = require('./../../db')
+const db = require('../../db')
 const pool = db.pool
-const utils = require('./../../utils/momentUtils')
+const utils = require('../../utils/momentUtils')
 
 /* --------- for reference only ----------- */
 
