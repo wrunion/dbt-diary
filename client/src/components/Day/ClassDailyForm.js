@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { Component } from 'react'
 import Page from '../reusable/Page'
 import { METRICS, INITIAL_STATE } from './../../data/metrics.js'
 
-import { Form, Label, Divider, Input, Button, Header, TextArea, Icon } from 'semantic-ui-react'
+import { Form, Label, Divider, Input, Button, Header, TextArea, Icon, Dimmer } from 'semantic-ui-react'
+
 import './DailyForm.css'
+
+const { Dimmable } = Dimmer
 const { Field } = Form
 
 const testStyle = {
@@ -12,19 +15,18 @@ const testStyle = {
   justifyContent: 'flex-start',
 }
 
-const DailyForm = () => {
+const metrics = METRICS.filter(e => !e.journal)
+const journalPrompts = METRICS.filter(e => e.journal)
 
-  const [formVals, setFormVals] = useState(INITIAL_STATE)
+class DailyForm extends Component {
 
-  const metrics = METRICS.filter(e => !e.journal)
-  const journalPrompts = METRICS.filter(e => e.journal)
-
-  // useEffect(() => {
-  //   console.log('Form useEffect', formVals)
-  // }, [formVals])
+  state = {
+    ...INITIAL_STATE,
+    active: false,
+  }
 
 
-  const NumberInput = ({ item }) => {
+  NumberInput = ({ item }) => {
     const { id, name, label } = item;
 
     return( 
@@ -45,7 +47,7 @@ const DailyForm = () => {
     )
   }
 
-  const TextInput = ({ item }) => {
+  TextInput = ({ item }) => {
     const { id, name, label } = item;
 
     return( 
@@ -66,7 +68,7 @@ const DailyForm = () => {
     )
   }
 
-  const TextAreaInput = ({ item }) => {
+  TextAreaInput = ({ item }) => {
     const { id, name, label } = item;
 
     return( 
@@ -86,12 +88,8 @@ const DailyForm = () => {
     )
   }
 
-  const handleChange = (name, val) => {
-    setFormVals({...formVals, [name]: val})
-    console.log(formVals)
-  }
 
-  const TextAreaJournalInput = ({ item }) => {
+  TextAreaJournalInput = ({ item }) => {
     const { id, name, label } = item;
 
     return( 
@@ -113,10 +111,37 @@ const DailyForm = () => {
     )
   }
 
+
+  handleChange = (e) => {
+    const name = e.target.name;
+    this.setState({ [name]: e.target.value})
+  }
+
+  // for dropdown ?
+  // handleChange = (event, data) => {
+  //   const { name, value } = data
+  //   this.setState({ [name]: value })
+  // }
+
+  resetState() {
+    this.setState({ active: false, ...INITIAL_STATE })
+  }
+  
+  handleSubmit() {
+    console.log('submit')
+  }
+
+  // for dimmer
+  handleShow = () => this.setState({ active: true })
+  handleHide = () => this.setState({ active: false })
+
+  render() {
+    const { handleChange, handleSubmit, NumberInput, TextInput, TextAreaInput, TextAreaJournalInput } = this;
   return(
     <div id='DailyForm'>
       <div>
-        <Form>
+        {/* <Form onSubmit={handleSubmit}> */}
+        <Form action='/form' method='POST'>
           {/* number inputs  */}
           <Header as='h2' color='grey' icon='calendar outline'
             content='Daily DBT' 
@@ -126,7 +151,7 @@ const DailyForm = () => {
             name='date' fluid />
           <div style={testStyle}>
             {metrics.filter(e => e.type === 'number').map(e => 
-              <NumberInput item={e} />
+              <NumberInput item={e} handleChange={handleChange} />
             )}
           </div>
 
@@ -138,11 +163,17 @@ const DailyForm = () => {
           <div style={testStyle}>
             {metrics.filter(e => e.type === 'text' || e.type === 'textarea').map(e => 
               e.type === 'text' ? 
-              <TextInput item={e} /> :
+              <TextInput item={e} handleChange={handleChange} /> :
               e.type === 'textarea' ? 
-              <TextAreaInput item={e} /> :
+              <TextAreaInput item={e} handleChange={handleChange} /> :
               null
             )}
+          </div>
+
+          <div className='button-div'>
+            <Button size='large' color='teal' fluid>
+              Submit Daily DBT
+            </Button>
           </div>
         </Form>
       </div>
@@ -152,23 +183,24 @@ const DailyForm = () => {
       <Page 
         title='Journal' 
         subtitle='How was your day?' icon='moon' color='teal'>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <div className='test' style={testStyle}>
             {journalPrompts && journalPrompts.filter(e => e.type === 'textarea').map(e => 
-             <TextAreaJournalInput item={e} />
+             <TextAreaJournalInput item={e} handleChange={handleChange} />
             )}
+          </div>
+          <div className='button-div'>
+            <Button size='large' color='teal' fluid>
+              Submit Journal Entry
+            </Button>
           </div>
         </Form>
       </Page>
 
-      <div className='button-div'>
-        <Button size='large' color='teal' fluid>
-          Submit
-        </Button>
-      </div>
+
 
     </div>
-  )
+  )}
 }
 
 export default DailyForm

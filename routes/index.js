@@ -21,6 +21,21 @@ router.post('/ratings/test', getDays)
 router.get('/config', getConfig)
 // router.post('/config', setConfig)
 
+/* Form */
+// router.get('/form', (req, res) => {
+//   try {
+//     res.render('layout.ejs')
+    
+//   } catch (error) {
+//     console.error(error.message)
+//   }
+// })
+
+router.post('/form', (req, res) => {
+  // const body = req.body
+  console.log(req.body)
+})
+
 
 
 module.exports = router

@@ -11,7 +11,7 @@ const db = require('./db')
 const app = express()
 app.disable('x-powered-by');
 
-const PORT = process.env.PORT || 7999
+const PORT = process.env.PORT || 8000
 
 /* Middleware */
 app.use(cookieParser()); 
@@ -34,7 +34,7 @@ app.use(express.json());
 
 /* Serve public assets */
 app.use(express.static(path.join(__dirname, "js")));
-
+app.set('view engine', 'ejs')
 /* Custom middleware to set headers */
 const setHeaders = (req, res, next) => {
   /* This allows us to use inline js without console errors */
