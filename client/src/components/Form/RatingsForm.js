@@ -5,7 +5,7 @@
 */
 
 import React, { Component } from 'react'
-import { Dropdown, Form, Button, TextArea, Input,  Dimmer, Header, Icon  } from 'semantic-ui-react'
+import { Dropdown, Form, Button, TextArea, Input,  Dimmer, Header, Icon, Label  } from 'semantic-ui-react'
 import moment from 'moment'
 import Page from '../reusable/Page'
 
@@ -74,7 +74,8 @@ const inputLabels = {
   'intentionality': 'Intentionality', 
   'racing_thoughts': 'Racing Thoughts', 
   'skills_score': 'Used Skills',
-  'Notes': 'Notes'
+  'notes': 'Notes', 
+  'focus_phrase': 'Focus Phrase'
 }  
 
 /* Generate initial state from metrics array */
@@ -178,6 +179,23 @@ class DailyForm extends Component {
         onChange={handleChange}
         // value={homework}
         />
+
+      <Field style={{ margin: '5px', width: '90%', paddingBottom: '10px', margin: '0 auto' }}>      
+        <Input 
+          type='text'
+          name='focus_phrase'
+          size='small'
+          label={<Label basic pointing='right' color='grey'>Focus phrase today: </Label>}
+        />
+      </Field>
+      <Field style={{ margin: '5px', width: '90%', margin: '0 auto'  }}>      
+        <Input 
+          type='text'
+          name='skills_focus'
+          size='small'
+          label={<Label basic pointing='right' color='grey'>Skills focus this week: </Label>}
+        />
+      </Field>
       <Input type='date' fluid
         className='date-input'
         name='date'
