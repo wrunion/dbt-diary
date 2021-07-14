@@ -7,6 +7,7 @@
 import React, { Component } from 'react'
 import { Dropdown, Form, Button } from 'semantic-ui-react'
 import { Dimmer, Header, Icon } from 'semantic-ui-react'
+import Page from './../../components/reusable/Page'
 
 const { Subheader } = Header
 const { Dimmable } = Dimmer
@@ -102,7 +103,6 @@ class DailyForm extends Component {
     // format the data as the server expects
     const req = { json: vals, type: 'ratings' }
 
-    /* ------- CHANGE THIS TO "api/day" TO ENTER REAL DATA ------------ */
     fetch('api/day/test', {
       method: 'POST', 
       headers: {
@@ -136,6 +136,10 @@ class DailyForm extends Component {
 
   return (
     <Dimmable dimmed={active} style={{borderRadius: '5px'}}>
+      <div style={{ textAlign: 'center' }}>
+    <Page 
+      title='Daily DBT' 
+      subtitle='Rate your day from 0 to 5' icon='calendar outline' color='teal'>
 
     <Form id="form" onSubmit={handleSubmit}>
       {/* dropdown inputs rendered here  */}
@@ -147,8 +151,11 @@ class DailyForm extends Component {
           )}
       </div>
   
-      <Button type="submit" color='grey' basic fluid>Submit</Button>
+        <Button 
+          style={{ width: '90%', margin: '0 auto' }}
+          type="submit" color='teal' basic fluid>Submit</Button>
       </Form>
+      
   
       <Dimmer active={active} onClickOutside={this.handleHide}>
       <Header as='h2' icon inverted>
@@ -157,6 +164,8 @@ class DailyForm extends Component {
         <Subheader>Be gentle with yourself today</Subheader>
       </Header>
       </Dimmer>
+      </Page>
+      </div>
     </Dimmable>
     )
   }

@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Checkbox, Form, TextArea, Button, Segment, Header, Input } from 'semantic-ui-react'
 import Page from './../../components/reusable/Page'
+import moment from 'moment'
+
+const formattedDate = moment().format('YYYY-MM-DD');
 
 const JournalForm = () => {
 
@@ -11,6 +14,8 @@ const JournalForm = () => {
   const [homework, setHomework] = useState('')
   const [other, setOther] = useState('')
   const [gratitude, setGratitude] = useState('')
+  // defaults to the current date, as formatted by moment above
+  const [date, setDate] = useState(formattedDate)
 
   const myObj = {
     meds: 'meds_as_prescribed',
@@ -22,12 +27,10 @@ const JournalForm = () => {
     gratitude: 'gratitude'
   }
 
-  // console.log(meds, harm, usedSkills, skills, homework, other, gratitude)
-
-  /* ------- CHANGE THIS TO "api/day" TO ENTER REAL DATA ------------ */
   const handleSubmit = () => {
     // grab and format our data from state
     const vals= {
+      "date": date,
       'meds_as_prescribed': meds,
       'self_harm': harm,
       'used_skills': skills, 
@@ -35,6 +38,7 @@ const JournalForm = () => {
       'other': other,
       'gratitude': gratitude
     }
+
     // format the data as the server expects
     const req = { json: vals, type: 'journal' }
 
@@ -117,7 +121,10 @@ const JournalForm = () => {
         />
       <Input type='date' fluid
         className='date-input'
-        name='date' />
+        name='date'
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+        />
       <Button color='teal' basic fluid type='submit'>Submit</Button>
     </Form>
   </Page>
