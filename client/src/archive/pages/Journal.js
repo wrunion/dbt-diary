@@ -1,6 +1,6 @@
 import React from 'react'
 import Page from '../../reusable/Page'
-import JournalForm from '../forms/JournalForm'
+import JournalForm from '../../components/Form/JournalForm'
 
 const Journal = () => {
   return(

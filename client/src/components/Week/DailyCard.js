@@ -44,7 +44,6 @@ const CustomCard = ({ card, index, key, title }) => {
         // false is a valid value here, so we don't want to filter it out
         // as just another 'falsy value'
         const val = entry[e] === false ? false : entry[e] || null
-        console.log(val)
 
         if (val !== null) {
           if (typeof val === 'boolean') { 
