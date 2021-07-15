@@ -134,7 +134,6 @@ class DailyForm extends Component {
     // format the data as the server expects
     const req = { json: vals, type: 'ratings' }
 
-    console.log('req', req)
     fetch('api/day', {
       method: 'POST', 
       headers: {

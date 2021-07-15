@@ -1,7 +1,7 @@
 import React from 'react'
 import JournalForm from './JournalForm'
 import RatingsForm from './RatingsForm'
-import { Segment, Divider } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 
 const containerStyles = {
   display: 'flex', 
@@ -16,27 +16,23 @@ const formDivStyles = {
   padding: '25px'
 }
 
-const ComboForm = () => {
+const FormDisplay = () => {
 
   return(
     <div style={containerStyles}>
-        <Segment>
+      <Segment>
+      <div style={formDivStyles}>
+      <RatingsForm />
+      </div>
+    </Segment>
+
+      <Segment>
         <div style={formDivStyles}>
-          <RatingsForm />
+        <JournalForm />
         </div>
       </Segment>
-
-      
-      {/* <Divider style={{ marginTop: '3em', marginBottom: '3em' }} /> */}
-
-        <Segment>
-          <div style={formDivStyles}>
-            <JournalForm />
-          </div>
-        </Segment>
-
     </div>
   )
 }
 
-export default ComboForm;
+export default FormDisplay;
