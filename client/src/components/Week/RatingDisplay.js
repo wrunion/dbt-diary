@@ -5,8 +5,8 @@ const TableHeader = Table.Header;
 
 const inputLabelsShort = {
   'joy': 'Joy',
-  'emotional_misery': 'Emotion Misery',
-  'physical_misery': 'Phys. Misery',
+  'emotional_misery': 'Em. Mis',
+  'physical_misery': 'Phys. Mis',
   'racing_thoughts': 'Racing Thoughts', 
   'calm': 'Rest', 
   'skills_score': 'Skills Score', 

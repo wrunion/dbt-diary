@@ -18,7 +18,6 @@ const Week = () => {
 
   const Skill = (props) => {
     const { skill, title } = props;
-    console.log(props)
     return(
       <div style={{ margin: '1em' }}>
 
@@ -51,10 +50,12 @@ const Week = () => {
     
      return(
        <>
-        <Header as='h2' content={title} color='violet' />
+        <Header as='h2' content={title} color='violet' 
+          attached='top'
+          textAlign='center' />
 
-       
-      <div style={{ background: 'rgba(224, 225, 226, .5)', width: '100%', height: '100%', marginTop: '25px', padding: '15px' }}>
+        <div 
+          style={{ background: 'rgba(224, 225, 226, .5)', width: '100%', height: '100%', marginTop: '25px', padding: '15px' }}>
 
         {keys && keys.map(e => 
           <Skill skill={content[e]} title={e} /> 
