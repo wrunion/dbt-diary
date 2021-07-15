@@ -29,12 +29,12 @@ const margin = '10px'
 const padding = '5px'
 
 const CustomCard = ({ card, index, key, title }) => {
-
+  console.log(card)
   const cardColor = colors[index%9]
 
   const entry = card.journal_data
 
-  const keys = Object.keys(entry).filter(e => e !== 'date')
+  const keys = Object.keys(entry).filter(e => e !== 'date').filter(e => e !== 'used_skills')
   const tags = entry.tags || ''
 
   const Description = () => {
@@ -89,7 +89,7 @@ const CustomCard = ({ card, index, key, title }) => {
       <Content description={Description} />
 
       <Content extra>
-        <Icon name='hashtag' />{tags ? tags : 'No tags yet'}
+        <Icon name='hashtag' />{tags ? tags : entry.used_skills}
       </Content>
 
     </Card>

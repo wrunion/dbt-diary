@@ -1,16 +1,35 @@
 import React from 'react'
 import Page from '../reusable/Page'
-import { Segment } from 'semantic-ui-react'
+import { Segment, Header } from 'semantic-ui-react'
+import { SKILLS, WEEKS } from './skillData'
+
+const skills = SKILLS;
 
 const Week = () => {
+
+  console.log(skills)
+
+  const SkillCard = (props) => {
+
+    const skill = props.skill
+    const { title, content, module: moduleTitle } = skill;
+    console.log(title, content, moduleTitle)
+    
+     return(
+      <Segment>
+        {/* {title} */}
+        abc
+      </Segment>
+    )
+  }
+
   return(
     <Page 
-      title='Resources' color='grey' icon='book'
-      subtitle='In progress'>
+      title='Skills' color='grey' icon='book'
+      subtitle='Learn more about each DBT skill'>
+
+      {skills.map(e => <SkillCard skill={e} /> )}
       
-      <Segment style={{ fontWeight: 'bold' }}>
-        Links to online DBT resources coming soon! 
-      </Segment>
     </Page>
   )
 }
