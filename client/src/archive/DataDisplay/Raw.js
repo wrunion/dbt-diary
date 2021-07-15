@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Page from '../reusable/Page'
+import Page from '../../components/reusable/Page'
 import { Menu, Segment, Divider } from 'semantic-ui-react'
 
 const { Item } = Menu

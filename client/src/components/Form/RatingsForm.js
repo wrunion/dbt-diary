@@ -73,7 +73,7 @@ const inputLabels = {
   'calm': 'Calm',
   'intentionality': 'Intentionality', 
   'racing_thoughts': 'Racing Thoughts', 
-  'skills_score': 'Used Skills',
+  'skills_score': 'Skills Score',
   'notes': 'Notes', 
   'focus_phrase': 'Focus Phrase'
 }  

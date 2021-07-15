@@ -1,14 +1,20 @@
 import React from 'react'
-import { Table, Segment } from 'semantic-ui-react'
-const { Row, HeaderCell, Cell, Body } = Table;
+import { Table, Segment, Header } from 'semantic-ui-react'
+const { Row, HeaderCell, Cell, Body, Divider } = Table;
 const TableHeader = Table.Header;
 
 const inputLabelsShort = {
-  'SI': 'SI',
-  'self_harm_urge': 'Self harm urge',
-  'emotional_misery': 'Emotional Misery',
-  'physical_misery': 'Physical Misery',
-  'joy': 'Joy'
+  'joy': 'Joy',
+  'emotional_misery': 'Emotion Misery',
+  'physical_misery': 'Phys. Misery',
+  'racing_thoughts': 'Racing Thoughts', 
+  'calm': 'Rest', 
+  'skills_score': 'Skills Score', 
+}
+
+// helper to split strings into paragraphs
+const splitToParagraph = (str) => {
+  return str.split('\n\n')
 }
 
 const CustomTable = ({ entries, error }) => {
@@ -18,7 +24,8 @@ const CustomTable = ({ entries, error }) => {
       {error && <div>{error}</div>}
 
       {entries && Object.keys(entries).length > 0 ?
-      <Table striped columns={6} compact size='small' color='green'>
+      <>
+      <Table striped columns={7} compact size='small' color='green'>
       <TableHeader>
         <Row>
         <HeaderCell>Date</HeaderCell>
@@ -31,24 +38,63 @@ const CustomTable = ({ entries, error }) => {
       {Object.values(entries).map((e, i) => {
           if (e.rating_data) {
           const data = e.rating_data
-          const { SI, self_harm_urge, drug_urge, emotional_misery, physical_misery, joy, gratitude, calm, intentionality } = data;
-          
+          const joy = data.joy;
+          const emotionalMisery = data.emotional_misery;
+          const physicalMisery = data.physical_misery;
+          const calm = data.calm
+          const skills = data.skills_score || '-'
+          const racingthoughts = data.racing_thoughts || '-'
+
           const formattedDate = e.date.split(' ').filter(e => 
             e !== '2021').join(' ');
           return(
             <Row key={formattedDate + i}>
               <Cell>{formattedDate}</Cell>
-              <Cell>{SI}</Cell>
-              <Cell>{self_harm_urge}</Cell>
-              <Cell>{emotional_misery}</Cell>
-              <Cell>{physical_misery}</Cell>
               <Cell>{joy}</Cell>
+              <Cell>{emotionalMisery}</Cell>
+              <Cell>{physicalMisery}</Cell>
+              <Cell>{racingthoughts}</Cell>
+              <Cell>{calm}</Cell>
+              <Cell>{skills}</Cell>
             </Row>
             )
           }
-        })} 
+        })}
       </Body>
-      </Table> :
+      </Table> 
+
+      {/* notes  */}
+      <Segment>
+      {Object.values(entries).map((e, i) => {
+          if (e.rating_data?.notes) {
+          const notes = e.rating_data.notes || ''
+          const formattedNotes = notes && splitToParagraph(notes)
+
+          const formattedDate = e.date.split(' ').filter(e => 
+            e !== '2021').join(' ');
+
+            return(
+              <>
+              <section style={{ padding: '15px' }}>
+                <Header as='h3' content={formattedDate} />
+                <ul className='ui list'>
+                  {formattedNotes.map((e, i) => {
+                    return (
+                      <div>
+                        <li style={liStyle}>{e}</li>
+                      </div>
+                    )
+                  })}
+              </ul>
+              </section>
+              </>
+            )
+          }
+        })}
+
+      </Segment>
+      </>
+      :
       <Segment>
         No data found for those dates
       </Segment>}
@@ -57,3 +103,8 @@ const CustomTable = ({ entries, error }) => {
 }
 
 export default CustomTable;
+
+const liStyle = {
+  marginBottom: '.5em',
+  lineHeight: '2em',
+}

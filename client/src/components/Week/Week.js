@@ -21,13 +21,11 @@ const Week = () => {
         'Content-Type': 'application/json'
       }
     }).then(res => res.json()).then(json => {
-      setCards(json.data)
+      setCards(json.data.reverse())
       }).catch(err => {
       setError('There was an error fetching data. See console for details.')
     }) 
   }, [])
-
-  console.log(cards)
 
   return(
     <Page color='grey' icon='sun' title='This Week in DBT' subtitle="See what you learned and where you can improve">
