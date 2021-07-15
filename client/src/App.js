@@ -12,7 +12,7 @@ import moment from 'moment'
 
 import JournalForm from './components/Form/JournalForm'
 import RatingsForm from './components/Form/RatingsForm'
-import ComboForm from './components/Form/ComboForm'
+import FormDisplay from './components/Form/FormDisplay'
 
 
 const App = () => {
@@ -54,7 +54,7 @@ const App = () => {
         <Segment>
           <div id="content">
             <Route exact path='/'>
-              <ComboForm />
+              <FormDisplay />
             </Route>
             <Route exact path='/week'>
               <Week />

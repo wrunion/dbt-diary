@@ -16,7 +16,8 @@ const colors = [
 ]
 
 const displayNames = {
-  "meds_as_prescribed": 'Took meds as prescribed',
+  "meds_as_prescribed": 'Took meds',
+  "skills_used": 'Used skills',
   'used_skills': 'Skills used',
   "self_harm": 'Kept self safe',
   'homework': 'Homework',
@@ -28,22 +29,20 @@ const marginSmall = '5px'
 const margin = '10px'
 const padding = '5px'
 
-// helper to split strings into paragraphs
-const splitToParagraph = (str) => {
-  return str.split('\n\n')
-}
-
 const CustomCard = ({ card, index, key, title }) => {
   const cardColor = colors[index%9]
 
   const entry = card.journal_data
 
   const keys = Object.keys(entry).filter(e => e !== 'date')
-  const tags = entry.tags || ''
+  const orderedKeys = ['skills_used', ...keys.filter(e => e !== 'skills_used')]
+  
+  /* this just filters out the early entries that don't have tag data  */
+  const tags = entry.date !== '2021-07-13' && entry.date !== undefined ? entry.used_skills : 'No tags yet'
 
   const Description = () => {
     return (
-      keys && keys.map((e, i) => {
+      orderedKeys && orderedKeys.map((e, i) => {
         const name = displayNames[e]
         // false is a valid value here, so we don't want to filter it out
         // as just another 'falsy value'
@@ -51,6 +50,7 @@ const CustomCard = ({ card, index, key, title }) => {
 
         if (val !== null) {
           if (typeof val === 'boolean') { 
+            console.log(val)
             return <DisplayBoolean val={val}
                       displayName={displayNames[e]}/>
                     } 
@@ -94,9 +94,7 @@ const CustomCard = ({ card, index, key, title }) => {
       <Content description={Description} />
 
       <Content extra>
-        {/* this just filters out the early entries that don't have tag data  */}
-        <Icon name='hashtag' />{entry.date !== '2021-07-13' && entry.date !== undefined ? entry.used_skills: 'No tags yet'}
-
+        <Icon name='hashtag' />{tags}
       </Content>
 
     </Card>
