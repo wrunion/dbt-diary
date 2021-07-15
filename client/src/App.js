@@ -7,7 +7,7 @@ import NavBar from './components/NavBar'
 import Week from './components/Week/Week'
 import Resources from './components/Resources'
 import moment from 'moment'
-import Raw from './components/DataDisplay/Raw'
+// import Raw from './components/DataDisplay/Raw'
 // import { METRICS, INITIAL_STATE } from './data/metrics.js'
 
 import JournalForm from './components/Form/JournalForm'
@@ -62,10 +62,6 @@ const App = () => {
             <Route exact path='/resources'>
               <Resources />
             </Route>
-            <Route exact path='/raw'>
-              <Raw />
-            </Route>
-
           </div>
         </Segment>
       </div>

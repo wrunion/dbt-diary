@@ -27,6 +27,9 @@ const Week = () => {
     }) 
   }, [])
 
+
+  console.log(cards)
+  
   return(
     <Page color='grey' icon='sun' title='This Week in DBT' subtitle="See what you learned and where you can improve">
       {error && <div>

@@ -60,8 +60,12 @@ const filterFormVals = (obj) => {
 }
 
 /* Each of these is a dropdown form field. Add here */
-const metrics = ['SI', 'self_harm_urge', 'drug_urge', 'emotional_misery', 'physical_misery', 'joy', 'gratitude', 'calm', 'intentionality', 'racing_thoughts', 'skills_score']
+const numberLabels = ['SI', 'self_harm_urge', 'drug_urge', 'emotional_misery', 'physical_misery', 'joy', 'gratitude', 'calm', 'intentionality', 'racing_thoughts', 'skills_score']
 
+const textLabels = ['notes', 'focus_phrase', 'skills_focus']
+
+// Used to map 'name' values to text display strings
+// to label input fields
 const inputLabels = {
   'joy': 'Joy',
   'emotional_misery': 'Emotional Misery',
@@ -78,11 +82,26 @@ const inputLabels = {
   'focus_phrase': 'Focus Phrase'
 }  
 
-/* Generate initial state from metrics array */
-const generateInitialState = (arr) => {
+/* Generate initial state from label arrays */
+// numbers default to 0
+const generateInitialNumberState = (arr) => {
   const initialState = {} 
   arr.forEach((element) => initialState[element] = '0')
   return initialState;
+}
+
+// text inputs default to ''
+const generateInitialTextState = (arr) => {
+  const initialState = {} 
+  arr.forEach((element) => initialState[element] = '')
+  return initialState;
+}
+
+// combines the two functions above to return initial state
+const generateInitialState = (numArr, textArr) => {
+  const inititalNumberState = generateInitialNumberState(numArr)
+  const inititalTextState = generateInitialTextState(textArr)
+  return {...inititalNumberState, ...inititalTextState}
 }
 
 class DailyForm extends Component {
@@ -92,16 +111,14 @@ class DailyForm extends Component {
   }
 
   componentDidMount() {
-    console.log('real form')
-    const initState = generateInitialState(metrics)
+    const initState = generateInitialState(numberLabels, textLabels)
     // today's date, in the format accepted by the browser
-    // to use for default date
     const formattedDate = moment().format('YYYY-MM-DD');
     this.setState({ ...this.state, ...initState, date: formattedDate })
   }
 
   resetState() {
-    const initState = generateInitialState(metrics)
+    const initState = generateInitialState(numberLabels, textLabels)
     const formattedDate = moment().format('YYYY-MM-DD');
     this.setState({ ...initState, date: formattedDate })
   }
@@ -117,6 +134,7 @@ class DailyForm extends Component {
     // format the data as the server expects
     const req = { json: vals, type: 'ratings' }
 
+    console.log('req', req)
     fetch('api/day', {
       method: 'POST', 
       headers: {
@@ -141,11 +159,16 @@ class DailyForm extends Component {
     this.setState({ [name]: value })
   }
 
+  handleTextChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value})
+  }
+
   handleShow = () => this.setState({ active: true })
   handleHide = () => this.setState({ active: false })
 
   render() {
-    const { handleSubmit, handleChange } = this;
+    const { handleSubmit, handleChange, handleTextChange } = this;
     const { active } = this.state;
 
   return (
@@ -156,11 +179,10 @@ class DailyForm extends Component {
       subtitle='Rate your day from 0 to 5' icon='calendar outline' color='teal'>
 
     <Form id="form" onSubmit={handleSubmit}>
-      {/* dropdown inputs rendered here  */}
 
       <div style={{display: 'flex', flexWrap: 'wrap', 
         justifyContent: 'center' }}>
-        {metrics.map((e, i) =>  
+        {numberLabels.map((e, i) =>  
           <DropdownDisplay key={i} label={inputLabels[e]} name={e}
             handleChange={handleChange} />
           )}
@@ -172,8 +194,7 @@ class DailyForm extends Component {
         rows={7}
         style={{ width: '90%' }}
         label={{ children: `Notes` }}
-        onChange={handleChange}
-        // value={homework}
+        onChange={handleTextChange}
         />
 
       <Field style={{ margin: '5px', width: '90%', paddingBottom: '10px', margin: '0 auto' }}>      
@@ -182,6 +203,7 @@ class DailyForm extends Component {
           name='focus_phrase'
           size='small'
           label={<Label basic pointing='right' color='grey'>Focus phrase today: </Label>}
+          onChange={handleTextChange}
         />
       </Field>
       <Field style={{ margin: '5px', width: '90%', margin: '0 auto'  }}>      
@@ -190,6 +212,7 @@ class DailyForm extends Component {
           name='skills_focus'
           size='small'
           label={<Label basic pointing='right' color='grey'>Skills focus this week: </Label>}
+          onChange={handleTextChange}
         />
       </Field>
       <Input type='date' fluid
