@@ -82,9 +82,9 @@ const CustomTable = ({ entries, error }) => {
                 <summary style={summaryStyle}>{formattedDate}</summary>
                 {formattedNotes.map((e, i) => {        
                       return (
-                        <div key={i}>
-                          <li style={liStyle}>{e}</li>
-                        </div>
+                      <div key={i}>
+                        <li style={liStyle}>{e}</li>
+                      </div>
                       )
                     })}
                 </details>

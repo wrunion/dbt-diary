@@ -112,3 +112,7 @@ font-family: 'Raleway', sans-serif;
   margin-bottom: 1em;
   margin-top: .5em;
 }
+
+#skills-page div p {
+  /* border-radius: 0 !important; */
+}
