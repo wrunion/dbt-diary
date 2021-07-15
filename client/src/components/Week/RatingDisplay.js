@@ -25,7 +25,7 @@ const CustomTable = ({ entries, error }) => {
 
       {entries && Object.keys(entries).length > 0 ?
       <>
-      <Table striped columns={7} compact size='small' color='violet'>
+      <Table striped columns={7} compact size='small' color='green'>
       <TableHeader>
         <Row>
         <HeaderCell>Date</HeaderCell>
@@ -64,7 +64,8 @@ const CustomTable = ({ entries, error }) => {
       </Table> 
 
       {/* notes  */}
-      <Segment>
+      <div style={notesSegmentStyle}>
+      <Header as='h2' content='Notes' icon='edit outline' color='grey' style={headerStyle} />
       {Object.values(entries).map((e, i) => {
           if (e.rating_data?.notes) {
           const notes = e.rating_data.notes || ''
@@ -81,7 +82,7 @@ const CustomTable = ({ entries, error }) => {
                 <summary style={summaryStyle}>{formattedDate}</summary>
                 {formattedNotes.map((e, i) => {        
                       return (
-                        <div>
+                        <div key={i}>
                           <li style={liStyle}>{e}</li>
                         </div>
                       )
@@ -94,7 +95,7 @@ const CustomTable = ({ entries, error }) => {
           }
         })}
 
-      </Segment>
+      </div>
       </>
       :
       <Segment>
@@ -117,9 +118,13 @@ const uiStyle = {
 
 const summaryStyle = {
   marginBottom: '1em',
-  color: '#6434C9'
+  color: '#21BA45'
 }
 
 const headerStyle = {
   marginLeft: '25px'
+}
+
+const notesSegmentStyle = {
+  marginTop: '2em'
 }
