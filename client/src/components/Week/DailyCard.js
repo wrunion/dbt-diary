@@ -28,12 +28,17 @@ const marginSmall = '5px'
 const margin = '10px'
 const padding = '5px'
 
+// helper to split strings into paragraphs
+const splitToParagraph = (str) => {
+  return str.split('\n\n')
+}
+
 const CustomCard = ({ card, index, key, title }) => {
   const cardColor = colors[index%9]
 
   const entry = card.journal_data
 
-  const keys = Object.keys(entry).filter(e => e !== 'date').filter(e => e !== 'used_skills')
+  const keys = Object.keys(entry).filter(e => e !== 'date')
   const tags = entry.tags || ''
 
   const Description = () => {
@@ -47,13 +52,14 @@ const CustomCard = ({ card, index, key, title }) => {
         if (val !== null) {
           if (typeof val === 'boolean') { 
             return <DisplayBoolean val={val}
-                      displayName={displayNames[e]}/>}
+                      displayName={displayNames[e]}/>
+                    } 
         return (
           <>
           {i !== 0 && <Divider style={{ marginTop: '.75em', marginBottom: '.75em' }}/>}
           <div style={{ padding: padding }}>
             <span style={{ fontWeight: 'bold', marginBottom: margin }}>{name}</span><br/>
-            <span>{val}</span>
+            <pre style={{ whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}>{val}</pre>
           </div>
           </>
         )}
@@ -78,6 +84,7 @@ const CustomCard = ({ card, index, key, title }) => {
     </>
   )
 
+  console.log(entry)
   return (
     <>
     <Card fluid color={cardColor} key={key}>
@@ -87,7 +94,9 @@ const CustomCard = ({ card, index, key, title }) => {
       <Content description={Description} />
 
       <Content extra>
-        <Icon name='hashtag' />{tags ? tags : entry.used_skills}
+        {/* this just filters out the early entries that don't have tag data  */}
+        <Icon name='hashtag' />{entry.date !== '2021-07-13' && entry.date !== undefined ? entry.used_skills: 'No tags yet'}
+
       </Content>
 
     </Card>
