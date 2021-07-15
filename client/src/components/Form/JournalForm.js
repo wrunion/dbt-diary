@@ -36,7 +36,8 @@ const JournalForm = () => {
       'used_skills': skills, 
       'homework': homework,
       'other': other,
-      'gratitude': gratitude
+      'gratitude': gratitude, 
+      'skills_used': usedSkills
     }
 
     // format the data as the server expects

@@ -62,9 +62,6 @@ const App = () => {
             <Route exact path='/resources'>
               <Resources />
             </Route>
-            <Route exact path='/resources'>
-              <Resources />
-            </Route>
             <Route exact path='/raw'>
               <Raw />
             </Route>
