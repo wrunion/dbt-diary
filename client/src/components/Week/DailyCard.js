@@ -29,7 +29,6 @@ const margin = '10px'
 const padding = '5px'
 
 const CustomCard = ({ card, index, key, title }) => {
-  console.log(card)
   const cardColor = colors[index%9]
 
   const entry = card.journal_data

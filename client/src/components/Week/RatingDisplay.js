@@ -25,7 +25,7 @@ const CustomTable = ({ entries, error }) => {
 
       {entries && Object.keys(entries).length > 0 ?
       <>
-      <Table striped columns={7} compact size='small' color='green'>
+      <Table striped columns={7} compact size='small' color='violet'>
       <TableHeader>
         <Row>
         <HeaderCell>Date</HeaderCell>
@@ -75,17 +75,19 @@ const CustomTable = ({ entries, error }) => {
 
             return(
               <>
-              <section style={{ padding: '15px' }}>
-                <Header as='h3' content={formattedDate} />
-                <ul className='ui list'>
-                  {formattedNotes.map((e, i) => {
-                    return (
-                      <div>
-                        <li style={liStyle}>{e}</li>
-                      </div>
-                    )
-                  })}
-              </ul>
+              <section style={{ padding: '15px',  border: '1px solid #E0E1E2', borderRadius: '7px', margin: '15px' }}>
+                <ul className='ui list' style={uiStyle}>
+                <details>
+                <summary style={summaryStyle}>{formattedDate}</summary>
+                {formattedNotes.map((e, i) => {        
+                      return (
+                        <div>
+                          <li style={liStyle}>{e}</li>
+                        </div>
+                      )
+                    })}
+                </details>
+                </ul>
               </section>
               </>
             )
@@ -107,4 +109,17 @@ export default CustomTable;
 const liStyle = {
   marginBottom: '.5em',
   lineHeight: '2em',
+}
+
+const uiStyle = {
+  margin: '25px',
+}
+
+const summaryStyle = {
+  marginBottom: '1em',
+  color: '#6434C9'
+}
+
+const headerStyle = {
+  marginLeft: '25px'
 }
