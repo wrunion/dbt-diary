@@ -172,10 +172,12 @@ class DailyForm extends Component {
 
   return (
     <Dimmable dimmed={active} style={{borderRadius: '5px'}}>
-      <div style={{ textAlign: 'center' }}>
-    <Page 
-      title='Daily DBT' 
-      subtitle='Rate your day from 0 to 5' icon='calendar outline' color='teal'>
+      <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column' }}>
+      <Header as='h2'
+        content='Daily DBT' 
+        subheader='Rate your day from 0 to 5' icon='calendar outline' color='teal' textAlign='left'
+        style={{ margin: '.5em 0 1.5em 2em', alignSelf: 'center' }}
+        />
 
     <Form id="form" onSubmit={handleSubmit}>
 
@@ -235,7 +237,6 @@ class DailyForm extends Component {
         <Subheader>Be gentle with yourself today</Subheader>
       </Header>
       </Dimmer>
-      </Page>
       </div>
     </Dimmable>
     )

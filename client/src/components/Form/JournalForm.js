@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { Checkbox, Form, TextArea, Button, Segment, Header, Input } from 'semantic-ui-react'
-import Page from '../reusable/Page'
+import { Checkbox, Form, TextArea, Button, Header, Input } from 'semantic-ui-react'
 import moment from 'moment'
 
 const formattedDate = moment().format('YYYY-MM-DD');
@@ -64,10 +63,12 @@ const JournalForm = () => {
   }
 
   return (
-    <Page 
-      title='Journal' 
-      subtitle='How was your day?' icon='moon' color='teal'>
-
+    <>
+    <div style={{ display: 'flex', flexDirection: 'column', }}>
+    <Header as='h2'
+      content='Journal' style={{ marginBottom: '1.5em' }}
+      subheader='How was your day?' icon='moon' color='teal' />
+    
     <Form onSubmit={() => handleSubmit()}>
       <Form.Field
         control={Checkbox}
@@ -90,8 +91,6 @@ const JournalForm = () => {
         onChange={() => setUsedSkills(!usedSkills)}
         value={usedSkills}
         />
-        {/* text fields */}
-        {/* skills, homeworkA, homeworkB, other */}
       <Form.Field
         control={TextArea}
         name='skills'
@@ -129,7 +128,8 @@ const JournalForm = () => {
         />
       <Button color='teal' basic fluid type='submit'>Submit</Button>
     </Form>
-  </Page>
+    </div>
+  </>
   );
   }
 
