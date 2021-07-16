@@ -4,7 +4,7 @@ import moment from 'moment'
 
 const formattedDate = moment().format('YYYY-MM-DD');
 
-const JournalForm = () => {
+const Form2 = () => {
 
   const [meds, setMeds] = useState(false)
   const [harm, setHarm] = useState(false)
@@ -133,4 +133,4 @@ const JournalForm = () => {
   );
   }
 
-export default JournalForm;
+export default Form2;

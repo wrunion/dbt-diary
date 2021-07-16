@@ -1,6 +1,7 @@
 const db = require('../../db')
 const pool = db.pool
 const utils = require('../../utils/momentUtils')
+const moment = require('moment')
 
 /* --------- for reference only ----------- */
 
@@ -26,7 +27,7 @@ const createEntry = async (req, res, queryString) => {
     if (!json || typeof json !== 'object') {
       throw `Incorrect input type. "Data" should be an object` } 
 
-    const date = utils.date;
+    const date = moment().format('YYYY-MM-DD');
     const timestamp = utils.id;
 
     const success = await pool.query(queryString, [date, timestamp, json]);
@@ -47,7 +48,6 @@ const createEntry = async (req, res, queryString) => {
     })
   }
 }
-
 
 const insertData = (req, res) => {
   if (!req.body) {
