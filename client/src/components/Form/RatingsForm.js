@@ -170,6 +170,9 @@ class DailyForm extends Component {
     const { handleSubmit, handleChange, handleTextChange } = this;
     const { active } = this.state;
 
+  console.log(moment().format('YYYY-MM-DD'))
+
+
   return (
     <Dimmable dimmed={active} style={{borderRadius: '5px'}}>
       <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column' }}>
