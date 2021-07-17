@@ -1,6 +1,7 @@
 import React from 'react'
+import ReadMoreReact from 'read-more-react'
 import { Card, Icon, Divider } from 'semantic-ui-react'
-const { Content } = Card;
+const { Content } = Card
 
 const colors = [
   'orange',
@@ -25,6 +26,12 @@ const displayNames = {
   'gratitude': 'Gratitude'
 }
 
+const preStyle = {
+  whiteSpace: 'pre-wrap', 
+  fontFamily: 'inherit',
+  display: 'flex'
+}
+
 const marginSmall = '5px'
 const margin = '10px'
 const padding = '5px'
@@ -47,6 +54,7 @@ const CustomCard = ({ card, index, key, title }) => {
         // false is a valid value here, so we don't want to filter it out
         // as just another 'falsy value'
         const val = entry[e] === false ? false : entry[e] || null
+        console.log(name)
 
         if (val !== null) {
           if (typeof val === 'boolean') { 
@@ -54,12 +62,23 @@ const CustomCard = ({ card, index, key, title }) => {
             return <DisplayBoolean val={val}
                       displayName={displayNames[e]}/>
                     } 
+
+          
         return (
           <>
           {i !== 0 && <Divider style={{ marginTop: '.75em', marginBottom: '.75em' }}/>}
           <div style={{ padding: padding }}>
             <span style={{ fontWeight: 'bold', marginBottom: margin }}>{name}</span><br/>
-            <pre style={{ whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}>{val}</pre>
+            {name === 'Homework' ? 
+            <pre style={preStyle}>
+              <ReadMoreReact text={val} 
+                min={100}
+                ideal={400}
+                max={450}
+                readMoreText={<a>read more</a>}
+                /> 
+              </pre> :
+              <pre style={preStyle}>{val}</pre>}
           </div>
           </>
         )}

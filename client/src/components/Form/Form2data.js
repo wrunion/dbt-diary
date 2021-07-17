@@ -59,7 +59,7 @@ export const JOURNAL_METRICS = [
 const getInitialState = (arr) => {
   const initialState = {}
   arr.forEach((e) => { 
-    e.type === 'checkbox' ? initialState[e.name] = Boolean(e.defaultValue) 
+    e.type === 'checkbox' ? initialState[e.name] = false 
     : initialState[e.name] = e.defaultValue 
   })
   return initialState;
