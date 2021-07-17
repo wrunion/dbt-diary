@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { INITIAL_JOURNAL_STATE, JOURNAL_METRICS } from './Form2data'
+import { Segment, Form } from 'semantic-ui-react'
 
 
 const JournalForm = () => {
@@ -18,19 +19,49 @@ const JournalForm = () => {
   }
 
   const handleCheckboxChange = (e) => {
-    setEntry({ ...entry, [e.target.name]: e.target.value})
+    setEntry({ ...entry, [e.target.name]: !e.target.checked})
+    console.log(entry[e.name])
   }
 
-  return(
-    <>
-    {entry && fields &&
-    <div>
+  const CheckboxInput = (props) => {
+    const { item, index } = props
+    const { name, label } = item
+
+    console.log(item, index, name, label)
+
+    return(
+      <input type='checkbox' 
+        value={entry[name]} 
+        onChange={(e) => handleCheckboxChange(e)}
+      />
+    )
+  }
+
+  if (entry && fields) {
+    const checkboxInputs = fields.filter(e => e.type === 'checkbox')
+    const textareaInputs = fields.filter(e => e.type === 'textarea')
+  
+    return (
+      <div>
       <form onSubmit={(e) => handleSubmit(e)}>
+        {checkboxInputs && checkboxInputs.map((e, i) => {
+          const { defaultValue, display, form, label, name, type } = e;
+          console.log('name ', name)
+          return (
+            <>
+              {/* <CheckboxInput item={e} index={i} /> */}
+              <label>{label}</label>
+              <input type='checkbox' 
+                checked={entry[name]}
+                onChange={(e) => handleCheckboxChange(e)}
+              />
+            </>
+          )
+        })}
         {fields && fields.filter(e => e.display === true).map((e, i) => {
           const { defaultValue, display, form, label, name, type } = e;
 
           return (
-            <>
             <div key={i}>
               <input type={type} 
                   name={name} 
@@ -41,16 +72,17 @@ const JournalForm = () => {
                   />
               <label htmlFor={name}>{label}</label>
             </div>
-            </>
           )
         })}
         <button type='submit'>
           Submit
         </button>
       </form>
-    </div>}
-    </>
-  )
+    </div>
+    )
+  } else {
+    return null;
+  }
 }
 
 export default JournalForm;
