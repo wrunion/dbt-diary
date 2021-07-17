@@ -53,8 +53,8 @@ const App = () => {
         <Segment>
           <div id="content">
             <Route exact path='/'>
-              {/* <FormDisplay /> */}
-              <Form2 />
+              <FormDisplay />
+              {/* <Form2 /> */}
             </Route>
             <Route exact path='/week'>
               <Week />

@@ -20,22 +20,22 @@ const JournalForm = () => {
 
   const handleCheckboxChange = (e) => {
     setEntry({ ...entry, [e.target.name]: !e.target.checked})
-    console.log(entry[e.name])
+    console.log(entry)
   }
 
-  const CheckboxInput = (props) => {
-    const { item, index } = props
-    const { name, label } = item
+  // const CheckboxInput = (props) => {
+  //   const { item, index } = props
+  //   const { name, label } = item
 
-    console.log(item, index, name, label)
+  //   console.log(item, index, name, label)
 
-    return(
-      <input type='checkbox' 
-        value={entry[name]} 
-        onChange={(e) => handleCheckboxChange(e)}
-      />
-    )
-  }
+  //   return(
+  //     <input type='checkbox' 
+  //       value={entry[name]} 
+  //       onChange={(e) => handleCheckboxChange(e)}
+  //     />
+  //   )
+  // }
 
   if (entry && fields) {
     const checkboxInputs = fields.filter(e => e.type === 'checkbox')
@@ -46,19 +46,19 @@ const JournalForm = () => {
       <form onSubmit={(e) => handleSubmit(e)}>
         {checkboxInputs && checkboxInputs.map((e, i) => {
           const { defaultValue, display, form, label, name, type } = e;
-          console.log('name ', name)
+          console.log('checked', name, entry[name].checked)
           return (
             <>
               {/* <CheckboxInput item={e} index={i} /> */}
               <label>{label}</label>
               <input type='checkbox' 
-                checked={entry[name]}
+                checked={entry[name].checked}
                 onChange={(e) => handleCheckboxChange(e)}
               />
             </>
           )
         })}
-        {fields && fields.filter(e => e.display === true).map((e, i) => {
+        {/* {fields && fields.filter(e => e.display === true).map((e, i) => {
           const { defaultValue, display, form, label, name, type } = e;
 
           return (
@@ -73,7 +73,7 @@ const JournalForm = () => {
               <label htmlFor={name}>{label}</label>
             </div>
           )
-        })}
+        })} */}
         <button type='submit'>
           Submit
         </button>
