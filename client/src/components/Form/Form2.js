@@ -15,15 +15,11 @@ const JournalForm = () => {
 
   const handleChange = (e) => {
     setEntry({ ...entry, [e.target.name]: e.target.value})
-    console.log(e.target.name, e.target.value)
   }
 
-  // defaultValue: false
-  // display: true
-  // form: "journal"
-  // label: "Took meds as prescribed"
-  // name: "meds"
-  // type: "checkbox"
+  const handleCheckboxChange = (e) => {
+    setEntry({ ...entry, [e.target.name]: e.target.value})
+  }
 
   return(
     <>
@@ -32,16 +28,14 @@ const JournalForm = () => {
       <form onSubmit={(e) => handleSubmit(e)}>
         {fields && fields.filter(e => e.display === true).map((e, i) => {
           const { defaultValue, display, form, label, name, type } = e;
-          console.log(entry[`${name}`])
+
           return (
             <>
             <div key={i}>
               <input type={type} 
                   name={name} 
-                  value={entry[`${name}`]}
-                  // onChange={(e) => setEntry({
-                  //   entry: { ...entry, [name]: e.target.value}
-                  // })}
+                  // value={entry[`${name}`]}
+                  value={entry[name]}
                   onChange={(e) => handleChange(e)}
                   placeholder={label}
                   />
