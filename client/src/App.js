@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import './App.css'
 import { Segment } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
@@ -7,8 +7,7 @@ import NavBar from './components/NavBar'
 import Week from './components/Week/Week'
 import Resources from './components/Resources/ResourcesDisplay'
 import moment from 'moment'
-// import Raw from './components/DataDisplay/Raw'
-// import { METRICS, INITIAL_STATE } from './data/metrics.js'
+import Form2 from './components/Form/Form2'
 
 import JournalForm from './components/Form/JournalForm'
 import RatingsForm from './components/Form/RatingsForm'
@@ -54,7 +53,8 @@ const App = () => {
         <Segment>
           <div id="content">
             <Route exact path='/'>
-              <FormDisplay />
+              {/* <FormDisplay /> */}
+              <Form2 />
             </Route>
             <Route exact path='/week'>
               <Week />

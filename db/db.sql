@@ -56,13 +56,3 @@ CREATE TABLE IF NOT EXISTS dbt_data_real (
   rating_data json,
   journal_data json
 );
-
-
--- for skills information 
-CREATE TABLE IF NOT EXISTS dbt_skills (
-  id SERIAL PRIMARY KEY NOT NULL,
-  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-  title text,
-  body json NOT NULL,
-  tags text
-);
