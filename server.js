@@ -8,6 +8,7 @@ const cors = require('cors')
 const dayRouter = require('./routes')
 require('dotenv').config()
 const db = require('./db')
+const v2Routes = require('./routes-v2')
 const app = express()
 app.disable('x-powered-by');
 
@@ -45,6 +46,9 @@ app.use(setHeaders)
 
 /* Routes */
 app.use('/api', dayRouter)
+
+/* Routes V2 */
+app.use('/v2', v2Routes)
 
 /* Global error handler */
 app.use((err, req, res) => {

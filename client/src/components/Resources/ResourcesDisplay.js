@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Page from '../reusable/Page'
 import { Segment, Header, List, Card, Menu } from 'semantic-ui-react'
 import { SKILLS } from './skillData'
+import MoreResources from './MoreResources/MoreResources';
 
 
 // TODO: turn each tab into a Route instead of using state
@@ -81,14 +82,14 @@ const Week = () => {
             onClick={() => setActiveTab('quotes')}
           />
           <Menu.Item 
-            name='Links'
+            name='More Resources'
             active={activeTab === 'links'}
             onClick={() => setActiveTab('links')}
           />
         </Menu>
 
-      {skills && activeTab === 'skills' && skills.map(e => <SkillCard skill={e} /> )}
-
+      {/* {skills && activeTab === 'skills' && skills.map(e => <SkillCard skill={e} /> )} */}
+      <MoreResources />
 
       {/* TODO: logic below is broken; use Routes instead  */}
       {/* {(quotes && activeTab === 'quotes') ? quotes.map(e => <SkillCard skill={e} /> ) : 
