@@ -1,6 +1,7 @@
 import React from 'react'
 import JournalForm from './JournalForm'
 import RatingsForm from './RatingsForm'
+import QuoteForm from './QuoteForm'
 import { Segment } from 'semantic-ui-react'
 
 const containerStyles = {
@@ -20,6 +21,9 @@ const FormDisplay = () => {
 
   return(
     <div style={containerStyles}>
+      {/* <div style={formDivStyles}> */}
+        <QuoteForm />
+      {/* </div> */}
       <Segment>
       <div style={formDivStyles}>
       <RatingsForm />
