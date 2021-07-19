@@ -31,7 +31,7 @@ const Week = () => {
     return(
       <div style={{ margin: '1em' }}>
 
-        <Card fluid
+        <Card fluid={true}
           header={title}
           meta='Mindfulness module'
           description={CardDescription(skill)}

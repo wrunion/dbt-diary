@@ -147,7 +147,7 @@ class DailyForm extends Component {
           )}
       </div>
   
-      <Button type="submit" color='grey' basic fluid>Submit</Button>
+      <Button type="submit" color='grey' basic fluid={true}>Submit</Button>
       </Form>
   
       <Dimmer active={active} onClickOutside={this.handleHide}>

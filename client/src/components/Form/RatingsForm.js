@@ -216,7 +216,7 @@ class DailyForm extends Component {
           onChange={handleTextChange}
         />
       </Field>
-      <Input type='date' fluid
+      <Input type='date' fluid={true}
         className='date-input'
         name='date'
         style={{ width: '90%', margin: '0 auto', marginBottom: '1.5em', marginTop: '1.5em' }}
@@ -226,7 +226,7 @@ class DailyForm extends Component {
   
         <Button 
           style={{ width: '90%', margin: '0 auto' }}
-          type="submit" color='teal' basic fluid>Submit</Button>
+          type="submit" color='teal' basic fluid={true}>Submit</Button>
       </Form>
       
   

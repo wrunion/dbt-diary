@@ -123,7 +123,7 @@ const DailyForm = () => {
             subheader='Rate your day from 0 to 5' />
           <Input type='date' 
             className='date-input'
-            name='date' fluid />
+            name='date' fluid={true} />
           <div style={testStyle}>
             {metrics.filter(e => e.type === 'number').map(e => 
               <NumberInput item={e} />
@@ -162,7 +162,7 @@ const DailyForm = () => {
       </Page>
 
       <div className='button-div'>
-        <Button size='large' color='teal' fluid>
+        <Button size='large' color='teal' fluid={true}>
           Submit
         </Button>
       </div>

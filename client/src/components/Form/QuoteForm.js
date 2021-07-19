@@ -64,7 +64,7 @@ function QuoteForm(props) {
               required={e.name === 'quote' ? true : false}
               value={vals[e.name]}
               onChange={(e) => handleChange(e)}
-              label={<Label basic pointing='right' fluid color='teal'>
+              label={<Label basic pointing='right' fluid={true} color='teal'>
                 {e.label}</Label>}
               value={e.value} 
               />

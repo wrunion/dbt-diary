@@ -13,11 +13,10 @@ const Journal = ({ cards =[], error= ''}) => {
           const formattedDate = e.date.split(' ').filter(e => e !==
               '2021').join(' ');
           return (
-            <div style={{ marginBottom: '1.5em', marginTop: '.5em' }}>
+            <div key={e.id} style={{ marginBottom: '1.5em', marginTop: '.5em' }}>
               <DailyCard 
                 card={e}
                 index={i}
-                key={e.id}
                 title={formattedDate} 
                 />
             </div>

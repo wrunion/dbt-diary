@@ -120,13 +120,13 @@ const JournalForm = () => {
         onChange={(e) => setGratitude(e.target.value)}
         value={gratitude}
         />
-      <Input type='date' fluid
+      <Input type='date' fluid={true}
         className='date-input'
         name='date'
         value={date}
         onChange={(e) => setDate(e.target.value)}
         />
-      <Button color='teal' basic fluid type='submit'>Submit</Button>
+      <Button color='teal' basic fluid={true} type='submit'>Submit</Button>
     </Form>
     </div>
   </>

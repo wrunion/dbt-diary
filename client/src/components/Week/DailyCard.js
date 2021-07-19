@@ -54,33 +54,32 @@ const CustomCard = ({ card, index, key, title }) => {
         // false is a valid value here, so we don't want to filter it out
         // as just another 'falsy value'
         const val = entry[e] === false ? false : entry[e] || null
-        console.log(name)
 
         if (val !== null) {
           if (typeof val === 'boolean') { 
-            console.log(val)
-            return <DisplayBoolean val={val}
-                      displayName={displayNames[e]}/>
+            return <DisplayBoolean val={val} 
+                      key={name}
+                      displayName={name}/>
                     } 
 
           
         return (
-          <>
+          <div key={name}>
           {i !== 0 && <Divider style={{ marginTop: '.75em', marginBottom: '.75em' }}/>}
           <div style={{ padding: padding }}>
             <span style={{ fontWeight: 'bold', marginBottom: margin }}>{name}</span><br/>
-            {name === 'Homework' ? 
+            {name === 'Homework' || name === 'Other' ? 
             <pre style={preStyle}>
               <ReadMoreReact text={val} 
                 min={100}
-                ideal={400}
-                max={450}
-                readMoreText={<a>read more</a>}
+                ideal={225}
+                max={400}
+                readMoreText={'(read more)'}
                 /> 
               </pre> :
               <pre style={preStyle}>{val}</pre>}
           </div>
-          </>
+          </div>
         )}
       })
     )
@@ -103,10 +102,9 @@ const CustomCard = ({ card, index, key, title }) => {
     </>
   )
 
-  console.log(entry)
   return (
     <>
-    <Card fluid color={cardColor} key={key}>
+    <Card fluid={true} color={cardColor} key={key}>
       {/* <Label corner='right' icon='bookmark outline' /> */}
       <Content header={Header}/>
 

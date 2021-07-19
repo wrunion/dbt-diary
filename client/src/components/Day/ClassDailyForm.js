@@ -148,7 +148,7 @@ class DailyForm extends Component {
             subheader='Rate your day from 0 to 5' />
           <Input type='date' 
             className='date-input'
-            name='date' fluid />
+            name='date' fluid={true} />
           <div style={testStyle}>
             {metrics.filter(e => e.type === 'number').map(e => 
               <NumberInput item={e} handleChange={handleChange} />
@@ -171,7 +171,7 @@ class DailyForm extends Component {
           </div>
 
           <div className='button-div'>
-            <Button size='large' color='teal' fluid>
+            <Button size='large' color='teal' fluid={true}>
               Submit Daily DBT
             </Button>
           </div>
@@ -190,7 +190,7 @@ class DailyForm extends Component {
             )}
           </div>
           <div className='button-div'>
-            <Button size='large' color='teal' fluid>
+            <Button size='large' color='teal' fluid={true}>
               Submit Journal Entry
             </Button>
           </div>
