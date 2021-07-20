@@ -14,6 +14,9 @@ app.disable('x-powered-by');
 
 const PORT = process.env.PORT || 8000
 
+// creates fresh copies of all Postgres tables
+require('./db/backupData')()
+
 /* Middleware */
 app.use(cookieParser()); 
 app.use(helmet());

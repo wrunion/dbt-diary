@@ -6,7 +6,7 @@ const pool = db.pool
 // const createdEntry = success.rows[0]
 
 // get all data from test table
-const queryStringTest=`SELECT * FROM dbt_data_real ORDER BY timestamp;`
+const queryStringTest=`SELECT * FROM dbt_data ORDER BY timestamp;`
 
 const getTestDays = async (req, res) => {
   try {
