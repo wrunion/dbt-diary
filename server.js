@@ -48,7 +48,7 @@ app.use(setHeaders)
 app.use('/api', dayRouter)
 
 /* Routes V2 */
-app.use('/v2', v2Routes)
+app.use('/', v2Routes)
 
 /* Global error handler */
 app.use((err, req, res) => {

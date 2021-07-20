@@ -10,34 +10,32 @@ const WeekInReview = () => {
   const [success, setSuccess] = useState(false)
 
   const inputs = [
-    { name: 'weekNumber', label: 'Week #', type:'number' },
-    { name: 'focus', label: 'Focus this week', type:'text'},
-    { name: 'experienced', label: `This week I experienced`, type: 'textarea' },
-    { name: 'learned', label: `This week I learned`, type: 'textarea' }
+    { name: 'weekNumber', label: 'Week #', type: 'number', required: true },
+    { name: 'module', label: 'Module', type: 'text', required: true },
+    { name: 'skills', label: 'Focus this week', type:'text', required: true },
+    { name: 'experience', label: `This week I experienced`, type: 'textarea', required: false },
+    { name: 'homework', label: `This week I learned`, type: 'textarea', required: false }
   ]
 
   const onSubmitCallback = (data) => {
     console.log('onSubmitCallback', data)
-    setSuccess(true)
-    // submit to server
-    // fetch('api/week/create', {
-    //   method: 'POST', 
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(data)
-    // }).then(res => res.json()).then(json => {
-    //   if (json.success === true) { 
-    //     console.log(json)
-    //     // this tells the child form to show success dimmer
-    //     setSuccess(true)
-    //   }
-    // }).catch(err => {
-    //   console.log(err);
-    //   return 'There was an error. See console for details'
-    // }) 
-
-    //
+    // submit data to server
+    fetch('/api/week/create', {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json()).then(json => {
+      if (json.success === true) { 
+        console.log(json)
+        // this tells the child form to show success dimmer
+        setSuccess(true)
+      }
+    }).catch(err => {
+      console.log(err);
+      return 'There was an error. See console for details'
+    })     
   }
 
   
@@ -103,14 +101,14 @@ const WeekInReviewForm = (props) => {
     <Dimmable dimmed={dimmerActive} style={{borderRadius: '5px'}}>
 
       <Segment as='section'>
-        <Form onSubmit={handleSubmit} style={formStyle}>
+        <Form onSubmit={(e) => handleSubmit(e)} style={formStyle}>
           <Header as='h2' color={color} content='Week in Review' />
           {inputs.map(e => (
             <Field key={e.name}>
               <Input 
                 type={e.type}
                 name={e.name}
-                required={e.name === 'quote' ? true : false}
+                required={e.required}
                 value={vals[e.name]}
                 onChange={(e) => handleChange(e)}
                 label={<Label basic pointing='right' color={color}>

@@ -24,11 +24,23 @@ CREATE TABLE IF NOT EXISTS dbt_meta (
 );
 
 CREATE TABLE IF NOT EXISTS dbt_data (
-  id SERIAL PRIMARY KEY NOT NULL,
+  id SERIAL PRIMARY KEY,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   data json NOT NULL
 );
 
+CREATE TABLE week (
+  id SERIAL PRIMARY KEY,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(), 
+  week_number INTEGER NOT NULL, 
+  module TEXT NOT NULL,
+  skills TEXT NOT NULL, 
+  homework TEXT, 
+  personal json
+); 
+
+-- sample insert query 
+INSERT INTO week (week_number, module, skills, homework, personal) VALUES ($1, $2, $3, $4, $5) RETURNING *;
 
 -- CREATE TABLE IF NOT EXISTS dbt_all (
 --   id SERIAL PRIMARY KEY NOT NULL, 
