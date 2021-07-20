@@ -22,14 +22,16 @@ module.exports = () => {
 
       fs.writeFile(`./backups/files/${fileName}.json`, data, (err) => {
         if (err) throw err;
-        console.log('Data written to file');
+        console.log(`${fileName}.json created`)
     });
 
     } catch (err) {
       console.error(err.message)
     }
   }  
-  
-  queryData(`SELECT id FROM week;`, 'week')
-
+  /* Backup all four tables on server start */
+  queryData(`SELECT * FROM week;`, 'week')
+  queryData(`SELECT * FROM dbt_data ORDER BY timestamp;`, 'data')
+  queryData(`SELECT * FROM entry;`, 'entry')
+  queryData(`SELECT * FROM quote;`, 'quote')
 }

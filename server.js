@@ -15,11 +15,9 @@ app.disable('x-powered-by');
 const PORT = process.env.PORT || 8000
 
 // creates fresh copies of all Postgres tables
-// require('./db/createBackupTables')()
-// require('./db/backupToJson')()
-
-require('./backups/backupToJson')() // exports all table data to json files
-
+require('./backups/createBackupTables')()
+// exports all current table data to json files
+require('./backups/backupToJson')() 
 
 /* Middleware */
 app.use(cookieParser()); 
