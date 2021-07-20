@@ -1,4 +1,4 @@
-const db = require('./index')
+const db = require('../db')
 
 const backupPrimaryTable = `
   DROP TABLE IF EXISTS backup_dbt_data;
@@ -22,8 +22,8 @@ module.exports = () => {
 
       await db.query(backupPrimaryTable) 
       await db.query(backupWeek) 
-      await db.query(backupEntry) 
-      await db.query(backupQuote) 
+      await db.query(backupWeek) 
+      await db.query(backupWeek) 
 
       console.log('Backup complete!')
 
