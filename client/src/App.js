@@ -7,12 +7,12 @@ import NavBar from './components/NavBar'
 import Week from './components/Week/Week'
 import Resources from './components/Resources/ResourcesDisplay'
 import moment from 'moment'
-import Quotes from './components/Resources/Quotes/Quotes'
-import Skills from './components/Resources/Skills/Skills'
-import Form2 from './components/Form/Form2'
+// import Quotes from './components/Resources/Quotes/Quotes'
+// import Skills from './components/Resources/Skills/Skills'
+// import Form2 from './components/Form/Form2'
 
-import JournalForm from './components/Form/JournalForm'
-import RatingsForm from './components/Form/RatingsForm'
+// import JournalForm from './components/Form/JournalForm'
+// import RatingsForm from './components/Form/RatingsForm'
 import FormDisplay from './components/Form/FormDisplay'
 
 

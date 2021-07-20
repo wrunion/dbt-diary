@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { INITIAL_JOURNAL_STATE, JOURNAL_METRICS } from './Form2data'
-import { Segment, Form } from 'semantic-ui-react'
+// import { Segment, Form } from 'semantic-ui-react'
 
 
 const JournalForm = () => {

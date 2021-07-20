@@ -1,7 +1,8 @@
 import React from 'react'
 import { Table, Segment, Header } from 'semantic-ui-react'
-const { Row, HeaderCell, Cell, Body, Divider } = Table;
+const { Row, HeaderCell, Cell, Body } = Table;
 const TableHeader = Table.Header;
+const moment = 'moment'
 
 const inputLabelsShort = {
   'joy': 'Joy',
@@ -29,8 +30,8 @@ const CustomTable = ({ entries, error }) => {
       <TableHeader>
         <Row>
         <HeaderCell>Date</HeaderCell>
-        {Object.values(inputLabelsShort).map(e => 
-          <HeaderCell>{e}</HeaderCell>
+        {Object.values(inputLabelsShort).map((e, i) => 
+          <HeaderCell key={i}>{e}</HeaderCell>
         )} 
         </Row>
       </TableHeader>
@@ -76,7 +77,7 @@ const CustomTable = ({ entries, error }) => {
 
             return(
               <>
-              <section style={{ padding: '15px',  border: '1px solid #E0E1E2', borderRadius: '7px', margin: '15px' }}>
+              <section key={formattedDate + i} style={{ padding: '15px',  border: '1px solid #E0E1E2', borderRadius: '7px', margin: '15px' }}>
                 <ul className='ui list' style={uiStyle}>
                 <details>
                 <summary style={summaryStyle}>{formattedDate}</summary>

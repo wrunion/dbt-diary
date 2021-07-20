@@ -18,7 +18,6 @@ const WeekInReview = () => {
   ]
 
   const onSubmitCallback = (data) => {
-    console.log('onSubmitCallback', data)
     // submit data to server
     fetch('/api/week/create', {
       method: 'POST', 

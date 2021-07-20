@@ -38,8 +38,8 @@ const Week = () => {
          {error} 
         </div>}
       {/* only show the "Week in review" form on Mondays */}
-      {today.toLowerCase() === 'monday' &&
-        <WeekInReviewForm />}
+      {/* {today.toLowerCase() === 'monday' &&
+        <WeekInReviewForm />} */}
         <Menu pointing secondary widths={2}>
           <Item 
             name='Journal'
