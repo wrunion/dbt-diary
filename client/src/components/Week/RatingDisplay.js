@@ -129,3 +129,17 @@ const headerStyle = {
 const notesSegmentStyle = {
   marginTop: '2em'
 }
+
+const ratingDisplayAll = {
+  'SI': 'SI', 
+  'calm': 'Calm', 
+  'drug_urge': 'Drug urge',
+  'emotional_misery': 'Emotional. Mis',
+  'gratitude': 'Gratitude',
+  'intentionality': 'Intentionality',
+  'joy': 'Joy',
+  'physical_misery': 'Physical. Mis',
+  'racing_thoughts': 'Racing Thoughts', 
+  'self_harm_urge': 'Self Harm Urge',
+  'skills_score': 'Skills Score', 
+}
