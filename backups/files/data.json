@@ -1,19 +1,5 @@
 [
   {
-    "id": 2,
-    "date": "Tuesday July 13th 2021",
-    "timestamp": "1626241889260",
-    "rating_data": null,
-    "journal_data": {
-      "meds_as_prescribed": true,
-      "self_harm": true,
-      "used_skills": "Briefly, I remembered to stay in the moment by realizing that I was thinking too far ahead into the future, and reminding myself to come back to the present moment. I took a breath, and I feel more grounded and centered in my body now.",
-      "homework": "Yesterday I did observe and describe some wandering thoughts, and brought myself back to the situation at hand. I was with my partner and relaxing, and I kept thinking of things I had to do. But I reminded myself to stay in the moment, and that helped!'",
-      "other": "",
-      "gratitude": "I'm grateful that I get to code, and to play piano. I'm grateful that I have time to rest and relax and pursue hobbies for awhile."
-    }
-  },
-  {
     "id": 1,
     "date": "Tuesday July 13th 2021",
     "timestamp": "1626241889260",
@@ -29,6 +15,20 @@
       "intentionality": 2
     },
     "journal_data": null
+  },
+  {
+    "id": 2,
+    "date": "Tuesday July 13th 2021",
+    "timestamp": "1626241889260",
+    "rating_data": null,
+    "journal_data": {
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "Briefly, I remembered to stay in the moment by realizing that I was thinking too far ahead into the future, and reminding myself to come back to the present moment. I took a breath, and I feel more grounded and centered in my body now.",
+      "homework": "Yesterday I did observe and describe some wandering thoughts, and brought myself back to the situation at hand. I was with my partner and relaxing, and I kept thinking of things I had to do. But I reminded myself to stay in the moment, and that helped!'",
+      "other": "",
+      "gratitude": "I'm grateful that I get to code, and to play piano. I'm grateful that I have time to rest and relax and pursue hobbies for awhile."
+    }
   },
   {
     "id": 3,
@@ -363,5 +363,67 @@
       "date": "2021-07-20"
     },
     "journal_data": null
+  },
+  {
+    "id": null,
+    "date": "2021-07-20",
+    "timestamp": "1626888461114",
+    "rating_data": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": "0",
+      "physical_misery": "0",
+      "joy": "0",
+      "gratitude": "0",
+      "calm": "0",
+      "intentionality": "0",
+      "racing_thoughts": "0",
+      "skills_score": "0",
+      "notes": "",
+      "focus_phrase": "What will be effective? What will move you toward your goal?",
+      "skills_focus": "",
+      "date": "2021-07-21"
+    },
+    "journal_data": null
+  },
+  {
+    "id": null,
+    "date": "2021-07-21",
+    "timestamp": "1626928717579",
+    "rating_data": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 5,
+      "physical_misery": 1,
+      "joy": 1,
+      "gratitude": 1,
+      "calm": 3,
+      "intentionality": 1,
+      "racing_thoughts": 4,
+      "skills_score": 2,
+      "notes": "Em. misery 4/5: Feeling lonely and rejected tonight. My partner doesn't want to spent time with me and it just sucks. \n\nPhys: not in much pain today, which was nice. \n\nJoy is low bc of loneliness \n\nRacing thoughts 4/5: they've been pretty bad since like 7pm ",
+      "focus_phrase": "",
+      "skills_focus": "Interpersonal Effectiveness",
+      "date": "2021-07-21"
+    },
+    "journal_data": null
+  },
+  {
+    "id": null,
+    "date": "2021-07-21",
+    "timestamp": "1626928717579",
+    "rating_data": null,
+    "journal_data": {
+      "date": "2021-07-21",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "Saying, \"I a thinking...\" about a negative thought. ",
+      "homework": "Interpersonal effectiveness - challenging myths in the way of obtaining objectives",
+      "other": "Just feeling really lonely today. ",
+      "gratitude": "The gods.",
+      "skills_used": true
+    }
   }
 ]

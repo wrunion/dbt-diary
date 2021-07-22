@@ -45,3 +45,17 @@ CREATE TABLE quote (
 );
 
 -- table "entry" has fields: id, created_at, entry_type, entry, date
+-- INSERT INTO codewitch (focus, tarot, journal, gratitude, moon_phase, self_care, other) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;
+
+CREATE TABLE codewitch_entry (
+  id SERIAL PRIMARY KEY, 
+  timestamp TIMESTAMP NOT NULL DEFAULT NOW(), 
+  focus TEXT NOT NULL, 
+  tarot TEXT, 
+  journal TEXT, 
+  gratitude TEXT NOT NULL, 
+  moon_phase TEXT NOT NULL, 
+  self_care TEXT,
+  other TEXT,
+  meta json
+);

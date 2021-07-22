@@ -5,14 +5,11 @@ const helmet = require('helmet')
 const compression = require("compression")
 const ejs = require('ejs')
 const cors = require('cors')
-const dayRouter = require('./routes')
 require('dotenv').config()
 const db = require('./db')
-const v2Routes = require('./routes/routes-v2')
 const app = express()
+
 app.disable('x-powered-by')
-const session = require('express-session')
-const pgSession = require('connect-pg-simple')(session)
 
 const PORT = process.env.PORT || 8000
 
@@ -59,13 +56,16 @@ app.get('/login', (req, res) => {
 })
 
 /* Routes */
-app.use('/api', dayRouter)
+app.use('/api', require('./routes'))
 
 /* Routes V2 */
-app.use('/', v2Routes)
+app.use('/', require('./routes/routes-v2'))
 
 /* Jwt Auth */ 
 app.use('/auth', require('./routes/auth'))
+
+/* Codewitch routes */
+app.use('/codewitch', require('./routes/codewitch'))
 
 /* Global error handler */
 app.use((err, req, res) => {
