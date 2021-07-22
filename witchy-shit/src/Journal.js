@@ -27,7 +27,7 @@ const Journal = () => {
 
     console.log(data)
     // submit data to server
-    fetch('/codewitch/journal/create', {
+    fetch('/codewitch/entry/create', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'
