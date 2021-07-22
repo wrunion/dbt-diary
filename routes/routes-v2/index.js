@@ -2,7 +2,7 @@ const createEntry = require('./handlers/createEntry')
 const asyncHandler = require('express-async-handler')
 const express = require('express')
 const router = express.Router()
-const db = require('./../db')
+const db = require('../../db')
   
 router.get('/entry', (req, res) => {
   // console.log('create route')

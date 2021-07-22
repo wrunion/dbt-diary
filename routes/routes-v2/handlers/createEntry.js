@@ -1,5 +1,5 @@
 const moment = require('moment')
-const db = require('./../../db')
+const db = require('../../../db')
 
 // CREATE TABLE IF NOT EXISTS entry (
 //   id SERIAL PRIMARY KEY, 

@@ -7,7 +7,6 @@
 import React, { Component } from 'react'
 import { Dropdown, Form, Button, TextArea, Input,  Dimmer, Header, Icon, Label  } from 'semantic-ui-react'
 import moment from 'moment'
-import Page from '../reusable/Page'
 
 const { Subheader } = Header
 const { Dimmable } = Dimmer

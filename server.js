@@ -8,22 +8,21 @@ const cors = require('cors')
 const dayRouter = require('./routes')
 require('dotenv').config()
 const db = require('./db')
-const v2Routes = require('./routes-v2')
+const v2Routes = require('./routes/routes-v2')
 const app = express()
-app.disable('x-powered-by');
+app.disable('x-powered-by')
+const session = require('express-session')
+const pgSession = require('connect-pg-simple')(session)
 
 const PORT = process.env.PORT || 8000
 
-// creates fresh copies of all Postgres tables
-require('./backups/createBackupTables')()
-// exports all current table data to json files
-require('./backups/backupToJson')() 
+// require('./backups/createBackupTables')()
+// require('./backups/backupToJson')() 
 
 /* Middleware */
 app.use(cookieParser()); 
 app.use(helmet());
 app.use(compression());
-app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname));
 
 app.use(compression({ filter: shouldCompress }))
@@ -40,6 +39,8 @@ app.use(express.json());
 
 /* Serve public assets */
 app.use(express.static(path.join(__dirname, "js")));
+app.use(express.static(path.join(__dirname, "public")));
+
 app.set('view engine', 'ejs')
 /* Custom middleware to set headers */
 const setHeaders = (req, res, next) => {
@@ -49,11 +50,22 @@ const setHeaders = (req, res, next) => {
 }
 app.use(setHeaders)
 
+app.get('/account', (req, res) => {
+  res.send('Account')
+})
+
+app.get('/login', (req, res) => {
+  res.send('Login')
+})
+
 /* Routes */
 app.use('/api', dayRouter)
 
 /* Routes V2 */
 app.use('/', v2Routes)
+
+/* Jwt Auth */ 
+app.use('/auth', require('./routes/auth'))
 
 /* Global error handler */
 app.use((err, req, res) => {
