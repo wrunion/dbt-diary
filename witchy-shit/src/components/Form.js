@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Segment, Form, Input, Label, Header, Button, Dimmer, Icon } from 'semantic-ui-react'
+import { Segment, Form, Input, Label, Header, Button, Dimmer, Icon, TextArea } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 const { Field } = Form
 const { Dimmable } = Dimmer
@@ -23,6 +23,7 @@ const CustomForm = (props) => {
   const success = props.success
   const onSubmitCallback = props.onSubmitCallback
   const color = props.color || 'grey'
+  const title = props.title || 'Journal'
   
   const [vals, setVals] = useState({})
   const [dimmerActive, setDimmerActive] = useState(false)
@@ -57,24 +58,45 @@ const CustomForm = (props) => {
     <>
     {(vals && Object.keys(vals).length > 0) &&
     <Dimmable dimmed={dimmerActive} 
-      style={{borderRadius: '5px'}}>
+      style={{borderRadius: '5px' }}>
 
       <Segment as='section'>
         <Form onSubmit={(e) => handleSubmit(e)} style={formStyle}>
-          <Header as='h2' color={color} content='Week in Review' />
-          {inputs.map(e => (
-            <Field key={e.name}>
-              <Input 
-                type={e.type}
-                name={e.name}
-                required={e.required}
-                value={vals[e.name]}
-                onChange={(e) => handleChange(e)}
-                label={<Label basic pointing='right' color={color}>
-                  {e.label}</Label>}
-                />
-            </Field>
-          ))}
+          <Header as='h2' color={color} content={title} />
+          {inputs.map(e => {
+            const { name, label, type, required } = e
+            if (e.type === 'textarea') {
+              return(
+                <Field key={e.name}>
+                  <label htmlFor={e.name} basic color={color}>
+                    <Icon name='moon outline' color={color} /> {label}
+                  </label>
+                  <TextArea 
+                    rows={4} 
+                    type={e.type}
+                    name={e.name}
+                    required={e.required}
+                    value={vals[e.name]}
+                    onChange={(e) => handleChange(e)}
+                  />
+                
+                </Field>
+              )
+            } else {
+              return (
+                <Field key={e.name}>
+                <Input 
+                  type={e.type}
+                  name={e.name}
+                  required={e.required}
+                  value={vals[e.name]}
+                  onChange={(e) => handleChange(e)}
+                  label={<Label basic pointing='right' color={color}>
+                    {e.label}</Label>}
+                  />
+              </Field>
+              )
+            }})}
           <Button type='submit' color={color}>Submit</Button>
         </Form>
       </Segment>

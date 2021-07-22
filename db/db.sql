@@ -50,11 +50,11 @@ CREATE TABLE quote (
 CREATE TABLE codewitch_entry (
   id SERIAL PRIMARY KEY, 
   timestamp TIMESTAMP NOT NULL DEFAULT NOW(), 
-  focus TEXT NOT NULL, 
+  focus TEXT, 
   tarot TEXT, 
   journal TEXT, 
-  gratitude TEXT NOT NULL, 
-  moon_phase TEXT NOT NULL, 
+  gratitude TEXT, 
+  moon_phase TEXT, 
   self_care TEXT,
   other TEXT,
   meta json

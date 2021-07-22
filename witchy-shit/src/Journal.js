@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
 import CustomForm from './components/Form'
-// import { Segment, Form, Input, Label, Header, Button, Dimmer, Icon } from 'semantic-ui-react'
-// import PropTypes from 'prop-types'
-// const { Field } = Form
-// const { Dimmable } = Dimmer
-// const { Subheader } = Header
 
-// INSERT INTO codewitch (focus, tarot, journal, gratitude, moon_phase, self_care, other) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;
+// fields from db are: 
+// focus, tarot, journal, gratitude, moon_phase, self_care, other (all text fields)
+// META is optional json field (currently unused)
 // FOCUS, GRATITUDE, AND MOON PHASE ARE REQUIRED
 
 const Journal = () => {
@@ -16,7 +13,7 @@ const Journal = () => {
   const inputs = [
     { name: 'focus', label: 'What is today about?', type: 'text', required: true },
     { name: 'tarot', label: 'What do the cards have to say?', type: 'textarea', required: false },
-    { name: 'journal', label: 'What are you thinking and feeling?', type:'textarea', required: true },
+    { name: 'journal', label: 'Right now I am thinking/feeling...', type:'textarea', required: true },
     { name: 'gratitude', label: `What are you grateful for?`, type: 'text', required: true },
     { name: 'moon_phase', label: `Moon Phase`, type: 'text', required: true },
     { name: 'self_care', label: `Today I took care of myself by`, type: 'textarea', required: false },
@@ -52,6 +49,7 @@ const Journal = () => {
         onSubmitCallback={onSubmitCallback} 
         success={success}
         color='violet'
+        title='about today'
       />
     </div>
   )
