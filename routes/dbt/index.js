@@ -6,6 +6,11 @@ const router = express.Router()
  * and passes a single router object between them
 */
 
+// GET Routes 
+require('./getQuoteByDate')(router)
+require('./getEntries')(router)
+
+// POST Routes 
 require('./createEntry')(router)
 require('./createQuote')(router)
 

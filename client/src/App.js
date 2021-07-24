@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import { Segment } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
@@ -6,39 +6,39 @@ import Header from './components/Header'
 import NavBar from './components/NavBar'
 import Week from './components/Week/Week'
 import Resources from './components/Resources/ResourcesDisplay'
-import moment from 'moment'
-// import Quotes from './components/Resources/Quotes/Quotes'
-// import Skills from './components/Resources/Skills/Skills'
-// import Form2 from './components/Form/Form2'
-
-// import JournalForm from './components/Form/JournalForm'
-// import RatingsForm from './components/Form/RatingsForm'
 import FormDisplay from './components/Form/FormDisplay'
-
+import moment from 'moment'
 
 const App = () => {
-  // // Set as a state variable bc users can change it
-  // // and also stored data can have a different schema
-  // // to override ours
-  // const [fields, setFields] = useState([])
-  // const [initialState, setInitialState] = useState([])
 
-  // // Will be used once metrics are stored in db
-  // // or in local storage (if PWA)
-  // useEffect(() => {
-  //   METRICS && setFields(METRICS)
-  // })
+  const [dailyData, setDailyData] = useState({})
 
-  // // Will be used once metrics are stored in db
-  // // or in local storage (if PWA)
-  // useEffect(() => {
-  //   INITIAL_STATE && setInitialState(INITIAL_STATE)
-  // })
+  useEffect(() => {
+    fetch('dbt/quote', {
+      method: 'GET', 
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json()).then(json => {
+      if (json.success === true) { 
+        const quote = json.data[0].quote || ''
+        const source = json.data[0].source || ''
+        const focus = json.data[0].focus || ''
+        setDailyData({
+          quote: quote,
+          source: source,
+          focus: focus
+        })
+      }
+    }).catch(err => {
+      console.log(err);
+      return 'There was an error. See console for details'
+    })  
+  }, [])
   
   const formattedDate = moment().format('dddd, MMMM Do, YYYY');
 
   return (
-    // METRICS && 
     <Router>
     <div className="parent-container" id="content-all">
       <div className="site-header">
@@ -55,8 +55,10 @@ const App = () => {
         <Segment>
           <div id="content">
             <Route exact path='/'>
-              <FormDisplay />
-              {/* <Form2 /> */}
+              <FormDisplay 
+                quote={dailyData.quote} 
+                source={dailyData.source}
+                />
             </Route>
             <Route exact path='/week'>
               <Week />
