@@ -67,21 +67,6 @@
     "journal_data": null
   },
   {
-    "id": 14,
-    "date": "Wednesday July 14th 2021",
-    "timestamp": "1626310392339",
-    "rating_data": null,
-    "journal_data": {
-      "date": "2021-07-14",
-      "meds_as_prescribed": true,
-      "self_harm": true,
-      "used_skills": "How skill, mindfulness, non judgement",
-      "homework": "Today in group we talked about the \"how\" skills of mindfulness, and specifically being mindful \"Nonjudgementally, Effectively, and One-Mindedly.\" \n\nWeek: 2, Skill: How/NonJudgement\n\nToday I started using my skill of just saying, \"Okay,\" to the thoughts and emotions that come into my. head (\"How skills of non-judgement.\") That skill is about not judging thoughts as good or bad, and also not pushing away the thoughts you perceive as bad; instead, just noticing them.\n\nSo I did something I learned in DBT the last time around, and just started saying, \"Okay\" to my thoughts. \n\nFor example, thinking \"I'm mad at [X thing],\" and then just responding back to that thought, in a neutral \"tone\" - just the simple word \"Okay.\"\n\nIt's like saying, \"Okay, that's a thought or emotion that you have, and that's fine! It is a thought/emotion. That's what it is.\" \n\nI did feel better and more grounded afterwards, so I do think it helped. I'm going to reincorporate that one back into my mental routine.",
-      "other": "I had a lot of energy today, and my thoughts were generally focused and clear. I didn't have to fight to keep my mind from going off the rails like a train off the track, so that was nice. \n\nSome days are like that, and some days are the opposite. I don't really know yet what makes the difference, but I'd like to find out.",
-      "gratitude": "I'm grateful for the trip to Powell's Books that I got to take, and for the joy of new notebooks and pens, and for the ability to be outside on a pleasantly warm summer day with blue skies! I'm also grateful for my partner Kent."
-    }
-  },
-  {
     "id": 15,
     "date": "Wednesday July 14th 2021",
     "timestamp": "1626310392339",
@@ -101,6 +86,21 @@
       "notes": "It was a calm day in my head. My thoughts didn't go \"off the rails,\" and I didn't find myself fighting to keep from panicking every other moment. \n\nLast night I lost my phone, and so I wasn't able to read on it before bed, or this morning. I wonder if that made a difference. \n\nI probably got more sleep that I would have, if I'd had my phone. \n\nNote to self: *cut browsing on phone out of nighttime routine*"
     },
     "journal_data": null
+  },
+  {
+    "id": 14,
+    "date": "Wednesday July 14th 2021",
+    "timestamp": "1626310392339",
+    "rating_data": null,
+    "journal_data": {
+      "date": "2021-07-14",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "How skill, mindfulness, non judgement",
+      "homework": "Today in group we talked about the \"how\" skills of mindfulness, and specifically being mindful \"Nonjudgementally, Effectively, and One-Mindedly.\" \n\nWeek: 2, Skill: How/NonJudgement\n\nToday I started using my skill of just saying, \"Okay,\" to the thoughts and emotions that come into my. head (\"How skills of non-judgement.\") That skill is about not judging thoughts as good or bad, and also not pushing away the thoughts you perceive as bad; instead, just noticing them.\n\nSo I did something I learned in DBT the last time around, and just started saying, \"Okay\" to my thoughts. \n\nFor example, thinking \"I'm mad at [X thing],\" and then just responding back to that thought, in a neutral \"tone\" - just the simple word \"Okay.\"\n\nIt's like saying, \"Okay, that's a thought or emotion that you have, and that's fine! It is a thought/emotion. That's what it is.\" \n\nI did feel better and more grounded afterwards, so I do think it helped. I'm going to reincorporate that one back into my mental routine.",
+      "other": "I had a lot of energy today, and my thoughts were generally focused and clear. I didn't have to fight to keep my mind from going off the rails like a train off the track, so that was nice. \n\nSome days are like that, and some days are the opposite. I don't really know yet what makes the difference, but I'd like to find out.",
+      "gratitude": "I'm grateful for the trip to Powell's Books that I got to take, and for the joy of new notebooks and pens, and for the ability to be outside on a pleasantly warm summer day with blue skies! I'm also grateful for my partner Kent."
+    }
   },
   {
     "id": 16,
@@ -324,29 +324,6 @@
     "timestamp": "1626806518702",
     "rating_data": {
       "SI": "0",
-      "self_harm_urge": 1,
-      "drug_urge": "0",
-      "emotional_misery": 1,
-      "physical_misery": 3,
-      "joy": 3,
-      "gratitude": 2,
-      "calm": 4,
-      "intentionality": 1,
-      "racing_thoughts": "0",
-      "skills_score": 1,
-      "notes": "11 AM \n\nHours of sleep: 7\n\nUp, took Concerta, just working. Feeling pretty good so far! ",
-      "focus_phrase": "Just keep going",
-      "skills_focus": "\"How\" skills: Nonjudgment, One Minded, Effectively",
-      "date": "2021-07-20"
-    },
-    "journal_data": null
-  },
-  {
-    "id": null,
-    "date": "2021-07-20",
-    "timestamp": "1626806518702",
-    "rating_data": {
-      "SI": "0",
       "self_harm_urge": "0",
       "drug_urge": "0",
       "emotional_misery": "0",
@@ -360,6 +337,29 @@
       "notes": "",
       "focus_phrase": "",
       "skills_focus": "",
+      "date": "2021-07-20"
+    },
+    "journal_data": null
+  },
+  {
+    "id": null,
+    "date": "2021-07-20",
+    "timestamp": "1626806518702",
+    "rating_data": {
+      "SI": "0",
+      "self_harm_urge": 1,
+      "drug_urge": "0",
+      "emotional_misery": 1,
+      "physical_misery": 3,
+      "joy": 3,
+      "gratitude": 2,
+      "calm": 4,
+      "intentionality": 1,
+      "racing_thoughts": "0",
+      "skills_score": 1,
+      "notes": "11 AM \n\nHours of sleep: 7\n\nUp, took Concerta, just working. Feeling pretty good so far! ",
+      "focus_phrase": "Just keep going",
+      "skills_focus": "\"How\" skills: Nonjudgment, One Minded, Effectively",
       "date": "2021-07-20"
     },
     "journal_data": null
@@ -423,6 +423,61 @@
       "homework": "Interpersonal effectiveness - challenging myths in the way of obtaining objectives",
       "other": "Just feeling really lonely today. ",
       "gratitude": "The gods.",
+      "skills_used": true
+    }
+  },
+  {
+    "id": null,
+    "date": "2021-07-22",
+    "timestamp": "1627013803341",
+    "rating_data": {
+      "SI": 2,
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 4,
+      "physical_misery": 1,
+      "joy": "0",
+      "gratitude": 1,
+      "calm": "0",
+      "intentionality": 1,
+      "racing_thoughts": 5,
+      "skills_score": "0",
+      "notes": "SI 2/5 - Just feeling like life is kind of pointless right now. Lonely and lots of racing thoughts. I really need more sleep.\n\nEmotional misery 4/5 - Same as above. Exhausted, lonely, and my thoughts won't stop spinning around everything I don't like in the relationship I'm in. I honestly don't know if there's an abnormal amount wrong with the relationship, or if my thoughts are just chewing my life to death. \n\nIt's sort of horrifying to experience though. I feel sick often. Physically nauseous and ill. \n\nOther numbers (gratitude, calm, intentionality) are all low for the reason above. Racing thoughts, incessant worry, and a brain that won't seem to stop. \n\nI'm exhausted and just kind of done. Things feel meaningless right now. ",
+      "focus_phrase": "",
+      "skills_focus": "Interpersonal Effectiveness: rewriting assumptions",
+      "date": "2021-07-22"
+    },
+    "journal_data": null
+  },
+  {
+    "id": null,
+    "date": "2021-07-22",
+    "timestamp": "1627013803341",
+    "rating_data": null,
+    "journal_data": {
+      "date": "2021-07-22",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "",
+      "homework": "",
+      "other": "I just feel like I'm going insane",
+      "gratitude": "",
+      "skills_used": false
+    }
+  },
+  {
+    "id": null,
+    "date": "2021-07-23",
+    "timestamp": "1627044055271",
+    "rating_data": null,
+    "journal_data": {
+      "date": "2021-07-23",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "Describing my thoughts, which helps me distance from them. Trying to understand that what *feels* true isn't necessarily what *is* true. Feelings are valid, but are not objective fact, and just because I feel like something is true, doesn't mean that it is.",
+      "homework": "I did the \"Interpersonal Effectiveness myths\" worksheet",
+      "other": "Went to bed before midnight, but woke up at 3:30, hungry and unable to go back to sleep. ",
+      "gratitude": "My partner Kent for taking care of me, and for driving me to the store tonight, even though it's not something he likes doing. He'll go with me when I ask him too, and he said he'd come with me to get my foot fixed as well. I appreciate that he's making an effort to \"get out of his comfort zone\" for me. ",
       "skills_used": true
     }
   }

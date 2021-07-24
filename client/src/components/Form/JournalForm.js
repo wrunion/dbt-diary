@@ -39,22 +39,22 @@ const JournalForm = () => {
       'skills_used': usedSkills
     }
 
-    // format the data as the server expects
-    const req = { json: vals, type: 'journal' }
+    const req = { 
+      date: date,
+      entry_type: 'journal', 
+      entry: vals 
+    }
 
-    fetch('api/day', {
-      method: 'POST', 
-      headers: {
-        'Content-Type': 'application/json'
-      },
+  fetch('/dbt/entry/create', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json'
+    },
       body: JSON.stringify(req)
     }).then(res => res.json()).then(json => {
       console.log(json)
       if (json.success === true) { 
         console.log(json)
-        // TODO: Show dimmer message and reset state
-        this.handleShow() 
-        this.resetState();
       }
     }).catch(err => {
       console.log(err);

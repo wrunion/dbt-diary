@@ -59,3 +59,15 @@ CREATE TABLE codewitch_entry (
   other TEXT,
   meta json
 );
+
+CREATE TYPE e_entry_type AS ENUM (
+  'journal', 'rating', 'other'
+)
+
+CREATE TABLE IF NOT EXISTS entry (
+  id SERIAL PRIMARY KEY, 
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  entry_type e_entry_type NOT NULL,
+  entry json NOT NULL,
+  date VARCHAR(256)
+);

@@ -7,7 +7,7 @@ const dataQuery = `SELECT * FROM dbt_data ORDER BY timestamp;`
 
 const weekQuery = `SELECT * FROM week;`
 
-const entryQuery = `SELECT * FROM entry;`
+const entryQuery = `SELECT * FROM entry ORDER BY date;`
 
 const quoteQuery = `SELECT * FROM quote;`
 

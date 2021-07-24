@@ -122,18 +122,25 @@ class DailyForm extends Component {
     this.setState({ ...initState, date: formattedDate })
   }
 
+
   handleSubmit = () => {
     /* set a default date if user hasn't picked one */
+    let formattedDate; 
     if (!this.state.date) {
-      const formattedDate = moment().format('YYYY-MM-DD');
-      this.setState()
+      formattedDate = moment().format('YYYY-MM-DD');
     } 
+// * Requires: date (string), entry_type (string), entry (json)
+// * Full route is /dbt/entry/create
 
     const vals = filterFormVals(this.state)
     // format the data as the server expects
-    const req = { json: vals, type: 'ratings' }
+    const req = { 
+        date: formattedDate || this.state.date, 
+        entry_type: 'rating', 
+        entry: vals 
+      }
 
-    fetch('api/day', {
+    fetch('/dbt/entry/create', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'
@@ -151,6 +158,37 @@ class DailyForm extends Component {
       return 'There was an error. See console for details'
     }) 
   }
+//   handleSubmit = () => {
+//     /* set a default date if user hasn't picked one */
+//     if (!this.state.date) {
+//       const formattedDate = moment().format('YYYY-MM-DD');
+//       this.setState()
+//     } 
+// // * Requires: date (string), entry_type (string), entry (json)
+// // * Full route is /dbt/entry/create
+
+//     const vals = filterFormVals(this.state)
+//     // format the data as the server expects
+//     const req = { json: vals, type: 'ratings' }
+
+//     fetch('api/day', {
+//       method: 'POST', 
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(req)
+//     }).then(res => res.json()).then(json => {
+//       if (json.success === true) { 
+//         console.log(json)
+//         // Shows dimmer message and resets state
+//         this.handleShow() 
+//         this.resetState();
+//       }
+//     }).catch(err => {
+//       console.log(err);
+//       return 'There was an error. See console for details'
+//     }) 
+//   }
 
   handleChange = (event, data) => {
     const { name, value } = data

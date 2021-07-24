@@ -1,1 +1,454 @@
-[]
+[
+  {
+    "id": 2,
+    "created_at": "2021-07-23T20:47:14.994Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": 2,
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 4,
+      "physical_misery": 1,
+      "joy": "0",
+      "gratitude": 1,
+      "calm": "0",
+      "intentionality": 1,
+      "racing_thoughts": 5,
+      "skills_score": "0",
+      "notes": "SI 2/5 - Just feeling like life is kind of pointless right now. Lonely and lots of racing thoughts. I really need more sleep.\n\nEmotional misery 4/5 - Same as above. Exhausted, lonely, and my thoughts won't stop spinning around everything I don't like in the relationship I'm in. I honestly don't know if there's an abnormal amount wrong with the relationship, or if my thoughts are just chewing my life to death. \n\nIt's sort of horrifying to experience though. I feel sick often. Physically nauseous and ill. \n\nOther numbers (gratitude, calm, intentionality) are all low for the reason above. Racing thoughts, incessant worry, and a brain that won't seem to stop. \n\nI'm exhausted and just kind of done. Things feel meaningless right now. ",
+      "focus_phrase": "",
+      "skills_focus": "Interpersonal Effectiveness: rewriting assumptions",
+      "date": "2021-07-22"
+    },
+    "date": "2021-07-22"
+  },
+  {
+    "id": 3,
+    "created_at": "2021-07-23T20:47:15.000Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": 1,
+      "drug_urge": "0",
+      "emotional_misery": 2,
+      "physical_misery": 3,
+      "joy": 2,
+      "gratitude": 2,
+      "calm": "0",
+      "intentionality": 4,
+      "racing_thoughts": 3,
+      "skills_score": 1,
+      "notes": "1 PM, still waking up. Got 10+ hours of sleep last night",
+      "focus_phrase": "Be thankful for today ",
+      "skills_focus": "\"How\" skills: Nonjudgment, One Minded, Effectively",
+      "date": "2021-07-18"
+    },
+    "date": "2021-07-18"
+  },
+  {
+    "id": 4,
+    "created_at": "2021-07-23T20:47:15.001Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": "0",
+      "physical_misery": "0",
+      "joy": "0",
+      "gratitude": "0",
+      "calm": "0",
+      "intentionality": "0",
+      "racing_thoughts": "0",
+      "skills_score": "0",
+      "notes": "",
+      "focus_phrase": "",
+      "skills_focus": "",
+      "date": "2021-07-20"
+    },
+    "date": "2021-07-20"
+  },
+  {
+    "id": 5,
+    "created_at": "2021-07-23T20:47:15.002Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": 2,
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 5,
+      "physical_misery": 3,
+      "joy": 1,
+      "gratitude": 1,
+      "calm": 2,
+      "intentionality": 1,
+      "racing_thoughts": 4,
+      "skills_score": 2,
+      "notes": "Been a hard day. Feeling really lonely at home. Tired and a heavy heart. Feeling like I don't have a direction or purpose, and I don't know what to do with myself and my time. Just...not really sure what my priorities and goals are right now, and that's hard. ",
+      "focus_phrase": "You have to learn to love what's good for you.",
+      "skills_focus": "\"How\" skills: Nonjudgment, One Minded, Effectively",
+      "date": "2021-07-18"
+    },
+    "date": "2021-07-18"
+  },
+  {
+    "id": 6,
+    "created_at": "2021-07-23T20:47:15.001Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": 2,
+      "self_harm_urge": 1,
+      "drug_urge": "0",
+      "emotional_misery": 5,
+      "physical_misery": 2,
+      "joy": 1,
+      "gratitude": 3,
+      "calm": "0",
+      "intentionality": 2,
+      "racing_thoughts": 5,
+      "skills_score": 2,
+      "notes": "7 AM\n\nWoke up at 3:30 AM, couldn't get back to sleep. My thoughts have been racing for what feels like days, and I can't get my brain to calm down and rest/sleep. ",
+      "focus_phrase": "Just keep going",
+      "skills_focus": "\"How\" skills: Nonjudgment, One Minded, Effectively",
+      "date": "2021-07-17"
+    },
+    "date": "2021-07-17"
+  },
+  {
+    "id": 7,
+    "created_at": "2021-07-23T20:47:15.004Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 2,
+      "physical_misery": "0",
+      "joy": 2,
+      "gratitude": 2,
+      "calm": 4,
+      "intentionality": 2,
+      "racing_thoughts": 1,
+      "skills_score": 1,
+      "notes": "I got a lot of sleep last night and am not in very much pain. I was able to rest and code today, and watch old comfort movies. It's the best and most calm day I've had all week.",
+      "focus_phrase": "You have to learn to love what's good for you",
+      "skills_focus": "\"How\" skills: Nonjudgment, One Minded, Effectively",
+      "date": "2021-07-19"
+    },
+    "date": "2021-07-19"
+  },
+  {
+    "id": 8,
+    "created_at": "2021-07-23T20:47:15.005Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 4,
+      "physical_misery": 2,
+      "joy": 3,
+      "gratitude": 2,
+      "calm": 1,
+      "intentionality": 5,
+      "racing_thoughts": 3,
+      "skills_score": 1,
+      "notes": "It's been a long day/week. I'm exhausted and still not sleeping well, and I don't even know why. I'm just so dang tired and wired at the same time. My heart feels like an adrenaline rush and I just. Don't know what to do.",
+      "focus_phrase": "\"Fail well\" ",
+      "skills_focus": "\"How\" skills: Nonjudgment, One Minded, Effectively",
+      "date": "2021-07-16"
+    },
+    "date": "2021-07-16"
+  },
+  {
+    "id": 9,
+    "created_at": "2021-07-23T20:47:15.006Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 1,
+      "physical_misery": 3,
+      "joy": 1,
+      "gratitude": 2,
+      "calm": 3,
+      "intentionality": 4,
+      "racing_thoughts": 4,
+      "skills_score": 1,
+      "notes": "EM 1/5: Been mostly hyperfocused, so not thinking about painful things. Brain was racing all night last night, though. Couldn't get to sleep until like 4:30\n\nPM 1/5: Stomach's not feeling great. Not as bad as it could be, though\n\nJoy/Gratitude/Calm - I'm mostly just exhausted\n\nIntentionality 4/5 - I've done a good job of focusing on my tasks for the day and getting done what I needed to",
+      "focus_phrase": "Fail meaningfully",
+      "skills_focus": "How skills - non judgement",
+      "date": "2021-06-16"
+    },
+    "date": "2021-07-16"
+  },
+  {
+    "id": 10,
+    "created_at": "2021-07-23T20:47:15.007Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 1,
+      "physical_misery": 3,
+      "joy": 4,
+      "gratitude": 5,
+      "calm": 4,
+      "intentionality": 3,
+      "racing_thoughts": 3,
+      "skills_score": 5,
+      "notes": "Time: 2:20 PM\n\nCalm: 4/5 I'm taking the morning to not work, and to just journal and read tarot and also read a DBT book from the library. Whenever I shut the door in my own room, and sit in my \"book nook\" and journal or make art, I feel calm and peaceful. \n\nJoy: 4/5 Journaling, reading, and resting bring me quiet joy\n\nRacing Thoughts: 3/5 My thoughts are going a million miles a minute this morning, but I found things to focus on (DBT book, tarot draw, journaling) and that's really helped. \n\nAs Scott and I always say, If you recognize the \"brain weasels\" (racing thoughts) and give them something to chew on, they'll leave you in peace :) \n\nIntentionality: 3/5 This season of my life is about stopping to REST before my brain and body just give out on me. In the last year alone I've had several mental health crisis, and one full on breakdown. It's definitely time to step back, rest, and reflect on what's been going right and wrong, so I can more mindfully choose the path ahead. \n\nPhys. mis: 3/5 Tightness between shoulder blades, neck and shouder/back pain, need to find a better way to sit\n\nEmo mis: 1/5 Lots of racing thoughts, but for the moment they're at bay. Mindfulness helps\n\nSkills score: 5/5 I've been using lots of them today! Taking time aside to breathe and journal and read has made all the difference.\n\nFatigue: 4/10\n\nI'm tired and fatigued today - I didn't get to sleep until 4 am (wasn't sleepy. I ate dinner late, though.)\n\nMorning mindfulness: I decided to do a tarot draw and journal for my morning mindfulness, which I'm defining as, \"Choose a single activity and focus only on that for at least 20 minutes. Single minded, even if there are multiple sensory inputs.\" \n\nI journaled about the cards \"Temperance,\" and the \"Knight of Wands.\" \n\nTarot Card: The Knight of Wands represents being passionate but potentially reckless, and charging ahead toward your goals. It's a necessary energy - you wouldn't get anywhere without passion and motivation - but it can also be destructive, if not tempered.\n\nTarot Card: Temperance. Temperance represents what I'm working toward in DBT: a self that is more present, mindful, and grounded. A self that takes time to pause and reflect on the moment before acting. A self who is wise and balanced between emotion and reason. \n\nTo me, Temperance also represents intentionality. Whereas the Knight is focused on the immediate future and the immediate desire or goal, I think Temperance takes a longer look at things, and prioritizes tasks as a whole before diving into any one particular thing. \n\nThe strength of the Knight is that they are immediate, and present, and fully immersed in what they are doing. Without that, Temperance would be lost in the land of map-making. But without Temperance's planning and vision, the Knight might unknowingly charge right off a cliff, with the best of intentions. \n\nSo, I think the Knight & Temperance have the potential to balance each other out really beautifully! \n\nI'm going to use that as a metaphor/theme for the next season of life, I think. It feels relevant to the ideas of Emotion, Logic, and Wise Mind that DBT talks about! \n\nNote to self: Research the Temperance card more, and compare the artwork in different decks. Create an altar space to her. ",
+      "focus_phrase": "Journey towards temperance",
+      "skills_focus": "How skills - non judgement",
+      "date": "2021-07-15"
+    },
+    "date": "2021-07-15"
+  },
+  {
+    "id": 1,
+    "created_at": "2021-07-23T20:47:14.973Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 5,
+      "physical_misery": 5,
+      "joy": 2,
+      "gratitude": 2,
+      "calm": 2,
+      "intentionality": 3,
+      "racing_thoughts": 5,
+      "skills_score": 2,
+      "date": "2021-07-14",
+      "notes": "time: 13:00\n\nEM 5: Anxiety was really high during group (10am - noon) because there were men in group this week. It made my anxiety shoot through the roof, so I distracted with hyperfocus on notes. \n\nThe good thing is that I noticed and identified that it was anxiety/panic, and that it was too high to try to bring it down in the moment. And that I distracted instead. I would like to have a better way to self-soothe in future moments, though. \n\nI also keep having thoughts that are disturbing and that I can't seem to go away. Susan says that pushing thoughts away makes them more active, but I don't really know what the alternative is. \n\nPM 2: I have the usual pain in my neck and shoulders; hopefully it won't get any worse than that today. \n\nJoy 2: I'm tired, so not feeling super joyful, but I do feel focused and productive, so if I get some work done with Elle today I'll probably feel better. I'm also stressed out about the minutia of dealing with meds refills, and all the money that OTC meds cost, so that ups my stress levels and makes it hard. to stay in the moment, which is where I can find joy. "
+    },
+    "date": "2021-07-14"
+  },
+  {
+    "id": 13,
+    "created_at": "2021-07-23T20:47:15.016Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 5,
+      "physical_misery": 1,
+      "joy": 1,
+      "gratitude": 1,
+      "calm": 3,
+      "intentionality": 1,
+      "racing_thoughts": 4,
+      "skills_score": 2,
+      "notes": "Em. misery 4/5: Feeling lonely and rejected tonight. My partner doesn't want to spent time with me and it just sucks. \n\nPhys: not in much pain today, which was nice. \n\nJoy is low bc of loneliness \n\nRacing thoughts 4/5: they've been pretty bad since like 7pm ",
+      "focus_phrase": "",
+      "skills_focus": "Interpersonal Effectiveness",
+      "date": "2021-07-21"
+    },
+    "date": "2021-07-21"
+  },
+  {
+    "id": 16,
+    "created_at": "2021-07-23T20:47:15.023Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": "0",
+      "physical_misery": "0",
+      "joy": "0",
+      "gratitude": "0",
+      "calm": "0",
+      "intentionality": "0",
+      "racing_thoughts": "0",
+      "skills_score": "0",
+      "notes": "",
+      "focus_phrase": "What will be effective? What will move you toward your goal?",
+      "skills_focus": "",
+      "date": "2021-07-21"
+    },
+    "date": "2021-07-20"
+  },
+  {
+    "id": 17,
+    "created_at": "2021-07-23T20:47:15.027Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": 1,
+      "drug_urge": "0",
+      "emotional_misery": 1,
+      "physical_misery": 3,
+      "joy": 3,
+      "gratitude": 2,
+      "calm": 4,
+      "intentionality": 1,
+      "racing_thoughts": "0",
+      "skills_score": 1,
+      "notes": "11 AM \n\nHours of sleep: 7\n\nUp, took Concerta, just working. Feeling pretty good so far! ",
+      "focus_phrase": "Just keep going",
+      "skills_focus": "\"How\" skills: Nonjudgment, One Minded, Effectively",
+      "date": "2021-07-20"
+    },
+    "date": "2021-07-20"
+  },
+  {
+    "id": 14,
+    "created_at": "2021-07-23T20:47:15.019Z",
+    "entry_type": "journal",
+    "entry": {
+      "date": "2021-07-14",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "How skill, mindfulness, non judgement",
+      "homework": "Today in group we talked about the \"how\" skills of mindfulness, and specifically being mindful \"Nonjudgementally, Effectively, and One-Mindedly.\" \n\nWeek: 2, Skill: How/NonJudgement\n\nToday I started using my skill of just saying, \"Okay,\" to the thoughts and emotions that come into my. head (\"How skills of non-judgement.\") That skill is about not judging thoughts as good or bad, and also not pushing away the thoughts you perceive as bad; instead, just noticing them.\n\nSo I did something I learned in DBT the last time around, and just started saying, \"Okay\" to my thoughts. \n\nFor example, thinking \"I'm mad at [X thing],\" and then just responding back to that thought, in a neutral \"tone\" - just the simple word \"Okay.\"\n\nIt's like saying, \"Okay, that's a thought or emotion that you have, and that's fine! It is a thought/emotion. That's what it is.\" \n\nI did feel better and more grounded afterwards, so I do think it helped. I'm going to reincorporate that one back into my mental routine.",
+      "other": "I had a lot of energy today, and my thoughts were generally focused and clear. I didn't have to fight to keep my mind from going off the rails like a train off the track, so that was nice. \n\nSome days are like that, and some days are the opposite. I don't really know yet what makes the difference, but I'd like to find out.",
+      "gratitude": "I'm grateful for the trip to Powell's Books that I got to take, and for the joy of new notebooks and pens, and for the ability to be outside on a pleasantly warm summer day with blue skies! I'm also grateful for my partner Kent."
+    },
+    "date": "2021-07-14"
+  },
+  {
+    "id": 19,
+    "created_at": "2021-07-23T20:47:15.027Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 1,
+      "physical_misery": 3,
+      "joy": 3,
+      "gratitude": 5,
+      "calm": 5,
+      "intentionality": 3,
+      "racing_thoughts": 1,
+      "skills_score": 2,
+      "date": "2021-07-14",
+      "notes": "It was a calm day in my head. My thoughts didn't go \"off the rails,\" and I didn't find myself fighting to keep from panicking every other moment. \n\nLast night I lost my phone, and so I wasn't able to read on it before bed, or this morning. I wonder if that made a difference. \n\nI probably got more sleep that I would have, if I'd had my phone. \n\nNote to self: *cut browsing on phone out of nighttime routine*"
+    },
+    "date": "2021-07-14"
+  },
+  {
+    "id": 20,
+    "created_at": "2021-07-23T20:47:15.072Z",
+    "entry_type": "journal",
+    "entry": {
+      "date": "2021-07-21",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "Saying, \"I a thinking...\" about a negative thought. ",
+      "homework": "Interpersonal effectiveness - challenging myths in the way of obtaining objectives",
+      "other": "Just feeling really lonely today. ",
+      "gratitude": "The gods.",
+      "skills_used": true
+    },
+    "date": "2021-07-21"
+  },
+  {
+    "id": 21,
+    "created_at": "2021-07-23T20:47:15.090Z",
+    "entry_type": "journal",
+    "entry": {
+      "date": "2021-07-22",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "",
+      "homework": "",
+      "other": "I just feel like I'm going insane",
+      "gratitude": "",
+      "skills_used": false
+    },
+    "date": "2021-07-22"
+  },
+  {
+    "id": 22,
+    "created_at": "2021-07-23T20:47:15.099Z",
+    "entry_type": "journal",
+    "entry": {
+      "date": "2021-07-23",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "Describing my thoughts, which helps me distance from them. Trying to understand that what *feels* true isn't necessarily what *is* true. Feelings are valid, but are not objective fact, and just because I feel like something is true, doesn't mean that it is.",
+      "homework": "I did the \"Interpersonal Effectiveness myths\" worksheet",
+      "other": "Went to bed before midnight, but woke up at 3:30, hungry and unable to go back to sleep. ",
+      "gratitude": "My partner Kent for taking care of me, and for driving me to the store tonight, even though it's not something he likes doing. He'll go with me when I ask him too, and he said he'd come with me to get my foot fixed as well. I appreciate that he's making an effort to \"get out of his comfort zone\" for me. ",
+      "skills_used": true
+    },
+    "date": "2021-07-23"
+  },
+  {
+    "id": 11,
+    "created_at": "2021-07-23T20:47:15.011Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 1,
+      "physical_misery": 3,
+      "joy": 4,
+      "gratitude": 2,
+      "calm": 4,
+      "intentionality": 4,
+      "racing_thoughts": 3,
+      "skills_score": 1,
+      "notes": "8 PM\n\nEm mis 1/5: I was hyper focused on rest this morning, and then hyper focused on work this evening, so I was in a pleasant flow and didn't have time to be very distressed. Did have anxiety and racing thoughts, though.\n\nI also didn't have any negative interactions with K, which helps. I'm afraid that I will again soon, but for today it's okay. \n\nPhys mis: 3/5, the usual\n\nJoy 4: I got to be creative (reading and journaling) and be in the flow (code projects I like, including this one.) Which was great! \n\n[Intentionality 4: I'm really proud of this one! Instead of just responding to stimulus today, and going wherever my wandering focus took me, I decided what projects I was going to work on, and how I was going to spend my time, and I did! It was lovely.\n\nThat's a goal I want to focus on: choosing where my attention goes during the day as far as what projects I dedicate time to.]",
+      "focus_phrase": "\"Be intentional\" ",
+      "skills_focus": "\"How\" skills: Nonjudgment, One Minded, Effectively",
+      "date": "2021-07-15"
+    },
+    "date": "2021-07-15"
+  },
+  {
+    "id": 15,
+    "created_at": "2021-07-23T20:47:15.021Z",
+    "entry_type": "journal",
+    "entry": {
+      "date": "2021-07-15",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "observe, describe, non judgement",
+      "homework": "Today I've been working on stepping back from my thoughts instead of engaging with them. Normally, when I have a thought that I consider \"negative,\" I deal with it by trying to reason with it, or trying to change it into something more \"positive.\" And that gets really, really exhausting. \n\nThis week we're working on mindfulness without judgement, and also observing and describing thoughts from a distance, without clinging on to them. \n\nSo today I'm stepping back and letting my thoughts be what they are, instead of trying to argue with them. And that's been really freeing - and also a lot less exhausting than the other way to do things. \n\nFor example, there are several things about my current situation in life (health, residence) that frankly suck right now. And normally, when I have a negative thought about one of those things, I immediately respond with a list of reasons of why I should be more grateful. Or I try to provide \"positive\" counter arguments. \n\nBut today I'm just letting the thoughts be what they are. If I'm upset or complaining about something in my head I just...let myself complain. If I have a thought that I don't like something about my situation, I just let that thought be, instead of trying to reason with it, or \"talk myself out of\" thinking or feeling that way. \n\nIt's going well so far! ",
+      "other": "Tarot: I did a tarot reading this morning, about today, the immediate future (tomorrow) and the long-term future. \n\nPast: 2 of Cups\nToday: Hanged Man (forbearance through pain)\nTomorrow: Knight of Wands (impulsivity, passion, charging ahead in a new or creative direction)\nLong term future: Temperance (Balance between reason and passion, long-term planning and stability, *creating calm and fulfillment in the midst of stress.*)",
+      "gratitude": "tarot cards, music, the ability to write, the blue sky, the green leaves on trees outside my window, colorful little paper stars",
+      "skills_used": true
+    },
+    "date": "2021-07-15"
+  },
+  {
+    "id": 12,
+    "created_at": "2021-07-23T20:47:15.013Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": 0,
+      "self_harm_urge": 1,
+      "drug_urge": 0,
+      "emotional_misery": 3,
+      "physical_misery": 4,
+      "joy": 4,
+      "gratitude": 2,
+      "calm": 3,
+      "intentionality": 2
+    },
+    "date": "2021-07-13"
+  },
+  {
+    "id": 18,
+    "created_at": "2021-07-23T20:47:15.026Z",
+    "entry_type": "journal",
+    "entry": {
+      "date": "2021-07-13",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "This isn't a DBT skill, but I did take time to step back from my own hyper-focus - which is an ADHD thing where I get fixated on one specific thing, and can't get away from it - I took time to step away from my code project and breathe and ground, and get a new perspective on the work, and come back to it with fresh eyes. ",
+      "homework": "This week's homework is the \"how\" skill of describing. I think I'm doing okay; at least once a day in the past few days, I've had a moment where I was ruminating or feeling anxious, or stuck in a certain feeling, where I was able to step back and describe to myself what's going on. \n\nI was able to just say, \"Oh, I'm thinking about this thing right now\"/\"I'm worried about this thing.\" \n\nSince one of the things I was fixated on was my health - which feels like a catastrophe at the moment - it was helpful to go from the thought/feeling, \"Something is deeply wrong with my body,\" to, \"I *feel* like something is deeply wrong with my body. \n\nIt might not seem like a huge difference, but it did help. I was able to validate the thought without giving it as much weight as I had before. Which was useful! ",
+      "other": "Journaling helps. ",
+      "gratitude": "I'm grateful for my partner, who encourages me and helps me find a more balanced perspective when I get too hyper-fixated on a project at hand. I'm also grateful for the food I ate, and the ability to play piano and code. "
+    },
+    "date": "2021-07-13"
+  }
+]

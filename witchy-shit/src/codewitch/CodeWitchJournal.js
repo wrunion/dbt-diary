@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import CustomForm from './components/Form'
+import CustomForm from '../components/CustomForm'
 
 // fields from db are: 
 // focus, tarot, journal, gratitude, moon_phase, self_care, other (all text fields)
