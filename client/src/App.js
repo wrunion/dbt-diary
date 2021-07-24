@@ -12,6 +12,7 @@ import moment from 'moment'
 const App = () => {
 
   const [dailyData, setDailyData] = useState({})
+  const [displayQuoteForm, setDisplayQuoteForm] = useState(false)
 
   useEffect(() => {
     fetch('dbt/quote', {
