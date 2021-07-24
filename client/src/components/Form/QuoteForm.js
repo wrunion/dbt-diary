@@ -31,7 +31,7 @@ function QuoteForm(props) {
       focus: e.target.focus.value
     }
 
-    fetch('api/quotes', {
+    fetch('/dbt/quote/create', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'

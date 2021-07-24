@@ -38,9 +38,10 @@ CREATE TABLE IF NOT EXISTS dbt_data (
 
 CREATE TABLE quote (
   id SERIAL PRIMARY KEY,
-  timestamp TIMESTAMP NOT NULL DEFAULT NOW(), 
+  date TIMESTAMP NOT NULL DEFAULT NOW(), 
   quote TEXT NOT NULL,
   source TEXT,
+  focus TEXT,
   other json
 );
 

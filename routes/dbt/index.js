@@ -7,5 +7,6 @@ const router = express.Router()
 */
 
 require('./createEntry')(router)
+require('./createQuote')(router)
 
 module.exports = router
