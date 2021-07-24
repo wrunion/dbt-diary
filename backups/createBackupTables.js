@@ -13,6 +13,9 @@ const backupEntry = `DROP TABLE IF EXISTS backup_entry;
 const backupQuote = `DROP TABLE IF EXISTS backup_quote;
   CREATE TABLE backup_quote AS TABLE quote;`
 
+const backupCodewitch = `DROP TABLE IF EXISTS backup_codewitch_entry;
+CREATE TABLE backup_codewitch_entry AS TABLE codewitch_entry;`
+
 module.exports = () => {
   
   (async () => {
@@ -22,8 +25,9 @@ module.exports = () => {
 
       await db.query(backupPrimaryTable) 
       await db.query(backupWeek) 
-      await db.query(backupWeek) 
-      await db.query(backupWeek) 
+      await db.query(backupEntry) 
+      await db.query(backupQuote) 
+      await db.query(backupCodewitch)
 
       console.log('Backup complete!')
 

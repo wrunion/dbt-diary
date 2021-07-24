@@ -11,6 +11,8 @@ const entryQuery = `SELECT * FROM entry ORDER BY date;`
 
 const quoteQuery = `SELECT * FROM quote;`
 
+const codewitchQuery =  `SELECT * FROM codewitch_entry ORDER BY timestamp;`
+
 module.exports = () => {
 
   const queryData = async (queryString, fileName) => {
@@ -30,8 +32,9 @@ module.exports = () => {
     }
   }  
   /* Backup all four tables on server start */
-  queryData(`SELECT * FROM week;`, 'week')
-  queryData(`SELECT * FROM dbt_data ORDER BY timestamp;`, 'data')
-  queryData(`SELECT * FROM entry;`, 'entry')
-  queryData(`SELECT * FROM quote;`, 'quote')
+  queryData(weekQuery, 'week')
+  queryData(dataQuery, 'data')
+  queryData(entryQuery, 'entry')
+  queryData(quoteQuery, 'quote')
+  queryData(codewitchQuery, 'codewitch_entry')
 }
