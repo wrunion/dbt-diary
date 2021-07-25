@@ -1,20 +1,19 @@
 const asyncHandler = require('express-async-handler')
 const db = require('../../db')
-
+const moment = require('moment')
 /* 
  * Route to get quote by date
 */
 
-// TODO: This doesn't take arguments yet. Research & implement feature
-
-const queryString = `SELECT quote, source, focus FROM quote WHERE date >= CURRENT_DATE AND date <= CURRENT_DATE + INTERVAL '1 day';`
+const queryString = `SELECT quote, source, focus, link FROM quote WHERE DATE(date) = $1;`
 
 module.exports = router => {
 
   router.get('/quote', asyncHandler(async(req, res) => {
     try {
-      // const { date } = req.body
-      const response = await db.query(queryString)
+
+      const formattedDate = moment().format('YYYY, MM DD');
+      const response = await db.query(queryString, [formattedDate])
 
       if (response.rows) {
         res.json({ 

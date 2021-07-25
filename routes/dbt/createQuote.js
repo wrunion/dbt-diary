@@ -8,15 +8,15 @@ const db = require('./../../db')
  * Full route is /dbt/quote/create
 */
 
-const queryString = `INSERT INTO quote (quote, source, focus) VALUES ($1, $2, $3) RETURNING *;`
+const queryString = `INSERT INTO quote (quote, source, focus, link) VALUES ($1, $2, $3, $4) RETURNING *;`
 
 module.exports = router => {
 
   router.post('/quote/create', asyncHandler(async(req, res) => {
     try {
-      const { quote, source, focus } = req.body
+      const { focus, quote, source, link } = req.body
       
-      const response = await db.query(queryString, [quote, source, focus])
+      const response = await db.query(queryString, [quote, source, focus, link])
 
       return res.json({ 
         success: true,
@@ -31,4 +31,29 @@ module.exports = router => {
       })
     }
   }))
+
+  /* To record a daily tarot draw */
+  const queryString = `INSERT INTO quote (spread, cards, meaning, daily_focus) VALUES ($1, $2, $3, $4) RETURNING *;`
+
+  router.post('/draw/create', asyncHandler(async(req, res) => {
+    try {
+      const { spread, cards, meaning, daily_focus } = req.body
+      
+      const response = await db.query(queryString, [spread, cards, meaning, daily_focus])
+
+      return res.json({ 
+        success: true,
+        message: 'Draw created!',
+        draw: response.rows[0]
+      })
+    } catch (err) {
+      console.error(err.message)
+      return res.json({ 
+        success: false,
+        error: err.message
+      })
+    }
+  }))
+
+
 }

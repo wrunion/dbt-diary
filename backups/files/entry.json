@@ -466,5 +466,28 @@
       "skills_used": true
     },
     "date": "2021-07-23"
+  },
+  {
+    "id": 28,
+    "created_at": "2021-07-25T01:07:20.288Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 1,
+      "physical_misery": 3,
+      "joy": 4,
+      "gratitude": 4,
+      "calm": 3,
+      "intentionality": 4,
+      "racing_thoughts": 2,
+      "skills_score": 2,
+      "notes": "11 am\n\nSlept in Kent's bed so actually got sleep. It's sunny today and the full moon. I feel okay so far - a lot more stable and balanced than I've felt in awhile. I'm guessing it's the sleep.\n\nI want to work on meditation and sort of internal stuff today, along with working on my app. \n\nRacing thoughts 2/5: So far so good; been listening to music and coding so there haven't been any thought crisis yet. I also watched some fun videos this morning so that put me in a good mood.\n\nOverall: feeling okay and tentatively hopeful so far. I just want to keep my mind on track and not veering off the tracks again like it has often for the past few weeks. I just want to find some peace and sanity in my head. ",
+      "focus_phrase": "Something is about to be created",
+      "skills_focus": "Interpersonal Effectiveness: examining myths",
+      "date": "2021-07-24"
+    },
+    "date": "2021-07-24"
   }
 ]

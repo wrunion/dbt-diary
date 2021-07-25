@@ -16,6 +16,8 @@ const PORT = process.env.PORT || 8000
 // require('./backups/createBackupTables')()
 // require('./backups/backupToJson')() 
 
+// require('./middleware/tarotGenerator')
+
 /* Middleware */
 app.use(cookieParser()); 
 app.use(helmet());
@@ -68,6 +70,8 @@ app.use('/', require('./routes/routes-v2'))
 app.use('/codewitch', require('./routes/codewitch'))
 /* DBT routes, V2 */ 
 app.use('/dbt', require('./routes/dbt'))
+/* Tarot routes */
+app.use('/tarot', require('./routes/tarot'))
 
 /* Global error handler */
 app.use((err, req, res) => {

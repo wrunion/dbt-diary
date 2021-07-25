@@ -3,6 +3,8 @@ import JournalForm from './JournalForm'
 import RatingsForm from './RatingsForm'
 // import QuoteForm from './QuoteForm'
 import QuoteForm from './../V2/QuoteForm'
+import TarotForm from './../V2/TarotForm'
+
 import { Segment, Header } from 'semantic-ui-react'
 
 const containerStyles = {
@@ -43,6 +45,7 @@ const FormDisplay = (props) => {
   return(
     <div style={containerStyles}>
       {!quote && <QuoteForm />}
+      <TarotForm />
         <div style={quoteStyles}>
           {quote && <DailyContainer />}
         </div>

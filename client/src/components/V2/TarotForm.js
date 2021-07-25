@@ -1,21 +1,22 @@
 import React, { useState } from 'react'
 import CustomForm from './../reusable/CustomForm'
 
-const Quote = () => {
+const TarotForm = () => {
 
   const [success, setSuccess] = useState(false)
 
   const inputs = [
-    { name: 'focus', label: `Today I want to focus on`, type: 'text', required: false },
-    { name: 'quote', label: 'Daily Quote', type:'text', required: true },
-    { name: 'source', label: 'Source', type:'text', required: false },
-    { name: 'link', label: 'Link', type: 'text', required: false }
+    { name: 'spread', label: `Which spread did you use?`, type: 'text', required: true },
+    { name: 'cards', label: 'Cards I drew', type:'text', required: true },
+    { name: 'meaning', label: 'What do the cards have to say?', type:'textarea', required: false },
+    { name: 'daily_focus', label: 'How does this relate to your daily goal?', type: 'textarea', required: false },
+    { name: 'weekly_theme', label: 'How does this relate to the rest of your week?', type: 'text', required: false }
   ]
 
   const onSubmitCallback = (data) => {
 
     console.log(data)
-    fetch('/dbt/quote/create', {
+    fetch('/dbt/draw/create', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'
@@ -24,7 +25,6 @@ const Quote = () => {
     }).then(res => res.json()).then(json => {
       if (json.success === true) { 
         console.log(json)
-        // this tells the child form to show success dimmer
         setSuccess(true)
       }
     }).catch(err => {
@@ -39,12 +39,13 @@ const Quote = () => {
         inputs={inputs} 
         onSubmitCallback={onSubmitCallback} 
         success={success}
-        color='teal'
-        title='Daily Quotes'
-        subheader={`What's your focus for today?`}
+        color='violet'
+        title='Daily Draw'
+        subheader={`What do your cards say today?`}
+        icon='sun outline'
       />
     </div>
   )
 }
 
-export default Quote
+export default TarotForm

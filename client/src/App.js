@@ -11,8 +11,19 @@ import moment from 'moment'
 
 const App = () => {
 
+  const [date, setDate] = useState({})
   const [dailyData, setDailyData] = useState({})
   const [displayQuoteForm, setDisplayQuoteForm] = useState(false)
+
+  const shortDate = moment().format('YYYY, MM DD');
+  const longDate = moment().format('dddd, MMMM Do, YYYY');
+
+  useEffect(() => {
+    setDate({
+      shortDate: shortDate,
+      longDate: longDate
+    })
+  }, [shortDate, longDate])
 
   useEffect(() => {
     fetch('dbt/quote', {
@@ -22,13 +33,16 @@ const App = () => {
       }
     }).then(res => res.json()).then(json => {
       if (json.success === true) { 
+        console.log(json)
         const quote = json.data[0].quote || ''
         const source = json.data[0].source || ''
         const focus = json.data[0].focus || ''
+        const link =  json.data[0].link || ''
         setDailyData({
           quote: quote,
           source: source,
-          focus: focus
+          focus: focus, 
+          link: link
         })
       }
     }).catch(err => {
@@ -37,15 +51,13 @@ const App = () => {
     })  
   }, [])
   
-  const formattedDate = moment().format('dddd, MMMM Do, YYYY');
-
   return (
     <Router>
     <div className="parent-container" id="content-all">
       <div className="site-header">
         <Header
           title="Winter's DBT Journal"
-          subtitle={`Today is ${formattedDate}`}
+          subtitle={`Today is ${longDate}`}
         />
       </div>
  

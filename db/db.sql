@@ -39,10 +39,24 @@ CREATE TABLE IF NOT EXISTS dbt_data (
 CREATE TABLE quote (
   id SERIAL PRIMARY KEY,
   date TIMESTAMP NOT NULL DEFAULT NOW(), 
+  focus TEXT,
   quote TEXT NOT NULL,
   source TEXT,
-  focus TEXT,
+  link TEXT,
   other json
+);
+
+-- spread, cards, meaning, daily_focus
+
+CREATE TABLE tarot_draw (
+  id SERIAL PRIMARY KEY,
+  date TIMESTAMPTZ NOT NULL DEFAULT NOW(), 
+  spread TEXT, 
+  cards TEXT, 
+  meaning TEXT, 
+  daily_focus TEXT,
+  weekly_theme TEXT,
+  full_draw json
 );
 
 -- table "entry" has fields: id, created_at, entry_type, entry, date

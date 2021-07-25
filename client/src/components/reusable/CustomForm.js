@@ -25,6 +25,7 @@ const CustomForm = (props) => {
   const color = props.color || 'grey'
   const title = props.title || 'Journal'
   const subheader = props.subheader || ''
+  const icon = props.icon ? props.icon : null
   
   const [vals, setVals] = useState({})
   const [dimmerActive, setDimmerActive] = useState(false)
@@ -63,7 +64,12 @@ const CustomForm = (props) => {
 
       <Segment as='section'>
         <Form onSubmit={(e) => handleSubmit(e)} style={formStyle}>
-          <Header as='h2' color={color} content={title} subheader={subheader} />
+          {icon ?
+          <Header as='h2' color={color} 
+            content={title} 
+            subheader={subheader} 
+            icon={icon} /> :
+          <Header as='h2' color={color} content={title} subheader={subheader} />}
           {inputs.map(e => {
             const { name, label, type, required } = e
             if (e.type === 'textarea') {
