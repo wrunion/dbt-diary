@@ -12,7 +12,7 @@ const db = require('./../../db')
 
 module.exports = router => {
 
-  const queryString = `INSERT INTO tarot_draw (spread, cards, meaning, daily_focus, weekly_theme) VALUES ($1, $2, $3, $4) RETURNING *;`
+  const queryString = `INSERT INTO tarot_draw (spread, cards, meaning, daily_focus, weekly_theme) VALUES ($1, $2, $3, $4, $5) RETURNING *;`
 
   router.post('/draw/create', asyncHandler(async(req, res) => {
     try {
