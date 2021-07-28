@@ -2,7 +2,6 @@ import React from 'react'
 import DailyCard from './DailyCard'
 
 const Journal = ({ cards =[], error= ''}) => {
-  console.log(cards)
   return(
     <div>
       {error && <div>
@@ -11,8 +10,6 @@ const Journal = ({ cards =[], error= ''}) => {
         {cards && cards.map((e, i) => {
           if (e.entry_type === 'journal') {
           return (
-            // card has: date, entry, id
-            // entry has: gratitude, homework, used_skills, other
             <div key={e.id} style={{ marginBottom: '1.5em', marginTop: '.5em' }}>
               <DailyCard 
                 card={e}

@@ -18,8 +18,11 @@ const splitToParagraph = (str) => {
   return str.split('\n\n')
 }
 
-const CustomTable = ({ entries, error }) => {
+const CustomTable = ({ data, error }) => {
+  const entries = data.filter(e => e.entry_type === 'rating')
 
+  // entries has: date, entry_type, id
+  // entry has: everything else
   return(
     <div>
       {error && <div>{error}</div>}
@@ -37,8 +40,8 @@ const CustomTable = ({ entries, error }) => {
       </TableHeader>
       <Body>
       {Object.values(entries).map((e, i) => {
-          if (e.rating_data) {
-          const data = e.rating_data
+          if (e.entry) {
+          const data = e.entry
           const joy = data.joy;
           const emotionalMisery = data.emotional_misery;
           const physicalMisery = data.physical_misery;
@@ -46,8 +49,8 @@ const CustomTable = ({ entries, error }) => {
           const skills = data.skills_score || '-'
           const racingthoughts = data.racing_thoughts || '-'
 
-          const formattedDate = e.date.split(' ').filter(e => 
-            e !== '2021').join(' ');
+          const formattedDate = e.date
+
           return(
             <Row key={formattedDate + i}>
               <Cell>{formattedDate}</Cell>
@@ -68,8 +71,8 @@ const CustomTable = ({ entries, error }) => {
       <div style={notesSegmentStyle}>
       <Header as='h2' content='Notes' icon='edit outline' color='grey' style={headerStyle} />
       {Object.values(entries).map((e, i) => {
-          if (e.rating_data?.notes) {
-          const notes = e.rating_data.notes || ''
+          if (e.entry?.notes) {
+          const notes = e.entry.notes || ''
           const formattedNotes = notes && splitToParagraph(notes)
 
           const formattedDate = e.date.split(' ').filter(e => 

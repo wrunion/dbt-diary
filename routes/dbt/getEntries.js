@@ -6,15 +6,34 @@ const db = require('../../db')
  * Full route is /dbt/entry/all
 */
 
-const queryString=`SELECT * FROM entry ORDER BY date;`
-
 module.exports = router => {
 
   router.get('/entry/all', asyncHandler(async(req, res) => {
     try {
+      const queryString = `SELECT * FROM entry ORDER BY date;`
       const response = await db.query(queryString)
       const entries = response.rows;
-      console.log(entries)
+
+      return res.json({
+        success: true,
+        data: entries
+      })
+    } catch (err) {
+      return res.json({
+        success: false,
+        error: error
+      })
+    }
+  }))
+
+  router.get('/entry/week', asyncHandler(async(req, res) => {
+    try {
+      const queryString = `SELECT * FROM entry WHERE DATE(date) >= now() - interval '1 week';`
+
+      const response = await db.query(queryString)
+      
+      const entries = response.rows;
+      
       return res.json({
         success: true,
         data: entries
