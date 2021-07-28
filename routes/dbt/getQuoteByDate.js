@@ -27,7 +27,6 @@ module.exports = router => {
         })
       }
     } catch (err) {
-      console.error(err.message)
       return res.json({ 
         data: null,
         error: err.message

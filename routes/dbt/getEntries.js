@@ -10,11 +10,11 @@ const queryString=`SELECT * FROM entry ORDER BY date;`
 
 module.exports = router => {
 
-  router.post('/entry/all', asyncHandler(async(req, res) => {
+  router.get('/entry/all', asyncHandler(async(req, res) => {
     try {
-      const response = await pool.query(queryString)
+      const response = await db.query(queryString)
       const entries = response.rows;
-
+      console.log(entries)
       return res.json({
         success: true,
         data: entries

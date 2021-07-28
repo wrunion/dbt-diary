@@ -1,6 +1,7 @@
 import React from 'react'
 import ReadMoreReact from 'read-more-react'
-import { Card, Icon, Divider } from 'semantic-ui-react'
+import moment from 'moment'
+import { Card, Icon, Divider, Label } from 'semantic-ui-react'
 const { Content } = Card
 
 const colors = [
@@ -26,26 +27,46 @@ const displayNames = {
   'gratitude': 'Gratitude'
 }
 
+const marginSmall = '5px'
+const margin = '10px'
+const padding = '5px'
+
+// TODO: move this and 'dividerStyle' to global style sheet
 const preStyle = {
   whiteSpace: 'pre-wrap', 
   fontFamily: 'inherit',
   display: 'flex'
 }
 
-const marginSmall = '5px'
-const margin = '10px'
-const padding = '5px'
+const dividerStyle = {
+  marginTop: '.75em', 
+  marginBottom: '.75em'
+}
 
-const CustomCard = ({ card, index, key, title }) => {
+const descriptionStyle = {
+  fontWeight: 'bold', 
+  marginBottom: margin 
+}
+
+const booleanStyle = {
+  textDecoration: 'line-through', 
+  marginRight: marginSmall, 
+  marginBSmallottom: marginSmall
+}
+
+const CustomCard = ({ card, index, key }) => {
   const cardColor = colors[index%9]
 
-  const entry = card.journal_data
+  const entry = card.entry
+
+  const date = moment(card.date).format('dddd MMMM Do, YYYY')
+
+  const liked = card.entry.liked || false
 
   const keys = Object.keys(entry).filter(e => e !== 'date')
   const orderedKeys = ['skills_used', ...keys.filter(e => e !== 'skills_used')]
   
-  /* this just filters out the early entries that don't have tag data  */
-  const tags = entry.date !== '2021-07-13' && entry.date !== undefined ? entry.used_skills : 'No tags yet'
+  const tags = card.entry.tags || 'No tags yet'
 
   const Description = () => {
     return (
@@ -57,17 +78,21 @@ const CustomCard = ({ card, index, key, title }) => {
 
         if (val !== null) {
           if (typeof val === 'boolean') { 
-            return <DisplayBoolean val={val} 
-                      key={name}
-                      displayName={name}/>
-                    } 
+            return (  
+              <DisplayBoolean 
+                val={val} 
+                key={name}
+                displayName={name} 
+                /> 
+              )
+            } 
 
           
-        return (
-          <div key={name}>
-          {i !== 0 && <Divider style={{ marginTop: '.75em', marginBottom: '.75em' }}/>}
+      return (
+      <div key={name}> {i !== 0 && 
+        <Divider style={dividerStyle}/>}
           <div style={{ padding: padding }}>
-            <span style={{ fontWeight: 'bold', marginBottom: margin }}>{name}</span><br/>
+            <span style={descriptionStyle}>{name}</span><br/>
             {name === 'Homework' || name === 'Other' ? 
             <pre style={preStyle}>
               <ReadMoreReact text={val} 
@@ -77,9 +102,9 @@ const CustomCard = ({ card, index, key, title }) => {
                 readMoreText={'(read more)'}
                 /> 
               </pre> :
-              <pre style={preStyle}>{val}</pre>}
+            <pre style={preStyle}>{val}</pre>}
           </div>
-          </div>
+        </div>
         )}
       })
     )
@@ -89,7 +114,7 @@ const CustomCard = ({ card, index, key, title }) => {
     if (val === true) {
       return <span style={{ marginBottom: '25px' }}><Icon name='check' color={cardColor} />{displayName} </span>
     } else {
-      return  <span style={{textDecoration: 'line-through', marginRight: marginSmall, marginBSmallottom: marginSmall }}>{displayName}</span> 
+      return  <span style={booleanStyle}>{displayName}</span> 
     }
   }
 
@@ -97,7 +122,7 @@ const CustomCard = ({ card, index, key, title }) => {
     <>
     <Icon name='heart' color={cardColor} /> 
       <span style={{fontWeight: 'bold'}}>
-        {title}
+        {date}
       </span>
     </>
   )
@@ -105,7 +130,8 @@ const CustomCard = ({ card, index, key, title }) => {
   return (
     <>
     <Card fluid={true} color={cardColor} key={key}>
-      {/* <Label corner='right' icon='bookmark outline' /> */}
+      <Label corner='right' color={cardColor} 
+        icon={liked ? 'heart' : 'heart outline'} />
       <Content header={Header}/>
 
       <Content description={Description} />
@@ -118,6 +144,5 @@ const CustomCard = ({ card, index, key, title }) => {
   </>
   )
 }
-
 
 export default CustomCard

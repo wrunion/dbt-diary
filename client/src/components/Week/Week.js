@@ -9,8 +9,11 @@ import moment from 'moment'
 const { Item } = Menu
 
 const Week = () => {
-
+  
   const [cards, setCards] = useState([])
+
+  const [journalData, setJournalData] = useState([])
+  const [ratingData, setRatingData] = useState([])
   /* If we get an error on fetch, it goes here */
   const [error, setError] = useState('')
   /* options are: 'journal' or 'data' */
@@ -19,12 +22,14 @@ const Week = () => {
   const [today, setToday] = useState(moment().format('dddd'))
 
   useEffect(() => {
-    fetch('api/day/test', {
+    fetch('dbt/entry/all', {
       method: 'GET', 
       headers: {
         'Content-Type': 'application/json'
       }
     }).then(res => res.json()).then(json => {
+      console.log(json.data)
+      // const journalEntries = json.data.f
       setCards(json.data.reverse())
       }).catch(err => {
       setError('There was an error fetching data. See console for details.')
