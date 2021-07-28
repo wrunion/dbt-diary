@@ -13,6 +13,26 @@ const inputLabelsShort = {
   'skills_score': 'Skills Score', 
 }
 
+const inputLabelsAll = {
+  SI: 'S.I.',
+  self_harm_urge: 'S.H. urge',
+  drug_urge: 'Drug urge',
+  emotional_misery: 'Em Mis',
+  physical_misery: 'Phys Mis',
+  joy: 'Joy',
+  gratitude: 'Gratitude',
+  calm: 'Calm',
+  intentionality: 'Intentionality',
+  racing_thoughts: 'Racing thoughts',
+  skills_score: 'Skills score'    
+}
+
+const noteLabels = {
+  focus_phrase: 'Focus phrase',
+  skills_focus: 'Skills focus',
+  notes: 'Notes'
+}
+
 // helper to split strings into paragraphs
 const splitToParagraph = (str) => {
   return str.split('\n\n')
@@ -28,76 +48,68 @@ const CustomTable = ({ data, error }) => {
       {error && <div>{error}</div>}
 
       {entries && Object.keys(entries).length > 0 ?
-      <>
-      <Table striped columns={7} compact size='small' color='green'>
-      <TableHeader>
-        <Row>
-        <HeaderCell>Date</HeaderCell>
-        {Object.values(inputLabelsShort).map((e, i) => 
-          <HeaderCell key={i}>{e}</HeaderCell>
-        )} 
-        </Row>
-      </TableHeader>
-      <Body>
-      {Object.values(entries).map((e, i) => {
-          if (e.entry) {
-          const data = e.entry
-          const joy = data.joy;
-          const emotionalMisery = data.emotional_misery;
-          const physicalMisery = data.physical_misery;
-          const calm = data.calm
-          const skills = data.skills_score || '-'
-          const racingthoughts = data.racing_thoughts || '-'
-
-          const formattedDate = e.date
+        <>
+        <Table striped compact size='small' color='green'>
+          <TableHeader>
+            <Row>
+            <HeaderCell width={2}>Date</HeaderCell>
+            {Object.values(inputLabelsAll).map((e, i) => 
+              <HeaderCell key={i}>{e}</HeaderCell>
+            )} 
+            </Row>
+          </TableHeader>
+        <Body>
+        {Object.values(entries).map((e, i) => {
 
           return(
-            <Row key={formattedDate + i}>
-              <Cell>{formattedDate}</Cell>
-              <Cell>{joy}</Cell>
-              <Cell>{emotionalMisery}</Cell>
-              <Cell>{physicalMisery}</Cell>
-              <Cell>{racingthoughts}</Cell>
-              <Cell>{calm}</Cell>
-              <Cell>{skills}</Cell>
-            </Row>
+            <Row key={e.date + i}>
+              <Cell>{e.date}</Cell>
+              {Object.entries(e.entry).filter(e => e[0] !== 'notes' && e[0] !== 'focus_phrase' && e[0] !== 'skills_focus' && e[0] !== 'date').map(e => {
+                const value = e[1]
+                return (
+                  <Cell>{value}</Cell>
+                )
+              })}
+              </Row>
             )
           }
-        })}
+        )}
       </Body>
       </Table> 
 
-      {/* notes  */}
       <div style={notesSegmentStyle}>
-      <Header as='h2' content='Notes' icon='edit outline' color='grey' style={headerStyle} />
-      {Object.values(entries).map((e, i) => {
-          if (e.entry?.notes) {
-          const notes = e.entry.notes || ''
-          const formattedNotes = notes && splitToParagraph(notes)
+        <Header as='h2' content='Notes' 
+          icon='edit outline' color='grey' 
+          style={headerStyle} 
+          />
+          {Object.values(entries).map((e, i) => {
+            if (e.entry?.notes) {
+            const notes = e.entry.notes || ''
+            const formattedNotes = notes && splitToParagraph(notes)
 
-          const formattedDate = e.date.split(' ').filter(e => 
-            e !== '2021').join(' ');
+            const formattedDate = e.date.split(' ').filter(e => 
+              e !== '2021').join(' ');
 
-            return(
-              <>
-              <section key={formattedDate + i} style={{ padding: '15px',  border: '1px solid #E0E1E2', borderRadius: '7px', margin: '15px' }}>
-                <ul className='ui list' style={uiStyle}>
-                <details>
-                <summary style={summaryStyle}>{formattedDate}</summary>
-                {formattedNotes.map((e, i) => {        
-                      return (
-                      <div key={i}>
-                        <li style={liStyle}>{e}</li>
-                      </div>
-                      )
-                    })}
+              return(
+                <>
+                <section key={formattedDate + i} style={{ padding: '15px',  border: '1px solid #E0E1E2', borderRadius: '7px', margin: '15px' }}>
+                  <ul className='ui list' style={uiStyle}>
+                  <details>
+                  <summary style={summaryStyle}>{formattedDate}</summary>
+                  {formattedNotes.map((e, i) => {        
+                    return (
+                    <div key={i}>
+                      <li style={liStyle}>{e}</li>
+                    </div>
+                    )
+                  })}
                 </details>
                 </ul>
               </section>
               </>
-            )
-          }
-        })}
+              )
+            }
+          })}
 
       </div>
       </>

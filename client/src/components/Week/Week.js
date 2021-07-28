@@ -25,7 +25,6 @@ const Week = () => {
         'Content-Type': 'application/json'
       }
     }).then(res => res.json()).then(json => {
-      console.log(json.data)
       setCards(json.data.reverse())
       }).catch(err => {
       setError('There was an error fetching data. See console for details.')
