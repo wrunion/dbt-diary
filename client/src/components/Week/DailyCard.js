@@ -63,7 +63,7 @@ const CustomCard = ({ card, index, key }) => {
 
   const liked = card.entry.liked || false
 
-  const keys = Object.keys(entry).filter(e => e !== 'date')
+  const keys = Object.keys(entry).filter(e => e !== 'date').filter(e => e !== 'other')
   const orderedKeys = ['skills_used', ...keys.filter(e => e !== 'skills_used')]
   
   const tags = card.entry.tags || 'No tags yet'
@@ -93,15 +93,15 @@ const CustomCard = ({ card, index, key }) => {
         <Divider style={dividerStyle}/>}
           <div style={{ padding: padding }}>
             <span style={descriptionStyle}>{name}</span><br/>
-            {name === 'Homework' || name === 'Other' ? 
+            {name === 'Homework' || name === 'Skills used' ? 
             <pre style={preStyle}>
               <ReadMoreReact text={val} 
-                min={100}
-                ideal={225}
-                max={400}
+                min={75}
+                ideal={150}
+                max={250}
                 readMoreText={'(read more)'}
                 /> 
-              </pre> :
+              </pre> : 
             <pre style={preStyle}>{val}</pre>}
           </div>
         </div>
