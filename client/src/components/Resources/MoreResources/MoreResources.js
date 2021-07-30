@@ -24,7 +24,7 @@ const SOUND_PLAYER_INSTANCES = [
 const MoreResources = () => {
 
   return ( 
-    <div>
+    <div className='SoundPlayerPage'>
       {SOUND_PLAYER_INSTANCES.map((e, i) => 
         <SoundPlayer 
           key={i} 

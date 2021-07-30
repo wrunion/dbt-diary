@@ -1,15 +1,21 @@
 import React, { useState } from 'react'
 import Page from '../reusable/Page'
-import { Segment, Header, List, Card, Menu } from 'semantic-ui-react'
+import { Header, List, Card, Menu } from 'semantic-ui-react'
 import { SKILLS } from './skillData'
-import MoreResources from './MoreResources/MoreResources'
-import Skills from './Skills/Skills'
 import Quotes from './Quotes/Quotes'
 
 
 // TODO: turn each tab into a Route instead of using state
 // to conditionally render content 
 const skills = SKILLS;
+
+const mainStyle = {
+  background: 'rgba(224, 225, 226, .5)', 
+  width: '100%', 
+  height: '100%', 
+  marginTop: '25px', 
+  padding: '15px' 
+}
 
 const Week = () => {
 
@@ -52,10 +58,10 @@ const Week = () => {
        <>
         <Header as='h2' content={title} color='violet' 
           attached='top'
-          textAlign='center' />
+          textAlign='center' 
+          />
 
-        <div 
-          style={{ background: 'rgba(224, 225, 226, .5)', width: '100%', height: '100%', marginTop: '25px', padding: '15px' }}>
+        <div style={mainStyle}>
 
         {keys && keys.map(e => 
           <Skill skill={content[e]} title={e} /> 
@@ -90,22 +96,12 @@ const Week = () => {
           />
         </Menu>
 
+        {skills && activeTab === 'skills' && skills.map(e => 
+          <SkillCard skill={e} /> 
+        )}
 
-      {skills && activeTab === 'skills' && skills.map(e => <SkillCard skill={e} /> )}
-      {activeTab === 'quotes' && <Quotes />}
-      {activeTab === 'more' && <MoreResources /> }
-
-      {/* TODO: logic below is broken; use Routes instead  */}
-      {/* {(quotes && activeTab === 'quotes') ? quotes.map(e => <SkillCard skill={e} /> ) : 
-        <div>
-          No quotes found
-        </div>}
-
-      {(links && activeTab === 'links') ? links.map(e => <SkillCard skill={e} /> ) : 
-        <div>
-          No links found
-        </div>} */}
-
+        {activeTab === 'quotes' && <Quotes />}
+        
     </Page>
   )
 }

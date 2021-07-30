@@ -2,15 +2,27 @@ import React from 'react'
 import { Table, Segment, Header } from 'semantic-ui-react'
 const { Row, HeaderCell, Cell, Body } = Table;
 const TableHeader = Table.Header;
-const moment = 'moment'
 
-const inputLabelsShort = {
-  'joy': 'Joy',
-  'emotional_misery': 'Em. Mis',
-  'physical_misery': 'Phys. Mis',
-  'racing_thoughts': 'Racing Thoughts', 
-  'calm': 'Rest', 
-  'skills_score': 'Skills Score', 
+const liStyle = {
+  marginBottom: '.5em',
+  lineHeight: '2em',
+}
+
+const uiStyle = {
+  margin: '25px',
+}
+
+const summaryStyle = {
+  marginBottom: '1em',
+  color: '#21BA45'
+}
+
+const headerStyle = {
+  marginLeft: '25px'
+}
+
+const notesSegmentStyle = {
+  marginTop: '2em'
 }
 
 const inputLabelsAll = {
@@ -122,39 +134,3 @@ const CustomTable = ({ data, error }) => {
 }
 
 export default CustomTable;
-
-const liStyle = {
-  marginBottom: '.5em',
-  lineHeight: '2em',
-}
-
-const uiStyle = {
-  margin: '25px',
-}
-
-const summaryStyle = {
-  marginBottom: '1em',
-  color: '#21BA45'
-}
-
-const headerStyle = {
-  marginLeft: '25px'
-}
-
-const notesSegmentStyle = {
-  marginTop: '2em'
-}
-
-const ratingDisplayAll = {
-  'SI': 'SI', 
-  'calm': 'Calm', 
-  'drug_urge': 'Drug urge',
-  'emotional_misery': 'Emotional. Mis',
-  'gratitude': 'Gratitude',
-  'intentionality': 'Intentionality',
-  'joy': 'Joy',
-  'physical_misery': 'Physical. Mis',
-  'racing_thoughts': 'Racing Thoughts', 
-  'self_harm_urge': 'Self Harm Urge',
-  'skills_score': 'Skills Score', 
-}
