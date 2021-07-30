@@ -36,7 +36,7 @@ const Quotes = () => {
       }
     }).then(res => res.json()).then(json => {
       if (json.success === true) { 
-        setQuoteData(json.data)
+        setQuoteData(json.data.reverse())
       }
     }).catch(err => {
       console.log(err);
