@@ -45,6 +45,12 @@ const noteLabels = {
   notes: 'Notes'
 }
 
+const detailsSummaryStyle = {
+  padding: '15px',  
+  border: '1px solid #E0E1E2', 
+  borderRadius: '7px', margin: '15px' 
+}
+
 // helper to split strings into paragraphs
 const splitToParagraph = (str) => {
   return str.split('\n\n')
@@ -104,8 +110,11 @@ const CustomTable = ({ data, error }) => {
 
               return(
                 <>
-                <section key={formattedDate + i} style={{ padding: '15px',  border: '1px solid #E0E1E2', borderRadius: '7px', margin: '15px' }}>
-                  <ul className='ui list' style={uiStyle}>
+                <section 
+                  key={formattedDate + i}      
+                  style={detailsSummaryStyle}>
+                  <ul className='ui list' 
+                    style={uiStyle}>
                   <details>
                   <summary style={summaryStyle}>{formattedDate}</summary>
                   {formattedNotes.map((e, i) => {        
