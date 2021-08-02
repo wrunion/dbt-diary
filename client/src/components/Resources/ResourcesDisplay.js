@@ -3,7 +3,7 @@ import Page from '../reusable/Page'
 import { Header, List, Card, Menu } from 'semantic-ui-react'
 import { SKILLS } from './skillData'
 import Quotes from './Quotes/Quotes'
-
+import MoreResources from './MoreResources/MoreResources'
 
 // TODO: turn each tab into a Route instead of using state
 // to conditionally render content 
@@ -101,6 +101,8 @@ const Week = () => {
         )}
 
         {activeTab === 'quotes' && <Quotes />}
+
+        {activeTab === 'more' && <MoreResources />}
         
     </Page>
   )

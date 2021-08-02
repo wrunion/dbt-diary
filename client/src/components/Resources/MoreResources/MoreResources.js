@@ -10,6 +10,16 @@ const SOUND_PLAYER_INSTANCES = [
     categories: '#Guided meditation, #Sleep'
   },
   {
+    path: 'client/src/assets/mushroom-meditation-music.mp3',
+    title: 'Music for Meditation: Mushrooms in the Forest',
+    categories: '#meditation, #deities, #faith, #devotion, #forest meditation, #music, #mindfulness, #nature sounds'
+  },
+  {
+    path: 'client/src/assets/celtic-forest-meditation-music.mp3',
+    title: 'Music for Meditation: Celtic Meditation',
+    categories: '#meditation, #deities, #faith, #devotion, #celtic, #music, #forest meditation, #mindfulness, #nature sounds'
+  },
+  {
     path: 'client/src/assets/meditation-1.m4a',
     title: 'Meditation by Henry: Listen to your gut',
     categories: '#hypnosis #relaxation #digestion'
