@@ -8,7 +8,7 @@ const router = express.Router()
 
 // GET Routes 
 require('./getQuote')(router)
-require('./getEntries')(router)
+require('./getEntry')(router)
 
 // POST Routes 
 require('./createEntry')(router)
