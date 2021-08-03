@@ -30,8 +30,8 @@ const FormDisplay = (props) => {
 
   const { date, quote, source = '' } = props
 
-  const [showQuoteForm, setShowQuoteForm] = useState(false)
-  const [showDailyRatingForm, setShowDailyRatingForm] = useState(false)
+  const [showQuoteForm, setShowQuoteForm] = useState(true)
+  const [showDailyRatingForm, setShowDailyRatingForm] = useState(true)
 
 
   const DailyContainer = () => {
@@ -40,7 +40,7 @@ const FormDisplay = (props) => {
         <Page 
           title='About Today'
           subtitle={quote}
-          icon='sun outline'
+          // icon='sun outline'
           color='violet'
           textAlign='left'
         />

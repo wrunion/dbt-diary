@@ -14,18 +14,18 @@ const headerStyle = {
   marginBottom: '1.25em'
 }
 
-/* 
- * Custom reusable form component used many times in this app.
+/* Custom reusable form component.
  * Required props: 
- * inputs (array of what the form inputs should be. see example below)
- * success (boolean - if true will reset form state and show success message) 
- * onSubmitCallback (function, will be called with the data from the form)
- * color (string, enum for one of Semantic UI's color options, optional)
-*/
+ * inputs: array of objects each describing a single form input
+ * success: boolean value that determines the value of "dimmerActive/" 
+ * onSubmitCallback: function that is called with form data as an argument on submit.
+ * 
+ * Additional props for component styling are available and are described in PropTypes
+ */
 
 const CustomForm = (props) => {
 
-  const { inputs, success, onSubmitCallback, color='grey', title='Journal', subheader='', icon=null } = props
+  const { inputs, success, onSubmitCallback, color='grey', title='Journal', subheader='', icon='' } = props
 
   const [vals, setVals] = useState({})
   const [dimmerActive, setDimmerActive] = useState(false)
@@ -53,10 +53,9 @@ const CustomForm = (props) => {
     event.preventDefault()
     const data = {}
     inputs.forEach(e => data[e.name] = event.target[e.name]?.value)
-    // If user didn't enter date, timestamp it with the current date
-    // in the same format the broswer uses
+    // Timestamp entry if date was not entered
     if (!data.date) { data.date = moment().format('YYYY-MM-DD') }
-    // Pass submitted data up to parent component
+    // Pass data up to parent component
     onSubmitCallback(data)
   }
 
@@ -67,19 +66,17 @@ const CustomForm = (props) => {
       style={{borderRadius: '5px' }}>
 
       <Segment as='section'>
+
         <Form onSubmit={(e) => handleSubmit(e)} style={formStyle}>
-          {/* icon header vs regular header  */}
-          {icon ?
           <Header as='h2' color={color} 
             content={title}
             style={headerStyle} 
             subheader={subheader} 
-            icon={icon} /> :
-          <Header as='h2' color={color} content={title} subheader={subheader} />}
-          <div>
-
+            icon={icon} 
+            />
+          
           {inputs.map(e => {
-            const { name, label, type, required } = e
+            const { name, label, type } = e
             if (type === 'textarea') {
               return(
                 <Field key={name}>
@@ -144,7 +141,6 @@ const CustomForm = (props) => {
             }})}
 
           <Button type='submit' color={color}>Submit</Button>
-          </div>
         </Form>
       </Segment>
 
@@ -165,7 +161,10 @@ CustomForm.propTypes = {
   inputs: PropTypes.array.isRequired,
   onSubmitCallback: PropTypes.func.isRequired,
   success: PropTypes.bool,
-  color: PropTypes.string
+  color: PropTypes.string,
+  title: PropTypes.string, 
+  subheader: PropTypes.string,
+  icon: PropTypes.string
 }
 
 export default CustomForm
