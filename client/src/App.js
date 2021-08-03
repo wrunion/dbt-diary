@@ -11,19 +11,9 @@ import moment from 'moment'
 
 const App = () => {
 
-  const [date, setDate] = useState({})
   const [dailyData, setDailyData] = useState({})
-  const [formsShowing, setFormsShowing] = useState({})
 
-  const shortDate = moment().format('YYYY, MM DD');
   const longDate = moment().format('dddd, MMMM Do, YYYY');
-
-  useEffect(() => {
-    setDate({
-      shortDate: shortDate,
-      longDate: longDate
-    })
-  }, [shortDate, longDate])
 
   useEffect(() => {
     fetch('dbt/quote', {
@@ -33,43 +23,15 @@ const App = () => {
       }
     }).then(res => res.json()).then(json => {
       if (json.success === true) { 
-        console.log(json)
-        const quote = json.data[0].quote || ''
-        const source = json.data[0].source || ''
-        const focus = json.data[0].focus || ''
-        const link =  json.data[0].link || ''
-        setDailyData({
-          quote: quote,
-          source: source,
-          focus: focus, 
-          link: link
-        })
-      }
-    }).catch(err => {
-      console.log(err);
-      return 'There was an error. See console for details'
-    })  
-  }, [])
 
-  useEffect(() => {
-    fetch(`dbt/meta/${shortDate}`, {
-      method: 'GET', 
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => res.json()).then(json => {
-      if (json.success === true) { 
-        console.log('meta data', json.data)
-      //   const quote = json.data[0].quote || ''
-      //   const source = json.data[0].source || ''
-      //   const focus = json.data[0].focus || ''
-      //   const link =  json.data[0].link || ''
-      //   setDailyData({
-      //     quote: quote,
-      //     source: source,
-      //     focus: focus, 
-      //     link: link
-      //   })
+        const { quote, source, focus, link } = json.data[0]
+        
+        setDailyData({ 
+          quote, 
+          source, 
+          focus, 
+          link 
+        })
       }
     }).catch(err => {
       console.log(err);
@@ -88,16 +50,14 @@ const App = () => {
       </div>
  
       <div id='main-container'>
-        
       <NavBar />
-
         <Segment>
           <div id="content">
             <Route exact path='/'>
               <FormDisplay 
                 quote={dailyData.quote} 
                 source={dailyData.source}
-                />
+              />
             </Route>
             <Route exact path='/week'>
               <Week />
