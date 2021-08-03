@@ -79,8 +79,7 @@ const CustomForm = (props) => {
                     <Icon name='moon outline' color={color} /> {label}
                   </label>
                   <TextArea 
-                    rows={4} 
-                    type={e.type}
+                    rows={5} 
                     name={e.name}
                     required={e.required}
                     value={vals[e.name]}
