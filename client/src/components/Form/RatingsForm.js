@@ -58,6 +58,40 @@ const filterFormVals = (obj) => {
   return(returnObj)
 }
 
+const inputLabels = {
+  'joy': 'Joy',
+  'emotional_misery': 'Emotional Misery',
+  'physical_misery': 'Physical Misery',
+  'SI': 'SI',
+  'self_harm_urge': 'Self harm urge',
+  'drug_urge': 'Drug urge',
+  'gratitude': 'Gratitude',
+  'calm': 'Calm',
+  'intentionality': 'Intentionality', 
+  'racing_thoughts': 'Racing Thoughts', 
+  'skills_score': 'Skills Score',
+  'notes': 'Notes', 
+  'focus_phrase': 'Focus Phrase'
+} 
+
+const inputs = [
+  { name: 'SI', label: `SI`, type: 'number', required: false },
+  { name: 'self_harm_urge', label: 'Self harm urge', type:'number', required: true },
+  { name: 'drug_urge', label: 'Drug urge', type:'number', required: false },
+  { name: 'emotional_misery', label: 'Emotional Misery', type: 'number', required: false },
+  { name: 'physical_misery', label: 'Physical Misery', type:'number', required: false },
+  { name: 'joy', label: 'Joy', type:'number', required: false },
+  { name: 'gratitude', label: 'Gratitude', type:'number', required: false },
+  { name: 'calm', label: 'Calm', type:'number', required: false },
+  { name: 'intentionality', label: 'Intentionality', type:'number', required: false },
+  { name: 'racing_thoughts', label: 'Racing Thoughts', type:'number', required: false },
+  { name: 'skills_score', label: 'Skills Score', type:'number', required: false },
+  { name: 'notes', label: 'Notes', type:'textarea', required: false },
+  { name: 'focus_phrase', label: 'Focus Phrase', type:'text', required: false },
+  { name: 'skills_focus', label: 'Skills Focus', type:'text', required: false },
+  { name: 'date', label: '', type: 'date', required: false }
+]
+
 /* Each of these is a dropdown form field. Add here */
 const numberLabels = ['SI', 'self_harm_urge', 'drug_urge', 'emotional_misery', 'physical_misery', 'joy', 'gratitude', 'calm', 'intentionality', 'racing_thoughts', 'skills_score']
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import JournalForm from './JournalForm'
-import RatingsForm from './RatingsForm'
+import RatingsForm from './../V2/RatingsForm'
 // import QuoteForm from './QuoteForm'
 import QuoteForm from './../V2/QuoteForm'
 import TarotForm from './../V2/TarotForm'
@@ -49,11 +49,8 @@ const FormDisplay = (props) => {
         <div style={quoteStyles}>
           {quote && <DailyContainer />}
         </div>
-      <Segment>
-        <div style={formDivStyles}>
-        <RatingsForm />
-        </div>
-      </Segment>
+
+      <RatingsForm />
 
       <Segment>
         <div style={formDivStyles}>

@@ -20,7 +20,7 @@ const buttonStyle ={
   marginTop: '1em'
 }
 
-const Form = () => {
+const Form2 = () => {
 
   const [formVals, setFormVals] = useState({})
   // const [show, setShow] = useState(false)
@@ -116,7 +116,7 @@ const Form = () => {
   )
 }
 
-export default Form;
+export default Form2;
 
 //* slider Input   <Field>
   // <label>123: </label>

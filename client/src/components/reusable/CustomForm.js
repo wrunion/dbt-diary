@@ -53,7 +53,9 @@ const CustomForm = (props) => {
     event.preventDefault()
     const data = {}
     inputs.forEach(e => data[e.name] = event.target[e.name]?.value)
-    onSubmitCallback(data)
+    // TEMPORARY FOR TESTING
+    console.log(data)
+    // onSubmitCallback(data)
   }
 
   return (
@@ -64,31 +66,53 @@ const CustomForm = (props) => {
 
       <Segment as='section'>
         <Form onSubmit={(e) => handleSubmit(e)} style={formStyle}>
+          {/* icon header vs regular header  */}
           {icon ?
           <Header as='h2' color={color} 
             content={title} 
             subheader={subheader} 
             icon={icon} /> :
           <Header as='h2' color={color} content={title} subheader={subheader} />}
+
           {inputs.map(e => {
             const { name, label, type, required } = e
-            if (e.type === 'textarea') {
+            if (type === 'textarea') {
               return(
-                <Field key={e.name}>
-                  <label htmlFor={e.name} basic color={color}>
+                <Field key={name}>
+                  <label htmlFor={name} basic color={color}>
                     <Icon name='moon outline' color={color} /> {label}
                   </label>
                   <TextArea 
-                    rows={5} 
-                    name={e.name}
-                    required={e.required}
+                    rows='5'
+                    name={name}
+                    required={required}
+                    value={vals[name]}
+                    onChange={(e) => handleChange(e)}
+                  />
+                </Field>
+              )
+            } 
+            if (type === 'number') {
+              return (
+                <Field inline key={name}>
+                  <Input 
+                    type='number'
+                    min='0'
+                    max='5'
+                    placeholder='0'
+                    name={name}
+                    // style={{ width: '75px', margin: '1em' }}
                     value={vals[e.name]}
                     onChange={(e) => handleChange(e)}
                   />
-                
+                  <Label htmlFor={name} color={color} basic pointing='left'>
+                    {label}
+                  </Label>
                 </Field>
               )
-            } else {
+            }
+            
+            else {
               return (
                 <Field key={e.name}>
                 <Input 
@@ -103,6 +127,8 @@ const CustomForm = (props) => {
               </Field>
               )
             }})}
+            {/* </div> */}
+            
           <Button type='submit' color={color}>Submit</Button>
         </Form>
       </Segment>
