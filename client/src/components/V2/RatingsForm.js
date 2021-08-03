@@ -1,18 +1,9 @@
 import React, { useState } from 'react'
 import CustomForm from './../reusable/CustomForm'
 
-const Quote = () => {
+const DailyRatingForm = () => {
 
   const [success, setSuccess] = useState(false)
-
-  // const inputs = [
-  //   { name: 'focus', label: `Today I want to focus on`, type: 'text', required: false },
-  //   { name: 'quote', label: 'Daily Quote', type:'text', required: true },
-  //   { name: 'source', label: 'Source', type:'text', required: false },
-  //   { name: 'test-1', label: 'Link', type: 'textarea', required: false },
-  //   { name: 'test-2', label: 'Link', type: 'number', required: false },
-  //   { name: 'test-3', label: 'Link', type: 'number', required: false }
-  // ]
 
   const inputs = [
     { name: 'SI', label: `SI`, type: 'number', required: false },
@@ -33,24 +24,36 @@ const Quote = () => {
   ]
 
   const onSubmitCallback = (data) => {
+    /* 
+    * The API expects: 
+    * date (string)
+    * entry_type (enum: 'rating' or 'journal')
+    * entry (json)
+    */
 
-    console.log(data)
-    // fetch('/dbt/quote/create', {
-    //   method: 'POST', 
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(data)
-    // }).then(res => res.json()).then(json => {
-    //   if (json.success === true) { 
-    //     console.log(json)
-    //     // this tells the child form to show success dimmer
-    //     setSuccess(true)
-    //   }
-    // }).catch(err => {
-    //   console.log(err);
-    //   return 'There was an error. See console for details'
-    // })     
+    const entry = {
+      date: data.date,
+      entry_type: 'rating',
+      entry: data
+    }
+
+    console.log(entry)
+    fetch('/dbt/entry/create', {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(entry)
+    }).then(res => res.json()).then(json => {
+      if (json.success === true) { 
+        console.log(json)
+        // this tells the child form to show success dimmer
+        setSuccess(true)
+      }
+    }).catch(err => {
+      console.log(err);
+      return 'There was an error. See console for details'
+    })     
   }
   
   return (
@@ -68,4 +71,4 @@ const Quote = () => {
   )
 }
 
-export default Quote
+export default DailyRatingForm

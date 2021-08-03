@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { Segment, Form, Input, Label, Header, Button, Dimmer, Icon, TextArea } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 const { Field } = Form
 const { Dimmable } = Dimmer
 const { Subheader } = Header
 
 const formStyle = {
   padding: '1.5em'
+}
+
+const headerStyle = {
+  marginBottom: '1.25em'
 }
 
 /* 
@@ -53,9 +58,11 @@ const CustomForm = (props) => {
     event.preventDefault()
     const data = {}
     inputs.forEach(e => data[e.name] = event.target[e.name]?.value)
-    // TEMPORARY FOR TESTING
-    console.log(data)
-    // onSubmitCallback(data)
+    // If user didn't enter date, timestamp it with the current date
+    // in the same format the broswer uses
+    if (!data.date) { data.date = moment().format('YYYY-MM-DD') }
+    // Pass submitted data up to parent component
+    onSubmitCallback(data)
   }
 
   return (
@@ -69,23 +76,24 @@ const CustomForm = (props) => {
           {/* icon header vs regular header  */}
           {icon ?
           <Header as='h2' color={color} 
-            content={title} 
+            content={title}
+            style={headerStyle} 
             subheader={subheader} 
             icon={icon} /> :
           <Header as='h2' color={color} content={title} subheader={subheader} />}
+          <div>
 
           {inputs.map(e => {
             const { name, label, type, required } = e
             if (type === 'textarea') {
               return(
                 <Field key={name}>
-                  <label htmlFor={name} basic color={color}>
-                    <Icon name='moon outline' color={color} /> {label}
+                  <label htmlFor={name}>
+                    <Icon name={icon} color={color} /> {label}
                   </label>
                   <TextArea 
                     rows='5'
                     name={name}
-                    required={required}
                     value={vals[name]}
                     onChange={(e) => handleChange(e)}
                   />
@@ -97,11 +105,10 @@ const CustomForm = (props) => {
                 <Field inline key={name}>
                   <Input 
                     type='number'
-                    min='0'
-                    max='5'
+                    min='0' 
+                    max='5' 
                     placeholder='0'
                     name={name}
-                    // style={{ width: '75px', margin: '1em' }}
                     value={vals[e.name]}
                     onChange={(e) => handleChange(e)}
                   />
@@ -111,25 +118,38 @@ const CustomForm = (props) => {
                 </Field>
               )
             }
-            
+            if (type === 'text') {
+              return (
+                <Field key={name}>
+                <Input 
+                  type={type}
+                  name={name}
+                  value={vals[name]}
+                  onChange={(e) => handleChange(e)}
+                  label={
+                    <Label basic pointing='right' color={color}>
+                      {label}
+                    </Label>
+                    }
+                  />
+              </Field>
+              )
+            }
             else {
               return (
-                <Field key={e.name}>
+                <Field key={name}>
                 <Input 
-                  type={e.type}
-                  name={e.name}
-                  required={e.required}
-                  value={vals[e.name]}
+                  type={type}
+                  name={name}
+                  value={vals[name]}
                   onChange={(e) => handleChange(e)}
-                  label={<Label basic pointing='right' color={color}>
-                    {e.label}</Label>}
                   />
               </Field>
               )
             }})}
-            {/* </div> */}
-            
+
           <Button type='submit' color={color}>Submit</Button>
+          </div>
         </Form>
       </Segment>
 
