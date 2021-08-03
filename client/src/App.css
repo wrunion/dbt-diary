@@ -1,3 +1,4 @@
+/* App.js and global styles */
 .App {
   min-height: 100vh;
   display: flex;
@@ -37,52 +38,17 @@
   text-align: center;
   margin-top: .5em;
 }
-/* style={{width: '90%', margin: '0 auto', maxWidth: '900px' }} */
+
 #main-container {
   width: 90%;
   margin: 0 auto;
   max-width: 900px
 }
 
-/* 
-
-font-family: 'Cormorant Garamond', serif;
-font-family: 'Josefin Slab', serif;
-font-family: 'Open Sans', sans-serif;
-font-family: 'Playfair Display', serif;
-font-family: 'Raleway', sans-serif;
-
-*/
-
 #content-all h1, h2, h3, h4  {
   font-family: 'Raleway', sans-serif !important;
   font-weight: '500' !important;
 }
-
-/* App grid */
-/* .parent-container{
-  display: grid; 
-  grid-template-columns: 0.5fr 2.3fr 0.5fr; 
-  grid-template-rows: 0.5fr 1.5fr 1fr; 
-  gap: 0px 0px; 
-  grid-template-areas: 
-    "site-header site-header site-header"
-    "left-col main right-col"
-    "left-col main right-col"; 
-}
-.site-header { 
-  grid-area: site-header; 
-}
-.left-col { 
-  grid-area: left-col;  
-}
-.right-col {
-  padding-right: 3em;
-  grid-area: right-col; 
-}
-.main { 
-  grid-area: main; 
-} */
 
 @media only screen and (max-width: 600px) {
   .header-icon {
@@ -101,18 +67,8 @@ font-family: 'Raleway', sans-serif;
   border: 1px solid yellow;
 }
 
-/* .site-header {
-  padding: .5em;
-  padding-bottom: 0;
-} */
-
-
-/* JournalForm */
+/* JournalForm.js styles */
 .date-input {
   margin-bottom: 1em;
   margin-top: .5em;
-}
-
-#skills-page div p {
-  /* border-radius: 0 !important; */
 }

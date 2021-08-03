@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import CustomForm from './../reusable/CustomForm'
-import { Segment, Header } from 'semantic-ui-react'
 
 const preStyle = {
   whiteSpace: 'pre-wrap', 

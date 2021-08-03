@@ -6,14 +6,14 @@ import Header from './components/Header'
 import NavBar from './components/NavBar'
 import Week from './components/Week/Week'
 import Resources from './components/Resources/ResourcesDisplay'
-import FormDisplay from './components/Form/FormDisplay'
+import Today from './components/Form/Today'
 import moment from 'moment'
 
 const App = () => {
 
   const [dailyData, setDailyData] = useState({})
 
-  const longDate = moment().format('dddd, MMMM Do, YYYY');
+  const date = moment().format('dddd, MMMM Do, YYYY')
 
   useEffect(() => {
     fetch('dbt/quote', {
@@ -45,7 +45,7 @@ const App = () => {
       <div className="site-header">
         <Header
           title="Winter's DBT Journal"
-          subtitle={`Today is ${longDate}`}
+          subtitle={`Today is ${date}`}
         />
       </div>
  
@@ -54,7 +54,8 @@ const App = () => {
         <Segment>
           <div id="content">
             <Route exact path='/'>
-              <FormDisplay 
+              <Today 
+                date={date}
                 quote={dailyData.quote} 
                 source={dailyData.source}
               />

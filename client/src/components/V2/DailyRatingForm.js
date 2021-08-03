@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import CustomForm from './../reusable/CustomForm'
+import CustomForm from '../reusable/CustomForm'
 
 const DailyRatingForm = () => {
 
