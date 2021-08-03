@@ -27,14 +27,6 @@ const CustomForm = (props) => {
 
   const { inputs, success, onSubmitCallback, color='grey', title='Journal', subheader='', icon=null } = props
 
-  // const inputs = props.inputs
-  // const success = props.success
-  // const onSubmitCallback = props.onSubmitCallback
-  // const color = props.color || 'grey'
-  // const title = props.title || 'Journal'
-  // const subheader = props.subheader || ''
-  // const icon = props.icon ? props.icon : null
-  
   const [vals, setVals] = useState({})
   const [dimmerActive, setDimmerActive] = useState(false)
 
