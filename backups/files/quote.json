@@ -1,11 +1,56 @@
 [
   {
     "id": 1,
-    "date": "2021-07-25T10:31:54.998Z",
+    "date": "2021-07-25T03:45:31.511Z",
     "focus": "Reconnecting with myself, Loki, and Nohemi",
     "quote": "Something is about to be created",
     "source": "~today's tarot draw",
     "link": "https://bryangalera.com/tarot.php?c=ROzmlJuiPwPyPutlzzzzp",
+    "other": null
+  },
+  {
+    "id": 2,
+    "date": "2021-07-26T03:00:03.158Z",
+    "focus": "Self care",
+    "quote": " Listen to your hesitation. Listen to your intuition. This time is yours.",
+    "source": "",
+    "link": "",
+    "other": null
+  },
+  {
+    "id": 3,
+    "date": "2021-07-27T04:40:33.806Z",
+    "focus": "Taking time and space to listen to myself",
+    "quote": "Find a peaceful space to centre and calm your soul. Listen carefully to your intuition and your inner voice.",
+    "source": "Biddy Tarot",
+    "link": "https://www.biddytarot.com/tarot-card-meanings/minor-arcana/suit-of-cups/queen-of-cups/",
+    "other": null
+  },
+  {
+    "id": 4,
+    "date": "2021-07-28T09:39:03.928Z",
+    "focus": "Taking Time to rest and reflect",
+    "quote": "Focus on what you need to let go of and what you wish to grow",
+    "source": "Biddy Tarot",
+    "link": "https://www.instagram.com/p/B6USjqEg72a/?igshid=ro3x5496altd&epik=dj0yJnU9MUVidUFrellUeWlPN1VpejdFaUlzMkZoZnhoUEs0Q08mcD0wJm49ZTRCNHNZamVJVGhabjJidi1WQVdXUSZ0PUFBQUFBR0VBd3o4",
+    "other": null
+  },
+  {
+    "id": 5,
+    "date": "2021-07-29T21:55:29.756Z",
+    "focus": "the present moment; the here and now",
+    "quote": "With the past, I have nothing to do; nor with the future. I live now.",
+    "source": "Ralph Waldo Emerson",
+    "link": "",
+    "other": null
+  },
+  {
+    "id": 6,
+    "date": "2021-07-29T22:15:56.968Z",
+    "focus": "",
+    "quote": "Nothing blooms all the time. Shift with the seasons",
+    "source": "",
+    "link": "",
     "other": null
   }
 ]

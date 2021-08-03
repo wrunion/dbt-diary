@@ -1,5 +1,20 @@
 [
   {
+    "id": 18,
+    "created_at": "2021-07-23T20:47:15.026Z",
+    "entry_type": "journal",
+    "entry": {
+      "date": "2021-07-13",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "This isn't a DBT skill, but I did take time to step back from my own hyper-focus - which is an ADHD thing where I get fixated on one specific thing, and can't get away from it - I took time to step away from my code project and breathe and ground, and get a new perspective on the work, and come back to it with fresh eyes. ",
+      "homework": "This week's homework is the \"how\" skill of describing. I think I'm doing okay; at least once a day in the past few days, I've had a moment where I was ruminating or feeling anxious, or stuck in a certain feeling, where I was able to step back and describe to myself what's going on. \n\nI was able to just say, \"Oh, I'm thinking about this thing right now\"/\"I'm worried about this thing.\" \n\nSince one of the things I was fixated on was my health - which feels like a catastrophe at the moment - it was helpful to go from the thought/feeling, \"Something is deeply wrong with my body,\" to, \"I *feel* like something is deeply wrong with my body. \n\nIt might not seem like a huge difference, but it did help. I was able to validate the thought without giving it as much weight as I had before. Which was useful! ",
+      "other": "Journaling helps. ",
+      "gratitude": "I'm grateful for my partner, who encourages me and helps me find a more balanced perspective when I get too hyper-fixated on a project at hand. I'm also grateful for the food I ate, and the ability to play piano and code. "
+    },
+    "date": "2021-07-13"
+  },
+  {
     "id": 12,
     "created_at": "2021-07-23T20:47:15.013Z",
     "entry_type": "rating",
@@ -13,21 +28,6 @@
       "gratitude": 2,
       "calm": 3,
       "intentionality": 2
-    },
-    "date": "2021-07-13"
-  },
-  {
-    "id": 18,
-    "created_at": "2021-07-23T20:47:15.026Z",
-    "entry_type": "journal",
-    "entry": {
-      "date": "2021-07-13",
-      "meds_as_prescribed": true,
-      "self_harm": true,
-      "used_skills": "This isn't a DBT skill, but I did take time to step back from my own hyper-focus - which is an ADHD thing where I get fixated on one specific thing, and can't get away from it - I took time to step away from my code project and breathe and ground, and get a new perspective on the work, and come back to it with fresh eyes. ",
-      "homework": "This week's homework is the \"how\" skill of describing. I think I'm doing okay; at least once a day in the past few days, I've had a moment where I was ruminating or feeling anxious, or stuck in a certain feeling, where I was able to step back and describe to myself what's going on. \n\nI was able to just say, \"Oh, I'm thinking about this thing right now\"/\"I'm worried about this thing.\" \n\nSince one of the things I was fixated on was my health - which feels like a catastrophe at the moment - it was helpful to go from the thought/feeling, \"Something is deeply wrong with my body,\" to, \"I *feel* like something is deeply wrong with my body. \n\nIt might not seem like a huge difference, but it did help. I was able to validate the thought without giving it as much weight as I had before. Which was useful! ",
-      "other": "Journaling helps. ",
-      "gratitude": "I'm grateful for my partner, who encourages me and helps me find a more balanced perspective when I get too hyper-fixated on a project at hand. I'm also grateful for the food I ate, and the ability to play piano and code. "
     },
     "date": "2021-07-13"
   },
@@ -220,29 +220,6 @@
     "date": "2021-07-17"
   },
   {
-    "id": 3,
-    "created_at": "2021-07-23T20:47:15.000Z",
-    "entry_type": "rating",
-    "entry": {
-      "SI": "0",
-      "self_harm_urge": 1,
-      "drug_urge": "0",
-      "emotional_misery": 2,
-      "physical_misery": 3,
-      "joy": 2,
-      "gratitude": 2,
-      "calm": "0",
-      "intentionality": 4,
-      "racing_thoughts": 3,
-      "skills_score": 1,
-      "notes": "1 PM, still waking up. Got 10+ hours of sleep last night",
-      "focus_phrase": "Be thankful for today ",
-      "skills_focus": "\"How\" skills: Nonjudgment, One Minded, Effectively",
-      "date": "2021-07-18"
-    },
-    "date": "2021-07-18"
-  },
-  {
     "id": 5,
     "created_at": "2021-07-23T20:47:15.002Z",
     "entry_type": "rating",
@@ -260,6 +237,29 @@
       "skills_score": 2,
       "notes": "Been a hard day. Feeling really lonely at home. Tired and a heavy heart. Feeling like I don't have a direction or purpose, and I don't know what to do with myself and my time. Just...not really sure what my priorities and goals are right now, and that's hard. ",
       "focus_phrase": "You have to learn to love what's good for you.",
+      "skills_focus": "\"How\" skills: Nonjudgment, One Minded, Effectively",
+      "date": "2021-07-18"
+    },
+    "date": "2021-07-18"
+  },
+  {
+    "id": 3,
+    "created_at": "2021-07-23T20:47:15.000Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": 1,
+      "drug_urge": "0",
+      "emotional_misery": 2,
+      "physical_misery": 3,
+      "joy": 2,
+      "gratitude": 2,
+      "calm": "0",
+      "intentionality": 4,
+      "racing_thoughts": 3,
+      "skills_score": 1,
+      "notes": "1 PM, still waking up. Got 10+ hours of sleep last night",
+      "focus_phrase": "Be thankful for today ",
       "skills_focus": "\"How\" skills: Nonjudgment, One Minded, Effectively",
       "date": "2021-07-18"
     },
@@ -351,6 +351,22 @@
     "date": "2021-07-21"
   },
   {
+    "id": 21,
+    "created_at": "2021-07-23T20:47:15.090Z",
+    "entry_type": "journal",
+    "entry": {
+      "date": "2021-07-22",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "",
+      "homework": "",
+      "other": "I just feel like I'm going insane",
+      "gratitude": "",
+      "skills_used": false
+    },
+    "date": "2021-07-22"
+  },
+  {
     "id": 2,
     "created_at": "2021-07-23T20:47:14.994Z",
     "entry_type": "rating",
@@ -374,20 +390,20 @@
     "date": "2021-07-22"
   },
   {
-    "id": 21,
-    "created_at": "2021-07-23T20:47:15.090Z",
+    "id": 27,
+    "created_at": "2021-07-24T12:19:56.637Z",
     "entry_type": "journal",
     "entry": {
-      "date": "2021-07-22",
+      "date": "2021-07-23",
       "meds_as_prescribed": true,
       "self_harm": true,
-      "used_skills": "",
-      "homework": "",
-      "other": "I just feel like I'm going insane",
-      "gratitude": "",
-      "skills_used": false
+      "used_skills": "describing thoughts, mindfulness in the car, sensory mindfulness",
+      "homework": "Our homework is to read through and write responses to the Interpersonal Effectiveness myths. I did the worksheet, but I feel like I don't really have enough information yet to understand what they're trying to get at. I did make an effort tho. ",
+      "other": "I'm thinking I need to find some more activities to do to fill my schedule. I'm adjusting to being unemployed/disabled again, and that's really hard. I have to take time to focus again on just taking care of myself (basic health care) and that takes like 95% of my energy just to do. ",
+      "gratitude": "I'm grateful for my piano and the ability to play music. I'm grateful for my computer and the ability to code. And I'm grateful for the nice cool day and the chance to see my sister and my niece. ",
+      "skills_used": true
     },
-    "date": "2021-07-22"
+    "date": "2021-07-23"
   },
   {
     "id": 22,
@@ -452,20 +468,27 @@
     "date": "2021-07-23"
   },
   {
-    "id": 27,
-    "created_at": "2021-07-24T12:19:56.637Z",
-    "entry_type": "journal",
+    "id": 29,
+    "created_at": "2021-07-25T12:59:32.187Z",
+    "entry_type": "rating",
     "entry": {
-      "date": "2021-07-23",
-      "meds_as_prescribed": true,
-      "self_harm": true,
-      "used_skills": "describing thoughts, mindfulness in the car, sensory mindfulness",
-      "homework": "Our homework is to read through and write responses to the Interpersonal Effectiveness myths. I did the worksheet, but I feel like I don't really have enough information yet to understand what they're trying to get at. I did make an effort tho. ",
-      "other": "I'm thinking I need to find some more activities to do to fill my schedule. I'm adjusting to being unemployed/disabled again, and that's really hard. I have to take time to focus again on just taking care of myself (basic health care) and that takes like 95% of my energy just to do. ",
-      "gratitude": "I'm grateful for my piano and the ability to play music. I'm grateful for my computer and the ability to code. And I'm grateful for the nice cool day and the chance to see my sister and my niece. ",
-      "skills_used": true
+      "SI": "0",
+      "self_harm_urge": 1,
+      "drug_urge": "0",
+      "emotional_misery": 2,
+      "physical_misery": 1,
+      "joy": 4,
+      "gratitude": 5,
+      "calm": 2,
+      "intentionality": 3,
+      "racing_thoughts": 1,
+      "skills_score": 1,
+      "notes": "11 PM \n\nOverall, was a really good day! I got to spend quite a bit of time with my partner, which is a rare treat. \n\nStill some racing thoughts (and thus, em. misery) but primarily I watched a comfort show and worked on code. I'm proud of how much I'm learning and accomplishing when it comes to code, so that's good too! \n\nGetting sleep last night helped as well. I'm feeling at least a bit less crazy today.",
+      "focus_phrase": "Something is about to be created",
+      "skills_focus": "Interpersonal Effectiveness: examining myths",
+      "date": "2021-07-24"
     },
-    "date": "2021-07-23"
+    "date": "2021-07-24"
   },
   {
     "id": 28,
@@ -489,5 +512,354 @@
       "date": "2021-07-24"
     },
     "date": "2021-07-24"
+  },
+  {
+    "id": 30,
+    "created_at": "2021-07-25T13:03:46.275Z",
+    "entry_type": "journal",
+    "entry": {
+      "date": "2021-07-24",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "Intentionality was a big focus for me today. I read a definition of mindfulness as \"attending to the present moment, with intent,\" and I like that. One way I'm interpreting it in my life right now is by trying to take time in the morning to think about my day, and maybe draw tarot cards or read an inspiring quote. \n\nThen I try to set a focus or theme for the day - something I can focus on and use as a narrative to make sense of what I'm experiencing. Finding meaning through spirituality is definitely helpful, and I think mindfulness is going to really help with that! ",
+      "homework": "",
+      "other": "",
+      "gratitude": "",
+      "skills_used": true
+    },
+    "date": "2021-07-24"
+  },
+  {
+    "id": 32,
+    "created_at": "2021-07-26T09:47:00.717Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": 1,
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 1,
+      "physical_misery": 2,
+      "joy": 2,
+      "gratitude": 4,
+      "calm": 5,
+      "intentionality": 3,
+      "racing_thoughts": 1,
+      "skills_score": 2,
+      "notes": "I feel like I've been intentional today, and I've been grounded and focused. I think doing tarot journaling this morning really helped. It got me centered and ready to sort of accept the day - and my situation - for what it is, instead of trying to make it something that it isn't. And that really helped.",
+      "focus_phrase": "Just keep learning",
+      "skills_focus": "Interpersonal Effectiveness",
+      "date": "2021-07-25"
+    },
+    "date": "2021-07-25"
+  },
+  {
+    "id": 34,
+    "created_at": "2021-07-26T09:48:52.295Z",
+    "entry_type": "journal",
+    "entry": {
+      "date": "2021-07-25",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "I feel like I've been intentional today, and I've been grounded and focused. I think doing tarot journaling this morning really helped. It got me centered and ready to sort of accept the day - and my situation - for what it is, instead of trying to make it something that it isn't. And that really helped.",
+      "homework": "Already done. I rewrote all the \"assumptions\" on the worksheet. ",
+      "other": "",
+      "gratitude": "Grateful for the ability to code, and the time to just sit and be with myself. Grateful for the chance to try again with L and my gods. Grateful for the chance to move forward with healing and seeing doctors on Friday. Grateful to be alive to feel this pain. ",
+      "skills_used": true
+    },
+    "date": "2021-07-25"
+  },
+  {
+    "id": 31,
+    "created_at": "2021-07-26T02:11:46.354Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 1,
+      "physical_misery": 1,
+      "joy": 2,
+      "gratitude": 4,
+      "calm": 5,
+      "intentionality": 3,
+      "racing_thoughts": 1,
+      "skills_score": 3,
+      "notes": "Huh. I just spent the first hour or so of my day doing tarot journal, interspersed with some conversation with friends, and some code. Now, afterwards, I feel really calm. \n\nAll my negative numbers (misery, racing thoughts, etc) are down, and my positive numbers (joy, gratitude, calm, intentionality) are way higher than normal! My \"calm\" number has never been 5, that I can remember. It's rare. \n\nSo, huh. Journaling and getting grounded in the format really does help! ",
+      "focus_phrase": "Just keep learning",
+      "skills_focus": "Coming to grips with reality as it is",
+      "date": "2021-07-25"
+    },
+    "date": "2021-07-25"
+  },
+  {
+    "id": 35,
+    "created_at": "2021-07-28T08:07:59.041Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": 1,
+      "drug_urge": "0",
+      "emotional_misery": 4,
+      "physical_misery": 1,
+      "joy": "0",
+      "gratitude": 2,
+      "calm": 2,
+      "intentionality": 1,
+      "racing_thoughts": 3,
+      "skills_score": 1,
+      "notes": "Thinking a lot about transition today. I'm overwhelmed and exhausted from leaving the house last night. I'm conflicted about the possibility of transition. Just...really tired, overall. ",
+      "focus_phrase": "Just keep going",
+      "skills_focus": "",
+      "date": "2021-07-27"
+    },
+    "date": "2021-07-27"
+  },
+  {
+    "id": 37,
+    "created_at": "2021-07-29T10:54:47.463Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 2,
+      "physical_misery": 2,
+      "joy": "0",
+      "gratitude": 2,
+      "calm": 3,
+      "intentionality": 3,
+      "racing_thoughts": 2,
+      "skills_score": "0",
+      "notes": "9 PM \nRacing thoughts 2/5: I had racing thoughts and panic basically during group. I had physical stuff going on too, so I had to leave. \n\nOther than that though, my thoughts were surprisingly non-racing-y. I had to deal with a lot at the doctor's office, but I actually stayed pretty calm, and sensory things like lights and noise didn't bother me like they usually do. ",
+      "focus_phrase": "Just get through it",
+      "skills_focus": "Interpersonal Effectiveness ",
+      "date": "2021-07-28"
+    },
+    "date": "2021-07-28"
+  },
+  {
+    "id": 36,
+    "created_at": "2021-07-28T23:55:02.740Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": 2,
+      "drug_urge": "0",
+      "emotional_misery": 4,
+      "physical_misery": 2,
+      "joy": 1,
+      "gratitude": 1,
+      "calm": 2,
+      "intentionality": 2,
+      "racing_thoughts": 4,
+      "skills_score": "0",
+      "notes": "10 AM\n\nHaving physical pain and racing thoughts. Nervous about group - specifically about being on camera for group. \n\nAlso feeling paranoid/worried about my memory slipping, and not always knowing where I am.",
+      "focus_phrase": "Find strength in what you see as weakness",
+      "skills_focus": "Interpersonal Effectiveness: rewriting assumptions",
+      "date": "2021-07-28"
+    },
+    "date": "2021-07-28"
+  },
+  {
+    "id": 38,
+    "created_at": "2021-07-29T10:58:31.231Z",
+    "entry_type": "journal",
+    "entry": {
+      "date": "2021-07-28",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "4/7/8 breathing",
+      "homework": "",
+      "other": "I went to the doctor today and was taken seriously for the first time in a very long time. It was a strange experience. I had a *lot* less anxiety than usual though, even dealing with strangers, touch, florescent lights and unfamiliar sounds.\n\nI'm not sure what made the difference, but it was definitely noticable.",
+      "gratitude": "",
+      "skills_used": true
+    },
+    "date": "2021-07-28"
+  },
+  {
+    "id": 40,
+    "created_at": "2021-07-29T21:50:01.041Z",
+    "entry_type": "journal",
+    "entry": {
+      "date": "2021-07-29",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "Yesterday I used the 4/7/8 breathing skill while I was at the doctor's, and it really helped! I was seeing a male doctor I'd never seen before, and I would normally be a *lot* more nervous than I was. \n\nI had to sit and wait for the doctor to come in, so in the meantime I just did my breathing, and it helped. I was able to get through the entire appointment without panic. Which is huge for me. \n\nToday I plan to use: 4/7/8 breathing skill, and the mindfulness skills of observing and describing without judgement",
+      "homework": "",
+      "other": "I also took an anti-antacid this morning (the \"Acid Controller\" stuff Elle recommended from Walgreens) and that may be making a difference in anxiety levels as well.",
+      "gratitude": "",
+      "skills_used": true
+    },
+    "date": "2021-07-29"
+  },
+  {
+    "id": 39,
+    "created_at": "2021-07-29T21:44:01.690Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": 2,
+      "self_harm_urge": 1,
+      "drug_urge": "0",
+      "emotional_misery": 4,
+      "physical_misery": 3,
+      "joy": 2,
+      "gratitude": 4,
+      "calm": "0",
+      "intentionality": "0",
+      "racing_thoughts": 1,
+      "skills_score": 3,
+      "notes": "7:40 AM\n\nWent to bed early last night and got up early today. Hours of sleep: 7+. \n\nPhys mis 3/5: Pain in neck and shoulders, ongoing, but it's been worse for the past few days. I think I'm not getting good quality sleep because of it. \n\nEm mis: 4/5 I'm not sure why I put that number, but it feels right. I've had a long couple weeks with a lot of trauma dug up and left to rot in the sun, and it's been exhausting. I think I need to find a way to rest and decompress my body, after everything it's going through. \n\nGratitude: 4/5 At the same time, my gratitude is also high. I've been reconnecting with old friends, and that's been really good! Trying to get back to work, too. I need a schedule and more of a purpose again. ",
+      "focus_phrase": "Red comes out November 19th. ",
+      "skills_focus": "",
+      "date": "2021-07-29"
+    },
+    "date": "2021-07-29"
+  },
+  {
+    "id": 41,
+    "created_at": "2021-07-30T11:57:25.314Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": 1,
+      "drug_urge": "0",
+      "emotional_misery": 1,
+      "physical_misery": 3,
+      "joy": 2,
+      "gratitude": 4,
+      "calm": 4,
+      "intentionality": 3,
+      "racing_thoughts": 1,
+      "skills_score": 2,
+      "notes": "",
+      "focus_phrase": "Just keep going",
+      "skills_focus": "Interpersonal Effectiveness: DEAR MAN",
+      "date": "2021-07-29"
+    },
+    "date": "2021-07-29"
+  },
+  {
+    "id": 42,
+    "created_at": "2021-08-01T07:16:02.888Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 2,
+      "physical_misery": 1,
+      "joy": 3,
+      "gratitude": 2,
+      "calm": 2,
+      "intentionality": "0",
+      "racing_thoughts": 2,
+      "skills_score": "0",
+      "notes": "",
+      "focus_phrase": "",
+      "skills_focus": "",
+      "date": "2021-07-31"
+    },
+    "date": "2021-07-31"
+  },
+  {
+    "id": 43,
+    "created_at": "2021-08-02T11:48:54.629Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 1,
+      "physical_misery": 3,
+      "joy": "0",
+      "gratitude": 4,
+      "calm": 4,
+      "intentionality": 3,
+      "racing_thoughts": 2,
+      "skills_score": 1,
+      "notes": "9 PM\n\nHad a good day! Got up early and had some energy; I ate well and took meds at regular intervals, and used my inhaler.\n\nMEDS CHANGE: I started Singulair today. It can have bad side effects on people with mental health issues, but two doctors now have told me it's safe to try, so I'm giving it a go. So far so good - I don't think I've had any major effects today, aside from some stomach problems this morning, but that could be from something else. \n\nI'm hopeful that it will improve both my breathing and my immune symptoms; it sounds like it might! \n\nI found a book on DBT (Finally!) and also a book on Buddhist mindfulness that looks really good. Gonna dive into those this week. ",
+      "focus_phrase": "",
+      "skills_focus": "Interpersonal Effectiveness",
+      "date": "2021-08-01"
+    },
+    "date": "2021-08-01"
+  },
+  {
+    "id": 44,
+    "created_at": "2021-08-02T11:57:56.294Z",
+    "entry_type": "journal",
+    "entry": {
+      "date": "2021-08-01",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "I used the skill of \"describing.\" I'm still really worried about my health, but I was able to step back and say, \"I FEEL like my health is terrible,\" instead of well, being stuck in the cycle of that feeling. It doesn't change the fact that I'm dealing with genuinely scary symptoms right now (such as, ya know, the right side of my body losing significant amounts of sensation) but it did help me at least name what was going on. Which made the thoughts easier to bear. ",
+      "homework": "I'm struggling with the homework since I feel like I don't have enough information to go off of, so I found a DBT Workbook at Barnes and Noble and picked it up. It's specific to anxiety, so I think that will be good. \n\nI also got a book on Buddhist mindfulness by Pema Chodron, so I'm going to start reading those two side by side as I go through the DBT curriculum, to hopefully help me understand more and fill in the gaps. ",
+      "other": "I'm feeling really lost in the interpersonal effectiveness module right now, and a lot of it is frankly triggering. I'm also having a hard time not panicking during group, since there are men there. It's hard to push through. \n\nIn medical news, I'm getting more tests run tomorrow, and I'm both anxious and hopeful. I'm anxious bc I feel in my bones right now that something is very wrong. And I'm worried that whatever it is needs to be diagnosed soon so I can keep it from getting worse. I'm glad I finally found a doctor who seems willing to listen when I speak, and seems willing to test me for things. \n\nI'm going to follow up with that doc and try to find out what's going wrong. \n\nPrayer: may the tests tomorrow be illuminating, and lead me to the answers I seek. ",
+      "gratitude": "I'm grateful for people who make and share music and other art; I'm grateful for the chance to discover the art being made, and enjoy it along with others. I'm grateful for my partner, and all the time he spends with me. \n\nI'm also grateful for a doctor who finally BELIEVES me. Dear lord that's new and it's GREAT. ",
+      "skills_used": true
+    },
+    "date": "2021-08-01"
+  },
+  {
+    "id": 45,
+    "created_at": "2021-08-03T07:30:31.273Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": "0",
+      "physical_misery": "0",
+      "joy": 1,
+      "gratitude": 1,
+      "calm": 3,
+      "intentionality": 4,
+      "racing_thoughts": 1,
+      "skills_score": 2,
+      "notes": "5:30 PM\n\nTrying to rest today. I did too much yesterday physically and am out of \"walking\" spoons today. So I'm trying not to stress and taking it easy by resting and drawing/watching tv.\n\nAll the scores feel pretty middle of the road/neutral atm, and that's why.\n\nIntentionality: 4/5 because I'm focusing intentionally on rest, and I'm doing a good job keeping myself fed, cared for, and calm. \n\nSkills score - I'm doing breathing exercises and also trying not to \"catastrophize\" my thoughts.",
+      "focus_phrase": "Find calm by focusing on your breath",
+      "skills_focus": "Interpersonal effectiveness",
+      "date": "2021-08-02"
+    },
+    "date": "2021-08-02"
+  },
+  {
+    "id": 46,
+    "created_at": "2021-08-03T07:46:37.968Z",
+    "entry_type": "journal",
+    "entry": {
+      "date": "2021-08-02",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "4/7/8/ breathing, not pushing away \"bad\" thoughts or negative memories but just letting them be",
+      "homework": "The homework this week is the \"DEAR MAN\" from Interpersonal Effectiveness, but a lot of it seems contradictory to other DBT lessons we've been taught - specifically, having your goal be so focused on outcomes that you cannot possibly control, or even accurately measure (specifically, what the other person thinks of you and how they feel about you.)\n\nIn the Mindfulness \"Describe\" skill we talk about how you can never actually describe what another person is thinking or feeling - you can only describe what you can observe with your senses. Obviously you can also know what they tell you, if they decide to share their thoughts/feelings, but going into an interaction with a primary goal of, \"I want the other person to feel X way about me,\" just seems...inconsistent, I suppose. It doesn't make sense with what else we've been taught. \n\nI'm also just frankly in a pretty abusive home situation right now, so I can't really practice the I.E. skills at home. No matter how careful I am, conversations with my partner often end up exploding, in ways that seem totally out of the blue and impossible to predict. \n\nI have tried almost all of these strategies before - using my \"I\" statements, stating simple facts in a neutral tone, instead of saying \"You always,\" or \"you never.\" I just stick to facts, and say things as plainly and kindly as I can...and still often end up getting my face bitten off. \n\nSo there's that. All I can think is that I just want OUT of here. I hate the environment I'm in - it wears on my mental health every damn day. Even when there's calm times, like now, I know it's just the calm in the storm. There's probably more pain waiting for me on the other side. ",
+      "other": "",
+      "gratitude": "",
+      "skills_used": true
+    },
+    "date": "2021-08-02"
+  },
+  {
+    "id": 47,
+    "created_at": "2021-08-04T01:07:47.884Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": 1,
+      "physical_misery": 4,
+      "joy": 2,
+      "gratitude": 3,
+      "calm": 1,
+      "intentionality": 3,
+      "racing_thoughts": 1,
+      "skills_score": 0,
+      "notes": "11 AM\n\nPhys mis 4/5: Having stomach problems this morning, and for the last few days. It's kind of miserable.\n\nJoy: been taking time to play piano and just immerse myself in music, and in other things that make me calm (like coloring and stories and tarot cards.) That's been good. \n\nCalm 1/5: I've been very good about relaxing this week, but I'm taking care of work stuff today (just a bit) and that feels VERY stressful. \n\nIntentionality 3/5: Similar to joy - I've been intentionally resting and focusing on things that keep me calm.",
+      "focus_phrase": "Breathe in, breathe out. Don't push the bad away.",
+      "skills_focus": "Interpersonal Effectiveness: DEAR MAN",
+      "date": "2021-08-03"
+    },
+    "date": "2021-08-03"
   }
 ]
