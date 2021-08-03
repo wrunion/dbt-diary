@@ -7,7 +7,7 @@ const router = express.Router()
 */
 
 // GET Routes 
-require('./getQuoteByDate')(router)
+require('./getQuote')(router)
 require('./getEntries')(router)
 
 // POST Routes 
