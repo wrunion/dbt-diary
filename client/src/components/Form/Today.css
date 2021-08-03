@@ -1,3 +1,11 @@
-#Today {
-  color: green;
+#Today .show-form-text {
+  color: darkgray;
+  text-align: center;
+  margin: .5em;
+  width: 45%;
+  /* border: 1px solid darkgray; */
+}
+
+#Today .show-form-text:hover {
+  color: grey;
 }

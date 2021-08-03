@@ -15,6 +15,7 @@ const headerStyle = {
 }
 
 /* 
+ * Custom reusable form component used many times in this app.
  * Required props: 
  * inputs (array of what the form inputs should be. see example below)
  * success (boolean - if true will reset form state and show success message) 
@@ -24,13 +25,15 @@ const headerStyle = {
 
 const CustomForm = (props) => {
 
-  const inputs = props.inputs
-  const success = props.success
-  const onSubmitCallback = props.onSubmitCallback
-  const color = props.color || 'grey'
-  const title = props.title || 'Journal'
-  const subheader = props.subheader || ''
-  const icon = props.icon ? props.icon : null
+  const { inputs, success, onSubmitCallback, color='grey', title='Journal', subheader='', icon=null } = props
+
+  // const inputs = props.inputs
+  // const success = props.success
+  // const onSubmitCallback = props.onSubmitCallback
+  // const color = props.color || 'grey'
+  // const title = props.title || 'Journal'
+  // const subheader = props.subheader || ''
+  // const icon = props.icon ? props.icon : null
   
   const [vals, setVals] = useState({})
   const [dimmerActive, setDimmerActive] = useState(false)

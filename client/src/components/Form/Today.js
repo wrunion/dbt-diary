@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import './Today.css'
+import Page from './../reusable/Page'
 import JournalForm from './JournalForm'
 import DailyRatingForm from '../V2/DailyRatingForm'
 import QuoteForm from '../V2/QuoteForm'
-import { Button } from 'semantic-ui-react'
 
-import { Segment, Header } from 'semantic-ui-react'
+import { Segment, Button } from 'semantic-ui-react'
 
 const containerStyles = {
   display: 'flex', 
@@ -36,11 +36,14 @@ const FormDisplay = (props) => {
 
   const DailyContainer = () => {
     return (
-      <Segment fluid style={quoteStyles}>
-        <Header as='h3' color='violet' 
-          content={quote} 
-          subheader={source ?  source : ''}
-          textAlign='center' />
+      <Segment>
+        <Page 
+          title='About Today'
+          subtitle={quote}
+          icon='sun outline'
+          color='violet'
+          textAlign='left'
+        />
       </Segment>
     )
   }
@@ -65,8 +68,10 @@ const FormDisplay = (props) => {
       </Segment>
 
       {/* Options to enter new quote or daily rating data */}
-      <Button basic size='tiny'>Enter new quote</Button>
-      <Button basic size='tiny'>Enter new daily ratings</Button>
+      <div className='show-form-div'>
+        {!showQuoteForm && <Button basic size='tiny' className='show-form-text'>Enter new quote</Button>}
+        {!showDailyRatingForm && <Button basic size='tiny' className='show-form-text'>Enter new daily ratings</Button>}
+      </div>
     </div>
   )
 }
