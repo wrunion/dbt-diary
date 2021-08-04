@@ -28,7 +28,9 @@ const displayNames = {
   'harm_boolean': 'Kept self safe',
   'homework': 'Homework',
   'other': 'Other',
-  'gratitude': 'Gratitude'
+  'gratitude': 'Gratitude',
+  'concerta_boolean': 'Took Concerta',
+  'inhaler_boolean': 'Used inhaler on schedule'
 }
 
 const marginSmall = '5px'
@@ -67,7 +69,7 @@ const CustomCard = ({ card, index, key }) => {
 
   const liked = card.entry.liked || false
 
-  const keys = Object.keys(entry).filter(e => e !== 'date').filter(e => e !== 'other')
+  const keys = Object.keys(entry).filter(e => e !== 'date').filter(e => e !== 'other' && e !== 'tags')
   const orderedKeys = ['skills_used', ...keys.filter(e => e !== 'skills_used')]
   
   const tags = card.entry.tags || 'No tags yet'

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Today.css'
 import Page from '../reusable/Page'
-import JournalForm from '../forms/JournalForm2'
+import JournalForm from '../forms/JournalForm'
 import DailyRatingForm from '../forms/DailyRatingForm'
 import QuoteForm from '../forms/QuoteForm'
 
@@ -31,7 +31,8 @@ const FormDisplay = (props) => {
   const { date, quote, source = '' } = props
 
   const [showQuoteForm, setShowQuoteForm] = useState(false)
-  const [showDailyRatingForm, setShowDailyRatingForm] = useState(true)
+  const [showRatingForm, setShowRatingForm] = useState(true)
+  const [showJournal, setShowJournal] = useState(true)
 
   useEffect(() => {
     if (quote) { setShowQuoteForm(false) }
@@ -45,9 +46,21 @@ const FormDisplay = (props) => {
       }
     }).then(res => res.json()).then(json => {
       if (json.success === true) { 
-        const entry = json.data[0]
-        if (entry.entry_type === 'rating') {
-          setShowDailyRatingForm(false)
+        if (json.data[0]) {
+          let type = json.data[0].entry_type
+          if (type === 'rating') {
+            setShowRatingForm(false)
+          } else if (type === 'journal') {
+            setShowJournal(false)
+          }
+        }
+        if (json.data[1]) {
+          let type = json.data[1].entry_type
+          if (type === 'rating') {
+            setShowRatingForm(false)
+          } else if (type === 'journal') {
+            setShowJournal(false)
+          }
         }
       }
     }).catch(err => {
@@ -77,14 +90,19 @@ const FormDisplay = (props) => {
         className='show-form-text'>Toggle Quote Form
       </div>
       <div 
-        onClick={() => setShowDailyRatingForm(!showDailyRatingForm)} 
-        className='show-form-text'>Toggle Daily DBT Form
+        onClick={() => setShowRatingForm(!showRatingForm)} 
+        className='show-form-text'>Toggle Daily DBT
+      </div>
+      <div 
+        onClick={() => setShowJournal(!showJournal)} 
+        className='show-form-text'>Toggle Journal
       </div>
     </div>
   )
 
   return(
     <div style={containerStyles} id='Today'>
+      <FormToggleControls />
 
       {/* Quote only shows if it has been entered on today's date  */}
       {quote && <div style={quoteStyles}> <DailyContainer /> </div>}
@@ -93,12 +111,10 @@ const FormDisplay = (props) => {
       {showQuoteForm && <QuoteForm />}
 
       {/* Daily rating form only shows if it's not already been completed on today's date */}
-      {showDailyRatingForm && <DailyRatingForm />}
+      {showRatingForm && <DailyRatingForm />}
 
-      {/* Journal form always shows  */}
-      <JournalForm />
+      {showJournal && <JournalForm />}
 
-      <FormToggleControls />
     </div>
   )
 }
