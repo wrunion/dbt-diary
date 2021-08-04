@@ -9,7 +9,9 @@ const Quote = () => {
     { name: 'focus', label: `Today I want to focus on`, type: 'text', required: false },
     { name: 'quote', label: 'Daily Quote', type:'text', required: true },
     { name: 'source', label: 'Source', type:'text', required: false },
-    { name: 'link', label: 'Link', type: 'text', required: false }
+    { name: 'test-1', label: 'Link', type: 'textarea', required: false },
+    { name: 'test-2', label: 'Link', type: 'number', required: false },
+    { name: 'test-3', label: 'Link', type: 'number', required: false }
   ]
 
   const onSubmitCallback = (data) => {

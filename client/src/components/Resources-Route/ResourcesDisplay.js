@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import Page from '../reusable/Page'
 import { Header, List, Card, Menu } from 'semantic-ui-react'
-import { SKILLS } from './skillData'
+import { SKILLS } from '../../data/skillData'
 import Quotes from './Quotes/Quotes'
 import MoreResources from './MoreResources/MoreResources'
 
-// TODO: turn each tab into a Route instead of using state
-// to conditionally render content 
 const skills = SKILLS;
 
 const mainStyle = {
