@@ -824,20 +824,22 @@
     "date": "2021-08-02"
   },
   {
-    "id": 46,
-    "created_at": "2021-08-03T07:46:37.968Z",
+    "id": 71,
+    "created_at": "2021-08-04T09:35:31.110Z",
     "entry_type": "journal",
     "entry": {
-      "date": "2021-08-02",
-      "meds_as_prescribed": true,
-      "self_harm": true,
-      "used_skills": "4/7/8/ breathing, not pushing away \"bad\" thoughts or negative memories but just letting them be",
-      "homework": "The homework this week is the \"DEAR MAN\" from Interpersonal Effectiveness, but a lot of it seems contradictory to other DBT lessons we've been taught - specifically, having your goal be so focused on outcomes that you cannot possibly control, or even accurately measure (specifically, what the other person thinks of you and how they feel about you.)\n\nIn the Mindfulness \"Describe\" skill we talk about how you can never actually describe what another person is thinking or feeling - you can only describe what you can observe with your senses. Obviously you can also know what they tell you, if they decide to share their thoughts/feelings, but going into an interaction with a primary goal of, \"I want the other person to feel X way about me,\" just seems...inconsistent, I suppose. It doesn't make sense with what else we've been taught. \n\nI'm also just frankly in a pretty abusive home situation right now, so I can't really practice the I.E. skills at home. No matter how careful I am, conversations with my partner often end up exploding, in ways that seem totally out of the blue and impossible to predict. \n\nI have tried almost all of these strategies before - using my \"I\" statements, stating simple facts in a neutral tone, instead of saying \"You always,\" or \"you never.\" I just stick to facts, and say things as plainly and kindly as I can...and still often end up getting my face bitten off. \n\nSo there's that. All I can think is that I just want OUT of here. I hate the environment I'm in - it wears on my mental health every damn day. Even when there's calm times, like now, I know it's just the calm in the storm. There's probably more pain waiting for me on the other side. ",
+      "meds_boolean": "true",
+      "skills_boolean": "true",
+      "inhaler_boolean": "true",
+      "concerta_boolean": "true",
+      "skills": "Today I kept calm by \"describing\" my worries to myself - specifically, worries about the state of my health. It helped earlier, but now I'm feeling panicky again. ",
+      "homework": "In session with my counselor we clarified my values in a personal conflict at work. It was helpful! Specifically, the idea of stepping back from \"planning\" a conversation, and just freeing yourself to imagine what you truly want to communicate, and what you value in the interaction, was useful. I'd never thought about it like that before.",
       "other": "",
-      "gratitude": "",
-      "skills_used": true
+      "gratitude": "I'm thankful for the chance to move ahead; I'm thankful for the DBT program and for Henry; I'm grateful for all the people in my life and the ongoing chance to reconnect with them and reform bridges even after time has passed. I'm grateful for the second chances we all give each other.",
+      "tags": "describing, mindfulness, interpersonal effectiveness",
+      "date": "2021-08-03"
     },
-    "date": "2021-08-02"
+    "date": "2021-08-03"
   },
   {
     "id": 47,

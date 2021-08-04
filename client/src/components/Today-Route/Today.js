@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Today.css'
 import Page from '../reusable/Page'
-import JournalForm from '../forms/JournalForm'
+import JournalForm from '../forms/JournalFormRefactor'
 import DailyRatingForm from '../forms/DailyRatingForm'
 import QuoteForm from '../forms/QuoteForm'
 
