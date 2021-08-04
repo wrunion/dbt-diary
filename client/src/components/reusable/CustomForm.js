@@ -25,7 +25,7 @@ const headerStyle = {
 
 const CustomForm = (props) => {
 
-  const { inputs, success, onSubmitCallback, color='grey', title='Journal', subheader='', icon='' } = props
+  const { inputs, success, onSubmitCallback, color='grey', title='Journal', subheader='', icon=null } = props
 
   const [vals, setVals] = useState({})
   const [dimmerActive, setDimmerActive] = useState(false)
@@ -163,8 +163,7 @@ CustomForm.propTypes = {
   success: PropTypes.bool,
   color: PropTypes.string,
   title: PropTypes.string, 
-  subheader: PropTypes.string,
-  icon: PropTypes.string
+  subheader: PropTypes.string
 }
 
 export default CustomForm

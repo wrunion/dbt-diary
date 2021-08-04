@@ -2,10 +2,15 @@
   color: darkgray;
   text-align: center;
   margin: .5em;
-  width: 45%;
-  /* border: 1px solid darkgray; */
+  border-bottom: 3px solid #E0E1E2;
 }
 
 #Today .show-form-text:hover {
   color: grey;
+}
+
+#Today .show-form-div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }

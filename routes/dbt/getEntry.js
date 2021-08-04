@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const db = require('../../db')
+const moment = require('moment')
 
 /* 
  * Route for fetching all "entry" data for DBT app
@@ -46,6 +47,25 @@ module.exports = router => {
     }
   }))
 
+  router.get('/entry/today', asyncHandler(async(req, res) => {
+    try {
+      const now = new Date()
+      const queryString = `SELECT * FROM entry WHERE DATE(date) = $1;`
+
+      const response = await db.query(queryString, [now])
+      
+      const entries = response.rows;
+      
+      return res.json({
+        success: true,
+        data: entries
+      })
+    } catch (err) {
+      return res.json({
+        success: false,
+        error: err
+      })
+    }
+  }))
+
 }
-
-

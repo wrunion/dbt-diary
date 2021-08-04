@@ -5,7 +5,7 @@ import JournalForm from './JournalForm'
 import DailyRatingForm from '../V2/DailyRatingForm'
 import QuoteForm from '../V2/QuoteForm'
 
-import { Segment, Button } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 
 const containerStyles = {
   display: 'flex', 
@@ -30,9 +30,31 @@ const FormDisplay = (props) => {
 
   const { date, quote, source = '' } = props
 
-  const [showQuoteForm, setShowQuoteForm] = useState(true)
+  const [showQuoteForm, setShowQuoteForm] = useState(false)
   const [showDailyRatingForm, setShowDailyRatingForm] = useState(true)
 
+  useEffect(() => {
+    if (!quote) { setShowQuoteForm(true) }
+  }, [])
+
+  useEffect(() => {
+    fetch('dbt/entry/today', {
+      method: 'GET', 
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json()).then(json => {
+      if (json.success === true) { 
+        const entry = json.data[0]
+        if (entry.entry_type === 'rating') {
+          setShowDailyRatingForm(false)
+        }
+      }
+    }).catch(err => {
+      console.log(err);
+      return 'There was an error. See console for details'
+    })  
+  }, [])
 
   const DailyContainer = () => {
     return (
@@ -40,13 +62,26 @@ const FormDisplay = (props) => {
         <Page 
           title='About Today'
           subtitle={quote}
-          // icon='sun outline'
+          icon='sun outline'
           color='violet'
           textAlign='left'
         />
       </Segment>
     )
   }
+
+  const FormToggleControls = () => (
+    <div className='show-form-div'>
+      <div 
+        onClick={() => setShowQuoteForm(!showQuoteForm)}       
+        className='show-form-text'>Toggle Quote Form
+      </div>
+      <div 
+        onClick={() => setShowDailyRatingForm(!showDailyRatingForm)} 
+        className='show-form-text'>Toggle Daily DBT Form
+      </div>
+    </div>
+  )
 
   return(
     <div style={containerStyles} id='Today'>
@@ -67,11 +102,7 @@ const FormDisplay = (props) => {
         </div>
       </Segment>
 
-      {/* Options to enter new quote or daily rating data */}
-      <div className='show-form-div'>
-        {!showQuoteForm && <Button basic size='tiny' className='show-form-text'>Enter new quote</Button>}
-        {!showDailyRatingForm && <Button basic size='tiny' className='show-form-text'>Enter new daily ratings</Button>}
-      </div>
+      <FormToggleControls />
     </div>
   )
 }
