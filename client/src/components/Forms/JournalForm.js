@@ -15,24 +15,22 @@ const Quote = () => {
   ]
 
   const onSubmitCallback = (data) => {
-
-    console.log(data)
-    // fetch('/dbt/quote/create', {
-    //   method: 'POST', 
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(data)
-    // }).then(res => res.json()).then(json => {
-    //   if (json.success === true) { 
-    //     console.log(json)
-    //     // this tells the child form to show success dimmer
-    //     setSuccess(true)
-    //   }
-    // }).catch(err => {
-    //   console.log(err);
-    //   return 'There was an error. See console for details'
-    // })     
+    fetch('/dbt/quote/create', {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json()).then(json => {
+      if (json.success === true) { 
+        console.log(json)
+        // this tells the child form to show success dimmer
+        setSuccess(true)
+      }
+    }).catch(err => {
+      console.log(err);
+      return 'There was an error. See console for details'
+    })     
   }
 
   return (

@@ -66,7 +66,6 @@ const Week = () => {
         {keys && keys.map(e => 
           <Skill skill={content[e]} title={e} /> 
           )}
-
       </div>
       </>
     )

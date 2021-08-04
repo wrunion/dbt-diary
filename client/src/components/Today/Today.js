@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Today.css'
-import Page from './../reusable/Page'
-import JournalForm from './JournalForm'
+import Page from '../reusable/Page'
+import JournalForm from '../Form/JournalForm'
 import DailyRatingForm from '../V2/DailyRatingForm'
 import QuoteForm from '../V2/QuoteForm'
 
@@ -34,7 +34,7 @@ const FormDisplay = (props) => {
   const [showDailyRatingForm, setShowDailyRatingForm] = useState(true)
 
   useEffect(() => {
-    if (!quote) { setShowQuoteForm(true) }
+    if (quote) { setShowQuoteForm(false) }
   }, [])
 
   useEffect(() => {

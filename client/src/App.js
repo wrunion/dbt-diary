@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import { Segment } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Header from './components/Header'
+import SiteHeader from './components/SiteHeader'
 import NavBar from './components/NavBar'
 import Week from './components/Week/Week'
 import Resources from './components/Resources/ResourcesDisplay'
-import Today from './components/Form/Today'
+import Today from './components/Today/Today'
 import moment from 'moment'
 
 const App = () => {
@@ -23,15 +23,8 @@ const App = () => {
       }
     }).then(res => res.json()).then(json => {
       if (json.success === true) { 
-
-        const { quote, source, focus, link } = json.data[0]
-        
-        setDailyData({ 
-          quote, 
-          source, 
-          focus, 
-          link 
-        })
+        const { quote, source, focus, link } = json.data[0]        
+        setDailyData({ quote, source, focus, link })
       }
     }).catch(err => {
       console.log(err);
@@ -41,16 +34,18 @@ const App = () => {
   
   return (
     <Router>
-    <div className="parent-container" id="content-all">
-      <div className="site-header">
-        <Header
+    <div id="content-all">
+      <header className="site-header">
+        <SiteHeader
           title="Winter's DBT Journal"
           subtitle={`Today is ${date}`}
         />
-      </div>
+      </header>
  
-      <div id='main-container'>
-      <NavBar />
+      <main id='main-container'>
+        <nav>
+          <NavBar />
+        </nav>
         <Segment>
           <div id="content">
             <Route exact path='/'>
@@ -68,8 +63,8 @@ const App = () => {
             </Route>
           </div>
         </Segment>
-      </div>
-    <p></p><br />
+      </main>
+    {/* <p></p><br /> */}
     </div>
     </Router>
   );

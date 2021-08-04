@@ -11,7 +11,6 @@ const containerStyle = {
   alignItems: 'center',
   paddingBottom: '1.25em',
   marginBottom: '1em'
-  // borderBottom: '2px rgba(224, 225, 226, .85) solid'
 }
 
 
@@ -23,22 +22,19 @@ const moonStyle = {
   marginBottom: '0'
 }
 
-const HeaderComponent = ({ title, subtitle, color='violet', style }) => (
+const SiteHeader = ({ title, subtitle, color='violet', style }) => (
   <Segment style={containerStyle}>
     <div style={{ padding: '1em' }}>
 
     <MoonImg style={moonStyle} />
     
-    <Header as='h1' color={color} style={style || {}}>
-      {title}
-      <Subheader>
-        {subtitle}
-      </Subheader>
+    <Header as='h1' color={color} style={style || {}}>{title}
+      <Subheader>{subtitle}</Subheader>
     </Header>
 
     </div>
   </Segment>
 )
 
-export default HeaderComponent;
+export default SiteHeader;
 

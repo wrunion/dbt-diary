@@ -49,9 +49,8 @@ module.exports = router => {
 
   router.get('/entry/today', asyncHandler(async(req, res) => {
     try {
-      const now = new Date()
       const queryString = `SELECT * FROM entry WHERE DATE(date) = $1;`
-
+      const now = new Date()
       const response = await db.query(queryString, [now])
       
       const entries = response.rows;

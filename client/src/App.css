@@ -50,16 +50,14 @@
   font-weight: '500' !important;
 }
 
+#content-all {
+  padding-bottom: 2.5em;
+}
+
 @media only screen and (max-width: 600px) {
   .header-icon {
     display: none;
   }
-}
-
-#parent-container {
-  display: 'flex';
-  flex-direction: 'column';
-  align-items: 'center';
 }
 
 #app-main {
