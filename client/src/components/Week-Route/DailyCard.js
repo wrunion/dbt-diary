@@ -19,9 +19,13 @@ const colors = [
 
 const displayNames = {
   "meds_as_prescribed": 'Took meds',
+  "meds_boolean": 'Took meds',
+  'skills_boolean': 'Used skills',
   "skills_used": 'Used skills',
+  'skills': 'Skills used',
   'used_skills': 'Skills used',
   "self_harm": 'Kept self safe',
+  'harm_boolean': 'Kept self safe',
   'homework': 'Homework',
   'other': 'Other',
   'gratitude': 'Gratitude'
@@ -75,9 +79,9 @@ const CustomCard = ({ card, index, key }) => {
         // false is a valid value here, so we don't want to filter it out
         // as just another 'falsy value'
         const val = entry[e] === false ? false : entry[e] || null
-
+        if (e.includes('boolean')) { console.log(e)}
         if (val !== null) {
-          if (typeof val === 'boolean') { 
+          if (typeof val === 'boolean' || e.includes('boolean')) { 
             return (  
               <DisplayBoolean 
                 val={val} 
@@ -111,7 +115,7 @@ const CustomCard = ({ card, index, key }) => {
   }
 
   const DisplayBoolean = ({ val, displayName }) => {
-    if (val === true) {
+    if (val === true || val === 'true') {
       return <span style={{ marginBottom: '25px' }}><Icon name='check' color={cardColor} />{displayName} </span>
     } else {
       return  <span style={booleanStyle}>{displayName}</span> 

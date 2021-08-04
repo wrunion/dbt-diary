@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Segment, Form, Input, Label, Header, Button, Dimmer, Icon, TextArea } from 'semantic-ui-react'
+import { Segment, Form, Input, Label, Header, Button, Dimmer, Icon, TextArea, Checkbox } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 const { Field } = Form
@@ -32,7 +32,7 @@ const CustomForm = (props) => {
 
   const setInitialState = () => {
     const initState = {}
-    inputs.forEach(e => initState[e.name] = '')
+    inputs.forEach(e => initState[e.name] = e.defaultValue  || '')
     setVals(initState)
   }
 
@@ -47,6 +47,10 @@ const CustomForm = (props) => {
 
   const handleChange = e => {
     setVals({ ...vals, [e.target.name]: e.target.value })
+  }
+
+  const handleCheckboxChange = e => {
+    setVals({ ...vals, [e.target.name]: e.target.checked })
   }
 
   const handleSubmit = event => {
@@ -92,6 +96,21 @@ const CustomForm = (props) => {
                 </Field>
               )
             } 
+            if (type === 'checkbox') {
+              return(
+                <Field inline key={name}>
+                  <input type='checkbox' 
+                    name={name}
+                    checked={vals[name]}
+                    value={vals[name]}
+                    onChange={(e) => handleCheckboxChange(e)}
+                  />
+                  <Label basic pointing='left' htmlFor={name}>
+                    {label}
+                  </Label>
+                </Field>
+              )
+            } 
             if (type === 'number') {
               return (
                 <Field inline key={name}>
@@ -119,7 +138,7 @@ const CustomForm = (props) => {
                   value={vals[name]}
                   onChange={(e) => handleChange(e)}
                   label={
-                    <Label basic pointing='right' color={color}>
+                    <Label basic pointing='right' htmlFor={name} color={color}>
                       {label}
                     </Label>
                     }

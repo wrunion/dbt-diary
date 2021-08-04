@@ -29,7 +29,7 @@ module.exports = router => {
 
   router.get('/entry/week', asyncHandler(async(req, res) => {
     try {
-      const queryString = `SELECT * FROM entry WHERE DATE(date) >= now() - interval '1 week';`
+      const queryString = `SELECT * FROM entry WHERE DATE(date) >= now() - interval '9 days';`
 
       const response = await db.query(queryString)
       

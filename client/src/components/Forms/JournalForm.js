@@ -61,7 +61,15 @@ const JournalForm = () => {
       return 'There was an error. See console for details'
     }) 
   }
-
+  const inputs = [
+    { name: 'meds_boolean', label: `Took meds as prescribed`, type: 'checkbox', required: false, defaultValue: false },
+    { name: 'harm_boolean', label: `Didn't self harm`, type:'checkbox', required: true, defaultValue: false },
+    { name: 'skills_boolean', label: 'Used one or more skills', type: 'textarea', required: false, defaultValue: false },
+    { name: 'skills', label: 'Skills I used', type:'checkbox', required: false, defaultValue: '' },
+    { name: 'homework', label: 'Homework', type: 'textarea', required: false, defaultValue: '' },
+    { name: 'other', label: 'Other', type: 'textarea', required: false, defaultValue: '' },
+    { name: 'gratitude', label: 'Gratitude', type: 'textarea', required: false, defaulValue: '' },
+  ]
   return (
     <>
     <div style={{ display: 'flex', flexDirection: 'column', }}>

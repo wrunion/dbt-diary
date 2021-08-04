@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Today.css'
 import Page from '../reusable/Page'
-import JournalForm from '../forms/JournalForm'
+import JournalForm from '../forms/JournalForm2'
 import DailyRatingForm from '../forms/DailyRatingForm'
 import QuoteForm from '../forms/QuoteForm'
 
@@ -96,11 +96,7 @@ const FormDisplay = (props) => {
       {showDailyRatingForm && <DailyRatingForm />}
 
       {/* Journal form always shows  */}
-      <Segment>
-        <div style={formDivStyles}>
-        <JournalForm />
-        </div>
-      </Segment>
+      <JournalForm />
 
       <FormToggleControls />
     </div>

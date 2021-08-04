@@ -32,6 +32,14 @@ pool.on('error', async (error, client) => {
     }
 })})
 
+// Set timezone - since our DB is running on Heroku, it will default based on the Heroku server
+// We set it to our local time here
+(() => {
+  pool.query(`SET TIMEZONE='America/Los_angeles';`, (err, res) => {
+    if (err) { console.error('Error') }
+  })
+})
+
 module.exports = {
 
   query: (text, params) => pool.query(text, params),
