@@ -12,6 +12,7 @@ require('./getEntry')(router)
 
 // POST Routes 
 require('./createEntry')(router)
+require('./favoriteEntry')(router)
 require('./createQuote')(router)
 
 module.exports = router

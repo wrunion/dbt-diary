@@ -15,6 +15,7 @@ const JournalForm = () => {
     { name: 'other', label: 'Other', type: 'textarea', required: false, defaultValue: '' },
     { name: 'gratitude', label: 'Gratitude', type: 'textarea', required: false, defaulValue: '' },
     { name: 'tags', label: 'Tags', type: 'text', required: false, defaultValue: '' },
+    { name: 'date', type: 'date', required: false }
   ]
 
   const onSubmitCallback = (data) => {

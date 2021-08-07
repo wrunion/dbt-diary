@@ -79,10 +79,19 @@ CREATE TYPE e_entry_type AS ENUM (
   'journal', 'rating', 'other'
 )
 
+-- TODO: go back and rework this
 CREATE TABLE IF NOT EXISTS entry (
   id SERIAL PRIMARY KEY, 
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   entry_type e_entry_type NOT NULL,
   entry json NOT NULL,
-  date VARCHAR(256)
+  date VARCHAR(256),
+  favorite BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE entries_by_date (
+  date VARCHAR(128) PRIMARY KEY,
+  journal TIMESTAMP,
+  rating TIMESTAMP,
+  quote TIMESTAMP
 );

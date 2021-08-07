@@ -390,18 +390,25 @@
     "date": "2021-07-22"
   },
   {
-    "id": 27,
-    "created_at": "2021-07-24T12:19:56.637Z",
-    "entry_type": "journal",
+    "id": 26,
+    "created_at": "2021-07-24T11:10:00.568Z",
+    "entry_type": "rating",
     "entry": {
-      "date": "2021-07-23",
-      "meds_as_prescribed": true,
-      "self_harm": true,
-      "used_skills": "describing thoughts, mindfulness in the car, sensory mindfulness",
-      "homework": "Our homework is to read through and write responses to the Interpersonal Effectiveness myths. I did the worksheet, but I feel like I don't really have enough information yet to understand what they're trying to get at. I did make an effort tho. ",
-      "other": "I'm thinking I need to find some more activities to do to fill my schedule. I'm adjusting to being unemployed/disabled again, and that's really hard. I have to take time to focus again on just taking care of myself (basic health care) and that takes like 95% of my energy just to do. ",
-      "gratitude": "I'm grateful for my piano and the ability to play music. I'm grateful for my computer and the ability to code. And I'm grateful for the nice cool day and the chance to see my sister and my niece. ",
-      "skills_used": true
+      "SI": 3,
+      "self_harm_urge": 1,
+      "drug_urge": "0",
+      "emotional_misery": 5,
+      "physical_misery": 1,
+      "joy": 1,
+      "gratitude": 3,
+      "calm": 1,
+      "intentionality": 2,
+      "racing_thoughts": 4,
+      "skills_score": 2,
+      "notes": "9 PM\n\nSI & self harm urge: Just feeling tired and like things are pointless right now. Not sure what my purpose or focus is, and that's just really hard. Feeling incredibly lonely and unloved by my partner as well. \n\nEmotional misery 5/5: See above. Feeling rejected and deeply lonely at home. \n\nGratitude 3/5: I got to see my sister and niece tonight, and that was really nice! \n\nRacing thoughts 4/5: My thoughts just keep spinning and spinning about Kent. I feel like I can't tell up from down with him, and I never know if I'm going to get manic Kent or depressed Kent, and all of it is just. Really hard to deal with. It makes me feel like I'm crazy and unstable myself, even though I know I'm not. \n\nSkills score 2/5: I did remember to practice mindfulness today, while driving, and to be in the moment and use all of my senses. I have also been practicing describing my thoughts and feelings, to help ground myself in reality, and in the fact that feelings and thoughts aren't necessarily objective reality.",
+      "focus_phrase": "Just keep going",
+      "skills_focus": "Interpersonal Effectiveness: rewriting assumptions",
+      "date": "2021-07-23"
     },
     "date": "2021-07-23"
   },
@@ -445,25 +452,18 @@
     "date": "2021-07-23"
   },
   {
-    "id": 26,
-    "created_at": "2021-07-24T11:10:00.568Z",
-    "entry_type": "rating",
+    "id": 27,
+    "created_at": "2021-07-24T12:19:56.637Z",
+    "entry_type": "journal",
     "entry": {
-      "SI": 3,
-      "self_harm_urge": 1,
-      "drug_urge": "0",
-      "emotional_misery": 5,
-      "physical_misery": 1,
-      "joy": 1,
-      "gratitude": 3,
-      "calm": 1,
-      "intentionality": 2,
-      "racing_thoughts": 4,
-      "skills_score": 2,
-      "notes": "9 PM\n\nSI & self harm urge: Just feeling tired and like things are pointless right now. Not sure what my purpose or focus is, and that's just really hard. Feeling incredibly lonely and unloved by my partner as well. \n\nEmotional misery 5/5: See above. Feeling rejected and deeply lonely at home. \n\nGratitude 3/5: I got to see my sister and niece tonight, and that was really nice! \n\nRacing thoughts 4/5: My thoughts just keep spinning and spinning about Kent. I feel like I can't tell up from down with him, and I never know if I'm going to get manic Kent or depressed Kent, and all of it is just. Really hard to deal with. It makes me feel like I'm crazy and unstable myself, even though I know I'm not. \n\nSkills score 2/5: I did remember to practice mindfulness today, while driving, and to be in the moment and use all of my senses. I have also been practicing describing my thoughts and feelings, to help ground myself in reality, and in the fact that feelings and thoughts aren't necessarily objective reality.",
-      "focus_phrase": "Just keep going",
-      "skills_focus": "Interpersonal Effectiveness: rewriting assumptions",
-      "date": "2021-07-23"
+      "date": "2021-07-23",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "describing thoughts, mindfulness in the car, sensory mindfulness",
+      "homework": "Our homework is to read through and write responses to the Interpersonal Effectiveness myths. I did the worksheet, but I feel like I don't really have enough information yet to understand what they're trying to get at. I did make an effort tho. ",
+      "other": "I'm thinking I need to find some more activities to do to fill my schedule. I'm adjusting to being unemployed/disabled again, and that's really hard. I have to take time to focus again on just taking care of myself (basic health care) and that takes like 95% of my energy just to do. ",
+      "gratitude": "I'm grateful for my piano and the ability to play music. I'm grateful for my computer and the ability to code. And I'm grateful for the nice cool day and the chance to see my sister and my niece. ",
+      "skills_used": true
     },
     "date": "2021-07-23"
   },
@@ -677,22 +677,6 @@
     "date": "2021-07-28"
   },
   {
-    "id": 40,
-    "created_at": "2021-07-29T21:50:01.041Z",
-    "entry_type": "journal",
-    "entry": {
-      "date": "2021-07-29",
-      "meds_as_prescribed": true,
-      "self_harm": true,
-      "used_skills": "Yesterday I used the 4/7/8 breathing skill while I was at the doctor's, and it really helped! I was seeing a male doctor I'd never seen before, and I would normally be a *lot* more nervous than I was. \n\nI had to sit and wait for the doctor to come in, so in the meantime I just did my breathing, and it helped. I was able to get through the entire appointment without panic. Which is huge for me. \n\nToday I plan to use: 4/7/8 breathing skill, and the mindfulness skills of observing and describing without judgement",
-      "homework": "",
-      "other": "I also took an anti-antacid this morning (the \"Acid Controller\" stuff Elle recommended from Walgreens) and that may be making a difference in anxiety levels as well.",
-      "gratitude": "",
-      "skills_used": true
-    },
-    "date": "2021-07-29"
-  },
-  {
     "id": 39,
     "created_at": "2021-07-29T21:44:01.690Z",
     "entry_type": "rating",
@@ -712,6 +696,22 @@
       "focus_phrase": "Red comes out November 19th. ",
       "skills_focus": "",
       "date": "2021-07-29"
+    },
+    "date": "2021-07-29"
+  },
+  {
+    "id": 40,
+    "created_at": "2021-07-29T21:50:01.041Z",
+    "entry_type": "journal",
+    "entry": {
+      "date": "2021-07-29",
+      "meds_as_prescribed": true,
+      "self_harm": true,
+      "used_skills": "Yesterday I used the 4/7/8 breathing skill while I was at the doctor's, and it really helped! I was seeing a male doctor I'd never seen before, and I would normally be a *lot* more nervous than I was. \n\nI had to sit and wait for the doctor to come in, so in the meantime I just did my breathing, and it helped. I was able to get through the entire appointment without panic. Which is huge for me. \n\nToday I plan to use: 4/7/8 breathing skill, and the mindfulness skills of observing and describing without judgement",
+      "homework": "",
+      "other": "I also took an anti-antacid this morning (the \"Acid Controller\" stuff Elle recommended from Walgreens) and that may be making a difference in anxiety levels as well.",
+      "gratitude": "",
+      "skills_used": true
     },
     "date": "2021-07-29"
   },
@@ -824,24 +824,6 @@
     "date": "2021-08-02"
   },
   {
-    "id": 71,
-    "created_at": "2021-08-04T09:35:31.110Z",
-    "entry_type": "journal",
-    "entry": {
-      "meds_boolean": "true",
-      "skills_boolean": "true",
-      "inhaler_boolean": "true",
-      "concerta_boolean": "true",
-      "skills": "Today I kept calm by \"describing\" my worries to myself - specifically, worries about the state of my health. It helped earlier, but now I'm feeling panicky again. ",
-      "homework": "In session with my counselor we clarified my values in a personal conflict at work. It was helpful! Specifically, the idea of stepping back from \"planning\" a conversation, and just freeing yourself to imagine what you truly want to communicate, and what you value in the interaction, was useful. I'd never thought about it like that before.",
-      "other": "",
-      "gratitude": "I'm thankful for the chance to move ahead; I'm thankful for the DBT program and for Henry; I'm grateful for all the people in my life and the ongoing chance to reconnect with them and reform bridges even after time has passed. I'm grateful for the second chances we all give each other.",
-      "tags": "describing, mindfulness, interpersonal effectiveness",
-      "date": "2021-08-03"
-    },
-    "date": "2021-08-03"
-  },
-  {
     "id": 47,
     "created_at": "2021-08-04T01:07:47.884Z",
     "entry_type": "rating",
@@ -863,5 +845,133 @@
       "date": "2021-08-03"
     },
     "date": "2021-08-03"
+  },
+  {
+    "id": 71,
+    "created_at": "2021-08-04T09:35:31.110Z",
+    "entry_type": "journal",
+    "entry": {
+      "meds_boolean": "true",
+      "skills_boolean": "true",
+      "inhaler_boolean": "true",
+      "concerta_boolean": "true",
+      "skills": "Today I kept calm by \"describing\" my worries to myself - specifically, worries about the state of my health. It helped earlier, but now I'm feeling panicky again. ",
+      "homework": "In session with my counselor we clarified my values in a personal conflict at work. It was helpful! Specifically, the idea of stepping back from \"planning\" a conversation, and just freeing yourself to imagine what you truly want to communicate, and what you value in the interaction, was useful. I'd never thought about it like that before.",
+      "other": "",
+      "gratitude": "I'm thankful for the chance to move ahead; I'm thankful for the DBT program and for Henry; I'm grateful for all the people in my life and the ongoing chance to reconnect with them and reform bridges even after time has passed. I'm grateful for the second chances we all give each other.",
+      "tags": "describing, mindfulness, interpersonal effectiveness",
+      "date": "2021-08-03"
+    },
+    "date": "2021-08-03"
+  },
+  {
+    "id": 73,
+    "created_at": "2021-08-05T12:36:35.305Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": "2",
+      "physical_misery": "1",
+      "joy": "4",
+      "gratitude": "5",
+      "calm": "3",
+      "intentionality": "3",
+      "racing_thoughts": "1",
+      "skills_score": "2",
+      "notes": "10:30 PM\n\nNew meds: Singulair; am starting to be able to breathe! I also slept in Kent's room the last two nights, so I finally have a functioning brain.\n\nHad a really good day! Think I finally found the right stimulation level environment wise; got the downstairs set up with enough to do to keep me entertained and that feels good.\n\nPlayed piano, coded, and just overall had a good day.",
+      "focus_phrase": "",
+      "skills_focus": "DEAR MAN + GIVE",
+      "date": "2021-08-04"
+    },
+    "date": "2021-08-04"
+  },
+  {
+    "id": 74,
+    "created_at": "2021-08-06T01:20:33.899Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": "4",
+      "physical_misery": "2",
+      "joy": "4",
+      "gratitude": "1",
+      "calm": "2",
+      "intentionality": "4",
+      "racing_thoughts": "4",
+      "skills_score": "1",
+      "notes": "11 AM\n\nSlept in my own room again, woke up feeling tired and groggy. I don't feel refreshed, awake and alert like I do when I sleep in Kent's room. \n\nGetting a slow start today but I'm kind of stressed and there's a lot to do. I have to leave the house to run errands, which is always stressful.\n\nIt's not sunny; that does affect my mood.\n\nEmotional mis 4/5: Score is high because I'm finally becoming more aware of my emotions, instead of always shoving them away. Starting to read the book, \"Welcoming the Unwelcome\" by Pema Chödrön has been helpful in that regard. So has \"Building a Life Worth Living\" by Marsha Linehan.",
+      "focus_phrase": "Build a life worth living. The power to do so is in your hands.",
+      "skills_focus": "Interpersonal Effectiveness: DEAR MAN",
+      "date": "2021-08-05"
+    },
+    "date": "2021-08-05"
+  },
+  {
+    "id": 75,
+    "created_at": "2021-08-08T01:38:21.941Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": "2",
+      "physical_misery": "1",
+      "joy": "4",
+      "gratitude": "2",
+      "calm": "4",
+      "intentionality": "3",
+      "racing_thoughts": "2",
+      "skills_score": "0",
+      "notes": "(recorded morning after)\n\nDidn't take Concerta but did take other meds as scheduled and drank coffee. I went two nights with poor sleep before this, so was pretty out of it. Still managed to stay focused and get tasks done though, including a big chunk of code learning. That was good.\n\nI've also moved my keyboard downstairs and now I can play it when I want, and that's been really good. It's helped a lot with levels of joy. \n\nI want to start writing songs too!",
+      "focus_phrase": "",
+      "skills_focus": "",
+      "date": "2021-08-06"
+    },
+    "date": "2021-08-06"
+  },
+  {
+    "id": 76,
+    "created_at": "2021-08-08T01:42:14.705Z",
+    "entry_type": "journal",
+    "entry": {
+      "meds_boolean": "true",
+      "skills_boolean": "true",
+      "inhaler_boolean": "",
+      "concerta_boolean": "",
+      "skills": "Active listening and assuming positive intent, which is a precursor to the IE GIVE skills. ",
+      "homework": "The homework this week is working on the GIVE skill from Interpersonal Effectiveness, which focused on validation. This basically means listening and trying to understand others. I'm consciously trying to view other's interactions in a more neutral or positive light, and give people the benefit of the doubt more often. If you assume someone is coming from a good place, it changes the way you might interpret their meaning, especially if they're someone who doesn't always do the best job expressing themselves in words. ",
+      "other": "",
+      "gratitude": "My keyboard, songwriting, the ability to play music and the past training that I have. The fact I grew up so steeped in music that it's easy to reach back out for now. ",
+      "tags": "music, gratitude, GIVE, IE, validation",
+      "date": "2021-08-06"
+    },
+    "date": "2021-08-06"
+  },
+  {
+    "id": 77,
+    "created_at": "2021-08-08T02:10:34.642Z",
+    "entry_type": "rating",
+    "entry": {
+      "SI": "0",
+      "self_harm_urge": "0",
+      "drug_urge": "0",
+      "emotional_misery": "2",
+      "physical_misery": "2",
+      "joy": "4",
+      "gratitude": "4",
+      "calm": "2",
+      "intentionality": "1",
+      "racing_thoughts": "4",
+      "skills_score": "0",
+      "notes": "12 PM\n\nEM 2/5: Just some anxiety that I think mostly comes with my allergy meds. Some kind of agitated thoughts/agitated feeling in my head\n\nPM 2/5: Usual aches and pains and fatigue\n\nJoy & Gratitude bc I've spent time listening to and writing music\n\nRacing thoughts - nothing specific, just the usual\nSkills score: haven't used them yet. Maybe will use some mindfulness skills today.",
+      "focus_phrase": "Breathe toward your goal",
+      "skills_focus": "Mindfulness: accepting and improving the moment",
+      "date": "2021-08-07"
+    },
+    "date": "2021-08-07"
   }
 ]
