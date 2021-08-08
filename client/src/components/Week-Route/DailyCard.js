@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ReadMoreReact from 'read-more-react'
 import moment from 'moment'
-import { Card, Icon, Divider, Label } from 'semantic-ui-react'
+import { Card, Icon, Divider, Label, Input, Button } from 'semantic-ui-react'
 const { Content } = Card
 
 const colors = [
@@ -63,6 +63,9 @@ const booleanStyle = {
 const CustomCard = ({ card, index, key }) => {
 
   const [favorite, setFavorite] = useState(card.favorite)
+  const [tags, setTags] = useState(card.tags || 'No tags yet')
+  const [tagInput, setTagInput] = useState(tags)
+  const [edit, setEdit] = useState(false)
 
   const cardColor = colors[index%9]
 
@@ -73,8 +76,6 @@ const CustomCard = ({ card, index, key }) => {
   const keys = Object.keys(entry).filter(e => e !== 'date').filter(e => e !== 'other' && e !== 'tags')
   const orderedKeys = ['skills_used', ...keys.filter(e => e !== 'skills_used')]
   
-  const tags = card.entry.tags || 'No tags yet'
-
   /* This toggles the "favorite" property in the DB */
   const onFavoriteClick = async id => {
 
@@ -88,6 +89,26 @@ const CustomCard = ({ card, index, key }) => {
       if (json.success === true) { 
         console.log(json.entry)
         setFavorite(json.entry.favorite)
+      }
+    }).catch(err => {
+      console.log(err);
+      return 'There was an error. See console for details'
+    })  
+  }
+
+  /* Add or edit entry tags */
+  const submitTags = tags => {
+    fetch('/dbt/entry/edit/tags', {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id: card.id, tags })
+    }).then(res => res.json()).then(json => {
+      if (json.success === true) { 
+        console.log(json.entry)
+        setTags(json.entry.tags)
+        setEdit(false)
       }
     }).catch(err => {
       console.log(err);
@@ -165,7 +186,20 @@ const CustomCard = ({ card, index, key }) => {
       <Content description={Description} />
 
       <Content extra>
-        <Icon name='hashtag' />{tags}
+          {edit ? 
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Icon name='hashtag' onClick={() => setEdit(!edit)} />
+          <Input name='tagInput' style={{ width: '80%', marginRight: '10px', marginLeft: '10px'}} 
+            value={tagInput}
+            onChange={(e) => setTagInput(e.target.value)}
+          
+          />
+          <Button align='right' content='Save' onClick={() => submitTags(tagInput)}/>
+          </div>
+          :  <><Icon name='hashtag' onClick={() => setEdit(!edit)}/> {tags}</>
+          }
+        
+       
       </Content>
 
     </Card>
