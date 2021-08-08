@@ -3,7 +3,7 @@ import Page from '../reusable/Page'
 import JournalDisplay from './JournalDisplay'
 import RatingDisplay from './RatingDisplay'
 import WeekInReviewForm from './WeekInReviewform'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Button } from 'semantic-ui-react'
 import moment from 'moment'
 
 const { Item } = Menu
@@ -16,7 +16,9 @@ const Week = () => {
   /* options are: 'journal' or 'data' */
   const [activeTab, setActiveTab] = useState('journal')
 
-  const [today, setToday] = useState(moment().format('dddd'))
+  const [showingAll, setShowingAll] = useState(false)
+
+  const today = moment().format('dddd')
 
   useEffect(() => {
     fetch('dbt/entry/week', {
@@ -27,19 +29,36 @@ const Week = () => {
     }).then(res => res.json()).then(json => {
       setCards(json.data.reverse())
       }).catch(err => {
+      console.log(err)
       setError('There was an error fetching data. See console for details.')
     }) 
   }, [])
+
+  const showAllEntries = () => {
+    fetch('dbt/entry/all', {
+      method: 'GET', 
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json()).then(json => {
+      setCards(json.data.reverse())
+      setShowingAll(true)
+      }).catch(err => {
+      console.log(err)
+      setError('There was an error fetching data. See console for details.')
+    }) 
+  }
   
-  return(
-    <>
-    <Page color='grey' icon='sun' title='This Week in DBT' subtitle="See what you learned and where you can improve">
-      {error && <div>
-         {error} 
-        </div>}
-      {/* only show the "Week in review" form on Mondays */}
+  return (
+    <Page 
+      color='grey' icon='sun' 
+      title='This Week in DBT' 
+      subtitle="See what you learned and where you can improve"
+      >
+      {error && <div>{error}</div>} 
       {today.toLowerCase() === 'monday' &&
-        <WeekInReviewForm />}
+        <WeekInReviewForm />
+        }
         <Menu pointing secondary widths={2}>
           <Item 
             name='Journal'
@@ -53,14 +72,24 @@ const Week = () => {
           />
         </Menu>
 
-        {(cards && activeTab === 'journal') && 
-          <JournalDisplay cards={cards} error={error} />}
+      {(cards && activeTab === 'journal') && 
+        <JournalDisplay 
+          cards={cards} error={error} 
+        />
+      }
 
-        {(cards && activeTab === 'data') && 
-          <RatingDisplay data={cards} error={error} />}
+      {(cards && activeTab === 'data') && 
+        <RatingDisplay 
+          data={cards} error={error} 
+        />
+      }
 
+      {!showingAll &&  
+        <Button basic content='Show All Entries'
+          onClick={() => showAllEntries()}
+        />
+      }
     </Page>
-    </>
   )
 }
 

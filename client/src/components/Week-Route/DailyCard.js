@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import ReadMoreReact from 'read-more-react'
 import moment from 'moment'
 import { Card, Icon, Divider, Label, Input, Button } from 'semantic-ui-react'
@@ -60,6 +60,14 @@ const booleanStyle = {
   marginBSmallottom: marginSmall
 }
 
+const tagInputStyle =  {
+  width: '80%', marginRight: '10px', marginLeft: '10px'
+}
+
+const editDivStyle = { 
+  display: 'flex', justifyContent: 'center', alignItems: 'center' 
+}
+
 const CustomCard = ({ card, index, key }) => {
 
   const [favorite, setFavorite] = useState(card.favorite)
@@ -74,11 +82,11 @@ const CustomCard = ({ card, index, key }) => {
   const date = moment(card.date).format('dddd MMMM Do, YYYY')
 
   const keys = Object.keys(entry).filter(e => e !== 'date').filter(e => e !== 'other' && e !== 'tags')
+  
   const orderedKeys = ['skills_used', ...keys.filter(e => e !== 'skills_used')]
   
   /* This toggles the "favorite" property in the DB */
-  const onFavoriteClick = async id => {
-
+  const onFavoriteClick = id => {
     fetch('/dbt/entry/favorite/toggle', {
       method: 'POST', 
       headers: {
@@ -87,7 +95,6 @@ const CustomCard = ({ card, index, key }) => {
       body: JSON.stringify({ id })
     }).then(res => res.json()).then(json => {
       if (json.success === true) { 
-        console.log(json.entry)
         setFavorite(json.entry.favorite)
       }
     }).catch(err => {
@@ -106,7 +113,6 @@ const CustomCard = ({ card, index, key }) => {
       body: JSON.stringify({ id: card.id, tags })
     }).then(res => res.json()).then(json => {
       if (json.success === true) { 
-        console.log(json.entry)
         setTags(json.entry.tags)
         setEdit(false)
       }
@@ -118,14 +124,14 @@ const CustomCard = ({ card, index, key }) => {
 
   const Description = () => {
     return (
-      orderedKeys && orderedKeys.map((e, i) => {
-        const name = displayNames[e]
-        // false is a valid value here, so we don't want to filter it out
-        // as just another 'falsy value'
-        const val = entry[e] === false ? false : entry[e] || null
+      orderedKeys && orderedKeys.map((key, i) => {
+        const name = displayNames[key]
+        // false is a valid value, don't filter it out
+        const val = entry[key] === false ? false : entry[key] || null
 
         if (val !== null) {
-          if (typeof val === 'boolean' || e.includes('boolean')) { 
+          if (typeof val === 'boolean' || 
+            key.includes('boolean')) { 
             return (  
               <DisplayBoolean 
                 val={val} 
@@ -140,7 +146,9 @@ const CustomCard = ({ card, index, key }) => {
       <div key={name}> {i !== 0 && 
         <Divider style={dividerStyle}/>}
           <div style={{ padding: padding }}>
-            <span style={descriptionStyle}>{name}</span><br/>
+            <span style={descriptionStyle}>
+              {name}
+            </span><br/>
             {name === 'Homework' || name === 'Skills used' ? 
             <pre style={preStyle}>
               <ReadMoreReact text={val} 
@@ -160,9 +168,14 @@ const CustomCard = ({ card, index, key }) => {
 
   const DisplayBoolean = ({ val, displayName }) => {
     if (val === true || val === 'true') {
-      return <span style={{ marginBottom: '25px' }}><Icon name='check' color={cardColor} />{displayName} </span>
+      return (
+          <span style={{ marginBottom: '25px' }}>
+            <Icon name='check' color={cardColor} />
+            {displayName} 
+          </span>
+        )
     } else {
-      return  <span style={booleanStyle}>{displayName}</span> 
+      return <span style={booleanStyle}>{displayName}</span> 
     }
   }
 
@@ -176,34 +189,35 @@ const CustomCard = ({ card, index, key }) => {
   )
 
   return (
-    <>
     <Card fluid={true} color={cardColor} key={key}>
-      <Label corner='right' color={cardColor} 
+      <Label 
+        corner='right' 
+        color={cardColor} 
         onClick={() => onFavoriteClick(card.id)} 
-        icon={favorite ? 'heart' : 'heart outline'} />
+        icon={favorite ? 'heart' : 'heart outline'}
+      />
       <Content header={Header}/>
-
       <Content description={Description} />
-
       <Content extra>
-          {edit ? 
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <Icon name='hashtag' onClick={() => setEdit(!edit)} />
-          <Input name='tagInput' style={{ width: '80%', marginRight: '10px', marginLeft: '10px'}} 
+      {edit ? 
+        <div style={editDivStyle}>
+          <Icon name='hashtag' 
+            onClick={() => setEdit(!edit)} />
+          <Input name='tagInput' 
+            style={tagInputStyle} 
             value={tagInput}
             onChange={(e) => setTagInput(e.target.value)}
-          
           />
-          <Button align='right' content='Save' onClick={() => submitTags(tagInput)}/>
-          </div>
-          :  <><Icon name='hashtag' onClick={() => setEdit(!edit)}/> {tags}</>
-          }
-        
-       
+          <Button align='right' content='Save' 
+            onClick={() => submitTags(tagInput)}
+          />
+        </div>  
+        : <>
+        <Icon name='hashtag' 
+          onClick={() => setEdit(!edit)}/> {tags}
+      </>}
       </Content>
-
     </Card>
-  </>
   )
 }
 
