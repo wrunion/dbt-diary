@@ -30,14 +30,11 @@ const DailyRatingForm = () => {
     * entry_type (enum: 'rating' or 'journal')
     * entry (json)
     */
-
     const entry = {
       date: data.date,
       entry_type: 'rating',
       entry: data
     }
-
-    console.log(entry)
     fetch('/dbt/entry/create', {
       method: 'POST', 
       headers: {

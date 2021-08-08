@@ -13,7 +13,7 @@ module.exports = router => {
       const queryString = `SELECT quote, source, focus, link FROM quote WHERE DATE(date) = $1;`
       const formattedDate = moment().format('YYYY, MM DD');
       const response = await db.query(queryString, [formattedDate])
-
+      console.log(response.rows)
       if (response.rows) {
         res.json({ 
           success: true,

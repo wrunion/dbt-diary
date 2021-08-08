@@ -23,7 +23,7 @@ const App = () => {
       }
     }).then(res => res.json()).then(json => {
       if (json.success === true) { 
-        const { quote, source, focus, link } = json.data[0]        
+        const { quote, source, focus, link } = json.data[0]      
         setDailyData({ quote, source, focus, link })
       }
     }).catch(err => {
@@ -34,38 +34,37 @@ const App = () => {
   
   return (
     <Router>
-    <div id="content-all">
-      <header className="site-header">
-        <SiteHeader
-          title="Winter's DBT Journal"
-          subtitle={`Today is ${date}`}
-        />
-      </header>
- 
-      <main id='main-container'>
-        <nav>
+      <div id="content-all">
+        <header className="site-header">
+          <SiteHeader
+            title="Winter's DBT Journal"
+            subtitle={`Today is ${date}`}
+          />
+        </header>
+  
+        <main id='main-container'>
+          <nav>
           <NavBar />
-        </nav>
-        <Segment>
-          <div id="content">
-            <Route exact path='/'>
-              <Today 
-                date={date}
-                quote={dailyData.quote} 
-                source={dailyData.source}
-              />
-            </Route>
-            <Route exact path='/week'>
-              <Week />
-            </Route>
-            <Route path='/resources'>
-              <Resources />
-            </Route>
-          </div>
-        </Segment>
-      </main>
-    {/* <p></p><br /> */}
-    </div>
+          </nav>
+          <Segment>
+            <div id="content">
+              <Route exact path='/'>
+                <Today 
+                  date={date}
+                  quote={dailyData.quote} 
+                  source={dailyData.source}
+                />
+              </Route>
+              <Route exact path='/week'>
+                <Week />
+              </Route>
+              <Route path='/resources'>
+                <Resources />
+              </Route>
+            </div>
+          </Segment>
+        </main>
+      </div>
     </Router>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Table, Segment, Header } from 'semantic-ui-react'
-const { Row, HeaderCell, Cell, Body } = Table;
+const { Row, HeaderCell, Cell } = Table;
 const TableHeader = Table.Header;
 
 const liStyle = {
@@ -70,29 +70,29 @@ const CustomTable = ({ data, error }) => {
         <Table striped compact size='small' color='green'>
           <TableHeader>
             <Row>
-            <HeaderCell width={2}>Date</HeaderCell>
-            {Object.values(inputLabelsAll).map((e, i) => 
-              <HeaderCell key={i}>{e}</HeaderCell>
-            )} 
+              <HeaderCell width={2}>Date</HeaderCell>
+              {Object.values(inputLabelsAll).map((e, i) => 
+                <HeaderCell key={i}>{e}</HeaderCell>
+              )} 
             </Row>
           </TableHeader>
-        <Body>
+        <Table.Body>
         {Object.values(entries).map((e, i) => {
 
           return(
             <Row key={e.date + i}>
               <Cell>{e.date}</Cell>
-              {Object.entries(e.entry).filter(e => e[0] !== 'notes' && e[0] !== 'focus_phrase' && e[0] !== 'skills_focus' && e[0] !== 'date').map(e => {
+              {Object.entries(e.entry).filter(e => e[0] !== 'notes' && e[0] !== 'focus_phrase' && e[0] !== 'skills_focus' && e[0] !== 'date').map((e, i) => {
                 const value = e[1]
                 return (
-                  <Cell>{value}</Cell>
+                  <Cell key={e[0] + e[1] + i}>{value}</Cell>
                 )
               })}
               </Row>
             )
           }
         )}
-      </Body>
+      </Table.Body>
       </Table> 
 
       <div style={notesSegmentStyle}>
@@ -109,7 +109,6 @@ const CustomTable = ({ data, error }) => {
               e !== '2021').join(' ');
 
               return(
-                <>
                 <section 
                   key={formattedDate + i}      
                   style={detailsSummaryStyle}>
@@ -127,7 +126,6 @@ const CustomTable = ({ data, error }) => {
                 </details>
                 </ul>
               </section>
-              </>
               )
             }
           })}

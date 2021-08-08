@@ -102,11 +102,11 @@ const FormDisplay = (props) => {
 
   return(
     <div style={containerStyles} id='Today'>
-      <FormToggleControls />
-
       {/* Quote only shows if it has been entered on today's date  */}
       {quote && <div style={quoteStyles}> <DailyContainer /> </div>}
 
+      <FormToggleControls />
+      
       {/* QuoteForm only shows if no quote has been entered on today's date  */}
       {showQuoteForm && <QuoteForm />}
 
