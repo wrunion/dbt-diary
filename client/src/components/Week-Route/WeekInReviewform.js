@@ -19,7 +19,7 @@ const WeekInReview = () => {
 
   const onSubmitCallback = (data) => {
     // submit data to server
-    fetch('/api/week/create', {
+    fetch('/dbt/week/create', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'

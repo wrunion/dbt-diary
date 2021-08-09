@@ -2,7 +2,7 @@ const asyncHandler = require('express-async-handler')
 const db = require('./../../db')
 
 /* 
- * Accepts an entry id and sets or toggles the entry "favorite" property to true
+ * Accepts an entry id and sets or toggles the "favorite" property to true
 */
 
 module.exports = router => {

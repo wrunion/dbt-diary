@@ -63,9 +63,6 @@ app.use('/api', require('./routes'))
 /* Routes V2 */
 app.use('/', require('./routes/routes-v2'))
 
-/* Jwt Auth */ 
-// app.use('/auth', require('./routes/auth'))
-
 /* Codewitch routes */
 app.use('/codewitch', require('./routes/codewitch'))
 /* DBT routes, V2 */ 

@@ -24,21 +24,13 @@ pool.on('error', async (error, client) => {
 // Sanity check for devs that will alert you if you're missing the database connection string
 (() => {
   pool.query(`SELECT test_field FROM production_meta`, (err, res) => {
-    if (err) {
-      console.error('Error connnecting to the database!');
+    if (res) { console.log('Connected to Heroku Postgres')}
+    if (err) { console.error('Error connnecting to the database!');
       if (process.env.DATABASE_URL === undefined || process.env.DATABASE_URL === null || process.env.DATABASE_URL === '') {
         console.error('Please check that the DATABASE_URL environment variable is correct. See comments in nodeKeys.js for further information.');
       }
     }
 })})
-
-// Set timezone - since our DB is running on Heroku, it will default based on the Heroku server
-// We set it to our local time here
-(() => {
-  pool.query(`SET TIMEZONE='America/Los_angeles';`, (err, res) => {
-    if (err) { console.error('Error') }
-  })
-})
 
 module.exports = {
 

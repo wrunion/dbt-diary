@@ -7,12 +7,6 @@
  * once testing is complete
 */
 
-/* 
- * this holds the user's config options 
- * it's also the table we run the 
- * database connection "sanity check against 
- */
-
 CREATE TABLE week (
   id SERIAL PRIMARY KEY,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(), 
@@ -46,8 +40,6 @@ CREATE TABLE quote (
   other json
 );
 
--- spread, cards, meaning, daily_focus
-
 CREATE TABLE tarot_draw (
   id SERIAL PRIMARY KEY,
   date TIMESTAMPTZ NOT NULL DEFAULT NOW(), 
@@ -58,9 +50,6 @@ CREATE TABLE tarot_draw (
   weekly_theme TEXT,
   full_draw json
 );
-
--- table "entry" has fields: id, created_at, entry_type, entry, date
--- INSERT INTO codewitch (focus, tarot, journal, gratitude, moon_phase, self_care, other) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;
 
 CREATE TABLE codewitch_entry (
   id SERIAL PRIMARY KEY, 
@@ -79,7 +68,6 @@ CREATE TYPE e_entry_type AS ENUM (
   'journal', 'rating', 'other'
 )
 
--- TODO: go back and rework this
 CREATE TABLE IF NOT EXISTS entry (
   id SERIAL PRIMARY KEY, 
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
@@ -87,11 +75,4 @@ CREATE TABLE IF NOT EXISTS entry (
   entry json NOT NULL,
   date VARCHAR(256),
   favorite BOOLEAN DEFAULT FALSE
-);
-
-CREATE TABLE entries_by_date (
-  date VARCHAR(128) PRIMARY KEY,
-  journal TIMESTAMP,
-  rating TIMESTAMP,
-  quote TIMESTAMP
 );

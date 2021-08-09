@@ -6,13 +6,14 @@ const router = express.Router()
  * and passes a single router object between them
 */
 
-// GET Routes 
+/* GET Routes */
 require('./getQuote')(router)
 require('./getEntry')(router)
 
-// POST Routes 
+/* POST Routes */
 require('./createOrEditEntry')(router)
 require('./favoriteEntry')(router)
 require('./createQuote')(router)
+require('./weekRoutes')(router)
 
 module.exports = router
