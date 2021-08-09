@@ -1,23 +1,24 @@
 const asyncHandler = require('express-async-handler')
 const db = require('../../db')
 const moment = require('moment')
+
 /* 
  * Route to get quote by date
 */
-
 
 module.exports = router => {
   /* Get quotes from current date */
   router.get('/quote', asyncHandler(async(req, res) => {
     try {
       const queryString = `SELECT quote, source, focus, link FROM quote WHERE DATE(date) = $1;`
-      const formattedDate = moment().format('YYYY, MM DD');
+      const formattedDate = moment().format('YYYY-MM-DD')
+      // This is super annoying, but necessary
+      await db.query(`SET TIMEZONE TO 'america/los_angeles';`)
       const response = await db.query(queryString, [formattedDate])
-      console.log(response.rows)
       if (response.rows) {
         res.json({ 
           success: true,
-          data: response.rows
+          data: response.rows[0]
         })
       } else {
         return res.json({

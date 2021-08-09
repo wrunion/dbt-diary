@@ -76,3 +76,21 @@ CREATE TABLE IF NOT EXISTS entry (
   date VARCHAR(256),
   favorite BOOLEAN DEFAULT FALSE
 );
+
+-- metadata for all of the above 
+CREATE TABLE dbt_meta (
+	id SERIAL PRIMARY KEY,
+	last_backup TIMESTAMPTZ, 
+	last_journal TIMESTAMPTZ,
+	last_rating TIMESTAMPTZ,
+	last_quote TIMESTAMPTZ,
+	last_week TIMESTAMPTZ,
+	last_codewitch_entry TIMESTAMPTZ,
+	last_tarot_draw TIMESTAMPTZ
+);
+
+CREATE TABLE meta (
+	id SERIAL PRIMARY KEY,
+	date TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+	type VARCHAR(128) NOT NULL
+);

@@ -74,7 +74,7 @@ const FormDisplay = (props) => {
       <Segment>
         <Page 
           title='About Today'
-          subtitle={quote}
+          subtitle={`${quote} - ${source}`}
           icon='sun outline'
           color='violet'
           textAlign='left'
