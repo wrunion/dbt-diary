@@ -35,6 +35,7 @@ app.use(cors());
 app.use(helmet.hidePoweredBy({ setTo: 'Blood, Sweat and Tears' }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(require('./middleware/xClacksOverhead'))
 
 /* Serve public assets */
 app.use(express.static(path.join(__dirname, "js")));

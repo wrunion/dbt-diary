@@ -11,11 +11,11 @@ module.exports = router => {
  
   router.post('/entry/create', asyncHandler(async(req, res) => {
     try {
-      const { date, entry_type, entry } = req.body
+      const { date, entry_type, entry, tags } = req.body
       
-      const queryString = `INSERT INTO entry (date, entry_type, entry) VALUES ($1, $2, $3) RETURNING *;`
+      const queryString = `INSERT INTO entry (date, entry_type, entry, tags) VALUES ($1, $2, $3, $4) RETURNING *;`
       
-      const response = await db.query(queryString, [date, entry_type, entry])
+      const response = await db.query(queryString, [date, entry_type, entry, tags])
 
       return res.json({ 
         success: true,

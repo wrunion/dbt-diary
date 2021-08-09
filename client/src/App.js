@@ -60,13 +60,11 @@ const App = () => {
           <Segment>
             <div id="content">
               <Route exact path='/'>
-                {/* {dailyData &&  */}
                 <Today 
                   date={date}
                   quote={demo ? dailyDemoData.quote : dailyData.quote} 
                   source={demo ? dailyDemoData.source : dailyData.source}
                 />
-                {/* // } */}
               </Route>
               <Route exact path='/week'>
                 {demo ? <DemoWeek /> : <Week />}

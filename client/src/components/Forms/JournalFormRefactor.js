@@ -27,7 +27,8 @@ const JournalForm = () => {
     const entry = {
       date: data.date,
       entry_type: 'journal',
-      entry: data
+      entry: data,
+      tags: data.tags
     }
 
     fetch('/dbt/entry/create', {

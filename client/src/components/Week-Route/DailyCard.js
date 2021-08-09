@@ -174,7 +174,8 @@ const CustomCard = ({ card, index, key }) => {
             {displayName} 
           </span>
         )
-    } else {
+    } 
+    else {
       return <span style={booleanStyle}>{displayName}</span> 
     }
   }
