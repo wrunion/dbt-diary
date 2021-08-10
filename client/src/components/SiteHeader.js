@@ -26,7 +26,7 @@ const SiteHeader = ({ title, subtitle, color='violet', style }) => (
   <Segment style={containerStyle}>
     <div style={{ padding: '1em' }}>
 
-    <MoonImg style={moonStyle} />
+    <a href='/auth/google'><MoonImg style={moonStyle} /></a>
     
     <Header as='h1' color={color} style={style || {}}>{title}
       <Subheader>{subtitle}</Subheader>

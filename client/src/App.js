@@ -16,7 +16,7 @@ const App = () => {
   const [dailyData, setDailyData] = useState({})
   // This will come from hitting the /api/current_user route
   // for now it's just set manually 
-  const [demo, setDemo] = useState(false)
+  const [demo, setDemo] = useState(true)
 
   const dailyDemoData = {
     quote: 'You are the sky. Everything else – it’s just the weather.',
@@ -24,6 +24,22 @@ const App = () => {
   }
 
   const date = moment().format('dddd, MMMM Do, YYYY')
+
+  // See if we have a logged in user
+  // If so, show their data instead of the demo app
+  useEffect(() => {
+    fetch('/api/current_user', {
+      method: 'GET', 
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json()).then(json => {
+      if (json._id) {
+        setDemo(false)
+      }
+    }
+  ).catch(err => console.error(err))
+  }, [])
 
   useEffect(() => {
     fetch('dbt/quote', {
