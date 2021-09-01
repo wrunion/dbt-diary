@@ -1,36 +1,15 @@
 import React from 'react'
 import { DAILY_RATING_INPUTS } from './../../data/inputs'
 import './RatingDisplay.css'
+import PropTypes from 'prop-types'
 import { Table, Segment, Header, Divider } from 'semantic-ui-react'
 const { Row, HeaderCell, Cell } = Table;
 const TableHeader = Table.Header;
 
-const liStyle = {
-  marginBottom: '.5em',
-  lineHeight: '2em',
-}
-
-const uiStyle = {
-  margin: '25px',
-}
-
-const summaryStyle = {
-  marginBottom: '1em',
-  color: '#21BA45'
-}
-
-const headerStyle = {
-  marginLeft: '25px'
-}
-
-const notesSegmentStyle = {
-  marginTop: '2em'
-}
-
-const numericInputLabels = DAILY_RATING_INPUTS.filter(e => e.type === 'number').map(e => e.label)
-const numericInputNames = DAILY_RATING_INPUTS.filter(e => e.type === 'number').map(e => e.name)
+const numericInputs = DAILY_RATING_INPUTS.filter(e => e.type === 'number')
+const numericInputLabels = numericInputs.map(e => e.label)
+const numericInputNames = numericInputs.map(e => e.name)
 const textInputNames = DAILY_RATING_INPUTS.filter(e => e.type === 'text').map(e => e.name)
-const textInputs = DAILY_RATING_INPUTS.filter(e => e.type === 'text' || e.type === 'textarea')
 
 const noteLabels = {
   meds_notes: 'Meds Notes',
@@ -39,17 +18,21 @@ const noteLabels = {
   other: 'Other Notes'
 }
 
-// helper to split strings into paragraphs
-const splitToParagraph = (str) => {
-  return str.split('\n\n')
-}
+const RatingDisplay = ({ data }) => {
+  
+  if (!data) {
+    return (
+      <Segment className='noData'>
+        No data found for those dates
+      </Segment>
+    )
+  }
 
-const CustomTable = ({ data, error }) => {
-  const entries = data.filter(e => e.entry_type === 'rating')
+  // Entries before this date don't have a valid format
+  const entries = data.filter(e => e.entry_type === 'rating').filter(e => e.date > '2021-08-20')
+
   return(
     <div>
-      {error && <div>{error}</div>}
-
       {entries && Object.keys(entries).length > 0 ?
       <>
       <Table striped compact size='small' color='green'>
@@ -124,42 +107,6 @@ const CustomTable = ({ data, error }) => {
         )}
 
       </div>
-      {/* <div style={notesSegmentStyle}>
-        <Header as='h2' content='Notes' 
-          icon='edit outline' color='grey' 
-          style={headerStyle} 
-          />
-          {Object.values(entries).map((e, i) => {
-            if (e.entry?.notes) {
-            const notes = e.entry.notes || ''
-            const formattedNotes = notes && splitToParagraph(notes)
-
-            const formattedDate = e.date.split(' ').filter(e => 
-              e !== '2021').join(' ');
-
-              return(
-                <section 
-                  key={formattedDate + i}      
-                  style={detailsSummaryStyle}>
-                  <ul className='ui list' 
-                    style={uiStyle}>
-                  <details>
-                  <summary style={summaryStyle}>{formattedDate}</summary>
-                  {formattedNotes.map((e, i) => {        
-                    return (
-                    <div key={i}>
-                      <li style={liStyle}>{e}</li>
-                    </div>
-                    )
-                  })}
-                </details>
-                </ul>
-              </section>
-              )
-            }
-          })}
-
-      </div> */}
       </>
       :
       <Segment>
@@ -169,4 +116,8 @@ const CustomTable = ({ data, error }) => {
   )
 }
 
-export default CustomTable
+RatingDisplay.propTypes = {
+  data: PropTypes.array
+}
+
+export default RatingDisplay

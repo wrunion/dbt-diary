@@ -80,10 +80,10 @@ const Week = () => {
 
       {(cards && activeTab === 'data') && 
         <RatingDisplay 
-          data={cards} error={error} 
+          data={null} error={error} 
         />
       }
-
+      <p></p>
       {!showingAll &&  
         <Button basic content='Show All Entries'
           onClick={() => showAllEntries()}
