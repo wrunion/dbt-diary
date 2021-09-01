@@ -6,16 +6,16 @@ const compression = require("compression")
 const ejs = require('ejs')
 const cors = require('cors')
 require('dotenv').config()
-const db = require('./db')
+const backupDatabase = require('./backups')
 const app = express()
 
 app.disable('x-powered-by')
 
 const PORT = process.env.PORT || 8000
 
+backupDatabase()
+// require('./backups/backupToJson')()
 // require('./backups/createBackupTables')()
-// require('./backups/backupToJson')() 
-
 // require('./middleware/tarotGenerator')
 
 /* Middleware */

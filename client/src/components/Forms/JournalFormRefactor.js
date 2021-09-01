@@ -1,22 +1,10 @@
 import React, { useState } from 'react'
 import CustomForm from '../reusable/CustomForm'
+import { JOURNAL_FORM_INPUTS } from './../../data/inputs'
 
 const JournalForm = () => {
 
   const [success, setSuccess] = useState(false)
-
-  const inputs = [
-    { name: 'meds_boolean', label: `Took meds as prescribed`, type: 'checkbox', required: false, defaultValue: false },
-    { name: 'skills_boolean', label: 'Used one or more skills', type: 'checkbox', required: false, defaultValue: false },
-    { name: 'inhaler_boolean', label: 'Used inhaler on schedule', type: 'checkbox', required: false, defaultValue: false },
-    { name: 'concerta_boolean', label: 'Took Concerta', type: 'checkbox', required: false, defaultValue: false },
-    { name: 'skills', label: 'Skills I used', type:'textarea', required: false, defaultValue: '' },
-    { name: 'homework', label: 'Homework', type: 'textarea', required: false, defaultValue: '' },
-    { name: 'other', label: 'Other', type: 'textarea', required: false, defaultValue: '' },
-    { name: 'gratitude', label: 'Gratitude', type: 'textarea', required: false, defaulValue: '' },
-    { name: 'tags', label: 'Tags', type: 'text', required: false, defaultValue: '' },
-    { name: 'date', type: 'date', required: false }
-  ]
 
   const onSubmitCallback = (data) => {
     /* The API expects: 
@@ -52,7 +40,7 @@ const JournalForm = () => {
   return (
     <div>
       <CustomForm 
-        inputs={inputs} 
+        inputs={JOURNAL_FORM_INPUTS} 
         onSubmitCallback={onSubmitCallback} 
         success={success}
         color='violet'

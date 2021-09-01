@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Page from '../reusable/Page'
 import { Header, List, Card, Menu } from 'semantic-ui-react'
-import { SKILLS } from '../../data/skillData'
+import { SKILLS } from '../../data/skillDataDBT'
 import Quotes from './Quotes/Quotes'
 import MoreResources from './MoreResources/MoreResources'
 
@@ -18,8 +18,6 @@ const mainStyle = {
 const Week = () => {
 
   const [activeTab, setActiveTab] = useState('skills')
-  const quotes = []
-  const links = []
 
   const CardDescription = skill => (
       <List bulleted>
@@ -75,17 +73,17 @@ const Week = () => {
       title='Learn More' color='teal' icon='book'
       id='skills-page'
       >
-        <Menu pointing secondary widths={3}>
+        <Menu pointing secondary widths={2}>
           <Menu.Item 
             name='Skills'
             active={activeTab === 'skills'}
             onClick={() => setActiveTab('skills')}
           />
-          <Menu.Item 
+          {/* <Menu.Item 
             name='Quotes'
             active={activeTab === 'quotes'}
             onClick={() => setActiveTab('quotes')}
-          />
+          /> */}
           <Menu.Item 
             name='More Resources'
             active={activeTab === 'more'}
@@ -97,7 +95,7 @@ const Week = () => {
           <SkillCard skill={e} /> 
         )}
 
-        {activeTab === 'quotes' && <Quotes />}
+        {/* {activeTab === 'quotes' && <Quotes />} */}
 
         {activeTab === 'more' && <MoreResources />}
         

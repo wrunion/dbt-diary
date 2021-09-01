@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import './Today.css'
 import Page from '../reusable/Page'
 import JournalForm from '../forms/JournalFormRefactor'
-import DailyRatingForm from '../forms/DailyRatingForm'
+import MorningRatingForm from '../forms/DailyRatingForm'
 import QuoteForm from '../forms/QuoteForm'
+import PersonalJournalForm from '../forms/PersonalJournalForm'
 
 import { Segment } from 'semantic-ui-react'
 
@@ -33,6 +34,7 @@ const FormDisplay = (props) => {
   const [showQuoteForm, setShowQuoteForm] = useState(false)
   const [showRatingForm, setShowRatingForm] = useState(true)
   const [showJournal, setShowJournal] = useState(true)
+  const [showPersonal, setShowPersonal] = useState(false)
 
   useEffect(() => {
     if (quote) { setShowQuoteForm(false) }
@@ -97,6 +99,10 @@ const FormDisplay = (props) => {
         onClick={() => setShowJournal(!showJournal)} 
         className='show-form-text'>Toggle Journal
       </div>
+      <div 
+        onClick={() => setShowPersonal(!showPersonal)} 
+        className='show-form-text'>Toggle Personal
+      </div>
     </div>
   )
 
@@ -107,11 +113,12 @@ const FormDisplay = (props) => {
 
       <FormToggleControls />
       
+      {showPersonal && <PersonalJournalForm />}
       {/* QuoteForm only shows if no quote has been entered on today's date  */}
       {showQuoteForm && <QuoteForm />}
 
       {/* Daily rating form only shows if it's not already been completed on today's date */}
-      {showRatingForm && <DailyRatingForm />}
+      {showRatingForm && <MorningRatingForm />}
 
       {showJournal && <JournalForm />}
 

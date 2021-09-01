@@ -6,7 +6,7 @@ import SiteHeader from './components/SiteHeader'
 import NavBar from './components/NavBar'
 import Week from './components/Week-Route/Week'
 import DemoWeek from './components/Week-Route/DemoWeek'
-import Resources from './components/Resources-Route/ResourcesDisplay'
+import Resources from './components/Resources-Route/Resources'
 import DemoResources from './components/Resources-Route/DemoResourcesDisplay'
 import Today from './components/Today-Route/Today'
 import moment from 'moment'
@@ -70,8 +70,17 @@ const App = () => {
         </header>
   
         <main id='main-container'>
+          <section style={{ display: 'flex', justifyContent: 'center', margin: '25px' }}>
+            <iframe width="750" height="450" 
+              src="https://www.youtube.com/embed/RMsRo6iR5xQ?start=154" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen>
+              </iframe>
+          </section>
           <nav>
-          <NavBar />
+            <NavBar />
           </nav>
           <Segment>
             <div id="content">

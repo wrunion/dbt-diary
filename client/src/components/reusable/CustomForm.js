@@ -70,7 +70,6 @@ const CustomForm = (props) => {
       style={{borderRadius: '5px' }}>
 
       <Segment as='section'>
-
         <Form onSubmit={(e) => handleSubmit(e)} style={formStyle}>
           <Header as='h2' color={color} 
             content={title}

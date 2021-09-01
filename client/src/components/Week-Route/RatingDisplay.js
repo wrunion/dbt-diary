@@ -1,4 +1,5 @@
 import React from 'react'
+import { DAILY_RATING_INPUTS } from './../../data/inputs'
 import { Table, Segment, Header } from 'semantic-ui-react'
 const { Row, HeaderCell, Cell } = Table;
 const TableHeader = Table.Header;
@@ -25,19 +26,9 @@ const notesSegmentStyle = {
   marginTop: '2em'
 }
 
-const inputLabelsAll = {
-  SI: 'S.I.',
-  self_harm_urge: 'S.H. urge',
-  drug_urge: 'Drug urge',
-  emotional_misery: 'Em Mis',
-  physical_misery: 'Phys Mis',
-  joy: 'Joy',
-  gratitude: 'Gratitude',
-  calm: 'Calm',
-  intentionality: 'Intentionality',
-  racing_thoughts: 'Racing thoughts',
-  skills_score: 'Skills score'    
-}
+const numericInputLabels = DAILY_RATING_INPUTS.filter(e => e.type === 'number').map(e => e.label)
+const numericInputNames = DAILY_RATING_INPUTS.filter(e => e.type === 'number').map(e => e.name)
+const textInputs = DAILY_RATING_INPUTS.filter(e => e.type === 'text' || e.type === 'textarea')
 
 const noteLabels = {
   focus_phrase: 'Focus phrase',
@@ -58,36 +49,40 @@ const splitToParagraph = (str) => {
 
 const CustomTable = ({ data, error }) => {
   const entries = data.filter(e => e.entry_type === 'rating')
-
-  // entries has: date, entry_type, id
-  // entry has: everything else
   return(
     <div>
       {error && <div>{error}</div>}
 
       {entries && Object.keys(entries).length > 0 ?
-        <>
-        <Table striped compact size='small' color='green'>
-          <TableHeader>
-            <Row>
-              <HeaderCell width={2}>Date</HeaderCell>
-              {Object.values(inputLabelsAll).map((e, i) => 
-                <HeaderCell key={i}>{e}</HeaderCell>
-              )} 
-            </Row>
-          </TableHeader>
+      <>
+      <Table striped compact size='small' color='green'>
+
+        <TableHeader>
+          <Row>
+            <HeaderCell width={3}>Date</HeaderCell>
+            {numericInputLabels.map((e, i) => 
+              <HeaderCell width={2} key={i}>{e}</HeaderCell>
+            )} 
+          </Row>
+        </TableHeader>
+             
         <Table.Body>
         {Object.values(entries).map((e, i) => {
-
-          return(
+          // Target data from the "entry" object itself 
+          // which contains both text notes
+          // and numerical ratings
+          const ratings = e.entry
+          return (
             <Row key={e.date + i}>
               <Cell>{e.date}</Cell>
-              {Object.entries(e.entry).filter(e => e[0] !== 'notes' && e[0] !== 'focus_phrase' && e[0] !== 'skills_focus' && e[0] !== 'date').map((e, i) => {
-                const value = e[1]
-                return (
-                  <Cell key={e[0] + e[1] + i}>{value}</Cell>
-                )
-              })}
+              {Object.entries(ratings).map((rating, i) => 
+                // Filter out non-numeric data like date and notes
+                // To do this, the function compares the keys against an array of numeric inputs, which is imported from the same file the form itself uses, so the two should always be in sync.
+                numericInputNames.includes(rating[0]) ?
+                <Cell key={i}>{rating[1]}</Cell>
+                : 
+                null
+                )}
               </Row>
             )
           }
@@ -140,4 +135,4 @@ const CustomTable = ({ data, error }) => {
   )
 }
 
-export default CustomTable;
+export default CustomTable

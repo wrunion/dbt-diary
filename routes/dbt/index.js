@@ -9,6 +9,7 @@ const router = express.Router()
 /* GET Routes */
 require('./getQuote')(router)
 require('./getEntry')(router)
+require('./codewitchRoutes')(router)
 
 /* POST Routes */
 require('./createOrEditEntry')(router)

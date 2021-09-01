@@ -94,3 +94,16 @@ CREATE TABLE meta (
 	date TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 	type VARCHAR(128) NOT NULL
 );
+
+CREATE TABLE dbt_meta (
+  id SERIAL PRIMARY KEY,
+  last_backup TIMESTAMP, 
+  last_journal TIMESTAMP,
+  last_personal TIMESTAMP, 
+  last_rating TIMESTAMP, 
+  last_quote TIMESTAMP,
+  last_week TIMESTAMP,
+	last_codewitch TIMESTAMP,
+	last_tarot TIMESTAMP,
+	other json
+);
