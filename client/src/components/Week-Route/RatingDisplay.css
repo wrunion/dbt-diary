@@ -1,0 +1,33 @@
+/* All notes */
+.notesDisplayDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Date displayed on each note "card" */
+.summary {
+  color: #505050;
+  font-weight: bold;
+}
+
+.singleNote {
+  padding: 15px; 
+  border: 1px solid #E0E1E2;
+  border-radius: 7px; 
+  margin: 10px; 
+}
+
+.noteInnerText {
+  padding: 5px;
+  color: #707070;
+}
+
+.noteLabel {
+  font-weight: bold;
+  color: #505050
+}
+
+#divider {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}

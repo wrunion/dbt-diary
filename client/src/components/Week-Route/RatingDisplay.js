@@ -1,6 +1,7 @@
 import React from 'react'
 import { DAILY_RATING_INPUTS } from './../../data/inputs'
-import { Table, Segment, Header } from 'semantic-ui-react'
+import './RatingDisplay.css'
+import { Table, Segment, Header, Divider } from 'semantic-ui-react'
 const { Row, HeaderCell, Cell } = Table;
 const TableHeader = Table.Header;
 
@@ -28,18 +29,14 @@ const notesSegmentStyle = {
 
 const numericInputLabels = DAILY_RATING_INPUTS.filter(e => e.type === 'number').map(e => e.label)
 const numericInputNames = DAILY_RATING_INPUTS.filter(e => e.type === 'number').map(e => e.name)
+const textInputNames = DAILY_RATING_INPUTS.filter(e => e.type === 'text').map(e => e.name)
 const textInputs = DAILY_RATING_INPUTS.filter(e => e.type === 'text' || e.type === 'textarea')
 
 const noteLabels = {
-  focus_phrase: 'Focus phrase',
-  skills_focus: 'Skills focus',
-  notes: 'Notes'
-}
-
-const detailsSummaryStyle = {
-  padding: '15px',  
-  border: '1px solid #E0E1E2', 
-  borderRadius: '7px', margin: '15px' 
+  meds_notes: 'Meds Notes',
+  sleep_notes: 'Sleep Notes',
+  self_care: 'Self Care',
+  other: 'Other Notes'
 }
 
 // helper to split strings into paragraphs
@@ -90,7 +87,44 @@ const CustomTable = ({ data, error }) => {
       </Table.Body>
       </Table> 
 
-      <div style={notesSegmentStyle}>
+      <Divider id='divider' />
+
+      <div className='notesDisplayDiv'>
+
+        <Header as='h2' 
+          color='blue' 
+          content='Notes'
+          icon='edit' 
+          style={{ alignSelf: 'center' }}
+        />
+
+        {Object.values(entries).map((e, i) => {
+          const notes = e.entry
+          return (
+            <section key={i} className='singleNote'>
+              <details>
+                <summary className='summary'>{notes.date}</summary>
+                {Object.entries(notes).map((note, i) => {
+                  const name = note[0]
+                  const text = note[1]
+                  // Filter out numeric data, and entries without values
+                  if (textInputNames.includes(name) && text) {
+                  return (
+                    <div className='noteInnerText' key={i}>
+                      <span className='noteLabel'>
+                        {noteLabels[name]}</span>: {text}
+                    </div>
+                    )
+                  } else { return null }
+                })}
+              </details>
+            </section>
+            )
+          }
+        )}
+
+      </div>
+      {/* <div style={notesSegmentStyle}>
         <Header as='h2' content='Notes' 
           icon='edit outline' color='grey' 
           style={headerStyle} 
@@ -125,7 +159,7 @@ const CustomTable = ({ data, error }) => {
             }
           })}
 
-      </div>
+      </div> */}
       </>
       :
       <Segment>

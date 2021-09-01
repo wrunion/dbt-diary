@@ -49,7 +49,6 @@ const App = () => {
       }
     }).then(res => res.json()).then(json => {
       if (json.success === true) { 
-        console.log(json)
         const { quote, source, focus, link } = json.data      
         setDailyData({ quote, source, focus, link })
       }
@@ -74,7 +73,7 @@ const App = () => {
             <iframe width="750" height="450" 
               src="https://www.youtube.com/embed/RMsRo6iR5xQ?start=154" 
               title="YouTube video player" 
-              frameborder="0" 
+              frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
               allowFullScreen>
               </iframe>
