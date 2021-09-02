@@ -69,15 +69,6 @@ const App = () => {
         </header>
   
         <main id='main-container'>
-          <section style={{ display: 'flex', justifyContent: 'center', margin: '25px' }}>
-            <iframe width="750" height="450" 
-              src="https://www.youtube.com/embed/RMsRo6iR5xQ?start=154" 
-              title="YouTube video player" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen>
-              </iframe>
-          </section>
           <nav>
             <NavBar />
           </nav>

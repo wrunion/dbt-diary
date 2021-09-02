@@ -1,40 +1,40 @@
 import React from 'react'
 import SoundPlayer from './SoundPlayer'
+import { SOUND_PLAYER_INSTANCES, I_FRAME_INSTANCES } from './../../../data/resources'
 
-/* Path and metadata for each sound file goes here */
-/* It's mapped down below into SoundPlayer components */
-const SOUND_PLAYER_INSTANCES = [
-  {
-    path: 'client/src/assets/malia-yoga.mp3',
-    title: 'Guided Breath Meditation by Malia Yoga',
-    categories: '#Guided meditation, #Sleep'
-  },
-  {
-    path: 'client/src/assets/mushroom-meditation-music.mp3',
-    title: 'Music for Meditation: Mushrooms in the Forest',
-    categories: '#meditation, #deities, #faith, #devotion, #forest meditation, #music, #mindfulness, #nature sounds'
-  },
-  {
-    path: 'client/src/assets/celtic-forest-meditation-music.mp3',
-    title: 'Music for Meditation: Celtic Meditation',
-    categories: '#meditation, #deities, #faith, #devotion, #celtic, #music, #forest meditation, #mindfulness, #nature sounds'
-  },
-  {
-    path: 'client/src/assets/meditation-1.m4a',
-    title: 'Meditation by Henry: Listen to your gut',
-    categories: '#hypnosis #relaxation #digestion'
-  },
-  {
-    path: 'client/src/assets/meditation-2.m4a',
-    title: `Meditation by Henry: It's okay to say no`,
-    categories: '#hypnosis #self-love #boundaries'
-  }
-]
+const iFrameStyle = {
+  display: 'flex', 
+  justifyContent: 'center', 
+  border: '1px lightgrey solid', 
+  padding: '30px 20px', 
+  borderRadius: '7px' 
+}
+
+const YoutubeIFrame = ({ url, title }) => (
+  <section style={iFrameStyle}>
+    <iframe width='775' height='450' 
+      src={url}
+      title={title} 
+      frameBorder='0' 
+      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' 
+      allowFullScreen>
+    </iframe>
+  </section>
+)
 
 const MoreResources = () => {
 
   return ( 
     <div className='SoundPlayerPage'>
+      
+      {I_FRAME_INSTANCES.map((e, i) => 
+        <YoutubeIFrame 
+          key={i} 
+          url={e.url} 
+          title={e.title}
+        /> 
+      )}
+
       {SOUND_PLAYER_INSTANCES.map((e, i) => 
         <SoundPlayer 
           key={i} 
