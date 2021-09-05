@@ -3,8 +3,8 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const helmet = require('helmet')
 const compression = require("compression")
-const ejs = require('ejs')
 const cors = require('cors')
+const xClacksOverhead = require('./middleware/xClacksOverhead')
 require('dotenv').config()
 const backupDatabase = require('./backups')
 const app = express()
@@ -35,7 +35,7 @@ app.use(cors());
 app.use(helmet.hidePoweredBy({ setTo: 'Blood, Sweat and Tears' }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(require('./middleware/xClacksOverhead'))
+app.use(xClacksOverhead)
 
 /* Serve public assets */
 app.use(express.static(path.join(__dirname, "js")));
