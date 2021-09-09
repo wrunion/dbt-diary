@@ -3,7 +3,7 @@ import './App.css'
 import { Segment } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import SiteHeader from './components/SiteHeader'
-import NavBar from './components/NavBar'
+import NavBar, { TopNavBar } from './components/NavBar'
 import Week from './components/Week-Route/Week'
 import DemoWeek from './components/Week-Route/DemoWeek'
 import Resources from './components/Resources-Route/Resources'
@@ -62,6 +62,7 @@ const App = () => {
   return (
     <Router>
       <div id="content-all">
+        <TopNavBar user={user} />
         <header className="site-header">
           <SiteHeader
             user={user}
