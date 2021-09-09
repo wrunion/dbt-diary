@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import CustomForm from '../reusable/CustomForm'
 import { JOURNAL_FORM_INPUTS } from './../../data/inputs'
 
-const JournalForm = () => {
-
+const JournalForm = ({ demo }) => {
+  console.log(demo)
   const [success, setSuccess] = useState(false)
 
   const onSubmitCallback = (data) => {
+    const url = demo ? '/dbt/demo/entry/create' : '/dbt/entry/create'
     /* The API expects: 
     * date (string)
     * entry_type (enum: 'rating' or 'journal')
@@ -19,7 +20,7 @@ const JournalForm = () => {
       tags: data.tags
     }
 
-    fetch('/dbt/entry/create', {
+    fetch(url, {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'

@@ -1,6 +1,5 @@
 const asyncHandler = require('express-async-handler')
 const db = require('../../db')
-const moment = require('moment')
 
 /* 
  * Route for fetching all "entry" data for DBT app

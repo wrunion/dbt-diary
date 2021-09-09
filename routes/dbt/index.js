@@ -17,4 +17,8 @@ require('./favoriteEntry')(router)
 require('./createQuote')(router)
 require('./weekRoutes')(router)
 
+/* DEMO ROUTES */
+require('./demoRoutes')(router)
+
+
 module.exports = router

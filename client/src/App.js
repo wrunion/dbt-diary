@@ -7,15 +7,14 @@ import NavBar from './components/NavBar'
 import Week from './components/Week-Route/Week'
 import DemoWeek from './components/Week-Route/DemoWeek'
 import Resources from './components/Resources-Route/Resources'
-import DemoResources from './components/Resources-Route/DemoResourcesDisplay'
+// import DemoResources from './components/Resources-Route/DemoResourcesDisplay'
 import Today from './components/Today-Route/Today'
 import moment from 'moment'
 
 const App = () => {
 
   const [dailyData, setDailyData] = useState({})
-  // This will come from hitting the /api/current_user route
-  // for now it's just set manually 
+  const [user, setUser] = useState({})
   const [demo, setDemo] = useState(true)
 
   const dailyDemoData = {
@@ -34,8 +33,10 @@ const App = () => {
         'Content-Type': 'application/json'
       }
     }).then(res => res.json()).then(json => {
-      if (json._id) {
+      if (json.email) {
+        const { email, picture, name } = json
         setDemo(false)
+        setUser({ email, picture, name })
       }
     }
   ).catch(err => console.error(err))
@@ -63,8 +64,8 @@ const App = () => {
       <div id="content-all">
         <header className="site-header">
           <SiteHeader
-            title="Winter's DBT Journal"
-            subtitle={`Today is ${date}`}
+            user={user}
+            subtitle={date}
           />
         </header>
   
@@ -76,16 +77,19 @@ const App = () => {
             <div id="content">
               <Route exact path='/'>
                 <Today 
+                  user={user}
                   date={date}
                   quote={demo ? dailyDemoData.quote : dailyData.quote} 
                   source={demo ? dailyDemoData.source : dailyData.source}
+                  demo={demo}
                 />
               </Route>
               <Route exact path='/week'>
                 {demo ? <DemoWeek /> : <Week />}
               </Route>
               <Route path='/resources'>
-                {demo ? <DemoResources /> : <Resources />}
+                {/* {demo ? <DemoResources /> : <Resources />} */}
+                <Resources />
               </Route>
             </div>
           </Segment>

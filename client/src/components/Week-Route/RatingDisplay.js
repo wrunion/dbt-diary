@@ -19,7 +19,6 @@ const noteLabels = {
 }
 
 const RatingDisplay = ({ data }) => {
-  
   if (!data) {
     return (
       <Segment className='noData'>

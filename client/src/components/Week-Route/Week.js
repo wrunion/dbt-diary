@@ -80,7 +80,7 @@ const Week = () => {
 
       {(cards && activeTab === 'data') && 
         <RatingDisplay 
-          data={null} error={error} 
+          data={cards} error={error} 
         />
       }
       <p></p>

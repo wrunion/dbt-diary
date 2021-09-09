@@ -15,7 +15,7 @@ const pool = new Pool({
 });
 
 // Error handling
-pool.on('error', async (error, client) => {
+pool.on('error', (error, client) => {
   if (process.env.NODE_ENV === undefined || process.env.NODE_ENV !== "production") {
     console.error(`Database pool error: ${error}; Connection string: ${process.env.DATABASE_URL}`);
   }

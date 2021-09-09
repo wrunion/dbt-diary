@@ -1,8 +1,7 @@
 const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
-const helmet = require('helmet')
-const compression = require("compression")
+const compression = require('compression')
 const cors = require('cors')
 const xClacksOverhead = require('./middleware/xClacksOverhead')
 require('dotenv').config()
@@ -20,7 +19,6 @@ backupDatabase()
 
 /* Middleware */
 app.use(cookieParser()); 
-app.use(helmet());
 app.use(compression());
 app.use(express.static(__dirname));
 
@@ -32,9 +30,8 @@ function shouldCompress (req, res) {
   return compression.filter(req, res)
 }
 app.use(cors());
-app.use(helmet.hidePoweredBy({ setTo: 'Blood, Sweat and Tears' }));
-app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(xClacksOverhead)
 
 /* Serve public assets */
@@ -62,7 +59,7 @@ app.get('/login', (req, res) => {
 app.use('/api', require('./routes'))
 
 /* Routes V2 */
-app.use('/', require('./routes/routes-v2'))
+// app.use('/', require('./routes/routes-v2'))
 
 /* Codewitch routes */
 app.use('/codewitch', require('./routes/codewitch'))

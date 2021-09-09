@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import './Today.css'
 import Page from '../reusable/Page'
 import JournalForm from '../forms/JournalFormRefactor'
-import MorningRatingForm from '../forms/DailyRatingForm'
+import DailyRatingForm from '../forms/DailyRatingForm'
 import QuoteForm from '../forms/QuoteForm'
 import PersonalJournalForm from '../forms/PersonalJournalForm'
 
-import { Segment } from 'semantic-ui-react'
+import { Segment, Image, Header } from 'semantic-ui-react'
+const { Subheader } = Header
 
 const containerStyles = {
   display: 'flex', 
@@ -29,13 +30,14 @@ const quoteStyles = {
 
 const FormDisplay = (props) => {
 
-  const { date, quote, source = '' } = props
+  const { user, date, quote, source = '', demo=true } = props
 
   const [showQuoteForm, setShowQuoteForm] = useState(false)
   const [showRatingForm, setShowRatingForm] = useState(true)
   const [showJournal, setShowJournal] = useState(true)
   const [showPersonal, setShowPersonal] = useState(false)
 
+  console.log(user)
   useEffect(() => {
     if (quote) { setShowQuoteForm(false) }
   }, [])
@@ -108,19 +110,29 @@ const FormDisplay = (props) => {
 
   return(
     <div style={containerStyles} id='Today'>
+      <Segment style={{display: 'flex', alignItems: 'center'}}>
+        <Image src={user.picture} size='mini' style={{ width: '55px', marginRight: '15px' }}circular />
+        <Header as='h2' style={{marginTop: '0'}}>
+          Welcome {user.name}
+          <Subheader>
+            You are logged in as {user.email}
+          </Subheader>
+        </Header>
+      </Segment>
+
       {/* Quote only shows if it has been entered on today's date  */}
       {quote && <div style={quoteStyles}> <DailyContainer /> </div>}
 
-      <FormToggleControls />
+      {/* <FormToggleControls /> */}
       
-      {showPersonal && <PersonalJournalForm />}
+      {showPersonal && <PersonalJournalForm demo={demo} />}
       {/* QuoteForm only shows if no quote has been entered on today's date  */}
-      {showQuoteForm && <QuoteForm />}
+      {showQuoteForm && <QuoteForm demo={demo} />}
 
       {/* Daily rating form only shows if it's not already been completed on today's date */}
-      {showRatingForm && <MorningRatingForm />}
+      {showRatingForm && <DailyRatingForm demo={demo} />}
 
-      {showJournal && <JournalForm />}
+      {showJournal && <JournalForm demo={demo} />}
 
     </div>
   )

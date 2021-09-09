@@ -2,17 +2,18 @@ import React, { useState } from 'react'
 import CustomForm from '../reusable/CustomForm'
 import { DAILY_RATING_INPUTS } from './../../data/inputs'
 
-const DailyRatingForm = () => {
+const DailyRatingForm = ({ demo }) => {
 
   const [success, setSuccess] = useState(false)
 
   const onSubmitCallback = (data) => {
+    const url = demo ? '/dbt/demo/entry/create' : '/dbt/entry/create'
     const entry = {
       date: data.date,
       entry_type: 'rating',
       entry: data
     }
-    fetch('/dbt/entry/create', {
+    fetch(url, {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'

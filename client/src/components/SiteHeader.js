@@ -22,7 +22,7 @@ const moonStyle = {
   marginBottom: '0'
 }
 
-const SiteHeader = ({ title, subtitle, color='violet', style }) => (
+const SiteHeader = ({ user, subtitle, color='violet', style }) => (
   <Segment style={containerStyle}>
     <div style={{ padding: '1em' }}>
 
@@ -32,7 +32,7 @@ const SiteHeader = ({ title, subtitle, color='violet', style }) => (
     
     <Header as='h1' 
       color={color} style={style || {}}>
-      {title}
+        {user ? `${user.name}'s MoodWise` : `MoodWise Demo`}
       <Subheader>
         {subtitle}
       </Subheader>
