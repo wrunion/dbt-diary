@@ -10,8 +10,10 @@ export const DAILY_RATING_INPUTS = [
   { name: 'sleep_notes', label: 'Sleep Notes', type:'text', required: false },
   { name: 'meds_notes', label: 'Meds Notes', type:'text', required: false },
   { name: 'self_care', label: 'Today I will take care of myself by...', type:'textarea', required: false },
-  { name: 'other', label: 'Other', type:'text', required: false },
-  { name: 'date', label: '', type: 'date', required: false }
+  { name: 'notes', label: 'Other', type:'text', required: false },
+  { name: 'date', label: '', type: 'date', required: false },
+  { name: 'drop-1', label: 'Test Dropdown 1', type: 'dropdown', required: false, defaultValue: 0 },
+  { name: 'drop-2', label: 'Test Dropdown 2', type: 'dropdown', required: false, defaultValue: 0 }
 ]
 
 export const JOURNAL_FORM_INPUTS = [

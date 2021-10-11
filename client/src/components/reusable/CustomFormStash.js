@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Dropdown from './FormElements/Dropdown'
-import { CustomTextArea, CustomTextInput } from './FormElements/CustomFormInputs'
+import { CustomTextArea } from './FormElements/CustomFormInputs'
 
 import { Segment, Form, Input, Label, Header, Button, Dimmer, Icon, Checkbox } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
@@ -109,22 +109,7 @@ const CustomForm = (props) => {
               )
             }
             
-            
-
-            //   return(
-            //     <Field key={name}>
-            //       <label htmlFor={name}>
-            //         <Icon name={icon} color={color} /> {label}
-            //       </label>
-            //       <TextArea 
-            //         rows='5'
-            //         name={name}
-            //         value={vals[name]}
-            //         onChange={(e) => handleChange(e)}
-            //       />
-            //     </Field>
-            //   )
-            // } 
+          
             if (type === 'dropdown') {
               return (
                 <Dropdown 
@@ -151,30 +136,37 @@ const CustomForm = (props) => {
             } 
             if (type === 'number') {
               return (
-                <Dropdown 
-                  cbFunction={dropdownCb}
-                  name={name}
-                  label={label}
-                />
-                // <Field inline key={name}>
-                //   <Input 
-                //     type='number'
-                //     min='0' 
-                //     max='5' 
-                //     placeholder='0'
-                //     name={name}
-                //     value={vals[e.name]}
-                //     onChange={(e) => handleChange(e)}
-                //   />
-                //   <Label htmlFor={name} color={color} basic pointing='left'>
-                //     {label}
-                //   </Label>
-                // </Field>
+                <Field inline key={name}>
+                  <Input 
+                    type='number'
+                    min='0' 
+                    max='5' 
+                    placeholder='0'
+                    name={name}
+                    value={vals[e.name]}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <Label htmlFor={name} color={color} basic pointing='left'>
+                    {label}
+                  </Label>
+                </Field>
               )
             }
             if (type === 'text') {
               return (
-                <CustomTextInput inputProps={inputProps} />
+                <Field key={name}>
+                <Input 
+                  type={type}
+                  name={name}
+                  value={vals[name]}
+                  onChange={(e) => handleChange(e)}
+                  label={
+                    <Label basic pointing='right' htmlFor={name} color={color}>
+                      {label}
+                    </Label>
+                    }
+                  />
+              </Field>
               )
             }
             else {

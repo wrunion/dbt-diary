@@ -110,7 +110,7 @@ const FormDisplay = (props) => {
 
   return(
     <div style={containerStyles} id='Today'>
-      <Segment style={{display: 'flex', alignItems: 'center'}}>
+      {/* <Segment style={{display: 'flex', alignItems: 'center'}}>
         <Image src={user.picture} size='mini' style={{ width: '55px', marginRight: '15px' }}circular />
         <Header as='h2' style={{marginTop: '0'}}>
           Welcome {user.name}
@@ -118,12 +118,12 @@ const FormDisplay = (props) => {
             You are logged in as {user.email}
           </Subheader>
         </Header>
-      </Segment>
+      </Segment> */}
 
       {/* Quote only shows if it has been entered on today's date  */}
       {quote && <div style={quoteStyles}> <DailyContainer /> </div>}
 
-      {/* <FormToggleControls /> */}
+      <FormToggleControls />
       
       {showPersonal && <PersonalJournalForm demo={demo} />}
       {/* QuoteForm only shows if no quote has been entered on today's date  */}

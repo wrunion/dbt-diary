@@ -26,7 +26,6 @@ const RatingDisplay = ({ data }) => {
       </Segment>
     )
   }
-
   // Entries before this date don't have a valid format
   const entries = data.filter(e => e.entry_type === 'rating').filter(e => e.date > '2021-08-20')
 

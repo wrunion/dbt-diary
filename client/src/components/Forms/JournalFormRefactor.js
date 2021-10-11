@@ -38,6 +38,10 @@ const JournalForm = ({ demo }) => {
     })     
   }
 
+  const map = JOURNAL_FORM_INPUTS.map(e => e.name)
+  console.log(map)
+
+
   return (
     <div>
       <CustomForm 
