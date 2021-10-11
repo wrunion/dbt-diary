@@ -26,7 +26,7 @@ const Quote = () => {
         setSuccess(true)
       }
     }).catch(err => {
-      console.log(err);
+      console.error(err);
       return 'There was an error. See console for details'
     })     
   }

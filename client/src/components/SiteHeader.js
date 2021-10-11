@@ -1,6 +1,7 @@
 import React from 'react'
-import { Header, Segment } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 import { ReactComponent as MoonImg } from './../assets/moon-phase-1.svg'
+import NavBar from './NavBar'
 
 const { Subheader } = Header
 
@@ -9,8 +10,9 @@ const containerStyle = {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  paddingBottom: '1.25em',
-  marginBottom: '1em'
+  paddingTop: '1.5em',
+  paddingBottom: '1.5em',
+  background: '#FFF'
 }
 
 
@@ -22,25 +24,29 @@ const moonStyle = {
   marginBottom: '0'
 }
 
-const SiteHeader = ({ user, subtitle, color='violet', style }) => (
-  <Segment style={containerStyle}>
-    <div style={{ padding: '1em' }}>
+const SiteHeader = ({ user, subtitle, color='violet', style }) => {
+  
+  return (
+    <>
+      <div style={containerStyle}>
+        <div style={{ padding: '1em' }}>
+          <a href='/auth/google'>
+            <MoonImg style={moonStyle} />
+          </a>
+          
+          <Header as='h1' color={color} style={style || {}}>
+            {user ? `${user.name}'s MoodWise` : `MoodWise Demo`}
+            <Subheader>
+            {subtitle}
+            </Subheader>
+          </Header>
+        </div>
+      </div>
+      <NavBar user={user ? true : false} />
+    </>
+    )
+}
 
-    <a href='/auth/google'>
-      <MoonImg style={moonStyle} />
-    </a>
-    
-    <Header as='h1' 
-      color={color} style={style || {}}>
-        {user ? `${user.name}'s MoodWise` : `MoodWise Demo`}
-      <Subheader>
-        {subtitle}
-      </Subheader>
-    </Header>
-
-    </div>
-  </Segment>
-)
 
 export default SiteHeader;
 

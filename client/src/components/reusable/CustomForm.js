@@ -6,11 +6,10 @@ import {
   CustomCheckboxInput, 
   CustomDateInput } from './FormElements/CustomFormInputs'
 
-import { Segment, Form, Input, Label, Header, Button, Dimmer, Icon, Checkbox } from 'semantic-ui-react'
+import { Form, Header, Button, Dimmer, Icon } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 
-const { Field } = Form
 const { Dimmable } = Dimmer
 const { Subheader } = Header
 
@@ -21,15 +20,6 @@ const formStyle = {
 const headerStyle = {
   marginBottom: '1.25em'
 }
-
-const options = [
-  { key: 0, text: '0', value: 0 },
-  { key: 1, text: '1', value: 1 },
-  { key: 2, text: '2', value: 2 },
-  { key: 3, text: '3', value: 3 },
-  { key: 4, text: '4', value: 4 },
-  { key: 5, text: '5', value: 5 },
-]
 
 /* Custom reusable form component.
  * Required props: 
@@ -64,6 +54,7 @@ const CustomForm = (props) => {
 
   const handleSubmit = event => {
     event.preventDefault()
+    console.log(vals)
     // Timestamp entry if date was not entered
     if (!vals.date) { vals.date = moment().format('YYYY-MM-DD') }
     // Pass data up to parent component
@@ -73,8 +64,8 @@ const CustomForm = (props) => {
 
   const callbackFunction = ({ value, name }) => {
     setVals({ ...vals, [name]: value })
+    console.log(value, name)
   }
-
 
   return (
     <>
@@ -82,7 +73,7 @@ const CustomForm = (props) => {
     <Dimmable dimmed={dimmerActive} 
       style={{borderRadius: '5px' }}>
 
-      <Segment as='section'>
+      <div as='section'>
         <Form onSubmit={(e) => handleSubmit(e)} style={formStyle}>
           <Header as='h2' color={color} 
             content={title}
@@ -93,39 +84,42 @@ const CustomForm = (props) => {
           
           {inputs.map(e => {
             const { name, label, type } = e
-            // Build props object to pass to custom input components
             const inputProps = { name, label, callbackFunction, icon, color }
            
             if (type === 'textarea') {
               return (
-                <CustomTextArea inputProps={inputProps} />
+                <CustomTextArea inputProps={inputProps} key={name} />
               )
             }
             if (type === 'checkbox') {
               return(
-                <CustomCheckboxInput inputProps={inputProps} />
+                <CustomCheckboxInput inputProps={inputProps} key={name} />
               )
             } 
             if (type === 'number') {
               return (
-                <Dropdown inputProps={inputProps} />
+                <Dropdown inputProps={inputProps} key={name} />
               )
             }
             if (type === 'text') {
               return (
-                <CustomTextInput inputProps={inputProps} />
+                <CustomTextInput inputProps={inputProps} key={name}/>
               )
             }
             if (type === 'date') {
               return (
-                <CustomDateInput inputProps={inputProps} />
+                <CustomDateInput inputProps={inputProps} key={name} />
               )
             }
             else return null
             })}
-          <Button type='submit' color={color}>Submit</Button>
+
+          <Button type='submit' color={color}>
+            Submit
+          </Button>
+
         </Form>
-      </Segment>
+      </div>
 
       <Dimmer active={dimmerActive} 
         onClickOutside={() => setDimmerActive(false)}>

@@ -3,7 +3,6 @@ import CustomForm from '../reusable/CustomForm'
 import { JOURNAL_FORM_INPUTS } from './../../data/inputs'
 
 const JournalForm = ({ demo }) => {
-  console.log(demo)
   const [success, setSuccess] = useState(false)
 
   const onSubmitCallback = (data) => {
@@ -33,14 +32,12 @@ const JournalForm = ({ demo }) => {
         setSuccess(true)
       }
     }).catch(err => {
-      console.log(err);
+      console.error(err);
       return 'There was an error. See console for details'
     })     
   }
 
   const map = JOURNAL_FORM_INPUTS.map(e => e.name)
-  console.log(map)
-
 
   return (
     <div>

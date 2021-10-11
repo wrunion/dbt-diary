@@ -49,33 +49,36 @@ const App = () => {
         'Content-Type': 'application/json'
       }
     }).then(res => res.json()).then(json => {
-      if (json.success === true) { 
+      if (json.success === true && json.data) { 
         const { quote, source, focus, link } = json.data      
         setDailyData({ quote, source, focus, link })
       }
     }).catch(err => {
-      console.log(err);
+      console.error(err);
       return 'There was an error. See console for details'
     })  
   }, [])
-  
+
   return (
     <Router>
       <div id="content-all">
-        {user.email
-          ? <TopNavBar user={user} />
-          : <TopNavBarDemo />
-        }
-        {/* <header className="site-header">
-          <SiteHeader
-            user={user}
-            subtitle={date}
-          />
-        </header> */}
+        <header className="site-header">
+          {user.email 
+          ?
+            <SiteHeader
+              user={user}
+              subtitle={date}
+            />
+          :
+            <SiteHeader
+              user={null}
+              subtitle={date}
+            />}
+        </header>
   
         <main id='main-container'>
           <nav>
-            <NavBar />
+            {/* <NavBar /> */}
           </nav>
           <Segment>
             <div id="content">

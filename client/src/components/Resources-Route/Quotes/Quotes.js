@@ -39,7 +39,7 @@ const Quotes = () => {
         setQuoteData(json.data.reverse())
       }
     }).catch(err => {
-      console.log(err);
+      console.error(err);
       return 'There was an error. See console for details'
     })  
   }, [])

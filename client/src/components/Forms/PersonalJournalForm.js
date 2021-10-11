@@ -22,8 +22,6 @@ const Journal = () => {
   ]
 
   const onSubmitCallback = (data) => {
-
-    console.log(data)
     // submit data to server
     fetch('/codewitch/entry/create', {
       method: 'POST', 
@@ -33,12 +31,11 @@ const Journal = () => {
       body: JSON.stringify(data)
     }).then(res => res.json()).then(json => {
       if (json.success === true) { 
-        console.log(json)
         // this tells the child form to show success dimmer
         setSuccess(true)
       }
     }).catch(err => {
-      console.log(err);
+      console.error(err);
       return 'There was an error. See console for details'
     })     
   }
