@@ -112,11 +112,7 @@ const CustomForm = (props) => {
           
             if (type === 'dropdown') {
               return (
-                <Dropdown 
-                  cbFunction={dropdownCb}
-                  name={name}
-                  label={label}
-                />
+                <Dropdown inputProps={inputProps} />
               )
             }
             if (type === 'checkbox') {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Dropdown, Form } from 'semantic-ui-react'
+import { Dropdown, Form, Label } from 'semantic-ui-react'
 
 const options = [
   { key: 0, text: '0', value: 0 },
@@ -10,13 +10,15 @@ const options = [
   { key: 5, text: '5', value: 5 },
 ]
 
-const SemanticDropdown = ({ cbFunction, name, label }) => {
+const CustomDropdown = ({ inputProps }) => {
+
+  const { name, label, callbackFunction, icon, color } = inputProps
 
   const [value, setValue] = useState()
 
   const handleChange = (e, { value }) => {
     setValue(value)
-    cbFunction({ value, name })
+    callbackFunction({ value, name })
   }
   
   return (
@@ -33,4 +35,4 @@ const SemanticDropdown = ({ cbFunction, name, label }) => {
   )
 }
 
-export default SemanticDropdown
+export default CustomDropdown

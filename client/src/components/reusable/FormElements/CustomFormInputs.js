@@ -7,7 +7,7 @@ import moment from 'moment'
 
 const { Field } = Form
 
-
+/* TextArea Input */
 export const CustomTextArea = ({ inputProps }) => {
 
   const { name, label, callbackFunction, icon, color } = inputProps
@@ -34,14 +34,14 @@ export const CustomTextArea = ({ inputProps }) => {
   )
 }
 
+/* Text Input */
 export const CustomTextInput = ({ inputProps }) => {
 
   const { name, label, callbackFunction, icon, color } = inputProps
 
   const [value, setValue] = useState()
 
-  const handleChange = (e) => {
-    const value = e.target.value
+  const handleChange = (e, { value }) => {
     setValue(value)
     callbackFunction({ value, name })
   }
@@ -55,7 +55,6 @@ export const CustomTextInput = ({ inputProps }) => {
   return (
     <Field key={name}>
       <Input  
-        type='text'
         name={name} 
         value={value}
         onChange={handleChange}
@@ -64,6 +63,65 @@ export const CustomTextInput = ({ inputProps }) => {
     </Field>
   )
 }
+
+/* Checkbox Input */
+export const CustomCheckboxInput = ({ inputProps }) => {
+
+  const { name, label, callbackFunction, icon, color } = inputProps
+
+  const [checked, setChecked] = useState()
+
+  const handleChange = e => {
+    let isChecked = e.target.checked
+    setChecked(isChecked)
+    callbackFunction({ value: isChecked, name })
+  }
+
+  const CustomLabel = () => (
+    <Label basic pointing='left' htmlFor={name} color={color}>
+      {label}
+    </Label>
+  )
+
+  return (
+    <Field inline key={name}>
+      <input type='checkbox' 
+        name={name}
+        checked={checked}
+        value={checked}
+        onChange={handleChange}
+      />
+    <CustomLabel />
+    </Field>
+  )
+}
+
+/* Default Input */
+export const CustomDateInput = ({ inputProps }) => {
+
+  const { name, label, callbackFunction, icon, color } = inputProps
+
+  const today = new Date().toISOString().substr(0,10)
+  const [value, setValue] = useState(today)
+
+  const handleChange = (e, { value }) => {
+    setValue(value)
+    callbackFunction({ value, name })
+  }
+
+  return (
+    <Field key={name}>
+      <Input 
+        type='date'
+        defaultValue={today}
+        name={name}
+        value={value}
+        onChange={handleChange}
+        />
+    </Field>
+  )
+}
+
 
 /* Custom reusable form component.
  * Required props: 

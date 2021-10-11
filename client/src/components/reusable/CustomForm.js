@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Dropdown from './FormElements/Dropdown'
-import { CustomTextArea, CustomTextInput } from './FormElements/CustomFormInputs'
+import { 
+  CustomTextArea, 
+  CustomTextInput, 
+  CustomCheckboxInput, 
+  CustomDateInput } from './FormElements/CustomFormInputs'
 
 import { Segment, Form, Input, Label, Header, Button, Dimmer, Icon, Checkbox } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
@@ -58,14 +62,6 @@ const CustomForm = (props) => {
     setInitialState(inputs)
   }, [success])
 
-  const handleChange = e => {
-    setVals({ ...vals, [e.target.name]: e.target.value })
-  }
-
-  const handleCheckboxChange = e => {
-    setVals({ ...vals, [e.target.name]: e.target.checked })
-  }
-
   const handleSubmit = event => {
     event.preventDefault()
     // Timestamp entry if date was not entered
@@ -73,10 +69,6 @@ const CustomForm = (props) => {
     // Pass data up to parent component
     // onSubmitCallback(vals)
     console.log(vals)
-  }
-
-  const dropdownCb = ({ value, name }) => {
-    setVals({ ...vals, [name]: value })
   }
 
   const callbackFunction = ({ value, name }) => {
@@ -101,6 +93,7 @@ const CustomForm = (props) => {
           
           {inputs.map(e => {
             const { name, label, type } = e
+            // Build props object to pass to custom input components
             const inputProps = { name, label, callbackFunction, icon, color }
            
             if (type === 'textarea') {
@@ -108,68 +101,14 @@ const CustomForm = (props) => {
                 <CustomTextArea inputProps={inputProps} />
               )
             }
-            
-            
-
-            //   return(
-            //     <Field key={name}>
-            //       <label htmlFor={name}>
-            //         <Icon name={icon} color={color} /> {label}
-            //       </label>
-            //       <TextArea 
-            //         rows='5'
-            //         name={name}
-            //         value={vals[name]}
-            //         onChange={(e) => handleChange(e)}
-            //       />
-            //     </Field>
-            //   )
-            // } 
-            if (type === 'dropdown') {
-              return (
-                <Dropdown 
-                  cbFunction={dropdownCb}
-                  name={name}
-                  label={label}
-                />
-              )
-            }
             if (type === 'checkbox') {
               return(
-                <Field inline key={name}>
-                  <input type='checkbox' 
-                    name={name}
-                    checked={vals[name]}
-                    value={vals[name]}
-                    onChange={(e) => handleCheckboxChange(e)}
-                  />
-                  <Label basic pointing='left' htmlFor={name}>
-                    {label}
-                  </Label>
-                </Field>
+                <CustomCheckboxInput inputProps={inputProps} />
               )
             } 
             if (type === 'number') {
               return (
-                <Dropdown 
-                  cbFunction={dropdownCb}
-                  name={name}
-                  label={label}
-                />
-                // <Field inline key={name}>
-                //   <Input 
-                //     type='number'
-                //     min='0' 
-                //     max='5' 
-                //     placeholder='0'
-                //     name={name}
-                //     value={vals[e.name]}
-                //     onChange={(e) => handleChange(e)}
-                //   />
-                //   <Label htmlFor={name} color={color} basic pointing='left'>
-                //     {label}
-                //   </Label>
-                // </Field>
+                <Dropdown inputProps={inputProps} />
               )
             }
             if (type === 'text') {
@@ -177,18 +116,13 @@ const CustomForm = (props) => {
                 <CustomTextInput inputProps={inputProps} />
               )
             }
-            else {
+            if (type === 'date') {
               return (
-                <Field key={name}>
-                <Input 
-                  type={type}
-                  name={name}
-                  value={vals[name]}
-                  onChange={(e) => handleChange(e)}
-                  />
-              </Field>
+                <CustomDateInput inputProps={inputProps} />
               )
-            }})}
+            }
+            else return null
+            })}
           <Button type='submit' color={color}>Submit</Button>
         </Form>
       </Segment>
