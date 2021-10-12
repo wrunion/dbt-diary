@@ -3,13 +3,15 @@ import './App.css'
 import { Segment } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import SiteHeader from './components/SiteHeader'
-import NavBar, { TopNavBar, TopNavBarDemo } from './components/NavBar'
 import Week from './components/Week-Route/Week'
 import DemoWeek from './components/Week-Route/DemoWeek'
 import Resources from './components/Resources-Route/Resources'
-// import DemoResources from './components/Resources-Route/DemoResourcesDisplay'
 import Today from './components/Today-Route/Today'
 import moment from 'moment'
+import NavBar from './components/NavBar'
+import TabMenu from './components/TabMenu'
+
+import DBTJournal from './components/Today-Route/DBTJournal'
 
 const App = () => {
 
@@ -17,10 +19,10 @@ const App = () => {
   const [user, setUser] = useState({})
   const [demo, setDemo] = useState(true)
 
-  const dailyDemoData = {
-    quote: 'You are the sky. Everything else – it’s just the weather.',
-    source: 'Pema Chödrön'
-  }
+  // const dailyDemoData = {
+  //   quote: 'You are the sky. Everything else – it’s just the weather.',
+  //   source: 'Pema Chödrön'
+  // }
 
   const date = moment().format('dddd, MMMM Do, YYYY')
 
@@ -62,44 +64,34 @@ const App = () => {
   return (
     <Router>
       <div id="content-all">
+        <TabMenu user={user ? true : false} />
+
         <header className="site-header">
-          {user.email 
-          ?
-            <SiteHeader
-              user={user}
-              subtitle={date}
-            />
-          :
-            <SiteHeader
-              user={null}
-              subtitle={date}
-            />}
+          <SiteHeader
+            user={user.email ? user : null}
+            subtitle={date}
+          />
         </header>
   
-        <main id='main-container'>
-          <nav>
-            {/* <NavBar /> */}
-          </nav>
-          <Segment>
+        {/* <main id='main-container'> */}
+        <main>
+
+          <NavBar user={user ? true : false}>
+
+          {/* <Segment attached='bottom'> */}
             <div id="content">
               <Route exact path='/'>
-                <Today 
-                  user={user}
-                  date={date}
-                  quote={demo ? dailyDemoData.quote : dailyData.quote} 
-                  source={demo ? dailyDemoData.source : dailyData.source}
-                  demo={demo}
-                />
+                <DBTJournal user={user} demo={demo} date={date} />
               </Route>
               <Route exact path='/week'>
                 {demo ? <DemoWeek /> : <Week />}
               </Route>
               <Route path='/resources'>
-                {/* {demo ? <DemoResources /> : <Resources />} */}
                 <Resources />
               </Route>
             </div>
-          </Segment>
+          {/* </Segment> */}
+          </NavBar>
         </main>
       </div>
     </Router>

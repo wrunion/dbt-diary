@@ -1,66 +1,33 @@
 import React from 'react'
-import { Menu, Image, Input, Icon, Dropdown, Button } from 'semantic-ui-react'
+import { Menu, Dropdown, Button, Segment } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 const { Item } = Menu
-const SubMenu = Menu.Menu
-
-const navBarTextStyle = {
-  marginLeft: '10px', color: '#909090' 
-}
-
-const greyText = {
-  color: '#909090'
-}
 
 const menuStyle = {
   marginTop: 0,
   paddingTop: 0,
+  // borderBottom: 'none'
 }
 
-export const NavBar = ({ user }) => {
-
-  console.log('user', user)
-
-  const DropDownMenu = () => (
-    <Dropdown item text='More'>
-      <Dropdown.Menu>
-        <Item 
-          as={NavLink} to='/resources'
-          name='Resources'
-          icon='book'
-        />
-        <Dropdown.Item 
-          as={NavLink} to='/help'
-          icon='question circle outline'
-          text='Help'
-        />
-        <Dropdown.Item 
-          as={NavLink} to='/settings'
-          icon='cog'
-          text='Options'
-        />
-        <Dropdown.Item 
-          href='/api/logout'
-          icon='power off'
-          text='Logout'
-        />
-      </Dropdown.Menu>
-    </Dropdown>
-  )
+const NavBar = ({ user, children }) => {
 
   return ( 
     <>
-    <Menu style={menuStyle} widths={3} collapsible>
+    <Menu style={menuStyle} widths={3} attached='top' tabular>
       <Item 
         as={NavLink} exact to='/'
+        name='Daily DBT'
+      />
+      <Item 
+        as={NavLink} exact to='/journal'
         name='Journal'
       />
       <Item 
         as={NavLink} to='/week'
         name='Week in Review'
       />
-      {user 
+      {/* {user 
       ? <DropDownMenu /> 
       : <Item>
         <Button basic fluid
@@ -68,97 +35,77 @@ export const NavBar = ({ user }) => {
           href='/auth/google' 
           content='Login' 
         />
-      </Item>}
+      </Item>} */}
     </Menu>
+    <Segment attached='bottom'>
+      {children}
+    </Segment>
     </>
   )
 }
 
-// export const TopNavBar = ({ user }) => {
+export default NavBar
 
-//   const DropdownIcon = () => <Icon name='ellipsis horizontal' color='grey' size='large' />
+// export const MainNav = ({ user }) => {
 
-//   const UserIcon = () => <Icon name='user circle' size='big' color='grey' />
+//   const loggedIn = false
+//   console.log(loggedIn)
 
-//   const UserDisplay = () => (
-//     <>
-//       {user.picture 
-//         ? <Image src={user.picture} circular size='mini' />
-//         : <UserIcon />
-//       }
-//       <span style={navBarTextStyle}>
-//         {user.email}
-//       </span>
-//     </>
+//   const DropDownMenu = () => (
+//     <Dropdown item text='More'>
+//       <Dropdown.Menu>
+//         <Item 
+//           as={NavLink} to='/resources'
+//           name='Resources'
+//           icon='book'
+//         />
+//         <Dropdown.Item 
+//           as={NavLink} to='/help'
+//           icon='question circle outline'
+//           text='Help'
+//         />
+//         <Dropdown.Item 
+//           as={NavLink} to='/settings'
+//           icon='cog'
+//           text='Options'
+//         />
+//         <Dropdown.Item 
+//           href='/api/logout'
+//           icon='power off'
+//           text='Logout'
+//         />
+//       </Dropdown.Menu>
+//     </Dropdown>
 //   )
 
 //   return ( 
 //     <>
-//     <Menu borderless stackable>
-//       <Item header color='violet'
-//         as={NavLink} exact to='/'
-//         name='MoodWise'
-//         icon='heart outline'
+//     <Menu style={topMenuStyle} attached='top' borderless>
+//       <Item 
+//         as={NavLink} exact to='/about'
+//         name='About'
 //       />
-//         <SubMenu position='right' size={4}>
+//       {/* <Item 
+//         as={NavLink} exact to='/journal'
+//         name='Journal'
+//       />
+//       <Item 
+//         as={NavLink} to='/resources'
+//         name='Resources'
+//       /> */}
+//       <Menu.Menu position='right'>
+//         {loggedIn ? <DropDownMenu /> :
 //           <Item>
-//             <Input icon='search' placeholder='Search...' />
-//           </Item>
-//           <Item disabled>
-//             <UserDisplay />
-//           </Item>
-//           <Dropdown item icon={DropdownIcon}>
-//             <Dropdown.Menu>
-//               <Dropdown.Item 
-//                 as={NavLink} to='/help'
-//                 icon='question circle outline'
-//                 text='Help'
-//               />
-//               <Dropdown.Item 
-//                 as={NavLink} to='/feedback'
-//                 icon='comment outline'
-//                 text='Feedback'
-//               />
-//               <Dropdown.Item 
-//                 as={NavLink} to='/settings'
-//                 icon='cog'
-//                 text='Options'
-//               />
-//               <Dropdown.Item 
-//                 href='/api/logout'
-//                 icon='power off'
-//                 text='Logout'
-//               />
-//             </Dropdown.Menu>
-//           </Dropdown>
-//         </SubMenu>
+//             <Button basic fluid
+//               color='violet' 
+//               href='/auth/google' 
+//               content='Login' 
+//             />
+//           </Item>}
+//       </Menu.Menu>
 //     </Menu>
 //     </>
 //   )
 // }
 
-// export const TopNavBarDemo = () => (
-//   <Menu borderless stackable style={{ minHeight: '4.75em'}}>
-//     <Item header  
-//       name='MoodWise' 
-//       icon='heart outline'
-//     />
-//     <SubMenu position='right'>
-//       <Item>
-//         <span style={greyText}>
-//           You are in demo display
-//         </span>
-//       </Item>
-//       <Item>
-//         <Button basic 
-//           color='violet' 
-//           href='/auth/google' 
-//           content='Login' 
-//         />
-//       </Item>
-//     </SubMenu>
-//   </Menu>
-// )
-
-
-export default NavBar;
+// export default NavBar

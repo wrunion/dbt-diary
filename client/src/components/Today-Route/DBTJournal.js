@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import './Today.css'
 import Page from '../reusable/Page'
-import JournalForm from '../forms/JournalFormRefactor'
 import DailyRatingForm from '../forms/DailyRatingForm'
-import QuoteForm from '../forms/QuoteForm'
-import PersonalJournalForm from '../forms/PersonalJournalForm'
+import JournalForm from '../forms/PersonalJournalForm'
 
-import { Segment, Image, Header } from 'semantic-ui-react'
-const { Subheader } = Header
+import { Segment, Menu } from 'semantic-ui-react'
+
+const { Item } = Menu
 
 const containerStyles = {
   display: 'flex', 
@@ -35,7 +34,7 @@ const FormDisplay = (props) => {
   const [showQuoteForm, setShowQuoteForm] = useState(false)
   const [showRatingForm, setShowRatingForm] = useState(true)
   const [showJournal, setShowJournal] = useState(true)
-  const [showPersonal, setShowPersonal] = useState(false)
+  const [showPersonal, setShowPersonal] = useState(true)
 
   useEffect(() => {
     if (quote) { setShowQuoteForm(false) }
@@ -86,54 +85,46 @@ const FormDisplay = (props) => {
     )
   }
 
-  const FormToggleControls = () => (
-    <div className='show-form-div'>
-      <div 
-        onClick={() => setShowQuoteForm(!showQuoteForm)}       
-        className='show-form-text'>Toggle Quote Form
-      </div>
-      <div 
-        onClick={() => setShowRatingForm(!showRatingForm)} 
-        className='show-form-text'>Toggle Daily DBT
-      </div>
-      <div 
-        onClick={() => setShowJournal(!showJournal)} 
-        className='show-form-text'>Toggle Journal
-      </div>
-      <div 
-        onClick={() => setShowPersonal(!showPersonal)} 
-        className='show-form-text'>Toggle Personal
-      </div>
-    </div>
-  )
+  const [activeTab, setActiveTab] = useState('journal')
 
   return(
-    <div style={containerStyles} id='Today'>
-      {/* <Segment style={{display: 'flex', alignItems: 'center'}}>
-        <Image src={user.picture} size='mini' style={{ width: '55px', marginRight: '15px' }}circular />
-        <Header as='h2' style={{marginTop: '0'}}>
-          Welcome {user.name}
-          <Subheader>
-            You are logged in as {user.email}
-          </Subheader>
-        </Header>
-      </Segment> */}
+    // <Page 
+    //   title='A Life Worth Living' color='violet'
+    //   >
+    // <div style={containerStyles} id='Today'>
+<>
+{/* <div class="ui tabular menu attached">
+  <a class="active item">
+    DBT
+  </a>
+  <a class="item">
+    Journal
+  </a>
+</div> */}
 
-      {/* Quote only shows if it has been entered on today's date  */}
-      {quote && <div style={quoteStyles}> <DailyContainer /> </div>}
+      {/* <Menu pointing secondary widths={2}>
+        <Item 
+          name='Journal'
+          active={activeTab === 'journal'}
+          onClick={() => setActiveTab('journal')}
+        />
+        <Item 
+          name='Data'
+          active={activeTab === 'data'}
+          onClick={() => setActiveTab('data')}
+        />
+      </Menu> */}
 
-      <FormToggleControls />
+
+<DailyRatingForm demo={demo} />
+
+
       
-      {showPersonal && <PersonalJournalForm demo={demo} />}
-      {/* QuoteForm only shows if no quote has been entered on today's date  */}
-      {showQuoteForm && <QuoteForm demo={demo} />}
+      {/* <JournalForm demo={demo} /> */}
 
-      {/* Daily rating form only shows if it's not already been completed on today's date */}
-      {showRatingForm && <DailyRatingForm demo={demo} />}
-
-      {showJournal && <JournalForm demo={demo} />}
-
-    </div>
+</>
+    // </div>
+    // </Page>
   )
 }
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Header } from 'semantic-ui-react'
 import { ReactComponent as MoonImg } from './../assets/moon-phase-1.svg'
-import NavBar from './NavBar'
 
 const { Subheader } = Header
 
@@ -42,7 +41,6 @@ const SiteHeader = ({ user, subtitle, color='violet', style }) => {
           </Header>
         </div>
       </div>
-      <NavBar user={user ? true : false} />
     </>
     )
 }
