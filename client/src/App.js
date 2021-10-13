@@ -10,6 +10,9 @@ import Today from './components/Today-Route/Today'
 import moment from 'moment'
 import NavBar from './components/NavBar'
 import TabMenu from './components/TabMenu'
+import DailyRatingForm from './components/forms/DailyRatingForm'
+import PersonalJournalForm from './components/forms/PersonalJournalForm'
+
 
 import DBTJournal from './components/Today-Route/DBTJournal'
 
@@ -73,16 +76,17 @@ const App = () => {
           />
         </header>
   
-        {/* <main id='main-container'> */}
         <main>
-
           <NavBar user={user ? true : false}>
 
-          {/* <Segment attached='bottom'> */}
             <div id="content">
               <Route exact path='/'>
-                <DBTJournal user={user} demo={demo} date={date} />
+                <DailyRatingForm demo={demo} />
               </Route>
+              <Route exact path='/journal'>
+                <PersonalJournalForm demo={demo} />
+              </Route>
+
               <Route exact path='/week'>
                 {demo ? <DemoWeek /> : <Week />}
               </Route>
@@ -90,7 +94,6 @@ const App = () => {
                 <Resources />
               </Route>
             </div>
-          {/* </Segment> */}
           </NavBar>
         </main>
       </div>

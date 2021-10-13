@@ -58,8 +58,8 @@ const CustomForm = (props) => {
     // Timestamp entry if date was not entered
     if (!vals.date) { vals.date = moment().format('YYYY-MM-DD') }
     // Pass data up to parent component
-    // onSubmitCallback(vals)
-    console.log(vals)
+    onSubmitCallback(vals)
+    // console.log(vals)
   }
 
   const callbackFunction = ({ value, name }) => {

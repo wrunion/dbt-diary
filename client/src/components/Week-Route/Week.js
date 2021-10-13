@@ -14,7 +14,7 @@ const Week = () => {
   /* If we get an error on fetch, it goes here */
   const [error, setError] = useState('')
   /* options are: 'journal' or 'data' */
-  const [activeTab, setActiveTab] = useState('journal')
+  const [activeTab, setActiveTab] = useState('data')
 
   const [showingAll, setShowingAll] = useState(false)
 
@@ -56,10 +56,13 @@ const Week = () => {
       subtitle="See what you learned and where you can improve"
       >
       {error && <div>{error}</div>} 
-      {today.toLowerCase() === 'monday' &&
+      <RatingDisplay 
+          data={cards} error={error} 
+        />
+      {/* {today.toLowerCase() === 'monday' &&
         <WeekInReviewForm />
-        }
-        <Menu pointing secondary widths={2}>
+        } */}
+        {/* <Menu pointing secondary widths={2}>
           <Item 
             name='Journal'
             active={activeTab === 'journal'}
@@ -70,9 +73,9 @@ const Week = () => {
             active={activeTab === 'data'}
             onClick={() => setActiveTab('data')}
           />
-        </Menu>
+        </Menu> */}
 
-      {(cards && activeTab === 'journal') && 
+      {/* {(cards && activeTab === 'journal') && 
         <JournalDisplay 
           cards={cards} error={error} 
         />
@@ -82,7 +85,7 @@ const Week = () => {
         <RatingDisplay 
           data={cards} error={error} 
         />
-      }
+      } */}
       <p></p>
       {!showingAll &&  
         <Button basic content='Show All Entries'

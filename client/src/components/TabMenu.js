@@ -44,7 +44,6 @@ const TabMenu = ({ user }) => {
   )
 
   return ( 
-    <>
     <Menu style={menuStyle} attached='top' borderless>
       <Item 
         as={NavLink} exact to='/about'
@@ -62,21 +61,7 @@ const TabMenu = ({ user }) => {
           />
         </Item>}
       </Menu.Menu>
-
-        {/* :
-        <Menu.Menu position='right'>
-          <Item>
-            <Button basic fluid
-              color='violet' 
-              href='/auth/google' 
-              content='Login' 
-            />
-          </Item>
-        </Menu.Menu>
-          
-          } */}
     </Menu>
-    </>
   )
 }
 

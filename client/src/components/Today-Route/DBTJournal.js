@@ -120,7 +120,7 @@ const FormDisplay = (props) => {
 
 
       
-      {/* <JournalForm demo={demo} /> */}
+      <JournalForm demo={demo} />
 
 </>
     // </div>

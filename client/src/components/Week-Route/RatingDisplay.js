@@ -15,8 +15,14 @@ const noteLabels = {
   meds_notes: 'Meds Notes',
   sleep_notes: 'Sleep Notes',
   self_care: 'Self Care',
-  other: 'Other Notes'
+  notes: 'Gen Notes'
 }
+
+const footerStyle = {
+  fontWeight: '700'
+}
+
+const weeklyTotals = {}
 
 const RatingDisplay = ({ data }) => {
   if (!data) {
@@ -53,19 +59,32 @@ const RatingDisplay = ({ data }) => {
           return (
             <Row key={e.date + i}>
               <Cell>{e.date}</Cell>
-              {Object.entries(ratings).map((rating, i) => 
+              {Object.entries(ratings).map((rating, i) => {
                 // Filter out non-numeric data like date and notes
                 // To do this, the function compares the keys against an array of numeric inputs, which is imported from the same file the form itself uses, so the two should always be in sync.
-                numericInputNames.includes(rating[0]) ?
-                <Cell key={i}>{rating[1]}</Cell>
-                : 
-                null
-                )}
+                if (numericInputNames.includes(rating[0])) {
+                  let name = rating[0]
+                  let value = rating[1]
+                  // Add the value to the weekly total amount for that category
+                  weeklyTotals[name] ? weeklyTotals[name] += parseInt(value) : weeklyTotals[name] = parseInt(value)
+                  
+                  return (
+                    <Cell key={i}>{value}</Cell>
+                  )
+                } else return null
+              })}
               </Row>
             )
           }
         )}
       </Table.Body>
+      {/* Display averages for each category  */}
+        <Row id='table-footer' style={footerStyle}>
+          <Cell>Average Rating</Cell>
+          {numericInputNames.map((name, i) => 
+            <Cell key={i}>{(weeklyTotals[name]/7).toFixed(1)}</Cell>
+          )}
+        </Row>
       </Table> 
 
       <Divider id='divider' />
