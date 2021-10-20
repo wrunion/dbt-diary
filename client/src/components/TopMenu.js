@@ -51,7 +51,7 @@ const TopMenu = ({ user }) => {
         header
       />
       <Menu.Menu position='right'>
-      {user ? 
+      {!user ? 
         <>
         <Item 
           as={NavLink} to='/resources'

@@ -41,6 +41,11 @@ const CustomForm = (props) => {
     setVals(initState)
   }
 
+  const formReset = () => {
+    setVals({})
+    setInitialState()
+    setDimmerActive(false)
+  }
   useEffect(() => {
     setInitialState(inputs)
   }, [inputs])
@@ -120,7 +125,7 @@ const CustomForm = (props) => {
       </div>
 
       <Dimmer active={dimmerActive} 
-        onClickOutside={() => setDimmerActive(false)}>
+        onClickOutside={() => formReset()}>
         <Header as='h2' icon inverted>
           <Icon name='heart' />
           Nice work! 

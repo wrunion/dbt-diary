@@ -82,6 +82,7 @@ export const CustomCheckboxInput = ({ inputProps }) => {
   return (
     <Field inline key={name}>
       <input type='checkbox' 
+        inline
         name={name}
         checked={checked}
         value={checked}

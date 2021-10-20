@@ -1,6 +1,6 @@
 export const METRICS = [
   /* Numeric fields */
-  { id: 1, name: 'SI', label: 'SI', type:'number' },
+  { id: 1, name: 'Suicide Ideation', label: 'SI', type:'number' },
   { id: 2, name: 'self_harm_urge', label: 'Self harm urge', type:'number' },
   { id: 3, name: 'drug_urge', label: 'Drug urge', type:'number' },
   { id: 4, name: 'emotion_misery', label: 'Emotion misery', type:'number' },
@@ -24,6 +24,33 @@ export const METRICS = [
   { id: 28, name: 'thought', label: 'Today I thought...',  type: 'textarea', journal: 'true'  },
   { id: 29, name: 'rest', label: 'Today I rested, by...',  type: 'textarea', journal: 'true'  },
 ]
+
+export const DEMO_METRICS = [
+    /* Numeric fields */
+  { id: 1, name: 'Suicide Ideation', label: 'SI', type:'number' },
+  { id: 2, name: 'self_harm_urge', label: 'Self harm urge', type:'number' },
+  { id: 3, name: 'drug_urge', label: 'Drug urge', type:'number' },
+  { id: 4, name: 'emotion_misery', label: 'Emotion misery', type:'number' },
+  { id: 5, name: 'physical_misery', label: 'Physical misery',  type:'number' },
+  { id: 6, name: 'joy', label: 'Joy',  type:'number' },
+  { id: 7, name: 'anxiety', label: 'Anxiety',  type:'number' },
+  { id: 8, name: 'mood', label: 'Mood',  type:'number' },
+  { id: 9, name: 'racing_thoughts', label: 'Racing thoughts',  type:'number' },
+  /* Text/textarea fields */
+  { id: 30, name: 'self_care', label: 'Self care for today', type: 'textarea' },
+  { id: 16, name: 'gratitude', label: `Today I'm grateful for...`,  type: 'textarea' },
+  { id: 10, name: 'skills_focus_week', label: 'Skills focus this week', type: 'text' },
+  { id: 11, name: 'meds_changes', label: 'Meds changes this week', type: 'text' },
+  { id: 12, name: 'focus_phrase', label: 'Focus phrase today', type: 'text' },
+  { id: 12, name: 'sleep_notes', label: 'Sleep notes', type: 'text' },
+
+  // { id: 14, name: 'skills', label: 'Skills used today',  type: 'textarea' },
+  // { id: 15, name: 'homework', label: 'Homework',  type: 'textarea' },
+  { id: 16, name: 'gratitude', label: `I'm grateful for...`,  type: 'textarea' },
+  /* OPTIONAL journal prompts */
+]
+
+
 
 export const INITIAL_STATE = {
   "SI": 0,

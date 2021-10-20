@@ -1,20 +1,43 @@
 import React, { useState, useEffect } from 'react'
 import Page from '../reusable/Page'
 import JournalDisplay from './JournalDisplay'
-import RatingDisplay from './RatingDisplay'
+import DemoRatingDisplay from './DemoRatingDisplay'
 import WeekInReviewForm from './WeekInReviewform'
 import { Menu, Button } from 'semantic-ui-react'
 import moment from 'moment'
 
 const { Item } = Menu
 
+const tempDivStyle = {
+  textAlign: 'center',
+  margin: '1em',
+  color: 'grey',
+  fontSize: '1.5em'
+
+}
+
+// TEMP FOR DEMO
+export const TempDemoWeek = () => (
+  <Page 
+  color='grey' icon='sun' 
+  title='This Week in DBT' 
+  subtitle="See what you learned and where you can improve"
+  >
+    <div style={tempDivStyle}>Demo coming soon!</div>
+
+  </Page>
+)
+
+
+
+// TODO: get this working
 const Week = () => {
 
   const [cards, setCards] = useState([])
   /* If we get an error on fetch, it goes here */
   const [error, setError] = useState('')
   /* options are: 'journal' or 'data' */
-  const [activeTab, setActiveTab] = useState('journal')
+  // const [activeTab, setActiveTab] = useState('data')
 
   const [showingAll, setShowingAll] = useState(false)
 
@@ -35,7 +58,7 @@ const Week = () => {
   }, [])
 
   const showAllEntries = () => {
-    fetch('dbt/demo/entry/all', {
+    fetch('dbt/entry/all', {
       method: 'GET', 
       headers: {
         'Content-Type': 'application/json'
@@ -56,10 +79,13 @@ const Week = () => {
       subtitle="See what you learned and where you can improve"
       >
       {error && <div>{error}</div>} 
-      {today.toLowerCase() === 'monday' &&
+      <DemoRatingDisplay 
+          data={cards} error={error} 
+        />
+      {/* {today.toLowerCase() === 'monday' &&
         <WeekInReviewForm />
-        }
-        <Menu pointing secondary widths={2}>
+        } */}
+        {/* <Menu pointing secondary widths={2}>
           <Item 
             name='Journal'
             active={activeTab === 'journal'}
@@ -70,9 +96,9 @@ const Week = () => {
             active={activeTab === 'data'}
             onClick={() => setActiveTab('data')}
           />
-        </Menu>
+        </Menu> */}
 
-      {(cards && activeTab === 'journal') && 
+      {/* {(cards && activeTab === 'journal') && 
         <JournalDisplay 
           cards={cards} error={error} 
         />
@@ -82,10 +108,10 @@ const Week = () => {
         <RatingDisplay 
           data={cards} error={error} 
         />
-      }
+      } */}
       <p></p>
       {!showingAll &&  
-        <Button basic content='Show All Entries'
+        <Button basic content='Show All Data'
           onClick={() => showAllEntries()}
         />
       }
@@ -93,4 +119,4 @@ const Week = () => {
   )
 }
 
-export default Week;
+export default Week

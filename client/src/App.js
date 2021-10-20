@@ -3,6 +3,7 @@ import './App.css'
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 import SiteHeader from './components/SiteHeader'
 import Week from './components/Week-Route/Week'
+import { TempDemoWeek } from './components/Week-Route/DemoWeek'
 import DemoWeek from './components/Week-Route/DemoWeek'
 import Resources from './components/Resources-Route/Resources'
 import moment from 'moment'
@@ -10,6 +11,8 @@ import TabNavBar from './components/TabNavBar'
 import TopMenu from './components/TopMenu'
 import RatingForm from './components/forms/DailyRatingForm'
 import JournalForm from './components/forms/PersonalJournalForm'
+import DemoJournalForm from './components/forms/DemoJournalForm'
+import DemoRatingForm from './components/forms/DemoRatingForm'
 import { Tab } from 'semantic-ui-react'
 
 const App = () => {
@@ -25,15 +28,15 @@ const App = () => {
   const panes = [
     {
       menuItem: 'Daily DBT',
-      pane: { key: 'dbt', content: <RatingForm demo={demo} />, style: paneStyle }
+      pane: { key: 'dbt', content: demo ? <DemoRatingForm demo={demo} /> : <RatingForm demo={demo} />, style: paneStyle }
     },
     {
       menuItem: 'Journal',
-      pane: { key: 'journal', content: <JournalForm demo={demo} />, style: paneStyle }
+      pane: { key: 'journal', content: demo ? <DemoJournalForm /> : <JournalForm demo={demo} />, style: paneStyle }
     },
     {
       menuItem: 'Week In Review',
-      pane: { key: 'week', content: <Week /> }
+      pane: { key: 'week', content: demo ? <TempDemoWeek /> : <Week /> }
     }
   ]
   
@@ -56,9 +59,9 @@ const App = () => {
       }
     }).then(res => res.json()).then(json => {
       if (json.email) {
-        const { email, picture, name } = json
+        const { email, name } = json
         setDemo(false)
-        setUser({ email, picture, name })
+        setUser({ email, name })
       }
     }
   ).catch(err => console.error(err))
