@@ -39,10 +39,15 @@
   margin-top: .5em;
 }
 
+.site-header {
+  margin-bottom: 1em;
+}
+
 #main-container {
-  width: 95%;
+  padding-left: .75em;
+  padding-right: .75em;
   margin: 0 auto;
-  max-width: 900px
+  max-width: 850px;
 }
 
 #content-all h1, h2, h3, h4  {

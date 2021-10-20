@@ -14,7 +14,7 @@ const Week = () => {
   /* If we get an error on fetch, it goes here */
   const [error, setError] = useState('')
   /* options are: 'journal' or 'data' */
-  const [activeTab, setActiveTab] = useState('data')
+  // const [activeTab, setActiveTab] = useState('data')
 
   const [showingAll, setShowingAll] = useState(false)
 
@@ -88,7 +88,7 @@ const Week = () => {
       } */}
       <p></p>
       {!showingAll &&  
-        <Button basic content='Show All Entries'
+        <Button basic content='Show All Data'
           onClick={() => showAllEntries()}
         />
       }

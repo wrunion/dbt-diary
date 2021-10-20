@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { DAILY_RATING_INPUTS } from './../../data/inputs'
 import './RatingDisplay.css'
 import PropTypes from 'prop-types'
@@ -9,12 +9,12 @@ const TableHeader = Table.Header;
 const numericInputs = DAILY_RATING_INPUTS.filter(e => e.type === 'number')
 const numericInputLabels = numericInputs.map(e => e.label)
 const numericInputNames = numericInputs.map(e => e.name)
-const textInputNames = DAILY_RATING_INPUTS.filter(e => e.type === 'text').map(e => e.name)
+const textInputNames = DAILY_RATING_INPUTS.filter(e => e.type === 'text' || e.type === 'textarea').map(e => e.name)
 
 const noteLabels = {
   meds_notes: 'Meds Notes',
   sleep_notes: 'Sleep Notes',
-  self_care: 'Self Care',
+  self_care: 'Self Care Activities',
   notes: 'Gen Notes'
 }
 
@@ -22,9 +22,10 @@ const footerStyle = {
   fontWeight: '700'
 }
 
-const weeklyTotals = {}
+const weeklyTotals = { entryCount: 0 }
 
 const RatingDisplay = ({ data }) => {
+
   if (!data) {
     return (
       <Segment className='noData'>
@@ -34,6 +35,8 @@ const RatingDisplay = ({ data }) => {
   }
   // Entries before this date don't have a valid format
   const entries = data.filter(e => e.entry_type === 'rating').filter(e => e.date > '2021-08-20')
+
+  weeklyTotals.entryCount = entries.length
 
   return(
     <div>
@@ -56,6 +59,7 @@ const RatingDisplay = ({ data }) => {
           // which contains both text notes
           // and numerical ratings
           const ratings = e.entry
+
           return (
             <Row key={e.date + i}>
               <Cell>{e.date}</Cell>

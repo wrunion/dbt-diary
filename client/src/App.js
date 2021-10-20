@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
-import { Segment } from 'semantic-ui-react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 import SiteHeader from './components/SiteHeader'
 import Week from './components/Week-Route/Week'
 import DemoWeek from './components/Week-Route/DemoWeek'
 import Resources from './components/Resources-Route/Resources'
-import Today from './components/Today-Route/Today'
 import moment from 'moment'
-import NavBar from './components/NavBar'
-import TabMenu from './components/TabMenu'
-import DailyRatingForm from './components/forms/DailyRatingForm'
-import PersonalJournalForm from './components/forms/PersonalJournalForm'
-
-
-import DBTJournal from './components/Today-Route/DBTJournal'
+import TabNavBar from './components/TabNavBar'
+import TopMenu from './components/TopMenu'
+import RatingForm from './components/forms/DailyRatingForm'
+import JournalForm from './components/forms/PersonalJournalForm'
+import { Tab } from 'semantic-ui-react'
 
 const App = () => {
 
@@ -22,10 +18,31 @@ const App = () => {
   const [user, setUser] = useState({})
   const [demo, setDemo] = useState(true)
 
-  // const dailyDemoData = {
-  //   quote: 'You are the sky. Everything else – it’s just the weather.',
-  //   source: 'Pema Chödrön'
-  // }
+  const paneStyle = {
+    padding: '2em 1.5em'
+  }
+
+  const panes = [
+    {
+      menuItem: 'Daily DBT',
+      pane: { key: 'dbt', content: <RatingForm demo={demo} />, style: paneStyle }
+    },
+    {
+      menuItem: 'Journal',
+      pane: { key: 'journal', content: <JournalForm demo={demo} />, style: paneStyle }
+    },
+    {
+      menuItem: 'Week In Review',
+      pane: { key: 'week', content: <Week /> }
+    }
+  ]
+  
+  const TabMenu = () => (
+    <Tab panes={panes} 
+      renderActiveOnly={false} 
+      defaultActiveIndex={1} 
+    />
+  )
 
   const date = moment().format('dddd, MMMM Do, YYYY')
 
@@ -67,7 +84,7 @@ const App = () => {
   return (
     <Router>
       <div id="content-all">
-        <TabMenu user={user ? true : false} />
+        <TopMenu user={user ? true : false} />
 
         <header className="site-header">
           <SiteHeader
@@ -76,15 +93,16 @@ const App = () => {
           />
         </header>
   
-        <main>
-          <NavBar user={user ? true : false}>
+        <main id='main-container'>
+          {/* <TabNavBar user={user ? true : false}> */}
 
-            <div id="content">
+            <TabMenu />
+            {/* <div id="content">
               <Route exact path='/'>
-                <DailyRatingForm demo={demo} />
+                <RatingForm demo={demo} />
               </Route>
               <Route exact path='/journal'>
-                <PersonalJournalForm demo={demo} />
+                <JournalForm demo={demo} />
               </Route>
 
               <Route exact path='/week'>
@@ -93,8 +111,8 @@ const App = () => {
               <Route path='/resources'>
                 <Resources />
               </Route>
-            </div>
-          </NavBar>
+            </div> */}
+          {/* </TabNavBar> */}
         </main>
       </div>
     </Router>

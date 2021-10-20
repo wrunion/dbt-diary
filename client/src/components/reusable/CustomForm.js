@@ -9,13 +9,11 @@ import {
 import { Form, Header, Button, Dimmer, Icon } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import './CustomForm.css'
 
 const { Dimmable } = Dimmer
 const { Subheader } = Header
 
-const formStyle = {
-  padding: '1.5em'
-}
 
 const headerStyle = {
   marginBottom: '1.25em'
@@ -74,7 +72,7 @@ const CustomForm = (props) => {
       style={{borderRadius: '5px' }}>
 
       <div as='section'>
-        <Form onSubmit={(e) => handleSubmit(e)} style={formStyle}>
+        <Form onSubmit={(e) => handleSubmit(e)} id='CustomForm'>
           <Header as='h2' color={color} 
             content={title}
             style={headerStyle} 

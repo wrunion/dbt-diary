@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, Dropdown, Button, Segment } from 'semantic-ui-react'
+import { Menu, Dropdown, Button } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 const { Item } = Menu
@@ -14,7 +14,7 @@ const violetText = {
   color: '#6434C9'
 }
 
-const TabMenu = ({ user }) => {
+const TopMenu = ({ user }) => {
 
   const DropDownMenu = () => (
     <Dropdown item text='More' style={violetText}>
@@ -52,7 +52,15 @@ const TabMenu = ({ user }) => {
       />
       <Menu.Menu position='right'>
       {user ? 
-        <DropDownMenu /> :          
+        <>
+        <Item 
+          as={NavLink} to='/resources'
+          name='Resources'
+          icon='book'
+          style={violetText}
+        />
+        <DropDownMenu /> 
+        </>:          
         <Item>
           <Button basic fluid
             color='violet' 
@@ -65,4 +73,4 @@ const TabMenu = ({ user }) => {
   )
 }
 
-export default TabMenu
+export default TopMenu

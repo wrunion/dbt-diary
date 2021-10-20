@@ -10,7 +10,7 @@ const menuStyle = {
   // borderBottom: 'none'
 }
 
-const NavBar = ({ user, children }) => {
+const TabNavBar = ({ user, children }) => {
 
   return ( 
     <>
@@ -27,6 +27,7 @@ const NavBar = ({ user, children }) => {
         as={NavLink} to='/week'
         name='Week in Review'
       />
+
       {/* {user 
       ? <DropDownMenu /> 
       : <Item>
@@ -44,7 +45,7 @@ const NavBar = ({ user, children }) => {
   )
 }
 
-export default NavBar
+export default TabNavBar
 
 // export const MainNav = ({ user }) => {
 

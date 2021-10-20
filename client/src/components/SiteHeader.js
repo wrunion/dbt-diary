@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header } from 'semantic-ui-react'
+import { Header, Segment } from 'semantic-ui-react'
 import { ReactComponent as MoonImg } from './../assets/moon-phase-1.svg'
 
 const { Subheader } = Header
@@ -27,7 +27,7 @@ const SiteHeader = ({ user, subtitle, color='violet', style }) => {
   
   return (
     <>
-      <div style={containerStyle}>
+      <Segment style={containerStyle}>
         <div style={{ padding: '1em' }}>
           <a href='/auth/google'>
             <MoonImg style={moonStyle} />
@@ -40,7 +40,7 @@ const SiteHeader = ({ user, subtitle, color='violet', style }) => {
             </Subheader>
           </Header>
         </div>
-      </div>
+      </Segment>
     </>
     )
 }
