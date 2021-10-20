@@ -10,6 +10,7 @@ const { Item } = Menu
 
 const Week = () => {
 
+  const [ratingEntries, setRatingEntries] = useState([])
   const [cards, setCards] = useState([])
   /* If we get an error on fetch, it goes here */
   const [error, setError] = useState('')
@@ -28,6 +29,9 @@ const Week = () => {
       }
     }).then(res => res.json()).then(json => {
       setCards(json.data.reverse())
+      // Entries before this date don't have a valid format
+      const ratingEntries = json.data.filter(e => e.entry_type === 'rating').filter(e => e.date > '2021-08-20')
+      setRatingEntries(ratingEntries)
       }).catch(err => {
       console.log(err)
       setError('There was an error fetching data. See console for details.')
@@ -42,6 +46,9 @@ const Week = () => {
       }
     }).then(res => res.json()).then(json => {
       setCards(json.data.reverse())
+      // Entries before this date don't have a valid format
+      const ratingEntries = json.data.filter(e => e.entry_type === 'rating').filter(e => e.date > '2021-08-20')
+      setRatingEntries(ratingEntries)
       setShowingAll(true)
       }).catch(err => {
       console.log(err)
@@ -57,7 +64,7 @@ const Week = () => {
       >
       {error && <div>{error}</div>} 
       <RatingDisplay 
-          data={cards} error={error} 
+          data={ratingEntries} error={error} 
         />
       {/* {today.toLowerCase() === 'monday' &&
         <WeekInReviewForm />

@@ -21,6 +21,10 @@ const App = () => {
   const [user, setUser] = useState({})
   const [demo, setDemo] = useState(true)
 
+  const tablePaneStyle = {
+    padding: '2em'
+  }
+
   const paneStyle = {
     padding: '2em 1.5em'
   }
@@ -36,7 +40,7 @@ const App = () => {
     },
     {
       menuItem: 'Week In Review',
-      pane: { key: 'week', content: demo ? <TempDemoWeek /> : <Week /> }
+      pane: { key: 'week', content: demo ? <DemoWeek /> : <Week /> }
     }
   ]
   

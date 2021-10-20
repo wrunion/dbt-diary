@@ -33,6 +33,8 @@ export const TempDemoWeek = () => (
 // TODO: get this working
 const Week = () => {
 
+  const [ratingEntries, setRatingEntries] = useState([])
+
   const [cards, setCards] = useState([])
   /* If we get an error on fetch, it goes here */
   const [error, setError] = useState('')
@@ -50,7 +52,9 @@ const Week = () => {
         'Content-Type': 'application/json'
       }
     }).then(res => res.json()).then(json => {
-      setCards(json.data.reverse())
+      setCards(json.data?.reverse())
+      // const ratingEntries = json.data?.filter(e => e.entry_type === 'rating').filter
+      // setRatingEntries(ratingEntries)
       }).catch(err => {
       console.log(err)
       setError('There was an error fetching data. See console for details.')
@@ -65,6 +69,8 @@ const Week = () => {
       }
     }).then(res => res.json()).then(json => {
       setCards(json.data.reverse())
+      // const ratingEntries = json.data.filter(e => e.entry_type === 'rating').filter
+      // setRatingEntries(ratingEntries)
       setShowingAll(true)
       }).catch(err => {
       console.log(err)
@@ -85,36 +91,15 @@ const Week = () => {
       {/* {today.toLowerCase() === 'monday' &&
         <WeekInReviewForm />
         } */}
-        {/* <Menu pointing secondary widths={2}>
-          <Item 
-            name='Journal'
-            active={activeTab === 'journal'}
-            onClick={() => setActiveTab('journal')}
-          />
-          <Item 
-            name='Data'
-            active={activeTab === 'data'}
-            onClick={() => setActiveTab('data')}
-          />
-        </Menu> */}
 
-      {/* {(cards && activeTab === 'journal') && 
+      {cards && 
         <JournalDisplay 
           cards={cards} error={error} 
         />
       }
 
-      {(cards && activeTab === 'data') && 
-        <RatingDisplay 
-          data={cards} error={error} 
-        />
-      } */}
       <p></p>
-      {!showingAll &&  
-        <Button basic content='Show All Data'
-          onClick={() => showAllEntries()}
-        />
-      }
+
     </Page>
   )
 }
